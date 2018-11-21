@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{114D4C6C-4762-4E66-8015-BA50F3A4F6B1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eyeMusic</RootNamespace>
+    <AssemblyName>eyeMusic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3DX, Version=1.0.2910.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2908.0\Microsoft.DirectX.Direct3DX.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WebCam_Capture">
+      <HintPath>..\ExternalDLL\WebCam_Capture.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EdgeDetectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdgeDetectionForm.Designer.cs">
+      <DependentUpon>EdgeDetectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EdgeDetector.cs" />
+    <Compile Include="eyeMusicStatistics.cs" />
+    <Compile Include="managementGUI.exam.cs" />
+    <Compile Include="managementGUI.oval.cs" />
+    <Compile Include="managementGUI.training.cs" />
+    <Compile Include="managementGUI.word.cs" />
+    <Compile Include="WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WAVFile.cs" />
+    <Compile Include="WAVFileExceptions.cs" />
+    <Compile Include="WAVFormat.cs" />
+    <Compile Include="ZoomParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZoomParameters.Designer.cs">
+      <DependentUpon>ZoomParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="managementGUI.cs" />
+    <Compile Include="TraineeName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraineeName.Designer.cs">
+      <DependentUpon>TraineeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogReport.Designer.cs">
+      <DependentUpon>LogReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StimuliQueue.cs" />
+    <Compile Include="eyeMusic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eyeMusic.Designer.cs">
+      <DependentUpon>eyeMusic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="wavCreator.cs" />
+    <Compile Include="ZoomScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZoomScreen.Designer.cs">
+      <DependentUpon>ZoomScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EdgeDetectionForm.resx">
+      <DependentUpon>EdgeDetectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eyeMusic.resx">
+      <DependentUpon>eyeMusic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogReport.resx">
+      <DependentUpon>LogReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraineeName.resx">
+      <DependentUpon>TraineeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoomParameters.resx">
+      <DependentUpon>ZoomParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoomScreen.resx">
+      <DependentUpon>ZoomScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Default.bmp" />
+    <Content Include="Sounds\beep.wav" />
+    <Content Include="Sounds\click.wav" />
+    <Content Include="Sounds\drum.wav" />
+    <Content Include="Sounds\endWordOval.wav" />
+    <Content Include="Sounds\firstBeat.wav" />
+    <Content Include="Sounds\limit.wav" />
+    <Content Include="Sounds\secondBeat.wav" />
+    <Content Include="WavHighRes\fA_00.wav" />
+    <Content Include="WavHighRes\fA_02.wav" />
+    <Content Include="WavHighRes\fA_04.wav" />
+    <Content Include="WavHighRes\fA_06.wav" />
+    <Content Include="WavHighRes\fA_07.wav" />
+    <Content Include="WavHighRes\fA_09.wav" />
+    <Content Include="WavHighRes\fA_12.wav" />
+    <Content Include="WavHighRes\fA_14.wav" />
+    <Content Include="WavHighRes\fA_16.wav" />
+    <Content Include="WavHighRes\fA_18.wav" />
+    <Content Include="WavHighRes\fA_19.wav" />
+    <Content Include="WavHighRes\fA_21.wav" />
+    <Content Include="WavHighRes\fA_24.wav" />
+    <Content Include="WavHighRes\fA_26.wav" />
+    <Content Include="WavHighRes\fA_28.wav" />
+    <Content Include="WavHighRes\fA_30.wav" />
+    <Content Include="WavHighRes\fA_31.wav" />
+    <Content Include="WavHighRes\fA_33.wav" />
+    <Content Include="WavHighRes\fA_36.wav" />
+    <Content Include="WavHighRes\fA_38.wav" />
+    <Content Include="WavHighRes\fA_40.wav" />
+    <Content Include="WavHighRes\fA_42.wav" />
+    <Content Include="WavHighRes\fA_43.wav" />
+    <Content Include="WavHighRes\fA_45.wav" />
+    <Content Include="WavHighRes\fA_48.wav" />
+    <Content Include="WavHighRes\fA_50.wav" />
+    <Content Include="WavHighRes\fA_52.wav" />
+    <Content Include="WavHighRes\fA_54.wav" />
+    <Content Include="WavHighRes\fA_55.wav" />
+    <Content Include="WavHighRes\fA_57.wav" />
+    <Content Include="WavHighRes\fB_00.wav" />
+    <Content Include="WavHighRes\fB_02.wav" />
+    <Content Include="WavHighRes\fB_04.wav" />
+    <Content Include="WavHighRes\fB_06.wav" />
+    <Content Include="WavHighRes\fB_07.wav" />
+    <Content Include="WavHighRes\fB_09.wav" />
+    <Content Include="WavHighRes\fB_12.wav" />
+    <Content Include="WavHighRes\fB_14.wav" />
+    <Content Include="WavHighRes\fB_16.wav" />
+    <Content Include="WavHighRes\fB_18.wav" />
+    <Content Include="WavHighRes\fB_19.wav" />
+    <Content Include="WavHighRes\fB_21.wav" />
+    <Content Include="WavHighRes\fB_24.wav" />
+    <Content Include="WavHighRes\fB_26.wav" />
+    <Content Include="WavHighRes\fB_28.wav" />
+    <Content Include="WavHighRes\fB_30.wav" />
+    <Content Include="WavHighRes\fB_31.wav" />
+    <Content Include="WavHighRes\fB_33.wav" />
+    <Content Include="WavHighRes\fB_36.wav" />
+    <Content Include="WavHighRes\fB_38.wav" />
+    <Content Include="WavHighRes\fB_40.wav" />
+    <Content Include="WavHighRes\fB_42.wav" />
+    <Content Include="WavHighRes\fB_43.wav" />
+    <Content Include="WavHighRes\fB_45.wav" />
+    <Content Include="WavHighRes\fB_48.wav" />
+    <Content Include="WavHighRes\fB_50.wav" />
+    <Content Include="WavHighRes\fB_52.wav" />
+    <Content Include="WavHighRes\fB_54.wav" />
+    <Content Include="WavHighRes\fB_55.wav" />
+    <Content Include="WavHighRes\fB_57.wav" />
+    <Content Include="WavHighRes\fC_00.wav" />
+    <Content Include="WavHighRes\fC_02.wav" />
+    <Content Include="WavHighRes\fC_04.wav" />
+    <Content Include="WavHighRes\fC_06.wav" />
+    <Content Include="WavHighRes\fC_07.wav" />
+    <Content Include="WavHighRes\fC_09.wav" />
+    <Content Include="WavHighRes\fC_12.wav" />
+    <Content Include="WavHighRes\fC_14.wav" />
+    <Content Include="WavHighRes\fC_16.wav" />
+    <Content Include="WavHighRes\fC_18.wav" />
+    <Content Include="WavHighRes\fC_19.wav" />
+    <Content Include="WavHighRes\fC_21.wav" />
+    <Content Include="WavHighRes\fC_24.wav" />
+    <Content Include="WavHighRes\fC_26.wav" />
+    <Content Include="WavHighRes\fC_28.wav" />
+    <Content Include="WavHighRes\fC_30.wav" />
+    <Content Include="WavHighRes\fC_31.wav" />
+    <Content Include="WavHighRes\fC_33.wav" />
+    <Content Include="WavHighRes\fC_36.wav" />
+    <Content Include="WavHighRes\fC_38.wav" />
+    <Content Include="WavHighRes\fC_40.wav" />
+    <Content Include="WavHighRes\fC_42.wav" />
+    <Content Include="WavHighRes\fC_43.wav" />
+    <Content Include="WavHighRes\fC_45.wav" />
+    <Content Include="WavHighRes\fC_48.wav" />
+    <Content Include="WavHighRes\fC_50.wav" />
+    <Content Include="WavHighRes\fC_52.wav" />
+    <Content Include="WavHighRes\fC_54.wav" />
+    <Content Include="WavHighRes\fC_55.wav" />
+    <Content Include="WavHighRes\fC_57.wav" />
+    <Content Include="WavHighRes\fD_00.wav" />
+    <Content Include="WavHighRes\fD_02.wav" />
+    <Content Include="WavHighRes\fD_04.wav" />
+    <Content Include="WavHighRes\fD_06.wav" />
+    <Content Include="WavHighRes\fD_07.wav" />
+    <Content Include="WavHighRes\fD_09.wav" />
+    <Content Include="WavHighRes\fD_12.wav" />
+    <Content Include="WavHighRes\fD_14.wav" />
+    <Content Include="WavHighRes\fD_16.wav" />
+    <Content Include="WavHighRes\fD_18.wav" />
+    <Content Include="WavHighRes\fD_19.wav" />
+    <Content Include="WavHighRes\fD_21.wav" />
+    <Content Include="WavHighRes\fD_24.wav" />
+    <Content Include="WavHighRes\fD_26.wav" />
+    <Content Include="WavHighRes\fD_28.wav" />
+    <Content Include="WavHighRes\fD_30.wav" />
+    <Content Include="WavHighRes\fD_31.wav" />
+    <Content Include="WavHighRes\fD_33.wav" />
+    <Content Include="WavHighRes\fD_36.wav" />
+    <Content Include="WavHighRes\fD_38.wav" />
+    <Content Include="WavHighRes\fD_40.wav" />
+    <Content Include="WavHighRes\fD_42.wav" />
+    <Content Include="WavHighRes\fD_43.wav" />
+    <Content Include="WavHighRes\fD_45.wav" />
+    <Content Include="WavHighRes\fD_48.wav" />
+    <Content Include="WavHighRes\fD_50.wav" />
+    <Content Include="WavHighRes\fD_52.wav" />
+    <Content Include="WavHighRes\fD_54.wav" />
+    <Content Include="WavHighRes\fD_55.wav" />
+    <Content Include="WavHighRes\fD_57.wav" />
+    <Content Include="WavHighRes\fE_00.wav" />
+    <Content Include="WavHighRes\fE_02.wav" />
+    <Content Include="WavHighRes\fE_04.wav" />
+    <Content Include="WavHighRes\fE_06.wav" />
+    <Content Include="WavHighRes\fE_07.wav" />
+    <Content Include="WavHighRes\fE_09.wav" />
+    <Content Include="WavHighRes\fE_12.wav" />
+    <Content Include="WavHighRes\fE_14.wav" />
+    <Content Include="WavHighRes\fE_16.wav" />
+    <Content Include="WavHighRes\fE_18.wav" />
+    <Content Include="WavHighRes\fE_19.wav" />
+    <Content Include="WavHighRes\fE_21.wav" />
+    <Content Include="WavHighRes\fE_24.wav" />
+    <Content Include="WavHighRes\fE_26.wav" />
+    <Content Include="WavHighRes\fE_28.wav" />
+    <Content Include="WavHighRes\fE_30.wav" />
+    <Content Include="WavHighRes\fE_31.wav" />
+    <Content Include="WavHighRes\fE_33.wav" />
+    <Content Include="WavHighRes\fE_36.wav" />
+    <Content Include="WavHighRes\fE_38.wav" />
+    <Content Include="WavHighRes\fE_40.wav" />
+    <Content Include="WavHighRes\fE_42.wav" />
+    <Content Include="WavHighRes\fE_43.wav" />
+    <Content Include="WavHighRes\fE_45.wav" />
+    <Content Include="WavHighRes\fE_48.wav" />
+    <Content Include="WavHighRes\fE_50.wav" />
+    <Content Include="WavHighRes\fE_52.wav" />
+    <Content Include="WavHighRes\fE_54.wav" />
+    <Content Include="WavHighRes\fE_55.wav" />
+    <Content Include="WavHighRes\fE_57.wav" />
+    <Content Include="WavLowRes\fA_00.wav" />
+    <Content Include="WavLowRes\fA_02.wav" />
+    <Content Include="WavLowRes\fA_04.wav" />
+    <Content Include="WavLowRes\fA_07.wav" />
+    <Content Include="WavLowRes\fA_09.wav" />
+    <Content Include="WavLowRes\fA_12.wav" />
+    <Content Include="WavLowRes\fA_14.wav" />
+    <Content Include="WavLowRes\fA_16.wav" />
+    <Content Include="WavLowRes\fA_19.wav" />
+    <Content Include="WavLowRes\fA_21.wav" />
+    <Content Include="WavLowRes\fA_24.wav" />
+    <Content Include="WavLowRes\fA_26.wav" />
+    <Content Include="WavLowRes\fA_28.wav" />
+    <Content Include="WavLowRes\fA_31.wav" />
+    <Content Include="WavLowRes\fA_33.wav" />
+    <Content Include="WavLowRes\fA_36.wav" />
+    <Content Include="WavLowRes\fA_38.wav" />
+    <Content Include="WavLowRes\fA_40.wav" />
+    <Content Include="WavLowRes\fA_43.wav" />
+    <Content Include="WavLowRes\fA_45.wav" />
+    <Content Include="WavLowRes\fA_48.wav" />
+    <Content Include="WavLowRes\fA_50.wav" />
+    <Content Include="WavLowRes\fA_52.wav" />
+    <Content Include="WavLowRes\fA_55.wav" />
+    <Content Include="WavLowRes\fB_00.wav" />
+    <Content Include="WavLowRes\fB_02.wav" />
+    <Content Include="WavLowRes\fB_04.wav" />
+    <Content Include="WavLowRes\fB_07.wav" />
+    <Content Include="WavLowRes\fB_09.wav" />
+    <Content Include="WavLowRes\fB_12.wav" />
+    <Content Include="WavLowRes\fB_14.wav" />
+    <Content Include="WavLowRes\fB_16.wav" />
+    <Content Include="WavLowRes\fB_19.wav" />
+    <Content Include="WavLowRes\fB_21.wav" />
+    <Content Include="WavLowRes\fB_24.wav" />
+    <Content Include="WavLowRes\fB_26.wav" />
+    <Content Include="WavLowRes\fB_28.wav" />
+    <Content Include="WavLowRes\fB_31.wav" />
+    <Content Include="WavLowRes\fB_33.wav" />
+    <Content Include="WavLowRes\fB_36.wav" />
+    <Content Include="WavLowRes\fB_38.wav" />
+    <Content Include="WavLowRes\fB_40.wav" />
+    <Content Include="WavLowRes\fB_43.wav" />
+    <Content Include="WavLowRes\fB_45.wav" />
+    <Content Include="WavLowRes\fB_48.wav" />
+    <Content Include="WavLowRes\fB_50.wav" />
+    <Content Include="WavLowRes\fB_52.wav" />
+    <Content Include="WavLowRes\fB_55.wav" />
+    <Content Include="WavLowRes\fC_00.wav" />
+    <Content Include="WavLowRes\fC_02.wav" />
+    <Content Include="WavLowRes\fC_04.wav" />
+    <Content Include="WavLowRes\fC_07.wav" />
+    <Content Include="WavLowRes\fC_09.wav" />
+    <Content Include="WavLowRes\fC_12.wav" />
+    <Content Include="WavLowRes\fC_14.wav" />
+    <Content Include="WavLowRes\fC_16.wav" />
+    <Content Include="WavLowRes\fC_19.wav" />
+    <Content Include="WavLowRes\fC_21.wav" />
+    <Content Include="WavLowRes\fC_24.wav" />
+    <Content Include="WavLowRes\fC_26.wav" />
+    <Content Include="WavLowRes\fC_28.wav" />
+    <Content Include="WavLowRes\fC_31.wav" />
+    <Content Include="WavLowRes\fC_33.wav" />
+    <Content Include="WavLowRes\fC_36.wav" />
+    <Content Include="WavLowRes\fC_38.wav" />
+    <Content Include="WavLowRes\fC_40.wav" />
+    <Content Include="WavLowRes\fC_43.wav" />
+    <Content Include="WavLowRes\fC_45.wav" />
+    <Content Include="WavLowRes\fC_48.wav" />
+    <Content Include="WavLowRes\fC_50.wav" />
+    <Content Include="WavLowRes\fC_52.wav" />
+    <Content Include="WavLowRes\fC_55.wav" />
+    <Content Include="WavLowRes\fD_00.wav" />
+    <Content Include="WavLowRes\fD_02.wav" />
+    <Content Include="WavLowRes\fD_04.wav" />
+    <Content Include="WavLowRes\fD_07.wav" />
+    <Content Include="WavLowRes\fD_09.wav" />
+    <Content Include="WavLowRes\fD_12.wav" />
+    <Content Include="WavLowRes\fD_14.wav" />
+    <Content Include="WavLowRes\fD_16.wav" />
+    <Content Include="WavLowRes\fD_19.wav" />
+    <Content Include="WavLowRes\fD_21.wav" />
+    <Content Include="WavLowRes\fD_24.wav" />
+    <Content Include="WavLowRes\fD_26.wav" />
+    <Content Include="WavLowRes\fD_28.wav" />
+    <Content Include="WavLowRes\fD_31.wav" />
+    <Content Include="WavLowRes\fD_33.wav" />
+    <Content Include="WavLowRes\fD_36.wav" />
+    <Content Include="WavLowRes\fD_38.wav" />
+    <Content Include="WavLowRes\fD_40.wav" />
+    <Content Include="WavLowRes\fD_43.wav" />
+    <Content Include="WavLowRes\fD_45.wav" />
+    <Content Include="WavLowRes\fD_48.wav" />
+    <Content Include="WavLowRes\fD_50.wav" />
+    <Content Include="WavLowRes\fD_52.wav" />
+    <Content Include="WavLowRes\fD_55.wav" />
+    <Content Include="WavLowRes\fE_00.wav" />
+    <Content Include="WavLowRes\fE_02.wav" />
+    <Content Include="WavLowRes\fE_04.wav" />
+    <Content Include="WavLowRes\fE_07.wav" />
+    <Content Include="WavLowRes\fE_09.wav" />
+    <Content Include="WavLowRes\fE_12.wav" />
+    <Content Include="WavLowRes\fE_14.wav" />
+    <Content Include="WavLowRes\fE_16.wav" />
+    <Content Include="WavLowRes\fE_19.wav" />
+    <Content Include="WavLowRes\fE_21.wav" />
+    <Content Include="WavLowRes\fE_24.wav" />
+    <Content Include="WavLowRes\fE_26.wav" />
+    <Content Include="WavLowRes\fE_28.wav" />
+    <Content Include="WavLowRes\fE_31.wav" />
+    <Content Include="WavLowRes\fE_33.wav" />
+    <Content Include="WavLowRes\fE_36.wav" />
+    <Content Include="WavLowRes\fE_38.wav" />
+    <Content Include="WavLowRes\fE_40.wav" />
+    <Content Include="WavLowRes\fE_43.wav" />
+    <Content Include="WavLowRes\fE_45.wav" />
+    <Content Include="WavLowRes\fE_48.wav" />
+    <Content Include="WavLowRes\fE_50.wav" />
+    <Content Include="WavLowRes\fE_52.wav" />
+    <Content Include="WavLowRes\fE_55.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

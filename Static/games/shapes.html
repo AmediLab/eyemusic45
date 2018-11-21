@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> Find the odd shape	</title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/drawShapes.js"></script>
+	
+	<script>
+		var horCells = 3;
+		var verCells = 4;
+
+		var BG_COLOR = "black";
+		calcGrid();
+		createGrid();
+		voiceOver = true;
+		if (voiceOver) {
+			createTouchScreen();
+		}
+		
+		function newJoystick()
+		{
+			return;
+		}
+		
+		function createTouchScreen()
+		{
+			createTable(horCells,verCells);
+			var rowText = ["left","middle","right"];
+			var divText =[];
+			for (var i=0; i<verCells; i++) { divText = divText.concat(rowText); }
+			fillTableWithText(divText,horCells);
+		}
+
+		// setup sounds
+		var win = 'mazeGame/success.'+SOUND_FORMAT;
+		var hit = SOUND_FORMAT+'/laser.'+SOUND_FORMAT;
+		var tryAgain = SOUND_FORMAT+'/tryAgain.'+SOUND_FORMAT;
+		var inst = 'shapes/inst.mp3';
+		var guessTimeout = 1000;
+
+		function newGame() {
+			levelNote = inst;
+			level_talk = 1;
+			newRound();
+		}
+		
+		// [ number of shapes , possible heights , possible sizes , possible shapes]
+		var settings;
+		var COLOR_NUM = COLORS.length;
+		var level_settings;
+		var level_solution;
+		var score = 0;
+		level = 0;
+		getLevel();
+		
+		var POINTS_PER_LEVEL = 3;
+		var MAX_LEVEL = 7;
+		var level_talk = 0;
+		var levelNote;
+		var hold = {value: true};
+		
+		function show_level() {
+			enable_move_EM();
+			createLevel();
+		}
+		
+		function newRound() {
+			clear();
+			hold.value = true;
+			def_level_settings();
+			if (level_talk > 0) {
+			
+				stopEM();
+				play_func(levelNote, show_level);
+				level_talk = 0;
+			} else {
+				hold.value = false;
+				start_EM();
+				setTimeout( createLevel , 200);
+				
+			}
+
+		}
+		
+		function def_level_settings() {
+			// [ number of shapes , possible heights , possible sizes , possible shapes]
+			settings = [3,3,3,3];
+			
+			switch (level) {
+				case 0 :
+					settings[1] = 1;
+					break;
+					
+				case 1:
+					if (score == 0) {
+						levelNote = 'shapes/noticeOnlyShape.mp3';
+						level_talk = 3500;
+					}
+					settings[1] = 2;
+					break;
+					
+			}
+
+		}
+	
+		function createLevel() {
+			// level settings slot = [height,size,color,shape]
+			
+			sizes();
+			var answer = Math.floor(Math.random()*3);
+			level_settings = [[],[],[]];
+			level_settings[0] = getShape();
+			level_settings[2] = getDistractor(level_settings[0]);			
+			level_settings[1] = getSimilar(level_settings[0]);
+			
+			level_solution = 2;
+			randomOrder();
+			
+			for (var i = 0 ; i < settings[0] ; i++) {
+				putShape(i,level_settings[i][0],level_settings[i][1],
+						level_settings[i][2],level_settings[i][3]);						
+			}
+		}
+	
+		function randomOrder() {
+			// randomize order of shapes
+			level_solution = Math.floor(Math.random()*settings[0]);
+			if (level_solution != 2) {
+				switchShapes(2,level_solution);
+			}
+		}
+		
+		function switchShapes(a,b) {
+			var temp = [level_settings[b][0],level_settings[b][1],
+						level_settings[b][2],level_settings[b][3]];
+						
+			level_settings[b] = [level_settings[a][0],level_settings[a][1],
+								level_settings[a][2],level_settings[a][3]];			
+			
+			level_settings[a] = [temp[0],temp[1],
+								temp[2],temp[3]];								
+
+		}
+	
+		function getShape() {
+			var shape = Math.floor(Math.random()*settings[3]);
+			var color = Math.floor(Math.random()*COLOR_NUM);
+			var size = Math.floor(Math.random()*settings[2]);
+			var height = Math.floor(Math.random()*settings[1]);
+			var answer = [height,size,color,shape]
+
+			return answer;
+		}
+		
+		function getSimilar(shape) {
+		
+			var clone = jQuery.extend(true, {}, shape);
+		
+			var newshape = clone[3];
+			var size = clone[1];
+			var height = clone[0];
+			var color = clone[2];
+			
+			switch (level) {
+			
+				case 0:
+					break;
+					
+				case 1:
+					color = randomDifferent(COLOR_NUM,clone[2]);
+					break;
+					
+				case 2:
+					height = randomDifferent(settings[1],clone[0]);
+					break;
+					
+				case 3:
+					size = randomDifferent(settings[2],clone[1]);
+					break;
+					
+				default:
+					size = randomDifferent(settings[2],clone[1]);
+					height = randomDifferent(settings[1],clone[0]);
+					color = randomDifferent(COLOR_NUM,clone[2]);
+			}
+			
+			return [height,size,color,newshape];
+		
+		}
+		
+		function getDistractor(shape) {
+			
+			var clone = jQuery.extend(true, {}, shape);
+		
+				// shape = [height,size,color,shape]
+			var newShape = clone;
+			var shapeType = randomDifferent(settings[3],clone[3]);
+			newShape[3] = shapeType;
+			
+			switch (level) {
+			
+				case 4:
+					newShape[1] = randomDifferent(settings[2],clone[1]);
+					newShape[2] = randomDifferent(COLOR_NUM,clone[2]);
+					break;
+					
+				case 5:
+					newShape[0] = randomDifferent(settings[1],clone[0]);
+					newShape[2] = randomDifferent(COLOR_NUM,clone[2]);
+					break;
+					
+				case 6:
+					newShape[2] = randomDifferent(COLOR_NUM,clone[2]);
+					break;
+					
+				case 7:
+					break;
+					
+				default:
+					newShape[1] = randomDifferent(settings[2],clone[1]);
+					newShape[0] = randomDifferent(settings[1],clone[0]);
+					newShape[2] = randomDifferent(COLOR_NUM,clone[2]);
+			}			
+			
+			return newShape;
+		}
+	
+		function randomDifferent(range,num) {
+			if (range == 1) {
+				return num;
+			}
+			var rand = num;
+			while (rand == num) {
+				rand = Math.floor(Math.random()*range);
+			}
+			return rand;
+		}
+	
+		function sizes() {
+			MAX_SIZE = Math.min(
+						Math.max(Math.min((windowWidth / settings[0])*3/5,(windowHeight / settings[1])*4/5),100),
+						windowWidth/5);
+			MIN_SIZE = Math.max(Math.min(windowWidth / settings[0],windowHeight / settings[1])/2,80);
+		}
+		
+		function putShape(x,y,s,color,shape) {
+			
+			var shapeX = windowWidth * (x + 0.5) / settings[0];
+			var shapeY = windowHeight * (y + 0.5) / settings[1];
+
+			var color1 = COLORS[color]; 
+			
+			var size = ((MAX_SIZE - MIN_SIZE)/(settings[2] - 1)) * s + MIN_SIZE;
+
+			switch (shape) {
+				case 0:
+					triangle(shapeX,shapeY,size,color1);
+					break;
+				case 1:
+					square(shapeX,shapeY,size,color1);
+					break;		
+				case 2:
+					exe(shapeX,shapeY,size,color1);
+					break;
+				default:
+					circle(shapeX,shapeY,size,color1);
+					break;
+			}
+		
+		}
+	
+		window.addEventListener('keydown', function(e) { 
+		
+			if (e.keyCode > 48 && e.keyCode <49+settings[0]) {
+				guess(e.keyCode - 49)
+			}
+		});
+		
+		function guess(num) {
+		
+				if (hold.value || !gameStart) {
+					return;
+				}
+				
+				hold.value = true;
+				setTimeout (function() { hold.value = false; }, guessTimeout);
+		
+				if (num == level_solution) {
+					clear();
+					stopEM();
+					hold.value = true;
+					//stopEM();
+					if (!mobilecheck)
+					{
+						play_audio(win);
+					}
+					score = score+1;
+					checkLevel();
+					setTimeout( newRound , 500 );
+				} else {
+					play_audio(hit);
+					if (score > 0) {
+						score = score - 1;
+					}
+				}
+		}
+	
+		function clickFunc(x,y) {
+
+			
+			if (x <= windowWidth/3) {
+				guess(0);
+			} else if (x <= windowWidth*2/3) {
+				guess(1);
+			} else {
+				guess(2);
+			}
+		}
+		
+		window.addEventListener('resize', resize , false);
+		
+		function resize() {
+			resize_canvas(canvas);
+			clear();
+			createLevel();
+		}
+		
+  	
+	</script>
+	<script src="js/mobileCheck.js"></script>
+	
+	</body></html>

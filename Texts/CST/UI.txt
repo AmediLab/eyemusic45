@@ -1,0 +1,144 @@
+﻿aplikace EyeMusic
+Vítejte v EyeMusic (verze BETA)
+S EyeMusic můžete vidět kterýkoliv optický obraz pomocí zvuku, či "ozvučení" ho. Skrz tuto webovou stránku můžete spustit či zastavit EyeMusic speciální zvuky pomocí tlačítka Ctrl a změnit rychlost pomocí kombinace shift+F jedna a shift+F dva
+Tento film Vám vysvětlí základy smyslové výměny
+jako přípravu na tréninkové lekce
+Doporučujeme, abyste si to poslechli než začnete s lekcemi.
+ODKAZY
+Naučte se, jak vidět skrz hudbu
+Více informací o EyeMusic, zahrnující skvělé filmy, výzkum, o který se opírá EyeMusic a další doplňující přístroje, které jsme vytvořili.
+Nahraj obrázek do EyeMusic a ozvuč ho
+Kontaktujte nás, připojte se k našemu emailovému listu, zpětná vazba
+Obchod s aplikacemi EyeMusic aplikace
+vyberte lekci, eye music
+Vyberte lekci  
+Vyberte obtížnost, eye music
+Vyberte obtížnost 
+Vrátit se domů
+Tato část obsahuje
+obrázky, můžete se pohybovat mezi obrázku pomocí tlačítek tab a shift+tab, stiskněte enter ke "zvuku" vybraného obrázku
+stiskněte Ctrl zahájení a zastavení zvuku, stiskněte SHIFT+F jedna k rychlejšímu přehrávají, zmáčkněte SHIFT+F dva k pomalejšímu přehrávaní.
+Přehrát a pozastavit
+Pamatujte vždy na tři pravidla EyeMusic:
+1. Skenování obrázku jde zleva doprava a každé snímání začíná krátkým pípnutím.
+2. Výška předmětu na obrázku je dána frekvencí zvuku.
+3. Odlišné barvy jsou reprezentovány zvukem hraným na odlišný hudební nástroj
+Zahajte zkoušku
+Váš prohlížeč nepodporuje tento audio prvek.
+Vyberte správný popis obrázku který slyšíte. Stiskněte Ctrl k zahájení či zastavení audia, stiskněte SHIFT+F jedna pro zrychlené přehrávání a SHIFT+F2 k zpomalení přehrávání.
+Předchozí obrázek je
+V této zkoušce jste dosáhli známky
+Ukažte všechny známky pro všechny obtížnosti
+Sdělte nám prosím Váš názor vyplněním online formuláře. Oceníme, když nám zanecháte svůj email, abychom Vám mohli odpovědět a poskytnout další informace.
+Prosím vyplňte všechny pole
+Máte nějaké zrakové postižení?
+Pokud ano, prosím uveďte jaké:
+Chcete se připojit k našemu emailovému seznamu?
+Máte nějaké otázky?
+Máte nějaké návrhy?
+Volný text
+Nahrajte složku z vašeho počítače do eye music
+Na této stránce můžete nahrát obrázky (png, bmp, jpeg, jpg) z vašeho počítače.
+Přetáhněte obrázek ze svého počítače či použijte tlačítko "nahrát" k nahrání,
+můžete jej ozvučit pomocí eye music a stáhnout audio složku do svého počítače
+zmáčkněte Ctrl k zahájení či přerušení audia.
+vytvořte zip z wav složky
+Přehrát a pozastavit
+Nahrané složky:
+Stáhnout zip
+ano
+ne
+odeslat
+Vrátit se k lekci
+Androidová EyeMusic aplikace
+Hry s Eye Music
+Na této stránce můžete nahrát svg složky z vašeho počítače
+o eye music aplikaci
+prosím vyplňte všechna pole
+Připojte se k našemu mailovému listu, otázky a návrhy
+Tyto detaily jsou důležité pro výzkum a zdokonalování tohoto tréninkového programu. Po vyplnění získáte plný přístup na webové stránky
+Vytvořit nového uživatele
+uživatelské jméno
+heslo
+potvrďte heslo
+rok narození pomocí čtyř číslic
+pohlaví
+žena
+muž
+země:
+Jste nevidomý či zrakově postižený?
+Procento zbývajícího zraku:
+Prosím popište vlastními slovy úroveň vašeho zraku
+Věk kdy jste ztratil zrak:
+Máte předchozí zkušenosti s EyeMusic?
+Pokud ano, kolik hodin:
+Trénujete sám nebo za pomoci vidící osoby?
+sám
+s pomocí
+Dokončit přihlášení a získat plný přístup
+Zapnout kameru
+Musíte naistalovat doplněk plugin
+Musíte naistalovat doplněk plugin a přeinstalovat prohlížeč
+Nastavení
+Přihlásit se do eye music
+Vyplňte uživatelské jméno a heslo
+Rychlost
+sekundy
+Typ signálu
+Pípnutí
+Bubnování
+Klik
+Žádný signál
+Hlasitost signálu
+Přehrát  
+Střední
+Nízká
+Filtry
+Negativní
+Černobílý
+Současné nastavení
+Tato sekce obsahuje
+tříd
+Tato sekce obsahuje
+úrovní
+Vítejte v online tréninkovém programu laboratoře profesora Amira Amadiho
+Na této stránce najdete hry pro trénink eye music
+Tréninková obtížnost jedna
+Přesuňte jeden tvar na obrazovce
+Tréninková obtížnost dvě
+Přesuňte dva tvary na obrazovce
+Tréninková obtížnost tři
+Přesuňte tvar k cíli
+Tréninková obtížnost čtyři
+Přesuňte tvar k cíli skrz překážky
+Tréninková obtížnost pět
+Přesuňte tvar k bráně
+Tréninková obtížnost šest
+Přesuňte tvar pomocí myši
+Naučte se používat eye music krok za krokem
+Následující
+Předchozí
+Začít test
+Ukončit
+Začít  
+Vaše známka je:
+Zkouška, vyberte správný popis obrázku podle nahrávky
+nahrajte složku z vašeho počítače do eye music
+Stiskněte pro stažení zip složky
+Opakujte předchozí lekci
+Třída
+Obtížnost
+Test
+Přihlášení
+Vytvořit
+Děkujeme za Vaši zpětnou vazbu
+Vaše výsledky nejsou dostačující, procvičte si to prosím ještě jednou
+Krok za krokem verze jedna
+Krok za krokem verze dvě
+Krok za krokem začněte od začátku
+Jak obtížná byla tato lekce?
+Jak dobře znáte tuto lekci?
+Opakované přehrání
+Rozumím, ukažte popis
+Zpětná vazba
+Zkouška

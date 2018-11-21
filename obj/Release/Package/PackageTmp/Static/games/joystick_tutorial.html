@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en" manifest="cache/joystickCache.appcache">
+	<head>
+	<meta charset="UTF-8">
+	<title> Joystick Tutorial </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="js/grid.js"></script>
+	
+	<script>
+		var	horCells;
+		var	verCells;
+	
+		joystick_control = true;
+		voiceOver = true;
+		joystick();
+		
+		use_EM = false;
+		
+		startMessage = startMessages[1];
+		
+		var BG_COLOR = "black";
+
+		// sounds
+		var intro = "intro_hold.mp3";
+		var intro_left = 'joystick/intro_left.mp3';
+		
+		var leftkey = 'joystick/leftkey.mp3';
+		var rightkey = 'joystick/rightkey.mp3';
+		var upkey = 'joystick/upkey.mp3';
+		var downkey = 'joystick/downkey.mp3';
+		var spacekey = 'joystick/spacekey.mp3';
+		
+		var left_audio = 'left.mp3';
+		var right_audio = 'right.mp3';
+		var up_audio = 'up.mp3';
+		var down_audio = 'down.mp3';
+		var try_yourself = 'tryyourself.mp3';
+		var space_audio = 'space.mp3';
+
+		var good = 'joystick/success.mp3';
+		var miss = 'joystick/bad.mp3';
+		
+		var success_vol = 0.4;
+	
+		// game 
+		var level = 0;
+		getLevel();
+		var bad = 0;
+		var level_audio;
+		var key_audio;
+		var hold = true;
+		
+		function newGame() {
+			newRound();
+		}
+
+		function newRound() {
+			level_settings();
+		}
+		
+		function level_settings() {
+			
+			var time_instructions = 6000;
+			
+			hold = true;
+			switch (level) {
+			
+				case 0:
+					level_audio = intro;
+					time_instructions = 5000;
+					break;			
+				case 1:
+					level_audio = left_audio;
+					time_instructions = 5000;
+					break;
+				case 2:
+					level_audio = right_audio;
+					time_instructions = 5000;
+					break;
+				case 3:
+					level_audio = down_audio;
+					time_instructions = 5000;
+					break;
+				case 4:
+					level_audio = up_audio;
+					time_instructions = 4000;
+					break;
+				case 5:
+					level_audio = space_audio;
+					time_instructions = 4000;
+					break;					
+				case 6:
+					level_audio = try_yourself;
+					time_instructions = 6000;
+					break;		
+					
+			}
+			
+			
+			play_audio("joystick/"+level_audio);
+			
+			setTimeout(function() { hold = false; }, time_instructions);
+		
+		}
+
+		function testKey(key) {
+				
+			if (hold) {
+				return;
+			}
+			
+			if (level < 6) {
+				if (key == level || level < 1) {
+				
+					level = level + 1;
+
+					newRound();
+			
+				} else {
+
+					play_audio(miss);
+					bad = bad + 1;
+					if (bad == 3) {
+						play_audio("joystick/again/"+level_audio);
+						bad = 0;
+					}
+				}
+				
+			} else {
+				
+				play_audio(key_audio);
+				
+			}
+			
+		}
+		
+		window.addEventListener('resize', resize , false);
+		
+		function resize() {
+			resize_canvas(canvas);
+		}
+		
+		function goLeft() {
+			key_audio = leftkey;
+			testKey(1);
+		}
+		
+		function goRight() {
+			key_audio = rightkey;
+			testKey(2);
+		}		
+		
+		function goDown() {
+			key_audio = downkey;
+			testKey(3);
+		}
+		
+		function goUp() {
+			key_audio = upkey;
+			testKey(4);
+		}	
+		
+		function spaceBar() {
+			key_audio = spacekey;
+			testKey(5);
+		}			
+	
+	</script>
+	<script src="js/mobileCheck.js"></script>
+	
+	</body></html>

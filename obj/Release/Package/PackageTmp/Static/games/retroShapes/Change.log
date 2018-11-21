@@ -1,0 +1,57 @@
+Change log
+==========
+
+Retro Context for HTML5 Canvas
+
+0.3 ALPHA
+---------
+
+IMP: Optimizations and speed improvements
+IMP: Forced auto-commit no longer required for filled polygon or images
+ADD: JSDoc / full documentation (see docs/ folder)
+ADD: curveQuadratic()
+ADD: curveBezier()
+ADD: arc()
+ADD: translate() translate context (except blit operations).
+ADD: penIndex(), fillIndex(), bgIndex() (see CHG below)
+ADD: Pre-defined palette for Amiga (default colors in 16 color mode)
+ADD: toDataURL() (merging bgColor into resulting image)
+ADD: replaceColor()
+ADD: textAlign() and textBaseline()
+ADD: lines() (draw point array as lines)
+ADD: addFonts() load list of fonts (supplement to singular addFont()).
+ADD: retro.Palette can now take an array with retro.Color entries
+ADD: getPixelIndex()
+CHG: the polygon()'s optional close parameter is removed. All polygons
+are now drawn closed. Use the new lines() method to draw open polygons.
+CHG: unsafeMode -> safeMode (default: true)
+CHG: palette() can now take array or string directly.
+CHG: penColor/fillColor/bgColor has been split into two: one for
+rgb/retro.Color and one for indexed colors: penColor / penIndex etc.
+CHG: curve -> curveCardinal()
+CHG: rsim.palette renamed to retro.Palette
+CHG: rsim.color renamed to retro.Color
+CHG: removed prototype use for palette definitions
+CHG: Width for retro resolution must be divisible by 8
+CHG: Big bitmap font improved
+REM: charCount property for bitmap fonts. map.length used instead.
+FIX: bucketFill() used penColor instead of fillColor()
+ISS: arc() does not always close properly at 360 degrees
+ISS: bucketFill() does not work with translate()
+ISS: xorMode does not work with blit()
+ISS: Events are supported by direct hooks (*.onclick etc.) but also
+need *EventListener methods (and touch events should be supported).
+
+WARN: API is not frozen.
+
+
+0.2 ALPHA (internal)
+---------
+
+
+0.1 PUBLIC ALPHA PREVIEW
+---------
+
+
+Copyright (c) 2013-2014 Epistemex
+License: GPL-3.0

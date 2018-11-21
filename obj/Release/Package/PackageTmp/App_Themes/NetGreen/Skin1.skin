@@ -1,0 +1,8 @@
+﻿<%@ Register Assembly="SyrinxMenuV3" Namespace="Syrinx2" TagPrefix="syx" %>
+<syx:Menu runat="server" SkinID="MainMenu" Orientation="Horizontal" RegisterScripts="true"
+	PrimaryCssClass="syrinx-menu" CssClass="MainMenu" ItemCssClass="MainMenuItem" ItemNumLayers="4" 
+	SubMenuCssClass="MainMenuSubMenu" SubMenuItemCssClass="MainMenuSubMenuItem" />
+	
+<syx:Menu runat="server" SkinID="SecondMenu" Orientation="Horizontal" MenuShowEffect="fade" PrimaryCssClass="syrinx-menu" RegisterScripts="true"
+	CssClass="SecondMenu" ItemCssClass="SecondMenuItem" NumLayers="3" ItemNumLayers="4"
+	SubMenuCssClass="SecondMenuSubMenu" SubMenuItemCssClass="SecondMenuSubMenuItem" />	

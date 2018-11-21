@@ -1,0 +1,61 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>select level to start exam</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="float-right">
+        <h3>
+            hello @Model.userid
+            @Html.ActionLink("Logout", "Logout", "Home")
+        </h3>
+    </div>
+    <div id="body" class="float-left">
+        <p class="site-title">select level to do exam</p>
+
+        @{
+            string[] all_levels = Model.UItrainingStimuliTreeViewNew.Split(';');
+            @:<table>
+            int index1 = 0;
+            foreach (string level in all_levels)
+            {
+
+                string[] all_stage = level.Split(',');
+
+                    if (all_stage.Length > 1)
+                    {   
+                        index1++;
+                            @:<tr>
+                                @:<td>
+                                using (Html.BeginForm("examStage", "Home", FormMethod.Post, new { id = "submitForm" }))
+                                {
+                                    <input type="hidden" name="selected_stage" value="@all_stage.First();" />
+                                    <input type="submit" value="@index1 @all_stage.First()" id="mytable @index1">
+                                }
+                                @:</td>
+                            @:</tr>
+                    }
+                    
+                }
+            @:</table>
+
+            }
+
+
+        }
+</div>
+
+</body>
+</html>

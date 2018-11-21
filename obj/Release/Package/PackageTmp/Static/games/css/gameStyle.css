@@ -1,0 +1,90 @@
+		
+		html, body {
+			overflow:hidden;
+			height: 100%;
+			width:100%;
+			}
+		
+		body {
+			margin:0;
+			padding: 0px;
+			overflow:hidden;
+			}
+		
+		#game {
+			width:100%;
+			height:100%;
+			}
+		
+		#touch {/*
+			position:absolute; 
+			z-index:5; 
+			width:100%; 
+			height:100%;
+			margin:0;*/
+			}
+				
+		#table { width: 100%;}
+		
+		div { background:none;}
+		
+		#table, #table .tr, #table .tr div {
+			margin:0;
+			padding:0;
+			}
+		
+		#table .tr div {
+			overflow:hidden;
+			border:0px solid white;
+			display:table;
+			position:absolute;
+			}
+		
+		#table a {
+			color:rgba(0,0,0,0); 
+			font-size:10px; 
+			display:table-cell; 
+			vertical-align:middle;
+			text-align:center; 
+			text-decoration:none;
+			}
+			
+		#error, #clickToStart {
+			position: absolute;
+			width: auto;
+			height: auto;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 100;
+			background-color: white;
+			padding:50px;
+			font-size: 5vw;
+			text-align:center;
+
+		}
+		
+		#error {
+			display: none;
+		}
+		
+
+		#seeScore {
+			position: absolute;
+			background: black;
+			z-index: 64;
+			height: 50%;
+			width: 100%;
+			top: 0px;
+			left: 0px;
+			color: white;
+			font-size: 50px;
+			text-align: center;
+			padding: 10% 0px;
+			right: 0px;
+			margin: auto;
+		}
+		
+		#seeScore span {color:black; font-size:6px;}
+		

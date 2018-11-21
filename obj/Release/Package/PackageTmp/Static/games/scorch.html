@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> Scorched Earth </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/targetGame.js"></script>
+	
+	<script>
+	
+		// GENERAL SETTINGS
+		var training = false;
+		var obstacle = true;
+		var level = 1;
+		var ricochete = false;
+		var win = false;
+		screen_compatibility = 0;
+		
+		getLevel();		
+	
+		// BACKSTAGE
+		voiceOver= false;
+		joystick_control = true;
+		// touch screen table settings
+		if (joystick_control) {			
+			voiceOver = true;
+			joystick();
+		} else {
+			horCells = 3;
+			verCells = 4;
+			if (voiceOver) {
+				createTable(horCells,verCells);
+			}
+		}
+		
+		var BG_COLOR = "red";
+		
+		// CANNON SETUP
+		var endRound = false;
+		var refractory = {value: true};
+		var GAP = 50;
+		var CANNON_COLOR = "white";
+		var cannon_length;
+		var cannon_angle;
+		var cannon_width;
+		var cannon_height;
+		var cannon_size_change_DEF = 20;
+		var cannon_size_change = 20;
+		var cannon_shift = 10;
+		var CANNON_MIN = 110;
+		var CANNON_MAX = 390;
+		var CANNON_MIN_ANGLE = 20;
+		var CANNON_MAX_ANGLE = 90;
+		var CANNON_WIDTH_ADJUST = 500;
+
+		// BALL SETUP
+		var BALL_STEP = 100;
+		var BALL_SIZE = 20;
+		var BALL_SPEED;
+		var GRAVITY = 1;
+		var newG = check_get_param('gravity');
+		if (newG == 2) { GRAVITY = 0; cannon_shift = 5; CANNON_MIN_ANGLE = 0; obstacle = false; }
+		
+		// TRAIL SETUP
+		var TRAIL_COLOR = "red";
+		var TRAIL_SIZE_DEF = 15;
+		var TRAIL_SIZE = 15;
+		
+		// TARGET SETUP
+		var targetSize_DEF = 50;
+		var targetSize = 50;
+		var target_min_x = windowWidth / 2;
+		var target_min_y = 150;
+		var accuracy_needed_DEF = 50;
+		var accuracy_needed = 50;
+		var targetx;
+		var targety;
+		var HIT_TIMEOUT = 3500;
+		var TARGET_MAX_RIGHT = windowWidth;
+		var TARGET_MAX_HEIGHT = windowHeight;
+		
+		// WALL SETUP
+		var wallx;
+		var wally;
+		var MAX_WALL_HEIGHT = 300;
+		var wallHeight = 300;
+		var wallWidth = 30;
+		var WALL_COLOR = "white";
+		
+		// TRAINING
+		var TRAINING_SPACE_X = 50;
+		var TRAINING_SPACE_Y = 100;
+		var trainingx = 0;
+		var trainingy = 0;
+		/** training: put targets one after the other in all possible places.
+		use this to make sure every target is hittable **/
+	
+		// SOUNDS
+		var hit = 'mp3/hit.mp3';
+		var stuck = 'cannonGame/stuck.'+SOUND_FORMAT;
+		var hitWall =  'cannonGame/stuck.'+SOUND_FORMAT;
+		var training_done = 'training/donetraining.mp3';
+		var start_training = 'scorch/start_training.mp3';
+		var intro = 'scorch/newgame10missles.mp3';
+		var theme = 'scorch/theme.mp3';
+		var mid = 'scorch/mid.mp3';
+		var cont = 'scorch/continue.mp3';
+		var shot_fired = 'mp3/laser.mp3';
+		var fire_and_hit = 'mp3/firehit.mp3';
+		var fire_and_stuck = 'mp3/firestuck.mp3';
+		var gameOver_sound = 'mp3/gameOver.mp3';
+
+		var start_em_timeout = 1000;
+		
+		// SCORE SETUP
+		var START_CANNON_BALL = 10;
+		var cannon_balls = START_CANNON_BALL;
+		var LEVEL_FOR_WALL = 4; // number of points until the wall appears
+		var score = 0;
+		var POINTS_PER_LEVEL = 9999;
+		
+		context.translate(0, windowHeight);
+		resetTank();
+		
+		if (training) {
+			play_audio(start_training);
+		}
+
+		function newGame() {
+			refractory.value = true;
+			stopEM();
+			calcLimits();
+			if (!mobilecheck) {
+				play_audio(theme);
+				setTimeout(function() { play_audio(intro); newRound(); }, 7000);
+			} else {
+				play_audio(intro);
+				setTimeout(function() { newRound(); }, 7000);
+			}
+		}
+		
+		function sizeAdjust(value) {
+			// fix sizes of stuff when screen is narrow
+			if (windowWidth < CANNON_WIDTH_ADJUST) {
+				return (value * windowWidth / CANNON_WIDTH_ADJUST);
+			} else return value;
+			
+		}
+		
+		function calcLimits() {
+		
+			var gForCalc = 1;
+		
+			var max_speed_x = ( CANNON_MAX / 10 ) * Math.cos(45 * Math.PI / 180); // maximum ver and hor speed when 45 degrees
+			var max_speed_y = ( CANNON_MAX / 10 ) * Math.sin(60 * Math.PI / 180);
+			var max_dist = Math.ceil(max_speed_y / gForCalc);	// time until vertical speed is 0
+			
+			TARGET_MAX_RIGHT = max_dist * max_speed_x + CANNON_MAX / 2; // x travelled until v.speed = 0
+			TARGET_MAX_HEIGHT = - max_dist * max_speed_y / 2 - CANNON_MAX / 2; // heighest shot with 45 degrees		
+		}
+		
+	
+		function resetTank() {
+			cannon_length = 210;
+			cannon_angle = 60;
+			cannon_width = Math.min(20,windowWidth/20);;
+			cannon_height = - cannon_width;
+			BALL_SPEED = cannon_length / 10;
+			
+			cannon_length = sizeAdjust(cannon_length);
+			cannon_size_change = sizeAdjust(cannon_size_change_DEF);
+		}
+		
+		function newRound() {
+
+			refractory.value = false;
+		
+			if (score > LEVEL_FOR_WALL && !mobilecheck) {
+				wallx = windowWidth/3;
+				wally = 0;
+				target_min_x = windowWidth*3/4;
+			}
+		
+			clear();
+			if (training) {
+				targetx = target_min_x + trainingx * TRAINING_SPACE_X;
+				trainingx ++;
+				if (targetx > windowWidth - targetSize) {
+					trainingy ++;
+					trainingx = 1;
+					targetx = target_min_x;
+				}
+				targety = -trainingy * TRAINING_SPACE_Y - target_min_y - targetSize;
+				if (targety < - windowHeight + targetSize) {
+					training = false;
+					newRound();
+					play_audio(training_done);
+				}				
+			} else {
+				resetTank();
+				targetx = Math.floor(Math.random()*(windowWidth-target_min_x - targetSize)) + target_min_x;
+				targety = - (Math.floor(Math.random()*(windowHeight-target_min_y - targetSize*2)) + target_min_y + targetSize);
+			}
+			
+			putTank(CANNON_COLOR,cannon_length,cannon_width,cannon_angle,GAP,cannon_height);
+
+			if (obstacle) {
+				wallHeight = Math.floor(Math.random()*(MAX_WALL_HEIGHT/2)+MAX_WALL_HEIGHT/2);
+				// wall height is in range of MAX_WALL_HEIGHT/2 : MAX_WALL_HEIGHT
+				putObstacle(WALL_COLOR,wallHeight,wallWidth,wallx,wally);
+			}
+			
+			if (windowWidth < CANNON_WIDTH_ADJUST) {
+				targetSize = sizeAdjust(targetSize_DEF);
+			}
+
+			if (targetx > TARGET_MAX_RIGHT) {
+				targetx = TARGET_MAX_RIGHT;
+			}
+			if (targety < TARGET_MAX_HEIGHT) {
+				targety = TARGET_MAX_HEIGHT;
+			}	
+			
+			//	targety = TARGET_MAX_HEIGHT; targetx = TARGET_MAX_RIGHT;
+			//alert(TARGET_MAX_HEIGHT+"  "+ targety +"  "+TARGET_MAX_RIGHT+"  "+targetx); 
+				
+			putTargetSimple(context,targetx,targety,targetSize);
+			setTimeout (startEM, start_em_timeout);
+		}
+
+		function putTank(color,length,width,angle,x,y) {
+		
+			context.save();
+			context.translate(x, y);
+			
+			context.beginPath();
+			context.arc(0, 0, width * 2, 0, 2 * Math.PI, false);
+			context.fillStyle = color;
+			context.fill();		
+
+			context.rotate((-90 -angle) * Math.PI / 180);
+			context.beginPath();
+			context.fillStyle = color;
+			context.fillRect( - width / 2 , 0 , width , length);
+			
+			context.restore();
+			context.translate(0,0);
+		}
+		
+		function putObstacle(color,height,width,x,y) {
+		
+			wallx = x;
+			wally = y;
+			wallHeight = height;
+			wallWidth = width;	
+		
+			context.beginPath();
+			context.fillStyle = color;
+			context.fillRect(x , y , width , -height);
+		}
+		
+		function fire() {
+		
+			if (refractory.value || !gameStart) return;
+			refractory.value = true;
+			
+			if (endRound) {
+				endRound = false;
+				stopEM();
+				newRound();			
+				refresh();
+				return;
+			}
+			var restoreTimeout = 500;
+		
+			cannon_balls--;
+		
+			var shot_ended = false;
+
+			var ballx = GAP + Math.cos(cannon_angle * Math.PI / 180) * cannon_length;
+			var bally = - Math.sin(cannon_angle * Math.PI / 180) * cannon_length - cannon_width;
+			
+			TRAIL_SIZE = sizeAdjust(TRAIL_SIZE_DEF);
+			accuracy_needed = sizeAdjust(accuracy_needed_DEF);
+			trail(ballx,bally,TRAIL_SIZE,TRAIL_COLOR);
+		
+			var horSpeed = Math.cos(cannon_angle * Math.PI / 180) * BALL_SPEED;
+			var verSpeed = Math.sin(cannon_angle * Math.PI / 180) * BALL_SPEED;
+		
+			for (var t=1 ; t <= 150 ; t++) {
+			
+				verSpeed = verSpeed - GRAVITY;
+			
+				ballx = ballx + horSpeed;
+				bally = bally - verSpeed;
+				trail(ballx,bally,TRAIL_SIZE,TRAIL_COLOR);
+				
+				if (obstacle && ballx > wallx - horSpeed && ballx < wallx + horSpeed &&
+					bally < wally - TRAIL_SIZE && bally > wally - wallHeight - 2*TRAIL_SIZE) {
+						// hit a wall
+						shot_ended = true;
+						play_audio(fire_and_stuck);
+						if (ricochete) {
+							horSpeed = -horSpeed;
+							ballx = ballx - horSpeed;
+						} else {
+							setTimeout(function() {refractory.value = false; }, restoreTimeout);
+							break;
+						}
+					}		
+				else if (ballx > targetx - accuracy_needed && ballx < targetx + accuracy_needed
+					&& bally > targety - accuracy_needed && bally < targety + accuracy_needed) {
+						// hit the target
+						shot_ended = true;
+						score = score + 1;
+						if (cannon_balls > 0)
+						{	
+							setTimeout(pointTally, 450); 
+							setTimeout(function() { play_audio(fire_and_hit); },400);
+							endRound = true;
+							setTimeout(function() {refractory.value = false; }, HIT_TIMEOUT);							
+						}
+						break;
+					}
+
+			}
+			
+			if (!shot_ended) {
+				play_audio(shot_fired);
+			}
+			
+			
+			if ( cannon_balls <= 0 ) {
+				// game over
+				setTimeout(clear,600);
+				setTimeout(final_score,500);
+				return;
+			}				
+
+			setTimeout(function() {refractory.value = false; }, restoreTimeout);
+		}
+		
+		function refresh() {
+			// update cannon location
+			if (refractory.value) return;
+
+					
+			if (endRound) {
+				stopEM();
+				endRound = false;
+				newRound();
+			}
+					
+			if (cannon_length > CANNON_MAX) { cannon_length = CANNON_MAX; play_audio(stuck); }
+			if (cannon_length < CANNON_MIN) { cannon_length = CANNON_MIN; play_audio(stuck); }
+			
+			if (cannon_angle > CANNON_MAX_ANGLE) { cannon_angle = CANNON_MAX_ANGLE; play_audio(stuck); }
+			if (cannon_angle < CANNON_MIN_ANGLE) { cannon_angle = CANNON_MIN_ANGLE; play_audio(stuck); }
+			
+			BALL_SPEED = cannon_length / 10;
+		
+			clear();
+			putTank(CANNON_COLOR,cannon_length,cannon_width,cannon_angle,GAP,cannon_height);
+	
+			putTargetSimple(context,targetx,targety,targetSize);
+			if (obstacle) {
+				putObstacle(WALL_COLOR,wallHeight,wallWidth,wallx,wally)
+			}
+			
+		}	
+		
+		function trail(x,y,size,color) {
+			// draw a single circle in the trail
+			context.beginPath();
+			context.arc(x, y, size, 0, 2 * Math.PI, false);
+			context.fillStyle = color;
+			context.fill();		
+			
+		}
+	
+		function clickFunc(x,y) {
+
+		}
+		
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);			
+		
+		function resize() {
+			resize_canvas(canvas);
+			context.translate(0, windowHeight);
+			//calcLimits();
+			newRound();
+		}
+		
+		function goLeft() {
+			if (refractory.value || !gameStart) { return; }
+			cannon_angle = cannon_angle + cannon_shift;
+			refresh();
+		}
+		
+		function goRight() {
+			if (refractory.value || !gameStart) { return; }
+			cannon_angle = cannon_angle - cannon_shift;
+			refresh();
+		}
+		
+		function goUp() {
+			if (GRAVITY == 0) return;
+			if (refractory.value || !gameStart) { return; }
+			cannon_length = cannon_length + cannon_size_change;
+			refresh();
+		}
+		
+		function goDown() {
+			if (GRAVITY == 0) return;
+			if (refractory.value || !gameStart) { return; }
+			cannon_length = cannon_length - cannon_size_change;
+			refresh();
+		}		
+		
+		function spaceBar() {
+			if (refractory.value || !gameStart) { return; }
+			if (gameOver) {
+				window.location = "scorch.html";
+			}
+			fire();
+		}
+		
+		window.addEventListener('keydown', function(e) { 
+	
+			
+			if (!refractory.value && gameStart) {
+				switch (e.keyCode) {
+					case 39:
+						goRight();
+						break;
+					case 40:
+						goDown();
+						break;
+					case 38:
+						goUp();
+						break;
+					case 37:
+						goLeft();
+						break;	
+					case 32:
+						spaceBar();
+						break;						
+				}
+			}
+		});
+
+		function final_score() {
+			
+			clear();
+			refractory.value = true;
+			if (!mobilecheck) { play_audio(mid); 
+				play_audio(gameOver_sound);
+				showScore(score);
+				setTimeout(function() {	pointTally(); },1000);
+				setTimeout(function() {	refractory.value = false; gameOver = true; },5000);
+				setTimeout(function() {	pointTalk(); },3500);
+			} else {
+				showScore(score);
+				pointTally();
+				setTimeout(function() {	refractory.value = false; gameOver = true; },5000);
+			}
+		//	setTimeout(function() {	cont.play(); newRound(); },6000);
+		}
+		
+		function showScore(score) {
+			if (score == 1)
+				$('body').append("<div id='seeScore'>your score is 1 point</div>");
+			else
+				$('body').append("<div id='seeScore'>your score is "+score+" points</div>");
+		}	
+		
+	</script>
+	<script src="js/mobileCheck.js"></script>	
+	<script src="js/compatibility.js"></script>
+	
+	</body></html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Retro Context for Canvas Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Retro Context for Canvas</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.html">retro</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.Color.html">Color</a>
+						</li>
+						
+						<li>
+							<a href="retro.Context.html">Context</a>
+						</li>
+						
+						<li>
+							<a href="retro.Palette.html">Palette</a>
+						</li>
+						
+						<li>
+							<a href="retro.Point.html">Point</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.Context.html#event:keyEvent">keyEvent</a>
+						</li>
+						
+						<li>
+							<a href="retro.Context.html#event:mouseEvent">mouseEvent</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="tutorial-Basics.html">Basics</a>
+						</li>
+						
+						<li>
+							<a href="tutorial-Fonts.html">Fonts</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#Retro Context for HTML5 Canvas.">Retro Context for HTML5 Canvas.</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+		<div class="span8">
+			
+				<div id="main">
+					
+
+
+	
+	<span class="page-title">Index</span>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section>
+        <article><h1>﻿Retro Context</h1><p>Retro context is a pseudo context for HTML5 Canvas providing retro looking graphics:</p>
+<ul>
+<li>No anti-aliasing</li>
+<li>Pixelated graphics and images</li>
+<li>Low resolution</li>
+<li>No alpha channel</li>
+<li>Dithered images</li>
+<li>Indexed palette (comes bundles with 20+ retro palettes)</li>
+<li>Old-school look and feel</li>
+</ul>
+<h2>Draw:</h2><p>All draw methods are custom implemented draw operation that allows drawing
+with aliased shapes and fills (exception for polygon fill (emulated) and
+drawing of images).</p>
+<p>The methods covers:</p>
+<ul>
+<li>Lines</li>
+<li>Arcs</li>
+<li>Circles (outlined and filled)</li>
+<li>Ellipses (outlined and filled)</li>
+<li>Rectangles (outlined and filled)</li>
+<li>Polygons (outlined and filled)</li>
+<li>Curves (cardinal, quadratic, Bezier)</li>
+<li>Text using bitmap fonts (fonts included)</li>
+<li>Bucket fill</li>
+<li>Images (with built-in palette reducer and dither: Floyd-Steinberg and Sierra)</li>
+<li>Use indexed palettes (more than 20+ retro palettes included)</li>
+</ul>
+<p><a href="http://epistemex.github.io/retro-context-canvas/docs/index.html">Full API documentation included. Click here to read.</a></p>
+<h2>Build</h2><ul>
+<li>Classic pixel based paint applications (Deluxe Paint in JS anyone?)</li>
+<li>Sprite editors</li>
+<li>Image converters</li>
+<li>Simple games and applications</li>
+<li>Retro looking user interfaces or UX components</li>
+</ul>
+<p>and more.</p>
+<h2>Usage:</h2><p>Define a standard canvas element in your HTML document:</p>
+<pre class="prettyprint source"><code>&lt;canvas id=&quot;myCanvas&quot; width=960 height=600 data-width=320 data-height=200>&lt;/canvas></code></pre><p>Then obtain a reference to it and get the retro context like this:</p>
+<pre class="prettyprint source"><code>var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('retro');</code></pre><p>The optional <code>data-width</code> and <code>data-height</code>
+represents the &quot;native&quot; retro resolution.</p>
+<p>This retro screen is then scaled to the regular size of the canvas
+(here 960 x 600, or three times the native resolution - for best
+results always scale the native resolution by 2x, 3x or 4x etc.).</p>
+<p>You can use the <code>ctx.resolution(w, h)</code> instead of the
+data-* attributes to set (or get) the native resolution at any point.</p>
+<p><strong>Full extensive documentation is included as HTML in the docs/ folder.</strong>
+Also see the included demos which demonstrates most of the methods.</p>
+<h2>Status</h2><p>This is an <strong>ALPHA</strong> version.</p>
+<p>The API is not fully frozen at this time but it is pretty much set.
+Some testing and optimization remains as well as to see if there is
+interest from the audience.</p>
+<p>We recommend a Blink/V8 based browser for performance reasons (latest
+Opera seem to perform best but Chrome do well too).</p>
+<h2>Requirements</h2><ul>
+<li>HTML5 browser with <strong>native</strong> canvas support</li>
+<li>A somewhat capable/newer hardware (making things go slow can take a
+surprisingly huge performance hit...)</li>
+</ul>
+<h1>Snapshots from included demo</h1><p>The following snapshots are from the first demo included - it differs
+a tad from the new one but the graphics is the same. The demo is simple
+in nature and is written mostly to test the methods as they where built.</p>
+<h2>Lines</h2><p>We are currently using our implementation based on the EFLA Line
+algorithm by Po-Han Lin (www.edepot.com/algorithm.html) which is faster
+than Bresenham. But the licensing is a bit unclear for libraries such as
+this so we are having that in mind.</p>
+<pre class="prettyprint source"><code>ctx.line(x1, y1, x2, y2);</code></pre><p><img src="http://i.imgur.com/LWsS61R.png" alt="Lines"></p>
+<h2>Rectangles (outlined and filled)</h2><pre class="prettyprint source"><code>ctx.rect(x, y, width, height);
+
+// Outlined
+ctx .fillColor(null)
+    .penIndex(4)         // index (if palette is set)
+    .rect(x, y, width, height);</code></pre><p><img src="http://i.imgur.com/fHmyxhS.png" alt="Rectangles"></p>
+<h2>Circles (Bresenham, outlined and filled)</h2><pre class="prettyprint source"><code>ctx.circle(x, y, radius);</code></pre><p><img src="http://i.imgur.com/Jzk5kMx.png" alt="Circles"></p>
+<h2>Ellipses (Bresenham, outlined and filled)</h2><pre class="prettyprint source"><code>ctx.ellipse(x, y, hRadius, vRadius);</code></pre><p><img src="http://i.imgur.com/WYDBYzr.png" alt="Ellipses"></p>
+<h2>Polygons (optimized lines, outlined and filled)</h2><pre class="prettyprint source"><code>var shape1 = [x1,y1, x2,y2, x3,y3, ...];
+ctx.polygon(shape1);</code></pre><p><img src="http://i.imgur.com/9nGBjNx.png" alt="Polygons"></p>
+<h2>Bucket-fill</h2><pre class="prettyprint source"><code>ctx .fillColor(255, 128, 0)
+    .bucketFill(x, y);</code></pre><p><img src="http://i.imgur.com/31KOQqR.png" alt="Bucket fill"></p>
+<h2>Bitmap fonts</h2><pre class="prettyprint source"><code>ctx .addFont(fontObject, callback);
+...
+
+ctx    .font('c64')
+    .text(&quot;Hello world&quot;, x, y);</code></pre><p><img src="http://i.imgur.com/gI4BJAI.png" alt="Fonts"></p>
+<h2>Built-in image processing to give that right retro look</h2><pre class="prettyprint source"><code>ctx.drawImage(image, x, y, width, height, '8bit-sierra');</code></pre><p><img src="http://i.imgur.com/4z2vXxg.png" alt="Pseudo 8-bit palette Sierra dithered"></p>
+<pre class="prettyprint source"><code>ctx .palette('C64')
+    .drawImage(image, x, y, width, height, 'palette-fs');</code></pre><p><img src="http://i.imgur.com/px8Fvx3.png" alt="16 color palette Floyd-Steinberg dithered"></p>
+<pre class="prettyprint source"><code>ctx.drawImage(image, x, y, width, height, 'mono-fs');</code></pre><p><img src="http://i.imgur.com/Etx4jyC.png" alt="Mono-chromatic image Floyd-Steinberg dithered"></p>
+<p><img src="http://i.imgur.com/16iWksE.png" alt="Bundled retro palettes"></p>
+<h2>License</h2><p>Released under <a href="http://choosealicense.com/licenses/gpl-v3/">GPL-3.0 license</a>.</p>
+<p><em>&copy; 2013-2014 Epistmex</em></p>
+<p><img src="http://i.imgur.com/NJpHOFr.png" alt="Epistemex"></p></article>
+    </section>
+
+
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		Copyright &copy; 2013-2014 Epistemex.
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a>
+		using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+			<br clear="both">
+		</div>
+
+	</div>
+
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+			    anchorName  : function(i, heading, prefix) {
+					return $(heading).attr("id") || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>

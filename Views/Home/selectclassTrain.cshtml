@@ -1,0 +1,165 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/bootstrap.min.css">
+    <title>select lesson, eye music</title>
+    <meta name="viewport" content="width=device-width" />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript">
+
+        function adjust() {
+
+            if ("@Model.len" == "h") {
+                document.getElementById("stage").innerHTML = "בחר שיעור";
+            }
+            else if ("@Model.len" == "e") {
+                document.getElementById("stage").innerHTML = "select class";
+            }
+            else if ("@Model.len" == "f") {
+                document.getElementById("stage").innerHTML = "Sélectionnez une leçon";
+            }
+            else if ("@Model.len" == "g") {
+                document.getElementById("stage").innerHTML = "Wähle die Lektion";
+            }
+            else if ("@Model.len" == "c") {
+                document.getElementById("stage").innerHTML = "Vyberte lekci";
+            }
+
+        }
+
+        window.onload = adjust;
+    </script>
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+@{
+    if (Model.len == "h")
+    {
+        @:<body onunload="" id="body1" dir="rtl">
+            @:<div class="container">
+                <h3>
+                    בדף זה יש  @Model.UItrainingStimuliTreeViewNew.Split(';').Count() שיעורים.
+                </h3>
+
+    }
+    else
+    {
+        @:<body onunload="" id="body1" dir="ltr">
+            @:<div class="container">
+       if (Model.len == "e")
+       {
+        <h3>
+            This section contains @Model.UItrainingStimuliTreeViewNew.Split(';').Count() classes.
+        </h3>
+       }
+       else if (Model.len == "f")
+       {
+        <h3>
+            Cette section contient @Model.UItrainingStimuliTreeViewNew.Split(';').Count() les classes.
+        </h3>
+       }
+       else if (Model.len == "g")
+       {
+        <h3>
+            Dieser Abschnitt enthält @Model.UItrainingStimuliTreeViewNew.Split(';').Count() Klassen.
+        </h3>
+       }
+       else if (Model.len == "c")
+       {
+        <h3>
+            Tato sekce obsahuje @Model.UItrainingStimuliTreeViewNew.Split(';').Count() tříd.
+        </h3>
+       }
+
+    }
+
+}
+<div class="float-right">
+    @if (ViewBag.anonymous != null && !ViewBag.anonymous)
+    {
+        <h3>
+            hello @Model.userid
+        </h3>
+    }
+</div>
+<h2 id="stage">&nbsp</h2>
+</div>
+
+<div id="body">
+
+    <div class="container">
+
+        @{
+            string[] all_levels = Model.UItrainingStimuliTreeViewNew.Split(';');
+
+            string[] all_levels_heb = all_levels;
+
+            if (Model.len == "h")
+            {
+                all_levels_heb = Model.UItrainingStimuliHebrow.Split(';');
+            }
+            else if (Model.len == "f")
+            {
+                all_levels_heb = Model.UItrainingStimuliFrance.Split(';');
+            }
+            else if (Model.len == "g")
+            {
+                all_levels_heb = Model.UItrainingStimuliGerman.Split(';');
+            }
+            else if (Model.len == "c")
+            {
+                all_levels_heb = Model.UItrainingStimuliCzech.Split(';');
+            }
+
+            int index3 = 0;
+            int index1 = 0;
+            string level_heb;
+
+            foreach (string level in all_levels)
+            {
+                level_heb = all_levels_heb[index3++];
+                string[] all_stage = level.Split(',');
+                string[] all_stage_heb = level_heb.Split(',');
+
+                if (all_stage.Length > 1)
+                {
+                    using (Html.BeginForm("selectlevelTrain", "Home", FormMethod.Post, new { id = "submitForm", style = "padding-top:5px" }))
+                    {
+                        <input type="hidden" name="selected_level" value="@all_stage[0]" />
+                        <input class="btn btn-lg btn-info" type="submit" value="@all_stage_heb[0].Replace("_", " ")" id="mytable @index1">
+                    }
+
+                    index1++;
+                }
+
+
+            }
+
+        }
+    </div>
+</div>
+
+</body>
+
+
+
+</html>

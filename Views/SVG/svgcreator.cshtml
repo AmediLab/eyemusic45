@@ -1,0 +1,1114 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@Styles.Render("~/App_Themes/css")
+
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>MathMusic</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/bootstrap.min.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svgdom.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svgdom.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/math.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/StackBlur.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/rgbcolor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/canvg.js")" type="text/javascript"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript" src="../Scripts/languages.js"></script>
+    <script type="text/javascript" src="../mespeak/mespeak.js"></script>
+    <style>
+
+        /* tell the SVG path to be a thin blue line without any area fill */
+        path {
+            stroke: red;
+            stroke-width: 10;
+            fill: none;
+        }
+
+        .axis {
+            shape-rendering: crispEdges;
+        }
+
+        
+        .x.axis line {
+            stroke: green;
+        }
+
+        .x.axis .minor {
+            stroke-opacity: .5;
+        }
+
+        .x.axis path {
+            display: none;
+        }
+
+        
+        .y.axis line, .y.axis path {
+            fill: green;
+            stroke: green;
+        }
+    </style>
+      <script src="../Scripts/d3.v3.min.js"></script>
+        <script>
+
+            //calculate the furmola
+            function evil(fn) {
+                //return new Function('return ' + fn)();
+                return math.eval(fn);
+            }
+            
+            //function for replace the formula
+            function manipulate(Theformula)
+            {
+                return Theformula;
+            }
+
+            String.prototype.replaceAt = function (index, character) {
+                return this.substr(0, index) + character + this.substr(index + 1);
+            }
+
+            function getIndicesOf(searchStr, str, caseSensitive) {
+                var startIndex = 0, searchStrLen = searchStr.length;
+                var index, indices = [];
+                if (!caseSensitive) {
+                    str = str.toLowerCase();
+                    searchStr = searchStr.toLowerCase();
+                }
+                while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+                    indices.push(index);
+                    startIndex = index + searchStrLen;
+                }
+                return indices;
+            }
+
+            var m;
+            var w;
+            var h;
+            var multi = 1;
+
+             
+
+                function cal() {
+                    $('#graph').html('');
+
+                    var Theformula = document.getElementById("Theformula").value;
+                    var FromR = parseFloat(document.getElementById("FromR").value);
+                    var ToR = parseFloat(document.getElementById("ToR").value);
+
+                    if (FromR >= ToR) {
+                        window.alert("The 'from' value need to be small than 'to' value");
+                        return;
+                    }
+                    
+                        var data = new Array();
+
+                        //found all x for replace at numbers
+                        var allX = getIndicesOf("x", Theformula, false);
+                        Theformula = manipulate(Theformula);
+
+                        var ToAdd = (ToR - FromR) / 50;
+
+                        try{
+                            //calculate the furmola 
+                            for (var i = FromR; i <= ToR; i += ToAdd) {
+                                var temp = Theformula;
+                                var offset = 0;
+
+                                //replace x in current value
+                                for (var j = 0; j < allX.length; j++) {
+                                    temp = temp.replaceAt(allX[j] + offset, '(' + i.toString() + ')');
+                                    offset += i.toString().length + 1;
+                                }
+
+                                //calculate the resualt and add to array 
+                                data.push(evil(temp));
+                            }
+                        }
+                        catch (e)
+                        {
+                            window.alert("Your formula is not correct");
+                            return;
+                        }
+
+                        if (FromR < 0 && Math.min.apply(Math, data) < 0) {
+                            m = [15, 100, 150, 100]; // margins
+                            w = 500 - m[1] - m[3]; // width
+                            h = 300 - m[0] - m[2]; // height
+                            multi = 1;
+                        }
+                        else if (FromR < 0) {
+                            m = [15, 100, 50, 100]; // margins
+                            w = 500 - m[1] - m[3]; // width
+                            h = 300 - m[0] - m[2]; // height
+                            multi = 1.7;
+                            //multi = 1;
+                        }
+                        else if (Math.min.apply(Math, data) < 0) {
+                            m = [15, 10, 150, 10]; // margins
+                            w = 500 - m[1] - m[3]; // width
+                            h = 300 - m[0] - m[2]; // height
+                            multi = 1;
+                        }
+                        else {
+                            m = [15, 10, 50, 10]; // margins
+                            w = 500 - m[1] - m[3]; // width
+                            h = 300 - m[0] - m[2]; // height
+                            multi = 1;
+
+                        }
+                        // X scale will fit all values from data[] within pixels 0-w
+
+                        var maxAxis = 0;
+                        if (Math.max.apply(Math, data) > -Math.min.apply(Math, data)) {
+                            maxAxis = Math.max.apply(Math, data);
+                        }
+                        else {
+                            maxAxis = -Math.min.apply(Math, data);
+                        }
+
+                        var MaxGap = 0;
+                        if (-FromR > ToR)
+                            MaxGap = -FromR;
+                        else
+                            MaxGap = ToR
+
+                        if (maxAxis < MaxGap)
+                            maxAxis = MaxGap;
+
+                        var x = d3.scale.linear().domain([0, maxAxis]).range([0, w]);
+                        // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+                        var y = d3.scale.linear().domain([0, maxAxis]).range([h, 0]);
+                        // automatically determining max range can work something like this
+                        // var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
+
+                        // create a line function that can convert data[] into x and y points
+                        var line = d3.svg.line()
+                            // assign the X function to plot our line as we wish
+                            .x(function (d, i) {
+                                // verbose logging to show what's actually being done
+                                // return the X coordinate where we want to plot this datapoint
+                                //return x coordinate acording to step size and start point 
+                                return (x(i) * ToAdd * (6 / 25) * multi) + (FromR * x(1) * (6 / 25)) * multi;
+                            })
+                            .y(function (d) {
+                                // verbose logging to show what's actually being done
+                                return y(d);
+                            })
+
+
+
+                        // Add an SVG element with the desired dimensions and margin.
+                        var graph = d3.select("#graph").append("svg:svg")
+                              .attr("width", w)
+                              .attr("height", h)
+                              .append("svg:g")
+                              .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+                        var TotalMax = 0;
+                        var FromMax = 0;
+                        var TheTotalTotal = 0;
+
+                        if (Math.max.apply(Math, data) > -Math.min.apply(Math, data))
+                            TotalMax = Math.max.apply(Math, data);
+                        else
+                            TotalMax = -Math.min.apply(Math, data)
+
+                        if (-FromR > ToR)
+                            FromMax = -FromR;
+                        else
+                            FromMax = ToR;
+
+
+                        if (TotalMax > FromMax)
+                            TheTotalTotal = TotalMax;
+                        else
+                            TheTotalTotal = FromMax;
+
+
+                        //TheTotalTotal = Math.floor(TheTotalTotal) + 1;
+
+                        //create negative axis
+                        if (FromR < 0) {
+
+                            //var xNeg = d3.scale.linear().domain([-TheTotalTotal, TheTotalTotal]).range([-h, h]);
+                            var xNeg = d3.scale.linear().domain([-TheTotalTotal, TheTotalTotal]).range([-(h * 3) / 5, (h * 3) / 5]);
+                            var xAxisNeg = d3.svg.axis().scale(xNeg).ticks(5).orient("bottom");
+                        }
+                        else {
+                            //var xNeg = d3.scale.linear().domain([0, TheTotalTotal]).range([0, h]);                    
+                            var xNeg = d3.scale.linear().domain([0, TheTotalTotal]).range([0, (h * 3) / 5]);
+                            var xAxisNeg = d3.svg.axis().scale(xNeg).ticks(5).orient("bottom");
+                        }
+
+                        if (Math.min.apply(Math, data) < 0) {
+                            //var yNeg = d3.scale.linear().domain([-TheTotalTotal * (3 / 5), TheTotalTotal * (3 / 5)]).range([h, 0]);
+                            var yNeg = d3.scale.linear().domain([-TheTotalTotal, TheTotalTotal]).range([2 * h, 0]);
+                            var yAxisNeg = d3.svg.axis().scale(yNeg).ticks(5).orient("left");
+                        }
+                        else {
+                            //var yNeg = d3.scale.linear().domain([0, TheTotalTotal * (3 / 5)]).range([h, 0]);
+                            var yNeg = d3.scale.linear().domain([0, TheTotalTotal]).range([h, 0]);
+                            var yAxisNeg = d3.svg.axis().scale(yNeg).ticks(5).orient("left");
+                        }
+
+                        //var yNeg = d3.scale.linear().domain([-Math.max.apply(Math, data), 0]).range([h, 0]);
+                        //var yAxisNeg = d3.svg.axis().scale(yNeg).ticks(4).orient("left");
+
+                        // create yAxis
+                        //var xAxis = d3.svg.axis().scale(x).ticks(4).orient("bottom");
+                        // Add the x-axis.
+                        /*graph.append("svg:g")
+                              .attr("class", "y axis")
+                              .attr("style", "stroke: white; stroke-width: 10")
+                              .attr("transform", "translate(0," + h + ")")
+                              .call(xAxis);
+                              */
+                        //only if have negative value add negative X axis
+                        //if (FromR < 0) {
+                        graph.append("svg:g")
+                              .attr("class", "y axis")
+                              .attr("style", "stroke: white; stroke-width: 10")
+                              .attr("transform", "translate(0," + h + ")")
+                              //.attr("transform", "translate(" + (-h + 20) + "," + (w + 20) + ")")
+                              .call(xAxisNeg);
+                        //}
+
+                        // create left yAxis
+                        //var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+                        // Add the y-axis to the left
+                        /*graph.append("svg:g")
+                              .attr("class", "y axis")
+                              .attr("style", "stroke: white; stroke-width: 10")
+                              .attr("transform", "translate(0,0)")
+                              .call(yAxisLeft);
+                              */
+                        //only if have negative value add negative Y axis
+                        //if (Math.min.apply(Math, data) < 0) {
+                        graph.append("svg:g")
+                              .attr("class", "x axis")
+                              .attr("style", "stroke: white; stroke-width: 10")
+                              .attr("transform", "translate(0,0)")
+                              .call(yAxisNeg);
+                        //}
+
+                        // Add the line by appending an svg:path element with the data line we created above
+                        // do this AFTER the axes above so that the line is above the tick-lines
+                        graph.append("svg:path").attr("d", line(data)).attr("style", "stroke: red; stroke-width: 10;fill: none;");
+
+                        var svgXML = (new XMLSerializer()).serializeToString(graph[0][0]);
+
+                        reinit();
+
+                        $.ajax({
+                            url: '@Url.Action("speechFromSvgString")',
+                            type: 'post',
+                            data: JSON.stringify({
+                                svg: svgXML,
+                                speed: thespeed,
+                                Time: AppreciateTime,
+                                len: window.lan,
+                                couple: coupling
+                            }),
+                            contentType: 'application/json',
+                            success: function (data) {
+
+                                insert = false;
+
+                                if (data.numbers != null && data.numbers != "") {
+                                    speechit(data.numbers);
+                                    insert = true;
+                                }
+                                canvasProceess(" ", svgXML);
+                            }
+                        });
+                    }
+    </script>
+    <script type="text/javascript">
+
+            var startFrom;
+
+            meSpeak.loadConfig("../mespeak/mespeak_config.js");
+            meSpeak.loadVoice("../mespeak/voices/en/en-us.js");
+            var array = new Array();
+            var stream1;
+            var allStream = new Array();
+            var singleVoices = new Array();
+            var numStream = 0;
+            var maxNum = 0;
+            var insert = true;
+
+
+            //parmter for change and check
+            var thespeed = 100;
+            var AppreciateTime = 0;//1300;
+            var len = 'h';
+            var startGap = 300;
+            var coupling = 45;
+
+            var TheLen;
+            var externalData;
+            var svgOut;
+
+            var viewBox = 0;
+            var BluLineLoc = new Array();
+            var allLineStream;
+            var prevX = -1000;
+            var prevY = 0;
+            var first = true;
+            var foundAxis = false;
+
+            var magicNumber = 20;
+            var numBlue = 0;
+
+
+
+            //var minSpeech = 1000;
+
+            function speechit(data) {
+                var all_numbers = data.split(';');
+
+                //found the number of line blue
+                numBlue = 0;
+                var indexSpeech = 0;
+                var last = false;
+                var first = true;
+                var alardyAddArrays = false;
+                BluLineLoc = new Array();
+                array = new Array();
+                allStream = new Array();
+                singleVoices = new Array();
+
+                for (i = 1; i < all_numbers.length; i++) {
+                    var thisNumber = all_numbers[i].split(',');
+
+                    //Add blue linewhere have many Y axis numbers
+                    if (Math.abs(prevX - thisNumber[3]) < magicNumber) {
+
+                        if (first) {
+                            //add the prev number
+                            numBlue++;
+                            first = false;
+                        }
+                        numBlue++;
+                    }
+                    prevX = thisNumber[3];
+                }
+
+
+                if (numBlue == 0) {
+                    var all_numbers = data.split(';');
+
+                    for (i = 1; i < all_numbers.length; i++) {
+                        var thisNumber = all_numbers[i].split(',');
+
+                        thisNumber[2] = (thisNumber[2]  * 5)  / 6;
+                        array.push({ text: "", voice: TheLen, variant: "m3", rawdata: true, pitch: thisNumber[1], wordgap: thisNumber[2] , speed: 300 });
+                        array.push({ text: thisNumber[0], voice: TheLen, variant: "m3", rawdata: true, pitch: thisNumber[1], wordgap: 0, speed: 300 });
+                        stream1 = meSpeak.speakMultipart(array, { rawdata: true });
+                        singleVoices.push(stream1);
+                        array = new Array();
+                    }
+
+                    allStream.push(singleVoices);
+                    maxNum = numStream;
+                    singleVoices = new Array();
+                }
+                else {
+                    allLineStream = new Array(numBlue);
+                    for (var forint = 0; forint < numBlue; forint++) {
+                        allLineStream[forint] = new Array();
+                    }
+
+                    var PrevNumber = all_numbers[1].split(',');
+
+                    for (i = 2; i < all_numbers.length; i++) {
+                        var thisNumber = all_numbers[i].split(',');
+
+                        PrevNumber[2] = (PrevNumber[2] * 5)  / 6;
+                        array.push({ text: "", voice: TheLen, variant: "m3", rawdata: true, pitch: PrevNumber[1], wordgap: PrevNumber[2], speed: 300 });
+                        array.push({ text: PrevNumber[0], voice: TheLen, variant: "m3", rawdata: true, pitch: PrevNumber[1], wordgap: 0, speed: 300 });
+                        stream1 = meSpeak.speakMultipart(array, { rawdata: true });
+                        //Add blue linewhere have many Y axis numbers
+                        if (!alardyAddArrays && Math.abs(PrevNumber[3] - thisNumber[3]) < magicNumber) {
+                            allLineStream[indexSpeech++].push(stream1);
+                            BluLineLoc.push(PrevNumber[4]);
+                            last = true;
+                        }
+                        else if (last) {
+
+                            allLineStream[indexSpeech++].push(stream1);
+                            BluLineLoc.push(PrevNumber[4]);
+                            last = false;
+                            alardyAddArrays = true
+                        }
+                        else {
+                            for (var inx in allLineStream) {
+                                allLineStream[inx].push(stream1);
+                            }
+                        }
+
+                        array = new Array();
+                        PrevNumber = thisNumber;
+
+                    }
+
+                    PrevNumber = all_numbers[all_numbers.length - 1].split(',');
+
+                    PrevNumber[2] = (PrevNumber[2] * 5) / 6;
+                    array.push({ text: "", voice: TheLen, variant: "m3", rawdata: true, pitch: PrevNumber[1], wordgap: PrevNumber[2], speed: 300 });
+                    array.push({ text: PrevNumber[0], voice: TheLen, variant: "m3", rawdata: true, pitch: PrevNumber[1], wordgap: 0, speed: 300 });
+                    console.log("speaceIt92");
+                    stream1 = meSpeak.speakMultipart(array, { rawdata: true });
+                    console.log("speaceIt10");
+
+                    if (last) {
+                        allLineStream[indexSpeech++].push(stream1);
+                        BluLineLoc.push(PrevNumber[4]);
+
+                        last = false;
+                    }
+                    else {
+                        for (var inx in allLineStream) {
+                            allLineStream[inx].push(stream1)
+                        }
+                    }
+
+                    allStream = allLineStream;
+                    maxNum = inx;
+                }
+            }
+
+
+
+            function adjust() {
+                startFrom = document.getElementById("thePlayImage").offsetLeft - 25;
+                window.addEventListener('resize', resize, false);
+
+                if ("@Model.len" == "h") {
+                    window.lan = 'h';
+                    meSpeak.loadVoice("../mespeak/voices/pl.js");
+                    TheLen = "pl";
+
+                    doChange();
+                }
+                else {
+                    window.lan = 'e';
+                    meSpeak.loadVoice("../mespeak/voices/en/en-us.js");
+                    TheLen = "en/en-us";
+                    doChange();
+                }
+
+            }
+
+            function resize() {
+                startFrom = document.getElementById("thePlayImage").offsetLeft - 25;
+                foo = document.getElementById('fooObject'); // get the "foo" object
+                foo.style.left = startFrom + 'px'; // set its initial position to 0px
+                clearInterval(dd);
+            }
+
+            function doChange() {
+                //document.getElementById("guide").innerHTML = retstr(41) + retstr(42) + retstr(43);
+                //document.getElementById("UIplayButton").innerHTML = retstr(45);
+                //document.getElementById("Uploaded").innerHTML = retstr(46);
+
+                document.getElementById("guide").innerHTML = 'Enter Your formula and get their graph'
+                document.getElementById("UIplayButton").innerHTML = 'play and pause';
+                document.getElementById("Uploaded").innerHTML = 'The graphs';
+            }
+
+            window.onload = adjust;
+
+
+
+        </script>
+</head>
+
+
+   <body onunload="" id="body1" dir="ltr">
+
+
+
+    <table>
+        <tr>
+            <td>
+                <button title="calculate formula" id="batformula" onclick="cal()">Calculate the formula</button>
+            </td>
+            <td>
+                <h3>Enter formula</h3>
+                <input type="text" id="Theformula" />
+            </td>
+            <td>
+                <h3>From number:</h3>
+                <input type="number" id="FromR" />
+            </td>
+            <td>
+                <h3>To number</h3>
+                <input type="number" id="ToR" />
+            </td>
+        </tr>
+    </table>
+
+    <canvas id="canvas" style="width:50px;height:30px" hidden="hidden"></canvas>
+    <canvas id="canvas2" style="width:50px;height:30px" hidden="hidden"></canvas>
+    <div id="graph" class="aGraph" style="width:50px;height:30px" hidden="hidden"></div>
+
+    <h4 id="guide"></h4>
+
+
+    <style>
+        div.fadeMe {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        #fooObject {
+            /* simple box */
+            position: absolute;
+            border-left: thick solid #FF0000;
+        }
+    </style>
+
+
+    <div style="background-color: #FFFFFF; height: 200px; width: 100px">
+
+        <div class="float-left" style="width:100px">
+            @{
+                string dds = "~/../../Images/blank.bmp";
+
+                <img id="thePlayImage" src="@dds" />
+            }
+
+
+            <div id="fooObject">
+                &nbsp;
+            </div>
+
+
+            <table style="width: 300px; margin-top: 20px">
+                <tr>
+                    <td>
+                        <button title="Play" id="UIplayButton" onclick="UIplayButton_click()"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button title="Play" id="UIMeSpeakButton" onclick="UImeSpakeButton_click()">Start and stop the number reading</button>
+                    </td>
+                </tr>
+               
+            </table>
+        </div>
+
+
+        <h2 id="Uploaded">
+            Uploaded Files:
+        </h2>
+    </div>
+    <div style="clear:both;margin-top:100px" id="uploadResult1">
+
+    </div>
+
+    <audio id="thePlayaudio" controls hidden="hidden">
+        @{
+            <source type="audio/mp3">
+        }
+        Your browser does not support the audio element.
+    </audio>
+
+    <script type="text/javascript">
+
+
+        $(document).bind('keydown', 'ctrl', function () {
+            if (play == true) {
+                UIplayButton_click();
+            }
+            else {
+                UIplayButton_click();
+            }
+        });
+
+        $(document).bind('keydown', '1', function () {
+            if (document.getElementById("thePlayaudio").playbackRate < 3.50)
+                document.getElementById("thePlayaudio").playbackRate += 0.1;
+        });
+
+        $(document).bind('keydown', '2', function () {
+            if (document.getElementById("thePlayaudio").playbackRate > 0.59)
+                document.getElementById("thePlayaudio").playbackRate -= 0.1;
+        });
+
+
+
+        var play = false;
+        var playMesSpeak = true;
+
+        var numDrag = 0;
+
+        myAudio = document.getElementById("thePlayaudio");
+
+        myImage = document.getElementById("thePlayImage");
+        myImage.style.visibility = 'hidden';
+
+        handlerBeep = function () {
+            setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+
+                myAudio.currentTime = 0;
+                myAudio.pause();
+                myAudio.play();
+
+                if (playMesSpeak) {
+                    meSpeak.stop();
+
+                    for (i = 0; i < allStream[maxNum].length; i++) {
+                        meSpeak.play(allStream[maxNum][i]);
+                    }
+                }
+                init();
+                //  ..  setTimeout()
+            }, 1000)
+        }
+
+
+        myAudio.addEventListener('ended', handlerBeep, false);
+
+      
+        function UImeSpakeButton_click() {
+            if (playMesSpeak == false) {
+
+                /*
+                for (i = 0; i < allStream[maxNum].length; i++) {
+                    meSpeak.play(allStream[maxNum][i]);
+                }*/
+                playMesSpeak = true;
+
+                UIplayButton_click();
+                UIplayButton_click();
+            }
+            else {
+                playMesSpeak = false;
+                meSpeak.stop();
+            }
+        }
+
+        //when pressing play/stop
+        function UIplayButton_click() {
+
+            if (play == false) {
+
+                meSpeak.stop();
+
+                if (foo == null) {
+                    init();
+                }
+                else {
+                    clearInterval(dd);
+                    dd = setInterval(doMove, 17);
+                }
+
+                myAudio.addEventListener('ended', handlerBeep, false);
+                myAudio.play();
+
+                if (playMesSpeak && allStream != null && allStream.length != 0) {
+                    for (i = 0; i < allStream[maxNum].length; i++) {
+                        meSpeak.play(allStream[maxNum][i]);
+                    }
+                }
+
+                play = true;
+                //playMesSpeak = true;
+
+
+                if (parseInt(foo.style.left) > 300 + startFrom) {
+                    init();
+                }
+
+            }
+            else {
+                myAudio.removeEventListener('ended', handlerBeep, false);
+                play = false;
+                //playMesSpeak = false;
+
+                myAudio.pause();
+                myAudio.currentTime = 0;
+
+                foo.style.left = startFrom + 'px';
+                clearInterval(dd);
+                meSpeak.stop();
+
+            }
+
+        }
+
+
+        var foo = null; // object
+        var dd;
+
+        function doMove() {
+            foo.style.left = parseInt(foo.style.left) + Math.floor(2 * (50 / thespeed) * document.getElementById("thePlayaudio").playbackRate) + 'px';
+
+            if (parseInt(foo.style.left) > 300 + startFrom) {
+                clearInterval(dd);
+            }
+        }
+
+        function init() {
+            document.getElementById("thePlayaudio").volume = 0.5;
+            foo = document.getElementById('fooObject'); // get the "foo" object
+            foo.style.left = startFrom + 'px'; // set its initial position to 0px
+            clearInterval(dd);
+            dd = setInterval(doMove, 17);
+        }
+
+        function init1() {
+            myImage.style.visibility = 'visible';
+            init();
+        }
+
+        function init2() {
+
+            var vid = document.getElementById("thePlayaudio");
+
+            vid.oncanplay = null;
+
+            myAudio.addEventListener('ended', handlerBeep, false);
+            play = true;
+            playMesSpeak = true;
+
+            init();
+        }
+
+    </script>
+
+
+
+
+
+    <script type="text/javascript">
+        function sendajax(tosend, numst) {
+            clearInterval(dd);
+            myAudio.removeEventListener('ended', handlerBeep, false);
+            play = false;
+            playMesSpeak = false;
+            myAudio.pause();
+            myAudio.currentTime = 0;
+            //foo.style.left = startFrom + 'px';
+
+            $.ajax({
+                url: '@Url.Action("ajaxregSVG")',
+                type: 'post',
+                data: JSON.stringify({ fileName: tosend }),
+                contentType: 'application/json',
+                success: function (data) {
+                    $("#thePlayImage").attr("src", "~/../../" + data.image);
+                    $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+                    var vid = document.getElementById("thePlayaudio");
+                    clearInterval(dd);
+
+                    vid.oncanplay = function () {
+                        init2();
+
+                        for (i = 0; i < allStream[maxNum].length; i++) {
+                            meSpeak.play(allStream[maxNum][i]);
+                        }
+                      }
+
+                    meSpeak.stop();
+                    $("#thePlayaudio")[0].play();
+                    maxNum = numst;
+
+                }
+            });
+        };
+
+    </script>
+
+
+    <script type="text/javascript">
+
+        function addpicture(data) {
+            if (data.image != "") {
+                $("#thePlayImage").attr("src", "~/../../" + data.image);
+                $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+
+                numDrag++;
+                if (numDrag < 200) {
+                    $('#uploadResult1').append(
+                    '<input type="hidden" name="selectedImage" value="' + data.image + '"/>' +
+                    '<button id=' + data.image + ' onclick="sendajax(' + "'" + data.image + "','" + numStream + "'" + ')"> <img src="~/../../' + data.image + '" alt=' + data.image + '" id="pic' + data.image + '" style="width:75px;float:left" /> </button>');
+                }
+                else {
+                    $('#uploadResult1').html('');
+                    numDrag = 1;
+
+                    $('#uploadResult1').append(
+                    '<input type="hidden" name="selectedImage" value="' + data.image + '"/>' +
+                    '<button id=' + data.image + ' onclick="sendajax(' + "'" + data.image + "','" + numStream + "'" + ')"> <img src="~/../../' + data.image + '" alt=' + data.image + '" id="pic' + data.image + '"style="width:75px;float:left" /> </button>');
+                }
+                /*
+                        var vid = document.getElementById("thePlayaudio");
+                        clearInterval(dd);
+                        vid.oncanplay = function () {
+                            init2();
+                            if (insert)
+                                for (i = allStream[numStream - 1].length - 1; i >= 0; i--) {
+                                    meSpeak.play(allStream[numStream - 1][i]);
+                                }
+                        }
+                        */
+                meSpeak.stop();
+                //$("#thePlayaudio")[0].play();
+                //playMesSpeak = true;
+                myImage.style.visibility = 'visible';
+
+                if (insert)
+                    numStream++;
+            }
+        }
+
+
+        //The procces of SVG
+        function TheRecorsive(svg) {
+
+
+            for (var i = 0; i < svg.childNodes.length; i++) {
+
+
+                /*if (svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["viewBox"] != null) {
+                    viewBox = svg.childNodes[i].attributes["viewBox"].value.Split(' ')[3]
+                }*/
+
+                if (svg.childNodes[i].nodeName == "text" && svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["style"] != null) {
+
+                    
+                    //change the background to black
+                    if (svg.childNodes[i].attributes["style"].value.indexOf('fill') > -1) {
+                        svg.childNodes[i].attributes["style"].value =
+                            svg.childNodes[i].attributes["style"].value.replace(/fill:#[abcdef 0-9]*;/, 'fill:#000000;')
+                    }
+                    else if (svg.childNodes[i].attributes["style"].value.indexOf('text-anchor') > -1) {
+                        svg.childNodes[i].attributes["style"].value = svg.childNodes[i].attributes["style"].value + 'stroke: black;opacity:0';
+                            svg.childNodes[i].attributes["style"].value.replace('text-anchor: middle;', 'stroke: black')
+                    }
+                }
+
+                //for geofebra change line width from max of 6.5 to 20
+                /*if (svg.childNodes[i].nodeName == "g") {
+                    if (svg.childNodes[i].attributes != null)
+                        if (svg.childNodes[i].attributes["stroke-width"] != null) {
+                            //svg.childNodes[i].attributes["stroke-width"].value = svg.childNodes[i].attributes["stroke-width"].value.replace("6.5000", "20");
+                            svg.childNodes[i].attributes["stroke-width"].value = "20";
+                        }
+
+                }*/
+
+                //for SVG from wikipedia
+                if (svg.childNodes[i].nodeName == "svg") {
+                    if (svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["viewport-fill"] != null) {
+                        svg.childNodes[i].attributes["viewport-fill"].value = "black";
+                    }
+                    else if (svg.childNodes[i].attributes != null) {
+                        svg.childNodes[i].setAttribute("viewport-fill", "black");
+                    }
+
+                }
+
+                
+                if (svg.childNodes[i].nodeName == "g") {
+                    if (svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["style"] != null)
+                        if (svg.childNodes[i].attributes["style"].value.indexOf('stroke-width') > -1) {
+                            //svg.childNodes[i].attributes["stroke-width"].value = svg.childNodes[i].attributes["stroke-width"].value.replace("6.5000", "20");
+                            svg.childNodes[i].attributes["style"].value =
+                            svg.childNodes[i].attributes["style"].value.replace(/stroke-width:[. 0-9]*;/, 'stroke-width:20;')
+                        }
+
+                }
+
+
+                TheRecorsive(svg.childNodes[i]);
+            }
+
+            return svg;
+        }
+
+        var parseXml;
+
+        if (typeof window.DOMParser != "undefined") {
+            parseXml = function (xmlStr) {
+                return (new window.DOMParser()).parseFromString(xmlStr, "text/xml");
+            };
+        } else if (typeof window.ActiveXObject != "undefined" &&
+               new window.ActiveXObject("Microsoft.XMLDOM")) {
+            parseXml = function (xmlStr) {
+                var xmlDoc = new window.ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async = "false";
+                xmlDoc.loadXML(xmlStr);
+                return xmlDoc;
+            };
+        } else {
+            throw new Error("No XML parser found");
+        }
+
+        function canvasProceess(data, text) {
+
+            text = "<svg width='220' height='280'> " + text + " </svg>"; 
+            //var xmlText2 = xmlText;
+
+            if (numBlue == 0) {
+                var xmlText = parseXml(text);
+                var xmlText2 = TheRecorsive(xmlText);
+                //var xmlText2 = xmlText;
+                var finishstring = new XMLSerializer().serializeToString(xmlText2);
+
+                data = '../' + data;
+                var canvas2 = document.getElementById("canvas2");
+                canvg(canvas2, finishstring);
+                var image = canvas2.toDataURL("image/png").replace('data:image/png;base64,', '');
+               //canvas2.style.display = "none";
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("canvasUpload")',
+                    data: '{ "imageData" : "' + image + '" }',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        addpicture(data)
+
+                    }
+                });
+
+                canvas.style.display = "none";
+            }
+            else {
+                //Add a blue line at five higehts
+                for (var i in BluLineLoc) {
+                    var xmlText = parseXml(text);
+                    var xmlText2 = TheRecorsive(xmlText);
+                    //var xmlText2 = xmlText;
+
+                    if (i < BluLineLoc.length)
+                        {
+                    var xmlText3 = addBlueLine(xmlText2, BluLineLoc[i]);
+                    var finishstring = new XMLSerializer().serializeToString(xmlText3);
+
+                    data = '../' + data;
+                    var canvas2 = document.getElementById("canvas2");
+                    canvg(canvas2, finishstring);
+                    var image = canvas2.toDataURL("image/png").replace('data:image/png;base64,', '');
+                    //canvas2.style.display = "none";
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("canvasUpload")',
+                        data: '{ "imageData" : "' + image + '" }',
+                        async: false,
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+
+                            addpicture(data)
+
+                        }
+                    });
+
+                    canvas.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function addBlueLine(Xml, blueLine) {
+            newEle = Xml.createElement("path");
+            newEle.setAttribute("transform", "translate(" + m[3] + "," + m[0] + ")");
+            newEle.setAttribute("style", "fill:#0000ff;fill-opacity:1;stroke:#0c00f4;stroke-width:20;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none");
+            //newEle.setAttribute("d", "M -9999 " + blueLine *((h + m[0]) / h)  + " l 999999 0");
+            newEle.setAttribute("d", "M -9999 " + (blueLine - 15) + " l 999999 0");
+            //Xml.childNodes[0].appendChild(newEle);
+            Xml.childNodes[0].insertBefore(newEle, Xml.childNodes[0].firstChild);
+            return Xml;
+        }
+
+        function reinit() {
+            
+            $('#uploadResult1').html('');
+            numDrag = 0;
+            numStream = 0;
+            myAudio.removeEventListener('ended', handlerBeep, false);
+            play = false;
+            playMesSpeak = true;
+
+            myAudio.pause();
+            myAudio.currentTime = 0;
+
+            clearInterval(dd);
+            meSpeak.stop();
+
+            $("#thePlayImage").attr("src", "~/../../Images/blank.bmp");
+
+        }
+
+        function ajaxapload(file) {
+
+            reinit();
+
+            $.ajax({
+                url: '@Url.Action("UploadFilesSVG")',
+                type: 'post',
+                data: JSON.stringify({
+                    speed: thespeed,
+                    Time: AppreciateTime,
+                    len: window.lan,
+                    couple: coupling
+                }),
+                contentType: 'application/json',
+                success: function (data) {
+
+                    insert = false;
+
+                    if (data.numbers != null && data.numbers != "") {
+                        speechit(data.numbers);
+                        insert = true;
+                    }
+
+                    canvasProceess(data.image, data.text);
+
+                }
+            });
+        };
+
+       
+    </script>
+
+
+</div>
+</body>
+
+</html>

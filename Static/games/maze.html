@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> maze	</title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	
+	<script>
+		voiceOver= false;
+		joystick_control = true;
+		screen_compatibility = 0;
+
+		// touch screen table settings
+		if (joystick_control) {
+			
+			voiceOver = true;
+			joystick();
+			
+		} else {
+			horCells = 3;
+			verCells = 4;
+			if (voiceOver) {
+				createTable(horCells,verCells);
+			}
+		}
+		
+		context.translate(0, windowHeight);
+		var BG_COLOR = "black";
+		
+		// setup obstacles
+		var OBS_COLOR = "white";
+		var obs_height;
+		var obs_width;
+		var obs_number;
+		var gap = Math.floor(windowWidth / 8);
+		var yrange;
+		var walls = [];
+		
+		// setup player mark
+		var markYgo = -windowHeight / 2;
+		var markx;
+		var marky;		
+		var upStep;
+		var sideStep;
+		var markSize;
+		var markXgo = 50;
+		var MARK_COLOR = "white";
+		
+		// setup trail
+		var trailX;
+		var trailY;
+		var trailSize = 0;
+		var TRAIL_COLOR = "white";
+		
+		// setup sounds
+		var stuck = 'cannonGame/stuck.'+SOUND_FORMAT;
+		var win = 'mazeGame/success.'+SOUND_FORMAT;
+		var hit = SOUND_FORMAT+'/laser.'+SOUND_FORMAT;
+		var tryAgain = SOUND_FORMAT+'/tryAgain.'+SOUND_FORMAT;
+		var realTime = 'mazeGame/realTime.'+SOUND_FORMAT;
+		var welcome = 'mazeGame/welcome.mp3';
+		var welcome_seeplayer = 'mazeGame/welcome_seeplayer.mp3';
+		var startGame = 'mazeGame/startGame.mp3';
+		var theme = 'mazeGame/theme.mp3';
+		var mid = 'mazeGame/mid.mp3';
+		
+		var s001 = 'mazeGame/seePlayer.mp3';
+		var s002 = 'mazeGame/seeObs.mp3';
+		
+		/*  game setup  */
+		var level = 0;
+		getLevel();
+		if (level == -2) {
+			startMessage = startMessages[1];
+		}		
+		var score = 0;
+		var MAX_LEVEL = 4;
+		var POINTS_PER_LEVEL =3;
+		var tutorial = false;
+		var refractory = false;
+		var WIDTH_ADJUST = 500;
+		
+		var firstSoundFix = false;
+		function newGame() {
+		
+			if (!mobilecheck) {
+				firstSoundFix = true;
+				if (level == -2) { 
+					play_audio(welcome);
+					setTimeout(newRound,3500);
+				} else {
+					play_audio(theme);
+					setTimeout(newRound, 4500);
+				}
+			} else {
+				if (level == -2) { 
+					play_audio(welcome_seeplayer);
+					newRound();
+				} else {
+					play_audio(theme);
+					setTimeout(newRound, 4500);
+				}
+						
+			}
+		}		
+
+		
+		function newRound() {
+			
+			markSize = sizeAdjust(40);
+			clear();
+			walls = [];
+			level_settings();
+			put_obstacles(obs_number,obs_height,yrange,obs_width);
+			markX = markXgo;
+			markY = markYgo;
+			
+			markSize = Math.min(markSize, windowHeight/10, windowWidth/25);
+			sideStep = Math.floor(markSize*1.5);
+			upStep = markSize*2;		
+			putCircle(markX, markY);
+			
+		}		
+		
+		function level_settings() {
+			POINTS_PER_LEVEL =3;
+			var sound = false;
+			var level_sound;
+			obs_width = 40;
+			
+			switch (level) {
+
+				case -2:
+					sound = true;
+					if (firstSoundFix) { 
+						level_sound = 'mazeGame/seePlayer.mp3';
+					} 					
+					obs_height = Math.floor(windowHeight*3/5);
+					obs_number = 0;
+					yrange = 3;
+					markSize = 40;			
+					POINTS_PER_LEVEL =1;					
+					break;	
+				case -1:
+					sound = true;
+					play_audio(s002);
+					obs_height = Math.floor(windowHeight*3/5);
+					obs_number = 1;
+					yrange = 3;
+					markSize = 40;	
+					POINTS_PER_LEVEL =1;
+					tutorial = true;
+					break;						
+			
+				case 4:
+					obs_height = Math.floor(windowHeight*2/3);
+					obs_number = 3;
+					yrange = 2;
+					markSize = 30;
+					break;			
+				case 3:
+					obs_height = Math.floor(windowHeight/2);
+					obs_number = 3;
+					yrange = 4;
+					markSize = 30;
+					break;
+				case 2:
+					obs_height = Math.floor(windowHeight*3/5);
+					obs_number = 3;
+					yrange = 3;
+					markSize = 40;					
+					break;	
+				case 0:
+					obs_height = Math.floor(windowHeight*3/5);
+					obs_number = 3;
+					yrange = 3;
+					markSize = 40;					
+					break;						
+					
+				default:
+					obs_height = Math.floor(windowHeight/3);
+					obs_number = 2;
+					yrange = 3;
+					markSize = 40;
+					break;	
+			}
+			
+			if (sound) {
+				setTimeout(function() {play_audio(level_sound); },1500);
+			}
+			
+			if (windowWidth < windowHeight || adjustedScreen) {
+				obs_number = Math.min(obs_number,2);
+			}
+			yrangeFix();			
+			
+		}
+		
+		function sizeAdjust(value) {
+			// fix sizes of stuff when screen is narrow
+			if (windowWidth < WIDTH_ADJUST) {
+				return (value * windowWidth / WIDTH_ADJUST);
+			} else return value;
+		}
+		
+		function obsWidthFix(space,width) {
+			// shrink the obstacles to ensure the ball can pass between them
+			if (space < markSize*2) {
+				var moreSpace = markSize*2 - space;
+				return (Math.abs(width - moreSpace)/2);
+			}
+			return width;
+		}
+	
+		function yrangeFix() {
+			// lower the number of obs. locations to ensure the ball can pass over/above
+			var route = obs_width*2;
+			var minPath = Math.floor((windowHeight - obs_height + route) / route);
+			yrange = Math.min(minPath,yrange);
+		}
+
+		function vartical_obstacle(x,y,yrange,height,width) {
+			var obsX = x;
+			var obsY = Math.floor((windowHeight - height) / (yrange - 1)) * y;
+			
+			context.beginPath();
+			context.fillStyle = OBS_COLOR;
+			context.fillRect(obsX , -obsY , width , -height);
+			
+			walls.push([obsX , obsY , obsX+width , obsY +height]);
+		}
+		
+		function put_obstacles(n,height,yrange,width) {
+			// n = number of obstacles
+			// yrange = number of height options
+			
+			var arena = Math.floor(windowWidth - 2*gap);
+			var space = arena / n;
+			var pos;
+			var obsX;
+			
+			width = obsWidthFix(space - width,width);
+			width = Math.min(width,windowWidth / 15);
+			
+			for (var i=1; i<=n; i++) {
+				
+				pos = Math.floor(Math.random() * yrange);
+				obsX = Math.floor(gap + space * (i - 0.5) );
+				vartical_obstacle(obsX,pos,yrange,height,width);
+			}
+			
+		}
+
+		function checkCollide(x,y) {
+			
+			var w;
+			// w = [obsX , obsY , obsX+width , obsY +height]
+			
+			for (var wall = 0; wall < walls.length ; wall++) {
+			
+				w = walls[wall];
+				if ( x >= w[0] - markSize && x <= w[2] + markSize ) {
+					if (  -y >= w[1] - markSize && -y <= w[3] + markSize ) {				
+						return true;
+					}
+				}
+			}
+			
+			return false;
+			
+		}
+
+		function putCircle(x,y) {
+			if (!refractory) {
+				// check boundry
+				if (x<markSize || x>windowWidth-markSize || y>-markSize || y<-windowHeight+markSize) {
+					play_audio(stuck);
+				} else if (checkCollide(x,y)) {
+					if (level <= 0) {
+						play_audio(stuck);
+					} else {
+						collision();	
+					}
+				} else {
+			
+					// delete previous
+					context.beginPath();
+					context.arc(markX, markY, markSize+1, 0, 2 * Math.PI, false);
+					context.fillStyle = BG_COLOR;
+					context.fill();
+					
+					// add trail
+					context.beginPath();
+					context.arc(markX, markY, trailSize, 0, 2 * Math.PI, false);
+					context.fillStyle = TRAIL_COLOR;
+					context.fill();			
+					
+					context.beginPath();
+					context.arc(x, y, markSize, 0, 2 * Math.PI, false);
+					context.fillStyle = MARK_COLOR;
+					context.fill();
+					markX = x;
+					markY = y;
+					
+					if (checkWin(x,y)) {
+						winRound();	
+					}
+				}
+			} 
+		}
+		
+		function checkWin(x,y) {
+			
+			if (x>windowWidth - gap) {
+				return true;	
+			}
+			return false;
+		}
+		
+		function winRound() {
+			
+			refractory = true;
+			markX = markXgo;
+			markY = markYgo;
+			
+			if (level == 0) {
+				level ++;
+				play_audio(realTime);
+			} else {
+				score = score + 1;
+				checkLevel();			
+			}
+			if (level>0) { play_audio(win); } else if (level == -1 ) { play_audio(s002); }
+			clear();
+			if (tutorial && level == 0) {
+				tutorial = false;
+				setTimeout(function() { play_audio(startGame); }, 1000);
+				setTimeout(newRound, 4000);
+			} else { setTimeout(newRound, 2500); }
+
+			setTimeout(function() {	refractory = false; }, 1800 );
+		}
+		
+		function collision() {
+			play_audio(hit);
+			play_audio(tryAgain);
+			markX = markXgo;
+			markY = markYgo;
+			
+			newRound();
+			if (score > 0) {
+				score = score - 1;
+			}
+			
+			refractory = true;
+			setTimeout(function() {	refractory = false; }, 1600 );			
+		}
+		
+		
+		/* screen */
+		
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);	
+		
+		function resize() {
+			resize_canvas(canvas);
+			clear();
+			context.translate(0, windowHeight);
+			putCircle(0,0);
+			newRound();
+		}
+		
+		/* interface */		
+		
+		function goLeft() {
+			putCircle(markX-sideStep,markY);
+		}
+		
+		function goRight() {
+			putCircle(markX+sideStep,markY);
+		}		
+		
+		function goDown() {
+			putCircle(markX,markY+upStep);
+		}
+		
+		function goUp() {
+			putCircle(markX,markY-upStep);
+		}	
+		
+		function spaceBar() {	}		
+		
+		function clickFunc(x,y) {
+
+			if (x > windowWidth*2/3) {
+				goRight();
+			} else if (x < windowWidth/3) {
+				goLeft(); 
+			} else {
+				if (y < windowHeight/3) {
+					goUp();
+				} else if (y > windowHeight*2/3) {
+					goDown();
+				}
+			}
+		}
+		
+		window.addEventListener('keydown', function(e) { 
+			switch (e.keyCode) {
+				case 39:
+					goRight();
+					break;
+				case 40:
+					goDown();
+					break;
+				case 38:
+					goUp()
+					break;
+				case 37:
+					goLeft()
+					break;					
+				default:
+					break;
+			}
+		});
+  	
+	</script>
+	<script src="js/compatibility.js"></script>
+	<script src="js/mobileCheck.js"></script>	
+	
+</body></html>

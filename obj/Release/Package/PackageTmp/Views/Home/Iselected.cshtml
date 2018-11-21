@@ -1,0 +1,315 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>stage @Model.select_stage class @Model.select_level</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+
+        $(document).bind('keydown', 'shift+f1', function () {
+            if (document.getElementById("thePlayaudio").playbackRate < 3.50)
+                document.getElementById("thePlayaudio").playbackRate += 0.1;
+        });
+
+        $(document).bind('keydown', 'shift+f2', function () {
+            if (document.getElementById("thePlayaudio").playbackRate > 0.59)
+                document.getElementById("thePlayaudio").playbackRate -= 0.1;
+        });
+   
+
+    $(document).bind('keydown', 'ctrl', function () {
+            UIplayButton_click();
+    });
+
+    var startfrom;
+
+    function resize()
+    {
+        startFrom = document.getElementById("thePlayImage").offsetLeft;
+        foo = document.getElementById('fooObject'); // get the "foo" object
+        foo.style.left = startFrom + 'px'; // set its initial position to 0px
+        clearInterval(dd);
+    }
+
+    function adjust()
+    {
+        startfrom = document.getElementById("thePlayImage").offsetLeft - 25;
+        window.addEventListener('resize', resize , false);
+    }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="float-right">
+        <h3>
+            hello @Model.userid
+        </h3>
+    </div>
+    
+    @{
+        int thenumber = 0;
+        foreach (string path in Model.allBmpFiles)
+        {
+            thenumber+= path.Split(',').Count();
+        }
+        
+        <h5> This page contains @thenumber images, we can move between the images with tab and shift + tab buttons,
+         press ctrl to start and stop the audio</h5>    
+    }
+    <audio id="myBeep">
+        @{
+            string dds2 = "~/../../Sounds/" + Model.beep_noise;
+            <source src="@dds2" type="audio/mp3">
+        }
+    </audio>
+
+       <style>
+            h1, h2 {
+                font-size: 1em;
+            }
+
+           #fooObject {
+               /* simple box */
+               position: relative;
+               border-left: thick solid #FF0000;
+           }
+        </style>
+
+
+        <div id="container" style="width:100px">
+
+            <div id="menu" style="background-color: #FFFFFF; height: 200px; width: 100px; float: right;">
+
+                <table>
+                    <tr>
+                        <td>
+
+                @{
+                    string dds = "~/../../" + Model.currImagePath;
+
+                    <img id="thePlayImage" src="@dds" />
+                }
+
+                <div id="fooObject">
+                    &nbsp;
+                </div>
+
+
+                <table style="width:300px">
+                    <tr>
+                        <td>
+                            <button title="Play" id="UIplayButton" onclick="UIplayButton_click()">
+                                play and pause
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                <audio id="thePlayaudio" controls hidden="hidden" preload="auto" style="width:1px;height:1px">
+                    @{
+                        string dds3 = "~/../../" + Model.theUri;
+                        <source src="@dds3" type="audio/mp3">
+                    }
+                    Your browser does not support the audio element.
+                </audio>
+
+
+                <script type="text/javascript">
+
+    var play = false;
+
+    myAudio = document.getElementById("thePlayaudio");
+
+    handlerBeep = function () {
+        this.pause();
+        this.currentTime = 0;
+        this.play();
+        init();
+    }
+
+
+    myAudio.addEventListener('ended', handlerBeep, false);
+
+    myAudio.play();
+
+
+    var foo = null; // object
+    var dd;
+
+    function doMove() {
+
+        foo.style.left = parseInt(foo.style.left) + Math.floor(2 * (50 / @Model.ScanSpeed)* document.getElementById("thePlayaudio").playbackRate) + 'px';
+
+        if (parseInt(foo.style.left) > 250) {
+            clearInterval(dd);
+        }
+    }
+
+    function init() {
+        foo = document.getElementById('fooObject'); // get the "foo" object
+        foo.style.left = startfrom + 'px'; // set its initial position to 0px
+        clearInterval(dd);
+        dd = setInterval(doMove, 17);
+        var vid = document.getElementById("thePlayaudio");
+        vid.oncanplay = null;
+
+    }
+    function init1() {
+ 
+                                document.getElementById("thePlayaudio").pause();
+
+                                adjust();
+                            }
+          function init2() {
+                              
+                                var vid = document.getElementById("thePlayaudio");
+
+                                vid.oncanplay = null;
+
+                                myAudio.addEventListener('ended', handlerBeep, false);
+                                play = true;
+
+                                init();
+                            }
+    window.onload = init1;
+
+    function UIplayButton_click() {
+
+        if (play == false) {
+
+            if (foo == null)
+            {
+
+                init();
+
+
+                myAudio.addEventListener('ended', handlerBeep, false);
+                myAudio.play();
+                play = true;
+            }
+            else
+            {
+                clearInterval(dd);
+                myAudio.addEventListener('ended', handlerBeep, false);
+                myAudio.play();
+                play = true;
+
+                if (parseInt(foo.style.left) > 300 + startfrom) {
+                    init();
+                }
+                else
+                {
+                    dd = setInterval(doMove, 17);
+                }
+            }
+        }
+        else {
+            clearInterval(dd);
+            myAudio.removeEventListener('ended', handlerBeep, false);
+            play = false;
+            myAudio.pause();
+            myAudio.currentTime = 0;
+            foo.style.left = startfrom + 'px';
+        }
+
+    }
+
+
+
+
+                </script>
+
+                <script type="text/javascript">
+                    function ajax(tosend) {
+        $.ajax({
+            url: '@Url.Action("ajaxreg")',
+            type: 'post',
+            data: JSON.stringify({ fileName: tosend }),
+            contentType: 'application/json',
+            success: function (data) {
+                $("#thePlayImage").attr("src", "~/../../" + data.image);
+                $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+                var vid = document.getElementById("thePlayaudio");
+                clearInterval(dd);
+
+                vid.oncanplay = function() {
+                    init2();
+                };        
+                $("#thePlayaudio")[0].play();
+
+
+            }
+        });
+                    };
+
+                </script>
+
+                <table style="width:300px" id="pictures">
+                    @{
+                        int index2 = 0;
+                        foreach (string path in Model.allBmpFiles)
+                        {
+                            int more6 = 0; 
+                            @:<tr>
+                            string[] allfiles = path.Split(',');
+                            foreach (string file in allfiles)
+                            { 
+                                if (more6++ > 7)
+                                {
+                                    @:</tr>
+                                    @:<tr>
+                                    more6 = 0;
+                                }
+                                
+                                @:<td>
+                                {
+                                    @:<input type="hidden" name="selectedImage" value="@file" />
+                                    @: <button id="@index2" onclick="ajax('@file')"> <img src="~/../../@file" alt="@index2" id="pic @index2" style="width:75px" /> </button>
+                     
+                                }
+                                @:</td>
+                                index2++;
+                            }
+                            @:</tr>
+                        }
+                    }
+                </table>
+
+                
+
+            </div>
+
+
+
+    
+</div>
+
+</body>
+</html>

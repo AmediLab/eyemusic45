@@ -1,0 +1,25 @@
+﻿Lektion 1: weisse diagonale Linien
+Lektion 2: rot diagonale Linien 
+Lektion 3: grün diagonale Linien 
+Lektion 4: blau diagonale Linien 
+Lektion 5: gelb diagonale Linien
+Lektion 6: farbige diagonale Linien
+Lektion 7: horizontale Linien
+Lektion 8: mehrere Zeilen
+Lektion 9: vertikale Linien
+Lektion 10: alle Arten von Linien
+Lektion 11: parallele Linien
+Lektion 12: Formen
+Lektion 13: Zahlen
+Lektion 14: Lateinisches Alphabet, Grossbuchstaben
+Lektion 15: Wörter in Grossbuchstaben
+Lektion 16: Lateinisches Alphabet, Kleinbuchstaben
+Lektion 17: Wörter in Kleinbuchstaben
+Lektion 18: hebräischen Buchstaben
+Lektion 19: hebräische Wörter
+Lektion 20: Emoticons
+Lektion 21: Häuser
+Lektion 22: Beschreibungen von Körperteilen.
+Lektion 23: Die Simpsons
+Lektion 24: Objekte 
+Lektion 25: Lasst uns nun mehr Objekte lernen.

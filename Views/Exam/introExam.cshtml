@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "";
+}
+
+<script> var logged = 1; var id = 312; var nickname = 'ev';</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>select exam type</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.json-2.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.0.custom.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/jquery-ui-1.9.0.custom.css" />
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/design.css" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div class="float-right">
+        <h3>
+            hello @Model.userid
+        </h3>
+    </div>
+    <p class="site-title">Eye Music</p>
+
+    <h6> LINKS </h6>
+    <ul>
+        <li>
+            <a href="~/Exam/exam_specific_level"> exam on specific level </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/Exam/grades"> your grades </a>
+        </li>
+    </ul>
+
+</body>
+</html>

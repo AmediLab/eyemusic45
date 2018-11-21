@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> canon toturial	</title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/targetGame.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/drawShapes.js"></script>
+	<script src="js/joystick.js"></script>	
+	<script src="js/cannon_general.js"></script>
+	
+	<script>
+		screen_compatibility = 1;
+		voiceOver = true;
+		joystick();
+		var BG_COLOR = "black";
+		calcGrid();
+		createGrid();
+
+		// setup sounds	
+		var welcome = 'cannonGame/welcome.mp3';
+		var inst = 'cannonGame/keysInstructions.mp3';
+		var miss = 'cannonGame/miss.mp3';
+
+		var s001 = 'cannonGame/seeCannon.mp3';
+
+		// [ number of shapes , possible heights , possible sizes , possible shapes]
+		// setup target
+		var targetDefaultRadius;
+		var targetRadius;
+		var targetHeight;
+		var centerlize;
+		var distractor = true;
+		
+		// setup hit mark
+		var hitSpotY;
+		var hitSpotSize;
+		var hitSpotColor = "green";
+		var hitX;
+		
+		// setup cannon
+		var cannonX;
+		var cannonHalfWidth;
+		var cannonHeight;		
+		var CANNON_COLOR = 'white';
+		var angleBoundry = 75;
+		var CANNON_ACCURACY;
+		var NEEDED_ACCURACY = 10;		
+		
+
+		var score = 0;
+		var level = 1;
+		getLevel();
+		var cannonAngle = 0;
+		var hitAngle;
+		var dAngle;
+		var distRadius = 50;
+		var msg;
+		var refractory = false;
+		
+		// disable firing
+		var peaceTime = false;
+		var is_target = false;
+
+		var MAX_LEVEL = 7;
+		var POINTS_PER_LEVEL = 5;
+		
+		var gameStart = false;
+		var firstSoundFix = false;
+		function StartNewGame() {
+			
+			if (!mobilecheck) {
+				play_audio(welcome);
+				setTimeout(function(){
+					play_audio(inst) }, 1800);
+				firstSoundFix = true;
+				levelSettings();
+				context.translate(cannonX, windowHeight);
+				setTimeout(function() {
+					newRound(); },6500);
+			} else {	
+				play_audio(s001);
+				levelSettings();
+				context.translate(cannonX, windowHeight);
+				setTimeout(function() {
+				newRound(); },4700);				
+			}
+		}			
+		
+		var level_audio = 'cannonGame/welcome.mp3';
+		var lev_timeout;
+		function levelSettings() {
+
+			calcSizes();
+			
+			peaceTime = false;
+			// possible to hit
+			is_target = false;
+			
+			switch (level) {
+				case 1:
+					CANNON_ACCURACY = 30;
+					targetRadius = 0;
+					if (firstSoundFix) { 
+						level_audio  = 'cannonGame/seeCannon.mp3';
+					} 
+					distractor = false;
+					peaceTime = true;
+					break;
+				case 2:
+					level_audio  = 'cannonGame/seeCannon2.mp3' ;
+					CANNON_ACCURACY = 15;
+					targetRadius = 0;
+					distractor = false;
+					peaceTime = true;
+					break;		
+				case 3:
+					level_audio  = 'cannonGame/fireHow.mp3' ;
+					CANNON_ACCURACY = 30;
+					targetRadius = 0;
+					distractor = false;
+					break;							
+				case 4:
+					level_audio  = 'cannonGame/meetTarget.mp3' ;
+					CANNON_COLOR = BG_COLOR;
+					targetRadius = targetDefaultRadius*3/4;
+					distractor = false;
+					peaceTime = true;
+					break;				
+				case 5:
+					level_audio  = 'cannonGame/seeFace.mp3' ;
+					CANNON_COLOR = BG_COLOR;
+					targetRadius = 0;
+					distractor = true;
+					distRadius = targetDefaultRadius;
+					peaceTime = true;
+					break;			
+				case 6:
+					level_audio  = 'cannonGame/try.mp3' ;
+					CANNON_ACCURACY = 15;
+					targetRadius = targetDefaultRadius*3/5;
+					cannonHeight = windowHeight/2;
+					distractor = false;
+					peaceTime = false;
+					is_target = true;
+					distRadius = targetRadius;
+					break;	
+				case 7:
+					level_audio  = 'cannonGame/start.mp3'; 
+					targetRadius = 0;
+					CANNON_COLOR = BG_COLOR;
+					distractor = false;
+					peaceTime = true;
+					is_target = false;
+					break;	
+					
+				default:
+					window.location = "cannon.html";
+					break;					
+			}
+
+		}
+
+		function newRound() {
+			
+			levelSettings();
+			
+			play_audio(level_audio);
+			setTimeout(function() {
+					
+					context.clearRect(-cannonX , 0 , cannonX*2, - windowHeight);
+					var screenWidth = windowWidth; 
+					var targetY = -windowHeight + targetHeight;
+					
+					// find a hit angle
+					var maxAngle = Math.atan2(Math.abs(cannonX - centerlize),-targetY) * 180 / Math.PI;
+					maxAngle = maxAngle - maxAngle%CANNON_ACCURACY;
+					var steps = Math.floor(maxAngle / CANNON_ACCURACY) * 2;
+					hitAngle = -Math.floor(maxAngle) + Math.floor(Math.random()*(steps + 1))*CANNON_ACCURACY;
+					
+					
+					// find an x point for the target
+					var targetX = Math.tan(-hitAngle * Math.PI / 180) * targetY;		
+					
+					putTargetSimple(context,targetX,targetY,targetRadius);
+					if (distractor) {
+						var distX = Math.tan(-dAngle * Math.PI / 180) * targetY;	
+						putDistractor(0,targetY,distRadius);
+					}
+					
+					cannonAngle = 0; 
+					restartCannon();
+			
+			}, lev_timeout);
+		}
+		
+		function putDistractor(x,y,r) {
+			putSmiley(x,y,r,Math.floor(Math.random()*3));
+		}
+		
+		function restartCannon() {
+			
+			context.beginPath();
+			context.fillStyle = CANNON_COLOR;
+			context.fillRect(-cannonHalfWidth , -cannonHeight , cannonHalfWidth * 2 , cannonHeight*2);
+			
+			context.beginPath();
+			context.arc(0, 10, cannonHalfWidth * 2, 0, 2 * Math.PI, false);
+			context.fillStyle = CANNON_COLOR;
+			context.fill();
+		}
+		
+		function cannonShift(newAngel) {
+
+			if (!gameStart) { gameStart = true;
+								StartNewGame();
+								return; }	
+								
+			if (level == 4 || level == 5) {
+				level = level+1;
+				newRound();
+			}								
+								
+			if (Math.abs(newAngel) > angleBoundry) {
+				// play out of bounds sound
+				play_audio(stuck);
+			} else {
+			
+				context.clearRect(-cannonHeight*2 , 0 , cannonHeight*4, -cannonHeight - 10);
+				cannonAngle = newAngel;
+
+				context.rotate(cannonAngle * Math.PI / 180);
+				restartCannon();
+				context.restore();
+				
+				context.rotate(-cannonAngle * Math.PI / 180);
+
+			}			
+		}
+		
+		function fire() {
+		
+			if (!gameStart) { gameStart = true;
+								StartNewGame();
+								return; }	
+								
+			if (level == 4 || level == 5) {
+				level = level+1;
+				newRound();
+			}
+								
+			if (!peaceTime) {
+			
+				
+				hitmark(cannonAngle);
+				
+				if (is_target) {
+					if (Math.abs(cannonAngle - hitAngle) < NEEDED_ACCURACY) {
+						level = level+1;
+
+						setTimeout(function(){
+								play_audio(firehit); 
+								clear();
+								setTimeout(function(){
+									newRound();
+								}, 500);
+							}, 500);	
+					
+
+					} else {
+							setTimeout(function(){
+									play_audio(miss); 
+								}, 500);	
+					}
+				}
+			} else {
+			//	level = level+1;
+			//	newRound();	
+			}
+		}
+
+		function hitmark(cannonAngle) { 
+			var hitSpotY = targetHeight;
+			
+			// delete previous
+			context.beginPath();
+			context.arc(hitX, -windowHeight + hitSpotY, hitSpotSize*1.5, 0, 2 * Math.PI, false);
+			context.fillStyle = BG_COLOR;
+			context.fill();	
+
+			// add new
+			hitX = Math.tan(-cannonAngle * Math.PI / 180) * (-windowHeight + hitSpotY);
+		   context.strokeStyle = hitSpotColor;
+		   context.lineWidth = hitSpotSize / 4;
+
+		  context.beginPath();
+		  context.moveTo(hitX - hitSpotSize, -windowHeight + hitSpotY - hitSpotSize);
+		  context.lineTo(hitX + hitSpotSize, -windowHeight + hitSpotY + hitSpotSize);
+		  context.stroke();			
+		  
+		  context.beginPath();
+		  context.moveTo(hitX - hitSpotSize, -windowHeight + hitSpotY + hitSpotSize);
+		  context.lineTo(hitX + hitSpotSize, -windowHeight + hitSpotY - hitSpotSize);
+		  context.stroke();			  
+		}
+	
+		window.addEventListener('keydown', function(e) { 
+		
+			if (!gameStart) { gameStart = true;
+								StartNewGame();
+								return; }				
+		
+			if (MAX_LEVEL < level) {
+				window.location = "cannon.html";
+			}		
+		
+			switch (e.keyCode) {
+				case 39:
+					cannonShift(cannonAngle+CANNON_ACCURACY);
+					break;
+				case 37:
+					cannonShift(cannonAngle-CANNON_ACCURACY);
+					break;
+				case 38:
+					fire();
+					break;
+				case 32:
+					level = level+1;
+					newRound();		
+					break;
+			}
+
+		});	
+	
+		function clickFunc(x,y) {
+		
+			if (!gameStart) { gameStart = true;
+								StartNewGame();
+								return; }			
+		
+			if (MAX_LEVEL <= level) {
+				window.location = "cannon.html";
+			}				
+		
+			if (x <= windowWidth/3) {
+				cannonShift(cannonAngle-CANNON_ACCURACY);
+			} else if (x <= windowWidth*2/3) {
+				fire();
+			} else {
+				cannonShift(cannonAngle+CANNON_ACCURACY);
+			}
+			
+	
+		}
+		
+		function resize() {
+			resize_canvas(canvas);
+		}
+		
+		function goLeft() {
+			cannonShift(cannonAngle-CANNON_ACCURACY);
+		}
+		
+		function goRight() {
+			cannonShift(cannonAngle+CANNON_ACCURACY);
+		}		
+		
+		function goDown() {
+			fire();
+		}
+		
+		function goUp() {
+			fire();
+		}	
+		
+		function spaceBar() {	
+			if (!gameStart) { 
+				gameStart = true;
+				StartNewGame();
+				return; 
+			} else if (MAX_LEVEL <= level) {
+				window.location = "cannon.html";
+			} else { 
+				level = level+1;
+				newRound();
+			}	
+		}				
+  	
+	</script>
+	<script src="js/compatibility.js"></script>
+	<script src="js/mobileCheck.js"></script>	
+	
+	</body></html>

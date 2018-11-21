@@ -1,0 +1,73 @@
+﻿@model eyemusic45.Models.ViewModels.showUserAll
+
+@{
+    Layout = null;
+}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+        <!--table border="1" style="color:blue">
+
+            <tr>
+                <td><h3>Level</h3></td>
+                <td><h3>stage</h3></td>
+                <td><h3>descreption</h3></td>
+                <td><h3>date</h3></td>
+
+            </tr>
+
+
+            @foreach (var the_user in Model.for_train)
+            {
+                @:<tr>
+                @:<td>@the_user.level</td>
+                @:<td>@the_user.stage</td>
+                @:<td>@the_user.desc</td>
+                @:<td>@the_user.date</td>
+                @:</tr>
+            }
+
+        </table>
+            -->
+
+        <table border="1" style="color:blue">
+
+            <tr>
+                <td><h3>Level</h3></td>
+                <td><h3>stage</h3></td>
+                <td><h3>Num exam</h3></td>
+                <td><h3>Num correct</h3></td>
+
+            </tr>
+
+
+            @foreach (var the_user in Model.for_test)
+            {
+                    @:<tr>
+                    @:<td>@the_user.level</td>
+                    @:<td>@the_user.stage</td>
+                    @:<td>@the_user.num_exam</td>
+                    @:<td>@the_user.num_correct</td>
+                    @:</tr>
+            }
+
+        </table>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+all games should be compatible with IOS (and other) voice-over programs.
+the problem - voice-over does not allow clicking on random places on the screen,
+which is a necessity in html5 games.
+
+solution: the window is covered with <div> blocks in a table-like manner. 
+each div is a link and has text in it - so the voice-over considers it clickable.
+the player can then click anywhere on the screen and the client will see that
+the div is clicked.
+
+how it works:
+~~~~~~~~~~~~
+the game must have this row before the <script> part:
+	<script src="voiceOver.js"></script>
+
+now it should implement the following:
+	var horCells = (number of columns);
+	var verCells = (number of rows);
+	
+optional:
+	fillTableWithText(divText,horCells);
+
+this function will fill the cells with a given text, which is written in an array divText.
+the function puts each element in the array in a different div, from left to right and from
+top to bottom. the default text in the divs is "column X row Y".
+
+click actions are implemented like this:
+	function clickFunc(x,y)
+	
+when a div is clicked it calls this function implemented in the game with the coordinates
+of the div.
+
+that's it, good luck.

@@ -1,0 +1,5 @@
+White#w
+Red#r
+Blue#b
+Green#g
+Yellow#y

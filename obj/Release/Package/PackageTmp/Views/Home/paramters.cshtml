@@ -1,0 +1,172 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@Styles.Render("~/App_Themes/css")
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - eye music application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+    function volumeC(levelVol) {
+        $.ajax({
+            url: '@Url.Action("changeVol")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'post',
+            data: JSON.stringify({
+                Vol: levelVol
+            })
+        })
+        document.getElementById("volumeshow").innerHTML = levelVol;
+
+    }
+
+    window.onload = setspeed;
+
+    function setspeed()
+    {
+        document.getElementById("rangeshow").innerHTML = "@Model.ScanSpeedsecound" / 100;
+        document.getElementById("rangeshow2").value = "@Model.ScanSpeedsecound" / 100;
+        document.getElementById("volumeshow").innerHTML = "@Model.volume";
+        document.getElementById("typeshow").innerHTML =  "@Model.beep_noise".replace(".mp3","");
+        document.getElementById("filtershow").innerHTML = "";
+    }
+
+        function speedC(speed) {
+            if (speed < 0.25)
+                speed = 0.25;
+            else if (speed > 5)
+                speed = 5;
+        document.getElementById("rangeshow").innerHTML = speed;
+        document.getElementById("rangeshow2").value = speed;
+        document.getElementById("speed_range").value = speed;
+        var speed2 = speed * 100;
+
+
+        $.ajax({
+            url: '@Url.Action("changeSpeed")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'post',
+            data: JSON.stringify({
+                speed: speed2
+            })
+        })
+
+    }
+
+    function cngsC() {
+        ajaxBeep("click.mp3");
+    }
+
+
+    function cngsB() {
+        ajaxBeep("beep.mp3");
+    }
+
+
+    function cngsD() {
+        ajaxBeep("drum.mp3");
+    }
+    function cngsN() {
+        ajaxBeep("blank.mp3");
+    }
+
+    function ajaxBeep(wav) {
+        $.ajax({
+            url: '@Url.Action("changeBeep")',
+            contentType: 'application/json; charset=utf-8',
+            type: 'post',
+            data: JSON.stringify({
+                beepWav: wav
+            })
+        })
+
+        document.getElementById("typeshow").innerHTML = wav.replace(".mp3","");
+
+    }
+
+    function set1() {
+        document.getElementById('mytable 0').focus();
+    }
+
+    function set2() {
+        document.getElementById('pic 0').focus();
+    }
+</script>
+
+</head>
+<body>
+
+    <div class="float-right">
+        <h3>
+            hello @Model.userid
+        </h3>
+    </div>
+    
+            <div class="float-left">
+
+            <table style="height: 50px">
+
+                <tr>
+                    <td>
+                        <h6>Speed </h6>
+                        <h3>
+                            @{
+                                double fdfd = (int)Model.ScanSpeedsecound / 100;
+                                <input type="range" min="0.25" max="5" step="0.01" id="speed_range" value="@fdfd" onchange="javascript:speedC(this.value);" />
+                            }
+                            <input type="number" id="rangeshow2" value="@Model.ScanSpeedsecound / 100" onchange="javascript: speedC(this.value);" step="0.01" />
+                            seconds
+                        </h3>
+                    </td>
+                    <td>
+                        <h6> Cue type</h6>
+                        <button value="Beep" onclick="javascript:cngsB();">Beep </button>
+                        <button value="Drum" onclick="javascript:cngsD();"> Drum </button>
+                        <button value="Click" onclick="javascript: cngsC();"> Click </button>
+                        <button value="no cue" onclick="javascript: cngsN();"> no cue </button>
+                    </td>
+                    <td>
+                        <h6> Cue Volume </h6>
+                        <button value="Load" onclick="javascript:volumeC(1);"> Load </button>
+                        <button value="Medium" onclick="javascript: volumeC(0.6);"> Medium </button>
+                        <button value="Low" onclick="javascript:volumeC(0.3);"> Low </button>
+                    </td>
+                    <td>
+                        <h6> FILTERS</h6>
+                        <button value="Negative"> Negative </button>
+                        <button value="Black and white">Black and white </button>
+                    </td>
+
+                    
+                    
+                </tr>
+
+                <tr>
+                    <td>
+                        <h6> currrent paramters</h6>
+                        <h3> Speed      : <span id="rangeshow">@Model.ScanSpeedsecound / 100</span> seconds </h3>
+                        <h3> Cue type   : <span id="typeshow" /> </h3>
+                        <h3> Cue Volume : <span id="volumeshow" /> </h3>
+                        <h3> FILTERS    :                               <span id="filtershow" /> </h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <br />
+ 
+</body>
+</html>

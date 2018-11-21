@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/languages.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+        function doChange() {
+
+            if ("@Model.len" == "h")
+                window.lan = "h";
+            else
+                window.lan = "e";
+
+            document.getElementById("stepBlind").innerHTML = retstr(136);
+            document.getElementById("stepsee").innerHTML = retstr(135);
+            document.getElementById("stepseefirst").innerHTML = retstr(137);
+            document.getElementById("feedbackfinish").innerHTML = retstr(142);;
+            document.getElementById("OnlyExam").innerHTML = retstr(143);;
+        }
+
+        window.onload = doChange;
+
+    </script>
+
+    <title>step by step enter</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                <a href="~/ExpStep/see" id="stepsee"></a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <a href="~/ExpStep/blind" id="stepBlind"></a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="~/ExpStep/seeFirst" id="stepseefirst"></a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="~/ExpStep/feedbackfinish" id="feedbackfinish"></a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="~/ExpStep/OnlyExam" id="OnlyExam"></a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Retro Context for Canvas tutorialBasics</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Retro Context for Canvas</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.html">retro</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.Color.html">Color</a>
+						</li>
+						
+						<li>
+							<a href="retro.Context.html">Context</a>
+						</li>
+						
+						<li>
+							<a href="retro.Palette.html">Palette</a>
+						</li>
+						
+						<li>
+							<a href="retro.Point.html">Point</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.Context.html#event:keyEvent">keyEvent</a>
+						</li>
+						
+						<li>
+							<a href="retro.Context.html#event:mouseEvent">mouseEvent</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="tutorial-Basics.html">Basics</a>
+						</li>
+						
+						<li>
+							<a href="tutorial-Fonts.html">Fonts</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#Retro Context for HTML5 Canvas.">Retro Context for HTML5 Canvas.</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					<section>
+    
+<header>
+    
+
+    <h2>Basics</h2>
+</header>  
+
+<article>
+    <p><strong>Tutorials are work in progress!</strong></p>
+<h1>Introduction</h1><p>Retro context is a pseudo context object for canvas. It takes
+out all the good parts of the traditional 2D context such as
+anti-aliasing, alpha channel, high-resolution and performance - on
+purpose!</p>
+<p>Retro context will try to give you an old-school retro environment to
+work in, graphics-wise. That means you can use this context to create
+pixelated lines, circles, splines, dithered images and what have you.</p>
+<p>You can even use indexed palettes to get that real retro feel.</p>
+<p>The context is really simple to use. To set up a canvas and retro
+context you simply define your canvas element in the HTML page as:</p>
+<pre class="prettyprint source"><code>[canvas id=&quot;retro&quot; width=960 height=600 data-width=320 data-height=200][/canvas]</code></pre><p><em>(NOTE: due to a bug in JSDoc we are using square brackets above -
+replace with normal angle brackets in actual code).</em></p>
+<p>Notice that we added two data-* attributes. They are optionally but
+makes it easy to set the retro resolution we will emulate without
+using JavaScript.</p>
+<p>It is an advantage that you use the on-screen size as a multiple of
+the retro size, ie. 2x, 3x, 4x etc. as this will scale better and
+give better results (all pixels will be draw proportionally 1:1).</p>
+<p>To obtain the retro context you simply use these lines:</p>
+<pre class="prettyprint source"><code>var canvas = document.getElementById('retro');
+var ctx = canvas.getContext('2d');</code></pre><p>If you for some reason get in trouble with the browser for doing this
+you can optionally create the context this way:</p>
+<pre class="prettyprint source"><code>var ctx = new retro.Context(canvas);</code></pre><p>and set the retro resolution like this if you don't want to use the
+data-* attributes:</p>
+<pre class="prettyprint source"><code>ctx.resolution(320, 200);</code></pre><p>Now we are ready to draw to the canvas.</p>
+<h1>Basic setup</h1><p>As with the traditional 2D context we start with a transparent canvas.
+This is because in some cases you might want to layer them for
+performance reasons.</p>
+<p>To get a solid background you can do one of two things:</p>
+<ul>
+<li>Use bgColor to set background color on the <em>element</em></li>
+<li>Use fillBackground to set the background of the <em>context</em></li>
+</ul>
+<p>The difference is that bgColor() will affect the element directly and
+not the pixel buffer. This is a fast way to get a solid background
+without going through the trouble of updating the background if a
+part of it is for example cleared.</p>
+<p>The other way fills the entire surface with current fill color. If
+you use clear() or clearRect() then you will need to refill that area.</p>
+<h1>Chaining</h1><p>All methods of the retro context can be chained as long as they are not
+used as getters (returning current state):</p>
+<pre class="prettyprint source"><code>ctx .penColor(255, 255, 0)
+    .fillColor(null)
+    .rect(10, 10, 100, 100)
+    .penColor(255, 255, 255)
+    .circle(55, 55, 40, 40);</code></pre><p>and so on.</p>
+<h1>Getter / setter</h1><p>As a rule of thumb a setter method is also a getter when no arguments
+are given.</p>
+<pre class="prettyprint source"><code>ctx.resolution(320, 200);   // setter
+var res = ctx.resolution(); // getter</code></pre><p>Setters can be chained, getters can not.</p>
+<h1>Pens</h1><p>Retro context uses two pens for drawing:</p>
+<ul>
+<li>pen color</li>
+<li>fill color</li>
+</ul>
+<p>Pen color is used for lines, shape outlines and the setPixel method.
+Fill color is used to fill shapes such as circles, ellipses,
+rectangles and polygons.</p>
+<p>You need to set pens contrary to calling stroke() and fill() in a 2D
+context.</p>
+<p>If you for example only want a circle's outline you could do:</p>
+<pre class="prettyprint source"><code>ctx.fillColor(null)
+   .penColor(255, 255, 255)
+   .circle(16, 100, 90);</code></pre><p>This will create a white outlined circle with no fill. If you want to
+ only use fill you can use:</p>
+<pre class="prettyprint source"><code>ctx.fillColor(255, 255, 255)
+   .penColor(null)
+   .circle(16, 100, 90);</code></pre><p>And if you want to use two different colors just set both pens:</p>
+<pre class="prettyprint source"><code>ctx.fillColor(255, 255, 0)
+   .penColor(255, 255, 255)
+   .circle(16, 100, 90);</code></pre><p>This draws a yellow filled circle with a white outline.</p>
+<h1>Palettes</h1><p>One of the key aspects of retro computers was their limited colors.
+To day we take for granted 24-bit, or more than 16.7 millions colors
+available, always!</p>
+<p>In those days we had to work with bitplanes and the number of
+bitplanes determined the number of colors available. That was onthe
+high-end 8-bit computers such as the Commodore Amiga (which did have
+a HAM mode giving 4096 colors - in 1985).</p>
+<p>Before that it was only a pre-defined collection of colors such as
+the 16 colors on the Commodore CBM 64 and so on.</p>
+<p>We have made this aspect available through the palette() method. To
+use indexed palettes (only simulated of course as canvas is always
+24-bit).</p>
+<p>Retro context comes with a bunch of built-in retro palettes. Lets set
+ one of those and see how we can use its colors:</p>
+<pre class="prettyprint source"><code>var palette = new retro.Palette('C64');</code></pre><p>This creates a palette object with the 16 colors from the CBM 64. Now
+we set it like this:</p>
+<pre class="prettyprint source"><code>ctx.palette(palette);</code></pre><p>You can also pass an array or a name directly to the method and it will
+create a palette object for you internally:</p>
+<pre class="prettyprint source"><code>ctx.palette('ZXSPECTRUM');
+ctx.palette([[0,0,0], [255,255,255]]);</code></pre><p>Now we can use indexes instead of RGB values:</p>
+<pre class="prettyprint source"><code>ctx.penIndex(1);   // index 1
+ctx.fillIndex(-1); // no fill
+ctx.bgIndex(0);    // index 0</code></pre><p>This sets pen color at index 1 (white in this case). The same goes for
+fill and background pens. Use -1 to indicate no color. Setting indexes
+overrides colors set by using RGB and vice versa.</p>
+<p>You can even combine RGB values with indexes in case you want to
+force a particular color.</p>
+<p>A palette can also be used with drawImage() when you want to convert
+it to an index palette.</p>
+<h1>Performance</h1><p>There are two ways to draw graphics with the retro context:</p>
+<ul>
+<li>Draw graphics directly to the screen (auto-commit)</li>
+<li>Buffer draw operations and commit to screen at the same time</li>
+</ul>
+<p>For typical usage where you need simple drawings and in-frequent
+updates the first method is sufficient.</p>
+<p>For applications where you need high performance you should use the
+second technique.</p>
+<p>To toggle this mode you can use the method:</p>
+<pre class="prettyprint source"><code>ctx.autoCommit(mode);</code></pre><p>where mode is a boolean value.</p>
+<p>If you disable auto-committing remember to call commit() everytime
+you need to update the screen:</p>
+<pre class="prettyprint source"><code>ctx.commit();</code></pre><p>So if we draw a sequence of objects with auto-commit enabled we would
+ do:</p>
+<pre class="prettyprint source"><code>ctx.rect(10, 10, 100, 100)
+   .circle(50, 50, 30)
+   .line(5, 5, 200, 200)
+   ;</code></pre><p>(notice that all methods are chainable as long as you don't use them
+as getters).</p>
+<p>This will update the screen for each call. If we need to draw shapes
+as fast as we can we would use this approach instead:</p>
+<pre class="prettyprint source"><code>ctx.autoCommit(false)
+   .rect(10, 10, 100, 100)
+   .circle(50, 50, 30)
+   .line(5, 5, 200, 200)
+   .commit()
+   ;</code></pre><p>Almost identical just with a couple of methods extra but at a better
+performance (this is obviously more evident when you need to call many
+draw operations).</p>
+<p>You can leave auto-commit disabled and just use commit() from this
+point on.</p>
+<p>We don't recommend using retro context for native screen resolutions
+higher than the &quot;high definition&quot; resolution in the old school days,
+for example 640 x 400. Retro context is not suitable for animation on
+higher resolution than this. For static graphic there shouldn't be
+much problems however.</p>
+</article>
+
+</section>  
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		Copyright &copy; 2013-2014 Epistemex.
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a>
+		using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+			    anchorName  : function(i, heading, prefix) {
+					return $(heading).attr("id") || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>

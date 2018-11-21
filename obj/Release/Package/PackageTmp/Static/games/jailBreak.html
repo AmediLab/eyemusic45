@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> Jail Break </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="js/grid.js"></script>
+	
+	<script>
+		voiceOver= false;
+		joystick_control = true;
+
+		// touch screen table settings
+		if (joystick_control) {
+			
+			voiceOver = true;
+			joystick();
+			
+		} else {
+			horCells = 3;
+			verCells = 4;
+			if (voiceOver) {
+				createTable(horCells,verCells);
+			}
+		}
+
+		var BG_COLOR = "black";
+
+		
+		// setup level
+		var holeSize = [2];
+		var barHeight = [5];
+		var holeStart = [0];
+		var obstacles = 1;
+		var level_audio;
+		var level_audio_play = 1;
+		colSpace = 0;
+		
+		var carX = 2;
+		var carY = 1;
+		var carWidth = 2;
+		
+		// setup sounds
+		var stuck = 'cannonGame/stuck.'+SOUND_FORMAT;
+		var win = 'mazeGame/success.'+SOUND_FORMAT;
+		var hit = SOUND_FORMAT+'/laser.'+SOUND_FORMAT;
+		var tryAgain = SOUND_FORMAT+'/tryAgain.'+SOUND_FORMAT;
+		var hitWall = 'jailBreak/hitWall.mp3';
+		var theme = 'jailBreak/theme.mp3';
+		var welcome = 'jailBreak/welcome.mp3';
+		mid = "jailBreak/mid.mp3";
+		mid_volume = 0.3;
+		
+		var s001 = "jailBreak/corridors.mp3";
+		
+		/*  game setup  */
+		var level = 0;
+		getLevel();
+		if (level == -3) {
+			startMessage = startMessages[1];
+		}		
+		var score = 0;
+		var MAX_LEVEL = 12;
+		var default_POINTS_PER_LEVEL = 2;
+		var POINTS_PER_LEVEL = default_POINTS_PER_LEVEL;
+		var corridor_l = 2;
+		var corridor_r = 2;
+		var hold = {value: false, valuetimeout: 1500};
+		
+		calcGrid();
+		gridY = 10;
+		
+		
+		function newGame() {
+			if (!mobilecheck) {
+				play_audio(welcome);
+				setTimeout(function() { play_audio(theme); },800);
+				setTimeout(newRound,4200);
+			} else {
+				newRound();
+			}
+		}
+		
+		function newRound() {
+			hold.value = true;
+			level_settings();
+			grid = createGrid(gridX,gridY);
+			clear();
+			
+			setTimeout(function() {
+				if (obstacles==1) { barHeight[0] = randHeight(); }
+				else { barHeight = [gridY-6,gridY-2]; }
+					
+				for (var i=0 ; i<=obstacles-1 ; i++) {
+					putBar(i,barHeight[i],holeSize[0],randHole(holeSize[0]));
+				}
+				putCorridor(corridor_l,corridor_r);
+				reallyputCar(carY,carX);
+				
+			}, level_audio_play);
+			
+			level_audio_play = 1000;
+		}		
+		
+		function level_settings() {
+
+			POINTS_PER_LEVEL = default_POINTS_PER_LEVEL;
+			level_audio_play = 1800;
+			level_audio = '';
+			carX = 3;
+			carY = 1;
+			obstacles = 1;
+
+			switch (level) {
+
+				case -3:
+					level_audio = "jailBreak/corridors.mp3";		
+					POINTS_PER_LEVEL = 1;
+					level_audio_play += 3000;				
+					obstacles = 0;
+					holeSize[0] = 6;
+					carWidth = 0;
+					break;				
+			
+				case -2:
+					POINTS_PER_LEVEL = 1;
+					level_audio = "jailBreak/seemark.mp3";
+					level_audio_play += 3000;				
+					obstacles = 0;
+					holeSize[0] = 3;
+					carWidth = 1;
+					break;			
+			
+				case -1:
+					POINTS_PER_LEVEL = 1;
+					level_audio = "jailBreak/seeWall.mp3";
+					level_audio_play += 3000;				
+					obstacles = 1;
+					holeSize[0] = 3;
+					carWidth = 1;
+					break;					
+			
+				case 0:				
+					if (newLevel) {
+						level_audio = "jailBreak/gameStartDontHitWall.mp3";
+						level_audio_play += 3300;
+					}				
+					holeSize[0] = 6;
+					carWidth = 1;
+					break;
+
+				case 1:			
+					holeSize[0] = 4;
+					carWidth = 1;
+					break;			
+			
+				case 2:			
+					holeSize[0] = 3;
+					carWidth = 1;
+					break;					
+					
+				case 3:			
+					holeSize[0] = 2;
+					carWidth = 1;
+					break;	
+
+				case 4:			
+					holeSize[0] = 3;
+					carWidth = 2;
+					break;	
+
+				case 5:			
+					holeSize[0] = 3;
+					carWidth = 3;
+					break;	
+
+				case 6:			
+					holeSize[0] = 2;
+					carWidth = 2;
+					break;	
+
+				case 7:			
+					holeSize[0] = 1;
+					carWidth = 1;
+					break;	
+
+				case 8:		
+					if (newLevel) {
+						level_audio = "jailBreak/twoGates.mp3";
+						level_audio_play += 2800;
+					}
+					obstacles = 2;
+					holeSize[0] = 4;
+					carWidth = 1;
+					holeSize[1] = 4;					
+					break;		
+
+				case 9:			
+					obstacles = 2;
+					holeSize[0] = 4;
+					carWidth = 1;
+					holeSize[1] = 3;					
+					break;	
+
+				case 10:			
+					obstacles = 2;
+					holeSize[0] = 3;
+					carWidth = 1;
+					holeSize[1] = 3;					
+					break;		
+
+				case 11:			
+					obstacles = 2;
+					holeSize[0] = 2;
+					carWidth = 1;
+					holeSize[1] = 3;					
+					break;	
+
+				case 12:			
+					obstacles = 2;
+					holeSize[0] = 2;
+					carWidth = 1;
+					holeSize[1] = 2;					
+					break;						
+					
+				default:
+					break;	
+			}
+			
+			newLevel = false;
+			if (!mobilecheck) {
+				setTimeout(function() { play_audio(level_audio); 
+				assignment_after_duration(hold, false, level_audio);
+				},2300);
+			} else {
+				assignment_after_duration(hold, false, level_audio);
+				play_audio(level_audio);
+			}
+
+		}
+
+		
+		function randHeight() {
+			// get a random height for the bar (3 : gridY-1)
+			return Math.floor(Math.random()*(gridY-4))+3;
+		}
+		
+		function rand_different(h0) {
+			// get a random height for another bar that's not to close to the first one
+			var h = h0;
+			var timeout = 0;
+			while (Math.abs(h - h0) <= 1) {
+				h = Math.floor(Math.random()*(gridY-4))+3;
+				timeout ++;
+				if (timeout >= 50) { alert(); break; }
+			} return h;
+		}		
+		
+		function randHole(holeSize) {
+			// random x location for the start of the hole:
+			// at least one block remains on each side
+			return Math.floor(Math.random()*(gridX-holeSize-6))+3;
+		}
+		
+		function putCorridor(l,r) {
+		
+			for (var i = 0 ; i<l ; i++) {
+				for (var j = 0 ; j<=gridY ; j++) {
+					if (i == l-1) {
+						clearSquare(i,j,"white","white");
+					} else {
+						clearSquare(i,j,"black","black");
+					}
+				}
+			}
+			
+			for (var i = gridX-r ; i<gridX ; i++) {
+				for (var j = 0 ; j<=gridY ; j++) {
+					if (i == gridX-r) {
+						clearSquare(i,j,"white","white");
+					} else {
+						clearSquare(i,j,"black","black");
+					}
+				}
+			}			
+		}
+		
+		function putBar(i,height,holeSize,holeX) {
+			for (var j=0; j<=gridX - 1 ; j++) {
+				clearSquare(j,height,"white","black");
+			}
+			
+			barHeight[i] = height;
+			holeStart[i] = holeX;
+			
+			for (var j=holeStart[i]; j<=holeStart[i]+holeSize-1 ; j++) {
+				clearSquare(j,height,"black","black");
+			}
+		}
+		
+		// prevent using hitWall.play() too often
+		var hitWall_Ref = false;
+		var hitWall_Ref_time = 4000;
+		function putCar(y,x) {
+
+			if (hold.value) { return; }
+			else { reallyputCar(y,x); }
+			
+		}
+		
+		function reallyputCar(y,x) {
+			// put a car without checking "hold.value"
+			var tempx = carX;
+			var tempy = carY;
+		
+			for (var i = carX; i<carX + carWidth ; i++) {
+				clearSquare(i,carY,"black","black");
+			}
+			carX = x;
+			carY = y;
+		
+			for (i = 0 ; i<= obstacles - 1 ; i++) {
+				if (carY == barHeight[i]) {
+					if (carX < holeStart[i] || carX + carWidth - 1 > holeStart[i] + holeSize[i] - 1) {
+						// hit a wall
+						play_audio(hit);
+						if (level<0) { // tutorial - no damage
+							if (!hitWall_Ref) {	play_audio(hitWall); }
+							hitWall_Ref = true;
+							carX = tempx;
+							carY = tempy;
+							setTimeout(function() { hitWall_Ref = false; }, hitWall_Ref_time);
+						} else { // real game
+							if (score > 0) {	score = score - 1; }
+							newRound();
+							return;
+						}
+					}
+				} 
+			}
+			if (carY >= gridY - 1) {
+				play_audio(win);
+				score = score+1;
+				checkLevel();
+				newRound();
+				return;
+			}
+			
+			// draw the car
+			for (var j = carX; j<carX + carWidth ; j++) {
+				clearSquare(j,carY,"blue","black");
+			}	
+
+		}
+		
+		/* screen */
+		
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);	
+		
+		function resize() {
+			resize_canvas(canvas);
+			clear();
+			grid = createGrid(gridX,gridY);
+			paint();
+		}
+		
+		function paint() {
+			putCar(carY,carX);
+			for (var i=0 ; i<=obstacles-1 ; i++) {
+				putBar(i,barHeight[i],holeSize[0],holeStart[i]);
+			}
+			putCorridor(corridor_l,corridor_r);
+		}
+		
+		/* interface */		
+		
+		function goLeft() {
+			if (carX == corridor_l) {
+				play_audio(stuck);
+			} else {
+				putCar(carY, carX -1);
+			}
+		}
+		
+		function goRight() {
+			if (carX == gridX - carWidth - corridor_r) {
+				play_audio(stuck);
+			} else {
+				putCar(carY, carX +1);
+			}
+		}		
+		
+		function goDown() {
+			putCar(carY + 1, carX);	
+		}
+		
+		function goUp() {
+			if (carY == 0) {
+				play_audio(stuck);
+			} else {		
+			putCar(carY - 1, carX);	
+			}	
+		}
+		
+		function spaceBar() {
+	
+			if (level==-3 && gameStart) {
+				level++;
+				newRound();
+			}
+		}
+		
+		function clickFunc(x,y) {
+
+			if (x > windowWidth*2/3) {
+				goRight();
+			} else if (x < windowWidth/3) {
+				goLeft(); 
+			} else {
+				if (y < windowHeight/3) {
+					goUp();
+				} else if (y > windowHeight*2/3) {
+					goDown();
+				}
+			}
+		}
+		
+		window.addEventListener('keydown', function(e) { 
+
+			switch (e.keyCode) {
+				case 39:
+					goRight();
+					break;
+				case 40:
+					goDown();
+					break;
+				case 38:
+					goUp()
+					break;
+				case 37:
+					goLeft()
+					break;					
+				default:
+					break;
+			}
+		});
+  	
+	</script>
+	<script src="js/mobileCheck.js"></script>	
+	
+</body></html>

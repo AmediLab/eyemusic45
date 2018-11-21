@@ -1,0 +1,44 @@
+﻿@model List<eyemusic45.Models.ViewModels.userList>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TrainResualtSelect</title>
+</head>
+<body>
+    <div>
+
+@using (Html.BeginForm("TrainResualt", "Home",  FormMethod.Post))
+    {
+        <fieldset>
+            <select id="userId" name="userId">
+                <option id="0" value=" "> </option>
+
+                @foreach (var the_user in Model)
+                {
+                    @:<option id="@the_user.ID" value="@the_user.ID">@the_user.name</option>
+                }
+
+            </select>
+
+            <input type="submit" value="בחר שם מרשימה" id="createsub" />
+
+            </fieldset>
+    }
+
+    @using (Html.BeginForm("TrainResualtName", "Home", FormMethod.Post))
+    {
+       <!--fieldset>
+           <input id="NameInput" type="text" name="NameInput" /> 
+                <input type="submit" value="בחר לפי שם" id="createsub" />
+       </!--fieldset-->
+    }
+    </div>
+</body>
+</html>

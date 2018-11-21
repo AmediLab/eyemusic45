@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> EM tutorial - basic </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/drawShapes.js"></script>
+	
+	<script>
+		voiceOver= false;
+		screen_compatibility = 1;
+		joystick_control = true;
+
+		startMessage = startMessages[1];
+		
+		// touch screen table settings
+		if (joystick_control) {
+			
+			voiceOver = true;
+			joystick();
+			
+		} else {
+			horCells = 3;
+			verCells = 4;
+			if (voiceOver) {
+				createTable(horCells,verCells);
+			}
+		}
+		
+		
+		var BG_COLOR = "black";
+		
+		// setup level
+		var current_shape = 0; 
+		// var SHAPES = [square, circle, triangle, exe];
+		var ghost_shape = 3;
+		var food_shape = 1;
+		
+		var current_color = 2; 
+		// var COLORS = ["red","yellow","white","blue"];
+		var ghost_color = 3;
+		var food_color = 0;
+		var obs_color = 1;
+		
+		var move = {value: true};
+		
+		var onlyVer = false;
+		var onlyHor = false;
+		var alternate_shapes = false;
+		var alternate_colors = false;
+
+		var MIN_OBS_SPACE = 3;
+		var level_skippable = true;
+		var BONUS_LEVEL;
+
+		// setup sounds
+		var stuck = 'cannonGame/stuck.'+SOUND_FORMAT;
+		var win = 'mazeGame/success.'+SOUND_FORMAT;
+
+		var seeGhosts = "emTraining2/intro.mp3";
+		
+		var lev1 = "emTraining2/intro.hearshape.mp3";
+		var lev2 = "emTraining2/height.updown.mp3";
+		var lev3 = "emTraining2/click.leftRight.mp3";
+		var lev4 = "emTraining2/moveAround1.mp3";
+		var lev5 = "emTraining2/squareToTriangle.mp3";
+		var lev6 = "emTraining2/exeLast1.mp3";
+		var lev7 = "emTraining2/switch.shapes.mp3";
+		var lev8 = "emTraining2/colors.red.square.mp3";
+		var lev9 = "emTraining2/blue.square.mp3";
+		var lev10 = "emTraining2/alternate.colors.mp3";
+		var lev11 = "emTraining2/last.challange.mp3";
+		var lev99 = "emTraining2/keep.playing.mp3";
+		
+		var mid = "pacman/mid.mp3";
+		
+		/*  game setup  */
+
+		var level = 0;
+		getLevel();
+		var score = 0;
+		var MAX_LEVEL = 5;
+		var POINTS_PER_LEVEL_DEF = 1;
+		var POINTS_PER_LEVEL = POINTS_PER_LEVEL_DEF;
+		var enemies = 0;
+		var food = 0;
+		var first_in_lvl = true;
+		
+		var PLAYER_SPACE_X = 3;
+		var PLAYER_SPACE_Y = 3;
+
+		
+		var foodx;
+		var foody;
+		
+		calcGrid();
+		colSpace = 3;	
+		
+		function newGame() {
+			stopEM();
+			gameStart = true;
+			newRound();
+		}
+
+		function newRound() {
+
+			clear();
+			level_settings();
+			grid = createGrid(gridX,gridY);
+			markGap(2);
+
+			put_obstacles(grid,obs_number);
+			put_food(grid,food);
+			put_ghosts(grid,enemies);
+			markGap(0);
+			
+			x = 2;
+			y = 2;
+			player = [x,y];
+			putPlayer(x,y);
+			
+		}
+		putPlayer(1,2);
+		function level_settings() {
+			
+			var inst; // level instructions
+			POINTS_PER_LEVEL = POINTS_PER_LEVEL_DEF;
+			current_shape = 1;
+			var refractory_skip = 5000;
+			var refractory_time_no_inst = 1000;
+			onlyVer = false;
+			onlyHor = false;
+			move.value= false;
+			alternate_shapes = false;
+			
+			switch (level) {
+			
+			case 0: // square - not moving
+				current_color = 2;
+				current_shape = 0;
+				inst = lev1;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				onlyVer = true;
+				onlyHor = true;
+				break;	
+				
+			case 1: // square - moving vertically
+				current_color = 2;
+				current_shape = 0;
+				inst = lev2;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				onlyVer = true;
+				level_skippable = true;
+				break;	
+
+			case 2: // square - moving horizontally
+				current_color = 2;
+				current_shape = 0;
+				inst = lev3;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				onlyHor = true;
+				level_skippable = true;
+				break;
+
+			case 3: // square - moving everywhere
+				current_color = 2;
+				current_shape = 0;
+				inst = lev4;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				break;					
+
+			case 4: // triangle
+				current_color = 2;
+				current_shape = 2;
+				inst = lev5;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				break;						
+			
+			case 5: // exe
+				current_color = 2;
+				current_shape = 3;
+				inst = lev6;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				break;
+				
+			case 6: // alternate shapes
+				current_color = 2;
+				current_shape = 0;
+				inst = lev7;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				alternate_shapes = true;
+				break;					
+				
+			case 7: // square - red
+				current_color = 0;
+				current_shape = 0;
+				inst = lev8;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				break;	
+
+			case 8: // square - blue
+				current_color = 3;
+				current_shape = 0;
+				inst = lev9;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				break;	
+				
+			case 9: // alternate colors
+				current_color = 2;
+				current_shape = 0;
+				inst = lev10;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				level_skippable = true;
+				alternate_colors = true;
+				break;					
+
+			case 10: // go to target
+				alternate_colors = false;
+				current_color = 2;
+				current_shape = 0;
+				inst = lev11;
+				obs_number = 0;
+				enemies = 0;
+				food = 1;
+				level_skippable = false;
+				break;
+
+
+			case 11: // keep going to target
+				current_color = 2;
+				current_shape = 0;
+				inst = lev99;
+				obs_number = 0;
+				enemies = 0;
+				food = 1;
+				score = 0;
+				POINTS_PER_LEVEL = 2;
+				level_skippable = false;
+				break;	
+
+			default: // keep going to target
+				current_color = 2;
+				current_shape = 0;
+				inst = mid;
+				obs_number = 0;
+				enemies = 0;
+				food = 1;
+				score = 0;
+				POINTS_PER_LEVEL = 2;
+				level_skippable = false;
+				break;						
+
+			}
+
+			stopEM();
+			play_func(inst, enable_move_EM);
+
+			if (level_skippable)
+			{
+				level_skippable = false;
+				setTimeout(function() { level_skippable = true; }, refractory_skip);
+			}
+
+		}
+		
+		function markGap(n) {
+			for (var gapx=0 ; gapx<=PLAYER_SPACE_X ; gapx++) {
+				for (var gapy=0 ; gapy<=PLAYER_SPACE_Y ; gapy++) {
+					grid[gapx][gapy] = n;
+				}
+			}
+		}
+		
+		function put_obstacles(grid, n) {
+			// n = total number of obstacle *blocks*
+			var blocks = 0;
+			var startx;
+			var starty;
+			var timout = 0;
+			var add  = true;
+			
+			while (blocks < n && timout < 100) {
+
+				start = false;
+				while (!start) {
+					startx = Math.floor(Math.random()*(gridX - 1)) + 1;
+					starty = Math.floor(Math.random()*(gridY - 1)) + 1;
+					
+					start = checkEmpty(startx-2,startx+2,starty-2,starty+2);
+					
+					timout++;
+					if (timout>100) {
+						break;
+					}					
+				}
+				
+				obstacle(startx,starty);
+				blocks++;
+				
+				// direction can be 1 for horizontal obstacle - unused
+				var direction; // Math.floor(Math.random()*2);
+				direction = 0;
+				add = true;
+				var nextX = startx;
+				var nextY = starty;
+				var row = 0;
+				
+				while (add) {
+					// checks if there is a 4*3 space around the next block
+					switch(direction) {
+						case 1:	// go right
+							if (!checkEmpty(nextX+1,nextX+3,nextY-2,nextY+2)) {
+								add = false;
+								break;
+							}
+							nextX++;
+							break;
+						default: // go up
+							if (!checkEmpty(nextX-2,nextX+2,nextY-1,nextY-3)) {
+								add = false;
+								break;
+							}						
+							nextY--;
+							break;
+					}
+					
+					if (add) {
+						obstacle(nextX,nextY);
+						blocks++;
+						row++;
+						// row: number of blocks in current obstacle. must be smaller then gridY-MIN_OBS_SPACE
+					
+						if (blocks >=n || row >=gridY-MIN_OBS_SPACE) {
+							add = false;
+							row = 0;
+							break;
+						}
+					}
+					
+					timout++;
+					if (timout>200) {
+						break;
+					}	
+				}
+				
+				useCol(nextX);
+			}	
+		}
+
+		function obstacle(x,y) {
+			grid[x][y] = 2;
+			clearSquare(x,y,"white","black");
+		}
+		
+		function put_food(grid,n) {
+			
+			var put = 0;
+			var posx;
+			var posy;
+			var timeout = 0;
+			var half_width = Math.floor(gridX / 2);
+			
+			while (put < n) {
+				posx = Math.floor(Math.random()*(half_width - 1)) + half_width;
+				posy = Math.floor(Math.random()*(gridY - 1)) + 1;			
+				if (grid[posx][posy] == 0) {
+					putfood(posx,posy);
+					put ++;
+				}
+				
+				if (timeout > 150) { food = put;
+					if (put == 0) { alert(); }
+					break; } else {timeout++; }
+			}
+		}
+
+		function putfood(x,y) {
+			foodx = x;
+			foody = y; 
+			draw_shape_to_grid(x,y,food_color,food_shape);
+			if (!BONUS_LEVEL) { useCol(x); }
+			grid[x][y] = 1;
+		}
+
+		function put_ghosts(grid,n) {
+			
+			var put = 0;
+			var posx;
+			var posy;
+			var timeout = 0;
+
+			for (var i=1 ; i<=n; i++) {
+				while (put < n) {
+					posx = Math.floor(Math.random()*(gridX - 1)) + 1;
+					posy = Math.floor(Math.random()*(gridY - 1)) + 1;		
+					if (grid[posx][posy] == 0) {
+						ghost(posx,posy);
+						put ++;
+					}
+					
+					if (timeout > 50) { break; } else {timeout++; }
+				}
+			}
+		}
+		
+		function ghost(x,y) {
+			draw_shape_to_grid(x,y,ghost_color,ghost_shape);
+			useCol(x);
+			grid[x][y] = 3;
+		}
+		
+		function useCol(x) {
+			// mark a collumn as used so nothing else will appear there
+			for (var i= 0 ; i<grid[x].length ; i++) {
+				if (grid[x][i] == 0) {
+					grid[x][i] = 5;
+				}
+			}
+		}
+		
+		
+		
+		function go(x,y) {
+			// check the location x,y and move pacman there if possible
+			if (!move.value) {
+				return;
+			}
+			
+			if (alternate_shapes)
+			{ // [square, circle, triangle, exe];
+				current_shape ++;
+				switch (current_shape)
+				{
+					case 4:
+						current_shape = 0;
+						break;
+					case 1:
+						current_shape = 2;
+						break;
+				}
+				x= player[0];
+				y = player[1];
+			}
+			
+			if (alternate_colors)
+			{ //  ["red","yellow","white","blue"];	
+				current_color ++;
+				
+				switch (current_color)
+				{
+					case 4:
+						current_color = 0;
+						break;
+					case 1:
+						current_color = 2;
+						break;
+				}
+				
+				x = player[0];
+				y = player[1];				
+			}
+									
+			// touch edge of the screen
+			if (x<0 || x>gridX-1 || y<0 || y>gridY-1) {
+				play_audio(stuck);
+			} 
+			
+			else {
+				
+				
+				switch (grid[x][y]) {
+					case 1: // got food
+						food --;
+						var yummy = 'mp3/munch.mp3';
+						play_audio(yummy);
+						grid[x][y] = 0;
+						putPlayer(x,y);
+						checkWin();
+						break;
+						
+					case 2: // hit wall
+						play_audio(stuck);
+						break;
+						
+					case 3: // hit ghost
+						putPlayer(x,y);
+						first_in_lvl = false;						
+						play_audio(scream);
+						if (score > 0 )
+							score = score - 1;
+						setTimeout(clear,300);
+						setTimeout(function() { play_audio(hit_ghost); },300);
+						setTimeout(newRound, 1300);
+						break;
+						
+					default: // just move
+						putPlayer(x,y);
+						break;
+				}
+			}
+			
+		}
+		
+
+		
+		function putPlayer(x,y) {
+			clear();
+			player = [x,y];
+			draw_shape_to_grid_large(x,y,current_color,current_shape);
+			if (food > 0) {
+				putfood(foodx, foody);
+			}
+		}
+		
+		function checkWin() {
+			
+			if (food <= 0) {
+
+				play_audio(win)
+				first_in_lvl = false;
+				score++;
+				if (score >= POINTS_PER_LEVEL)
+				{
+					level ++;
+					points = 0;
+					first_in_lvl = true;
+				}
+				setTimeout(newRound, 1300);
+			}
+		}
+		
+		
+		/* screen */
+		
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);	
+		
+		var tempGrid;
+		function resize() {
+			clear();
+			resize_canvas(canvas);
+			tempGrid = jQuery.extend(true, {}, grid);
+			grid = createGrid(gridX,gridY);		
+			paint();
+		}
+		
+		function paint() {
+			for (var i=1 ; i<gridX ; i++) {
+				for (var j=0; j<gridY ; j++) {
+					switch (tempGrid[i][j]) {
+						case 2:
+							obstacle(i,j);
+							break;
+						case 1:
+							putfood(i,j);
+							break;
+						case 3:
+							ghost(i,j);
+							break;
+					}
+				}
+			}
+
+			putPlayer(player[0],player[1]);
+		}
+		
+		function skip_level() {
+			level ++;
+			newRound();
+		}
+		
+		/* interface */		
+		
+		function goLeft() {
+			if (onlyVer) return;
+			go(player[0]-1,player[1]);
+		}
+		
+		function goRight() {
+			if (onlyVer) return;
+			go(player[0]+1,player[1]);
+		}		
+		
+		function goDown() {
+			if (onlyHor) return;
+			go(player[0],player[1]+1);
+		}
+		
+		function goUp() {
+			if (onlyHor) return;
+			go(player[0],player[1]-1);
+		}	
+		
+		function spaceBar() {
+
+			// alert("move.value= "+ move.value+ " skippa= " + level_skippable);
+			if (level_skippable && move.value && gameStart) {
+				move.value = false;
+				skip_level();
+			}	
+			else {
+				go(player[0],player[1]);
+			}
+		}
+		
+		function clickFunc(x,y) {
+		
+		}
+		
+		window.addEventListener('keydown', function(e) { 
+
+			switch (e.keyCode) {
+				case 39:
+					goRight();
+					break;
+				case 40:
+					goDown();
+					break;
+				case 38:
+					goUp();
+					break;
+				case 37:
+					goLeft();
+					break;	
+				case 32:
+					spaceBar();
+					break;						
+				default:
+					break;
+
+			}
+		});
+		
+		
+
+	</script>
+	<script src="js/compatibility.js"></script>
+	<script src="js/mobileCheck.js"></script>
+	
+</body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title> draw </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+
+	<script>
+		voiceOver = true;
+		if (voiceOver) {
+			var horCells = 10;
+			var verCells = 10;
+			createTable(horCells,verCells);	
+		}
+		
+
+	
+		var POINTS = 1.7976931348623157E+10308;
+		var point = 0;
+		var CIRC_COLOR = "yellow";
+		var LINE_COLOR = "white";
+		var line_width = 18;
+		var CIRC_SIZE = 20;
+		var oldX ;
+		var oldY ;	
+		
+		context.lineWidth = line_width;
+		context.strokeStyle = LINE_COLOR;
+
+	
+		function clickFunc(x,y) {
+		
+			context.beginPath();
+			context.arc(x, y,CIRC_SIZE , 0, 2 * Math.PI, false);
+			context.fillStyle = CIRC_COLOR;
+			context.fill();
+			
+			context.beginPath();
+			
+			if (point == 0)  {
+				point++;
+			} else if (point < POINTS) {
+				context.moveTo(oldX, oldY);
+				context.lineTo(x, y);
+				context.stroke();
+				point++;
+			} else {
+				context.lineTo(x, y);
+				context.stroke();
+			}
+			
+			oldX = x;
+			oldY = y;
+		
+		}
+
+	</script>
+	
+</body></html>

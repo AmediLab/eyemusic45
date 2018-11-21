@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> EM toturial	</title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game" width="100%" height="100%"></canvas>
+
+
+	
+	<script>
+
+
+
+		var windowWidth;
+		var windowHeight;
+		
+		windowWidth = window.innerWidth;
+		windowHeight = window.innerHeight;
+		
+		windowWidth = 50;
+		windowHeight = 30;
+		
+		var canvas = document.getElementById("game");
+		canvas.style.background = 'black';
+		canvas.width = windowWidth ;
+		canvas.height = windowHeight;		
+		var context = canvas.getContext('2d');
+context.mozImageSmoothingEnabled = false;
+context.webkitImageSmoothingEnabled = false;
+context.imageSmoothingEnabled = false; 		
+
+		var CIRCLE_RADIUS = 5;
+		
+	//	drawCircle(context, windowWidth / 2 , windowHeight / 2, CIRCLE_RADIUS, "green");
+	//	drawCircle(context, windowWidth * 3 / 4 , windowHeight * 3 / 4, CIRCLE_RADIUS, "blue");
+		drawLine( windowWidth / 4 , windowHeight * 3 / 4, windowWidth * 3 / 4 , windowHeight / 4 , 10, "yellow");
+
+
+		
+		function drawCircle(context,centerX,centerY,radius,color) {
+
+		  context.beginPath();
+		  context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+		  context.fillStyle = color;
+		  context.fill();		  
+ 
+		}	
+		
+		function drawLine(x1,y1,x2,y2,width,color) {
+			
+			context.beginPath();
+
+
+			context.moveTo(x1, y1);
+			context.lineTo(x2, y2);
+			
+			context.strokeStyle = color;
+			context.lineWidth = width;
+
+			
+			context.stroke();
+
+		}
+
+		window.addEventListener('keydown', function(e) { 
+		
+			if (!gameStart) { gameStart = true;
+								StartNewGame();
+								return; }				
+		
+			spaceBar();
+
+		});	
+	
+		function resize() {
+			resize_canvas(canvas);
+		}
+		
+		function goLeft() {
+			return;
+		}
+		
+		function goRight() {
+			return;
+		}		
+		
+		function goDown() {
+			return;
+		}
+		
+		function goUp() {
+			return;
+		}	
+		
+		function spaceBar() {	
+			if (!gameStart) { 
+				gameStart = true;
+				StartNewGame();
+				return; 
+			}
+			else 
+			{ 
+				setTimeout(function() {
+					level = level+1;
+					newRound();
+				}, LEVEL_TIMOUT);
+			}	
+		}				
+  	
+	</script>
+	<script src="js/compatibility.js"></script>
+	<script src="js/mobileCheck.js"></script>	
+	
+	</body></html>

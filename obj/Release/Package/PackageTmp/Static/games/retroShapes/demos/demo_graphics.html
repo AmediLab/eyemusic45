@@ -1,0 +1,1049 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Demo - base graphics</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+
+	<div id="container">
+
+        <div id="RETRO">
+            <canvas id="demo" width=960 height=600 data-width=320 data-height=200>
+                <h1>Sorry, this browser does not have support for needed canvas / HTML5</h1>
+            </canvas>
+            <button id="boot" style="display:none;">
+            	<img src="gfx/power.png" width="125" height="168" alt="Click to start">
+            </button>
+		</div>
+    </div>
+
+<!--<br>
+<button onclick="snap()">Snap</button><br>
+<div id="snaps"></div>
+-->
+
+<script src="../retro.min.js"></script>
+<script src="../retro.fonts.js"></script>
+<script>
+
+/*function snap() {
+	var data = canvas.toDataURL(),
+		img = new Image;
+	img.src = data;
+	snaps.appendChild(img);
+}*/
+
+var canvas = document.getElementById('demo'),
+	ctx = canvas.getContext('retro'),
+	fontCount = 4,
+	idelay = 2500,
+	tdelay = 5000,
+	runtime = 7000,
+	abort = false,
+	res = ctx.resolution(),
+	rw = res.width,
+	rh = res.height,
+	RETRO = document.getElementById('RETRO'),
+	powerup = document.getElementById('boot'),
+	img = new Image;
+
+img.crossOrigin = '';
+img.src = 'http://i.imgur.com/uUAs0Bp.jpg';
+
+ctx
+	.bgColor(0, 0, 0)
+
+	// load bitmap fonts first and then go...
+	.addFonts([fontC64, fontRetro, fontRetroBold, fontRetroBig], init);
+
+function init() {
+	powerup.style.display = 'block';
+	powerup.onclick = function() {abort=true;};
+
+	ctx.autoCommit(false);
+
+	var toggle = 0;
+
+	(function noise() {
+
+		if (toggle++ % 2 !== 0) {
+			requestAnimationFrame(noise);
+			return;
+		}
+
+		ctx.clear();
+		ctx.penColor(127,127,127);
+
+		for(var y = 0; y < 200; y++) {
+			for(var x = 0; x < 320; x++) {
+				if (Math.random() < 0.5)
+					ctx.setPixel(x, y);
+			}
+		}
+
+		ctx.commit();
+
+		if (!abort)
+			requestAnimationFrame(noise);
+
+		else {
+			ctx.autoCommit(true);
+			ctx.clear();
+			boot();
+		}
+	})();
+}
+
+function boot() {
+
+	RETRO.removeChild(powerup);
+	canvas.style.cursor = 'none';
+
+	ctx	.font('c64')
+		.bgColor(0, 100,0)
+		.penColor(null)
+		.fillColor(0, 100,0)
+		;
+
+	setTimeout(flash1, 70);
+
+	function flash1() {
+
+		ctx	.fillColor(0, 0, 0)
+			.rect(0, 50, 320, 50)
+			.rect(0, 120, 320, 20)
+			;
+
+		setTimeout(flash2, 50);
+	}
+
+	function flash2() {
+
+		ctx	.clear()
+			.rect(0, 100, 320, 30)
+			.bgColor(0, 63,0)
+			.fillColor(0, 63,0)
+			;
+
+		setTimeout(flash3, 40);
+	}
+
+	function flash3() {
+
+		ctx	.fillColor(0, 0, 0)
+			.rect(0, 0, 320, 200)
+			;
+
+		setTimeout(flash4, 20);
+	}
+
+	function flash4() {
+
+		ctx	.clear()
+			.fillColor(0, 60,0)
+			;
+
+		setTimeout(function() {
+
+			ctx	.clear()
+				.textAlign('center')
+				.penColor(0, 220, 0)
+				.text('***  RETRO CONTEXT  VERSION ' +
+							retro.version.substring(0, 3) + '  ***',
+							160, 8)
+				.text('***      (C) 2014 EPISTEMEX      ***', 160, 16)
+				.textAlign('left')
+				;
+
+			setTimeout(function() {
+				ctx.text('READY.', 0, 32);
+				setTimeout(function() {
+					typeText('LOAD $DEMO', 0, 40, 120, blinkCursor);
+				}, 1000);
+			}, 500);
+		}, 700);
+	}
+}
+
+function blinkCursor() {
+
+	var count = 5,
+		toggle = true;
+
+	ctx.penColor(null);
+
+	(function blink() {
+
+		toggle ? ctx.fillColor(0, 220, 0) : ctx.fillColor(0, 63, 0);
+		toggle = !toggle;
+
+		ctx.rect(0, 48, 7, 8);
+
+		count--;
+
+		setTimeout(count > 0 ? blink : transition("Lines",
+				"EFLA algorithm www.edepot.com/algorithm.html",
+				bounceLines, tdelay), 500);
+	})();
+}
+
+function bounceLines() {
+
+	var x1 = 10,
+		y1 = 10,
+		x2 = (rw * 0.67)|0,
+		y2 = rh,
+		dx1 = 3, dy1 = 5,
+		dx2 = 5, dy2 = 7,
+		colorIndex = 1,
+		count = 0;
+
+	ctx	.fillColor(null)
+		.font('retro')
+		.bgColor(0, 0, 0)
+		.penColor(255, 255, 255)
+		.palette('C64')
+		;
+
+	run();
+
+	(function anim() {
+
+		if (x1 < 0 || x1 >= rw) dx1 = -dx1;
+		if (x2 < 0 || x2 >= rw) dx2 = -dx2;
+
+		if (y1 < 0 || y1 >= rh) dy1 = -dy1;
+		if (y2 < 0 || y2 >= rh) dy2 = -dy2;
+
+		x1 += dx1;
+		y1 += dy1;
+		x2 += dx2;
+		y2 += dy2;
+
+		ctx	.penIndex(colorIndex)
+			.line(x1, y1, x2, y2)
+			;
+
+		count++;
+		colorIndex = (count % 16);
+
+		if (!abort)
+			requestAnimationFrame(anim);
+		else
+			transition("Rectangles", "Outlined and filled",	bounceRects, tdelay);
+	})();
+}
+
+function bounceRects() {
+
+	var x1 = 90, y1 = 100,
+		x2 = 60, y2 = 40,
+		dx1 = -3, dy1 = 3,
+		dx2 = 2, dy2 = -4,
+		count = 0,
+		colorIndex = 1;
+
+	ctx	.fillColor(null)
+		.autoCommit(false)
+		.clear()
+		.palette('APPLEII')
+		.penIndex(12)
+		;
+
+	run();
+
+	(function anim() {
+
+		if (x1 < 0 || x1 > rw - 40) dx1 = -dx1;
+		if (x2 < 0 || x2 > rw - 20) dx2 = -dx2;
+
+		if (y1 < 0 || y1 > rh - 25) dy1 = -dy1;
+		if (y2 < 0 || y2 > rh - 35) dy2 = -dy2;
+
+		x1 += dx1;
+		y1 += dy1;
+		x2 += dx2;
+		y2 += dy2;
+
+		ctx	.fillIndex(colorIndex)
+			.penIndex(12)
+			.rect(x1, y1, 40, 25)
+			.fillColor(null)
+			.penIndex(colorIndex + 1)
+			.rect(x2, y2, 20, 35)
+			.commit()
+			;
+
+		count++;
+		colorIndex = (count % 15);
+
+		if (!abort) {
+			requestAnimationFrame(anim);
+		}
+		else {
+			transition("Circles", "Bresenham outlined and filled", bounceCircles, tdelay);
+		}
+	})();
+}
+
+function bounceCircles() {
+
+	var x1 = 60, y1 = 60,
+		x2 = rw * 0.5,
+		y2 = (rh * 0.75)|0,
+		dx1 = 3, dy1 = 4,
+		dx2 = 2, dy2 = -3,
+		count = 0,
+		colorIndex = 1,
+		pcnt;
+
+	ctx	.fillColor(null)
+		.autoCommit(false)
+		.palette('MSX2')
+		.clear()
+		;
+
+	pcnt = ctx.palette().length - 1;
+
+	run();
+
+	(function anim() {
+
+		if (x1 < 26 || x1 > rw - 25) dx1 = -dx1;
+		if (x2 < 31 || x2 > rw - 30) dx2 = -dx2;
+
+		if (y1 < 26 || y1 > rh - 25) dy1 = -dy1;
+		if (y2 < 31 || y2 > rh - 30) dy2 = -dy2;
+
+		x1 += dx1;
+		y1 += dy1;
+		x2 += dx2;
+		y2 += dy2;
+
+		ctx .fillIndex(colorIndex)
+			.penIndex(12)
+			.circle(x1, y1, 25)
+			.fillColor(null)
+			.penIndex(colorIndex + 1)
+			.circle(x2, y2, 30)
+			.commit()
+			;
+
+		count++;
+		colorIndex = (count % pcnt);
+
+		if (!abort) {
+			requestAnimationFrame(anim);
+		}
+		else {
+			transition("Arcs", "From start to end...",
+					arcs,
+					tdelay);
+		}
+	})();
+}
+
+function arcs() {
+
+	var angle = 0,
+		step = 0.07,
+		dlt = 0.5 * Math.PI;
+
+	ctx	.fillColor(null)
+		.penColor(255, 255, 0)
+		.autoCommit(false)
+		.clear()
+	;
+
+	(function anim() {
+
+		ctx .arc(160, 100, 80, -dlt, angle - dlt)
+			.arc(160, 100, 60, 2 * Math.PI - angle + dlt, -dlt, true)
+			.commit();
+
+		angle += step;
+
+		if (angle <= 2 * Math.PI) {
+			requestAnimationFrame(anim);
+		}
+		else {
+			transition("Ellipses", "Bresenham outlined and filled",
+					bounceEllipses, tdelay, 2000);
+		}
+	})();
+}
+
+function bounceEllipses() {
+
+	var x1 = rw * 0.5, y1 = rh * 0.5,
+		x2 = (rw * 0.67)|0, y2 = (rh * 0.75)|0,
+		dx1 = -3, dy1 = 4,
+		dx2 = -2, dy2 = -3,
+		count = 0,
+		colorIndex = 1;
+
+	ctx	.fillColor(null)
+		.autoCommit(false)
+		.palette('INTELLIVISION')
+		.clear()
+		;
+
+	run();
+
+	(function anim() {
+
+		if (x1 < 26 || x1 > rw - 25) dx1 = -dx1;
+		if (x2 < 31 || x2 > rw - 30) dx2 = -dx2;
+
+		if (y1 < 13 || y1 > rh - 12) dy1 = -dy1;
+		if (y2 < 50 || y2 > rh - 50) dy2 = -dy2;
+
+		x1 += dx1;
+		y1 += dy1;
+		x2 += dx2;
+		y2 += dy2;
+
+		ctx	.fillIndex(colorIndex)
+			.penIndex(12)
+			.ellipse(x1, y1, 25, 12)
+			.fillColor(null)
+			.penIndex(colorIndex + 1)
+			.ellipse(x2, y2, 30, 50)
+			.commit()
+			;
+
+		count++;
+		colorIndex = (count % 15);
+
+		if (!abort) {
+			requestAnimationFrame(anim);
+		} else {
+			transition("Polygons", "Optimized lines, outlined and filled", bouncePolygon, tdelay);
+		}
+	})();
+}
+
+function bouncePolygon() {
+
+	var colorIndex = 1,
+		count = 0,
+		srcPolygon = [0,0, 25,10, 50,0, 40,25, 50,50, 25,40, 0,50, 10,25],
+		dstPolygon = [0,0, 25,10, 50,0, 40,25, 50,50, 25,40, 0,50, 10,25],
+		angles = [0.1, 1.5, 0.75, 2.5, 2.25, 1.1, 3, 2.6],
+		dist = [70, 110, 60, 35, 90, 30, 75, 100],
+		dia = 2 * Math.PI;
+
+	srcPolygon = translatePoints(srcPolygon, 130, 75);
+	dstPolygon = translatePoints(dstPolygon, 130, 75);
+
+	ctx	.fillColor(null)
+		.clear()
+		.palette('ZXSPECTRUM')
+		.penColor(255, 200, 0)
+		;
+
+	run();
+
+	(function anim() {
+
+		for(var i = 0, a = 0; i < dstPolygon.length; i += 2, a++) {
+			angles[a] = (angles[a] + 0.2) % dia;
+			dstPolygon[i] = (srcPolygon[i] + dist[a] * Math.cos(angles[a]))|0;
+			dstPolygon[i+1] = (srcPolygon[i+1] + dist[a] * Math.sin(angles[a]))|0;
+		}
+
+		ctx	.clear()
+			.fillIndex((colorIndex|0) + 1)
+			.polygon(dstPolygon)
+			;
+
+		count += 0.1;
+		colorIndex = (count % 14);
+
+		if (!abort)
+			requestAnimationFrame(anim);
+		else
+			transition("Quadratic curve"
+					, "AKA 2nd order Bezier spline",
+					beziers2, tdelay);
+	})();
+}
+
+function beziers2() {
+
+	var dx = 3,
+		dy = -4,
+		sx = 20,
+		sy = 160,
+		cx = 80,
+		cy = 20,
+		ex = 300,
+		ey = 160;
+
+	ctx	.fillColor(null)
+		.clear()
+		.autoCommit(false)
+		;
+
+	run();
+
+	(function anim() {
+
+		ctx	.clear()
+			.penColor(255, 220, 0)
+			.curveQuadratic(sx, sy, cx, cy, ex, ey)
+			.penColor(255, 255, 255)
+			.rect(cx - 2, cy - 2, 4, 4)
+			.commit()
+		;
+
+		cx += dx;
+		cy += dy;
+
+		if (cx < 0 || cx >= 320) dx = -dx;
+		if (cy < 0 || cy >= 200) dy = -dy;
+
+		if (!abort)
+			requestAnimationFrame(anim);
+		else
+			transition("Bezier curve", "AKA 3rd order Bezier spline",
+					beziers3, tdelay);
+	})();
+
+}
+
+function beziers3() {
+
+	var dx1 = -2,
+			dy1 = 4,
+			dx2 = 3,
+			dy2 = -3,
+			sx = 20,
+			sy = 180,
+			c1x = 80,
+			c1y = 20,
+			c2x = 280,
+			c2y = 180,
+			ex = 300,
+			ey = 20;
+
+	ctx	.fillColor(null)
+		.clear()
+		.penColor(255, 255, 255)
+		.autoCommit(false)
+	;
+
+	run();
+
+	(function anim() {
+
+		ctx	.clear()
+			.penColor(127, 127, 127)
+			.line(sx, sy, c1x, c1y)
+			.line(ex, ey, c2x, c2y)
+			.penColor(255, 255, 255)
+			.curveBezier(sx, sy, c1x, c1y, c2x, c2y, ex, ey)
+			.penColor(255, 200, 0)
+			.rect(c1x - 2, c1y - 2, 4, 4)
+			.rect(c2x - 2, c2y - 2, 4, 4)
+		;
+
+		c1x += dx1;
+		c1y += dy1;
+		c2x += dx2;
+		c2y += dy2;
+
+		if (c1x < 0 || c1x >= 320) dx1 = -dx1;
+		if (c2x < 0 || c2x >= 320) dx2 = -dx2;
+		if (c1y < 0 || c1y >= 200) dy1 = -dy1;
+		if (c2y < 0 || c2y >= 200) dy2 = -dy2;
+
+		ctx.commit();
+
+		if (!abort)
+			requestAnimationFrame(anim);
+		else
+			transition("Cardinal spline",
+					"Spline going through the points", curves, tdelay);
+	})();
+
+}
+
+function curves() {
+
+	var dlts = [],
+		pts = [],
+		max = 10,
+		i = 0,
+		count = 0,
+		x, y, dx, dy;
+
+	// create random points and deltas
+	for(; i < max; i++) {
+
+		x = (320 * Math.random())|0;
+		y = (200 * Math.random())|0;
+		dx = (4 * Math.random() - 2)|0;
+		dy = (3 * Math.random() - 2)|0;
+
+		if (dx === 0) dx = 2;
+		if (dy === 0) dy = -2;
+
+		pts.push(x, y);
+		dlts.push(dx, dy);
+	}
+
+	ctx	.fillColor(null)
+		.palette('CGA')
+		.clear()
+		.autoCommit(false)
+	;
+
+	run();
+
+	(function anim() {
+
+		ctx	.clear()
+			.penIndex(((count|0) % 15) + 1)
+			.curveCardinal(pts)
+			;
+
+		count += 0.1;
+
+		for(i = 0; i < pts.length; i += 2) {
+
+			ctx.rect(pts[i] - 1, pts[i+1] - 1, 3, 3);
+
+			pts[i] += dlts[i];
+			pts[i+1] += dlts[i+1];
+
+			if (pts[i] < 0 || pts[i] >= 320) dlts[i] = -dlts[i];
+			if (pts[i+1] < 0 || pts[i+1] >= 200) dlts[i+1] = -dlts[i+1];
+		}
+
+		ctx.commit();
+
+		if (!abort)
+			requestAnimationFrame(anim);
+		else
+			transition("Bucketfill", "Fill areas with color", bucketFill, tdelay);
+	})();
+
+}
+
+function bucketFill() {
+
+	ctx .autoCommit(false)
+		.penColor(255, 255, 255)
+		.fillColor(null)
+		.ellipse(160, 100, 150, 90)
+		.ellipse(200, 50, 60, 40)
+		.rect(20, 90, 70, 70)
+		.circle(220, 120, 78)
+		.commit()
+		.font('retro')
+		.palette('EGA')
+		;
+
+	var points = [90,90, 200,50, 55,125, 220,120, 160,40, 22,158, 300,100, 250,180, 220,17, 0,0],
+		i = 0,
+		color = 2;
+
+	(function fill() {
+
+		ctx	.fillIndex(color)
+			.bucketFill(points[i], points[i + 1])
+			.fillIndex(0)
+			.text('(Each fill is delayed on purpose for demo)', 8, 8)
+			.commit()
+			;
+
+		if (i < points.length) {
+			i += 2;
+			color++;
+			setTimeout(fill, 1000/15);
+		}
+		else
+			transition("Fonts", "Use bitmap fonts of any size", fonts, tdelay, idelay);
+	})();
+}
+
+function fonts() {
+
+	ctx	.clear()
+		.font('retro')
+		.penColor(255, 255, 0)
+		.text('You can load and use bitmap fonts:', 8, 8)
+		.penColor(128, 128, 128)
+		.text('Commodore 64 font (8x8):', 8, 32)
+		.font('c64')
+		.penColor(255, 255, 255)
+		.palette('C64')
+		;
+
+	typeText('The big fat fox jumped', 8, 40, 40, font2);
+
+	function font2() {
+
+		ctx	.font('retro')
+			.penColor(128, 128, 128)
+			.text('Custom retro font for RetroContext (6x8):', 8, 56)
+			.penColor(255, 255, 255)
+			;
+
+		typeText('The big fat fox jumped', 8, 64, 40, font3);
+	}
+
+	function font3() {
+
+		ctx	.font('retro')
+			.penColor(128, 128, 128)
+			.text('Custom BOLD retro font for RetroContext (7x8):', 8, 80)
+			.font('retrobold')
+			.penColor(255, 255, 255)
+			;
+
+		typeText('The big fat fox jumped', 8, 88, 40, font4);
+	}
+
+	function font4() {
+
+		ctx	.font('retro')
+			.penColor(128, 128, 128)
+			.text('Custom BIG retro font for RetroContext (12x16):', 8, 104)
+			.font('retrobig')
+			.penColor(255, 255, 255)
+			;
+
+		typeText('The big fat fox jumped', 8, 112, 40, font5);
+	}
+
+	function font5() {
+		transition("COLORS", "Simulated indexed color palettes", palettes, tdelay, 7000);
+	}
+}
+
+function palettes() {
+
+	ctx	.fillColor(null)
+		.bgColor(0, 0, 0)
+		.font('retro')
+		.penColor(255, 255, 0)
+		.clear()
+		.text('RETRO CONTEXT COMES WITH PREDEFINED RETRO PALETTES:', 8, 8)
+		;
+
+	var	pals = [
+			{title: 'CBM 64 perceived', palette: 'C64', x: 8, y: 24},
+			{title: 'CBM 64 gamma corrected', palette: 'C64G', x: 168, y: 24},
+			{title: 'Commodore VIC-20', palette: 'VIC20', x: 8, y: 48},
+			{title: 'Apple-II', palette: 'APPLEII', x: 168, y: 48},
+			{title: 'ZX Spectrum', palette: 'ZXSPECTRUM', x: 8, y: 72},
+			{title: 'CGA', palette: 'CGA', x: 168, y: 72},
+			{title: 'MSX', palette: 'MSX', x: 8, y: 96},
+			{title: 'BBC', palette: 'BBC', x: 152, y: 96},
+			{title: 'Gameboy', palette: 'GAMEBOY', x: 232, y: 96},
+			{title: 'Mono', palette: 'BW', x: 284, y: 96},
+			{title: 'SEGA', palette: 'SEGA', x: 8, y: 120},
+			{title: 'MSX-2', palette: 'MSX2', x: 8, y: 144},
+			{title: 'Aquarius', palette: 'AQUARIUS', x: 8, y: 168},
+			{title: 'Teletext', palette: 'TELETEXT', x: 168, y: 168}
+		],
+		current = 0
+		;
+
+	drawPalette();
+
+	function drawPalette() {
+
+		var palDef = pals[current],
+			palette = new retro.Palette(palDef.palette),
+			x = palDef.x,
+			y = palDef.y,
+			w = 8;
+
+		ctx.penColor(255, 255, 255);
+
+		typeText(palDef.title, x, y, 20, renderPal);
+
+		function renderPal() {
+
+			var len = palette.lut.length,
+				i = 0;
+
+			y += 8;
+
+			ctx	.autoCommit(false)
+				.palette(palette);
+
+			for(; i < len && i < 33; i++) {
+
+				if (i === 0 && palette.name !== 'GAMEBOY') {
+					ctx.penColor(200, 200,200);
+				}
+				else
+					ctx.penColor(null);
+
+				ctx	.fillIndex(i)
+					.rect(x, y, w, w)
+					;
+				x += (w + 1);
+			}
+
+			ctx	.fillIndex(-1)
+				.commit()
+				.autoCommit(true)
+				.penColor(255, 255, 255)
+				;
+
+			if (i < len) ctx.text('..', x, y);
+
+			current++;
+
+			if (current < pals.length) {
+				setTimeout(drawPalette, 100);
+			}
+			else {
+				ctx	.penColor(255, 255, 0)
+					.text('And many more...', 224, 192);
+
+				transition("Image processing",
+						"Turn any image into retro look", showImage, tdelay, 10000);
+			}
+		}
+
+	}
+}
+
+function showImage() {
+
+	ctx	.autoCommit(true)
+		.drawImage(img, 0, 0)
+		.palette(new retro.Palette('C64'))
+		.fillIndex(-1)
+		.penColor(255, 255, 0)
+		.text('Original 24-bit version 320 x 200', 8, 8)
+		;
+
+	setTimeout(drawPalette, idelay);
+
+	function drawPalette() {
+		ctx	.drawImage(img, 0, 0, 320, 200, 'palette')
+			.text('16 colors palette (indexed)', 8, 8)
+			;
+		setTimeout(drawPaletteDithered, idelay);
+	}
+
+	function drawPaletteDithered() {
+		ctx	.drawImage(img, 0, 0, 320, 200, 'palette-fs')
+			.fillIndex(0)
+			.text('16 colors palette Floyd-Steinberg dithered', 8, 8)
+			.fillIndex(-1)
+			;
+		setTimeout(drawPalette8bit, idelay);
+	}
+
+	function drawPalette8bit() {
+		ctx	.drawImage(img, 0, 0, 320, 200, '8bit')
+			.text('Pseudo 8-bit palette', 8, 8)
+			;
+		setTimeout(drawPalette8bitSierra, idelay);
+	}
+
+	function drawPalette8bitSierra() {
+		ctx	.drawImage(img, 0, 0, 320, 200, '8bit-sierra')
+			.text('Pseudo 8-bit palette Sierra dithered', 8, 8)
+			;
+		setTimeout(drawPaletteMono, idelay);
+	}
+
+	function drawPaletteMono() {
+		ctx	.drawImage(img, 0, 0, 320, 200, '1bit-fs')
+			.fillIndex(0)
+			.text('Monochromatic Floyd-Steinberg dithered', 8, 8)
+			;
+
+		transition('"Blitting"', "Move pixels around", blitting, tdelay, idelay);
+	}
+}
+
+function blitting() {
+
+	var w = 100,
+		x = 110,
+		dot = 0;
+
+	ctx	.palette('C64')
+		.autoCommit(false)
+		;
+
+	run();
+
+	(function race() {
+
+		ctx	.commit()
+			.scroll(0, 4, true)
+
+			.fillColor(0, 48, 0)	/// grass
+			.penColor(0, 48, 0)
+			.rect(0, 0, 320, 4)
+
+			.fillColor(0, 96, 0)	/// grass light dots
+			.penColor(0, 96, 0)
+			.rect(304 * Math.random(), 0, 4, 4)
+
+			.fillColor(64, 64, 64)	/// road
+			.penColor(64, 64, 64)
+			.rect(x, 0, w, 4)
+			;
+
+		if (dot++ % 3 === 0) {		/// road "stripe"
+			ctx	.fillColor(210, 210, 210)
+				.penColor(210, 210, 210)
+				.rect(x + w * 0.5 - 2, 0, 4, 4)
+				;
+		}
+
+		x += Math.random() < 0.5 ? -2 : 2;
+
+		if (x < 0) x = 0;
+		if (x >= 320 - w) x = 320 - w;
+
+		if (!abort)
+			requestAnimationFrame(race);
+		else
+			blitH();
+
+	})();
+
+	function blitH() {
+
+		var x = 80,
+			dy = 0;
+
+		ctx.fillColor(0, 0, 0);
+
+		(function anim() {
+			ctx	.scroll(-4, -dy, true)
+				.commit();
+
+			if (dy === 0 && x < 60)
+				dy = 2;
+
+			if (x > 20) {
+				x--;
+				requestAnimationFrame(anim);
+			}
+			else {
+				transition('"THE END"', "github.com/epistemex/Canvas-Retro-Context", null, 20000);
+			}
+		})();
+	}
+}
+
+/**
+ *	Helper functions
+*/
+function translatePoints(pts, dx, dy) {
+
+	var res = [],
+		i = 0,
+		len = pts.length;
+
+	for(; i < len; i += 2)
+		res.push(pts[i] + dx, pts[i+1] + dy);
+
+	return res;
+}
+
+function typeText(txt, x, y, delay, callback) {
+
+	var len = txt.length,
+		count = 0;
+
+	next();
+
+	function next() {
+		count++;
+
+		if (count < len) {
+			setTimeout(next, delay);
+		} else
+			setTimeout(callback, delay);
+
+		ctx.text(txt.substring(0, count), x, y);
+	}
+}
+
+function transition(txt1, txt2, next, delay, wait) {
+
+	ctx.autoCommit(true);
+
+	if (wait) {
+		setTimeout(function() {
+			transition(txt1, txt2, next, delay);
+		}, wait);
+		return;
+	}
+
+	ctx	.penColor(null)
+		.fillColor(0, 0, 0)
+		.font('retro')
+		;
+
+	var y = 0,
+		step = 16,
+		h = step * 0.5;
+
+	blinds();
+
+	function blinds() {
+
+		ctx.rect(0, y, 320, h);
+
+		y += step;
+
+		if (y > 200) {
+			y = 200 - step;
+			step = -step;
+
+		} else if (y < step) {
+			showText();
+			return;
+		}
+
+		requestAnimationFrame(blinds);
+	}
+
+	function showText() {
+
+		var tw2 = ctx.font('retro').measureText(txt2 || '').width,
+			tw1 = ctx.font('retrobig').measureText(txt1).width;
+
+		ctx	.penColor(255, 255, 255);
+
+		typeText(txt1.toUpperCase(), (((rw - tw1) * 0.5) |0), (rh *
+				0.37)|0, 60, function() {
+			if (tw2 > 0)
+				ctx.penColor(255, 255, 0).font('retro').text(txt2,
+						(((rw - tw2) * 0.5) |0), (rh * 0.52)|0);
+
+			if (next !== null)
+				setTimeout(function() {
+					ctx.clear();
+					next();
+				}, delay);
+		});
+	}
+}
+
+function run() {
+	abort = false;
+	setTimeout(function(){abort=true;}, runtime);
+}
+
+</script>
+</body>
+</html>

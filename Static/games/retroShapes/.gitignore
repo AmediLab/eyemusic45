@@ -1,0 +1,9 @@
+.idea
+tuts
+docsmd
+retro.make
+TODO.txt
+create-docs.*
+*.cmd
+*.psd
+_*.*

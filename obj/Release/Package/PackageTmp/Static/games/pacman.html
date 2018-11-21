@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> pacman </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="js/grid.js"></script>
+	<script>
+		voiceOver= false;
+		screen_compatibility = 1;
+		joystick_control = true;
+
+		// touch screen table settings
+		if (joystick_control) {
+			
+			voiceOver = true;
+			joystick();
+			
+		} else {
+			horCells = 3;
+			verCells = 4;
+			if (voiceOver) {
+				createTable(horCells,verCells);
+			}
+		}
+		
+		
+		var BG_COLOR = "black";
+		
+		// setup level
+		var OBS_COLOR = "white";
+		var MIN_OBS_SPACE = 3;
+		var FOOD_COLOR = "red";
+		var FOOD_SIZE;
+		var GHOST_COLOR = "blue";
+		var GHOST_SIZE;
+		var BONUS_LEVEL;
+
+		// setup sounds
+		var stuck = 'cannonGame/stuck.'+SOUND_FORMAT;
+		var win = 'mazeGame/success.'+SOUND_FORMAT;
+		var hit = SOUND_FORMAT+'/laser.'+SOUND_FORMAT;
+		var scream = 'pacman/pacman_death.mp3';
+		var tryAgain = SOUND_FORMAT+'/tryAgain.'+SOUND_FORMAT;
+		var hit_ghost = 'pacman/hitGhost.mp3';
+		var haha = 'mp3/evil.mp3';
+		var chomp = 'pacman/pacman_chomp.mp3';
+		var chimp = 'pacman/pacman_chomp1.mp3';
+		chomp.volume = 0.5;
+		chimp.volume = 0.5;
+		
+		var eat_instructions = 'pacman/eat_instructions.mp3';
+		var obs_instructions = 'pacman/obs_instructions.mp3';
+		var ghost_instruction = 'pacman/ghost_instruction.mp3';
+		var bonus = 'pacman/bonus.mp3';
+		var seeApples = 'pacman/seeApples.mp3';
+		var seeObs = 'pacman/seeObstacles.mp3';
+		var seeGhosts = 'pacman/seeGhosts.mp3';
+		var clickToContinue = 'pacman/clickToContinue.mp3';
+		var hipacman = 'pacman/hipacman.mp3';
+		var hello = 'pacman/theme.mp3';
+		var mid = 'pacman/mid.mp3';
+		
+		/*  game setup  */
+		var GAME_START_LEVEL = 2;
+		var level = GAME_START_LEVEL;
+		getLevel();
+		var score = 0;
+		if (level == -2) {
+			startMessage = startMessages[1];
+			load_audio(seeApples);
+		}
+		else	{
+			load_audio(eat_instructions);
+		}
+		
+		var MAX_LEVEL = 11;
+		var POINTS_PER_LEVEL_DEF = 2;
+		var POINTS_PER_LEVEL = POINTS_PER_LEVEL_DEF;
+		var enemies = 0;
+		var food;
+		var move = {value: false};
+		var first_in_lvl = true;
+		
+		var PLAYER_SPACE_X = 3;
+		var PLAYER_SPACE_Y = 3;
+		
+		var player = [0,0];
+		var playerChew = true;
+		var playerDir = 1;
+		
+		calcGrid();
+		colSpace = 3;	
+		
+		function newGame() {
+			gameStart = true;
+			if (!mobilecheck) {
+				play_audio(hello);
+				setTimeout(function() {
+					newRound();
+				}, 5000);
+			} else {
+				newRound();
+			}
+		}
+		
+		function newRound() {
+			clear();
+			move.value = false;
+			level_settings();
+			setTimeout(function(){
+				clear();
+				grid = createGrid(gridX,gridY);
+				playerSize = Math.floor(Math.min(blockX,blockY)*7/15);
+				FOOD_SIZE = playerSize;
+				GHOST_SIZE = FOOD_SIZE;
+				markGap(2);
+				put_obstacles(grid,obs_number);
+				put_food(grid,food);
+				put_ghosts(grid,enemies);
+				markGap(0);
+				if (level > 0) {
+					player = [2,2];
+					putPlayer(2,2,0);
+				}
+			},3000);
+		}
+		
+		
+		function level_settings() {
+			
+			var inst; // level instructions
+			POINTS_PER_LEVEL = POINTS_PER_LEVEL_DEF;
+			BONUS_LEVEL = false;
+
+			switch (level) {
+			
+			case -2:
+				inst = seeApples;
+				obs_number = 0;
+				enemies = 0;
+				food = 5;
+				POINTS_PER_LEVEL = 1;
+				break;		
+
+			case -1:
+				inst = seeObs;
+				obs_number = 5;
+				enemies = 0;
+				food = 0;
+				POINTS_PER_LEVEL = 1;
+				break;		
+
+			case 0:
+				inst = seeGhosts;
+				obs_number = 0;
+				enemies = 5;
+				food = 0;
+				POINTS_PER_LEVEL = 1;
+				break;	
+
+			case 1:
+				inst = hipacman;
+				obs_number = 0;
+				enemies = 0;
+				food = 0;
+				POINTS_PER_LEVEL = 1;
+				break;						
+			
+			case 2:
+				inst = eat_instructions;
+				obs_number = 0;
+				enemies = 0;
+				food = 1;
+				POINTS_PER_LEVEL = 1;
+				break;
+				
+			case 3:
+				inst = eat_instructions;
+				obs_number = 0;
+				enemies = 0;
+				food = 2;
+				POINTS_PER_LEVEL = 1;
+				break;	
+
+			case 4:
+				inst = obs_instructions;
+				obs_number = 3;
+				enemies = 0;
+				food = 2;
+				break;
+
+			case 5:
+				inst = obs_instructions;
+				obs_number = 5;
+				enemies = 0;
+				food = 2;
+				break;		
+				
+			case 6:
+				inst = ghost_instruction;
+				obs_number = 0;
+				enemies = 1;
+				food = 2;
+				break;
+				
+			case 7:
+				inst = ghost_instruction;
+				obs_number = 0;
+				enemies = 2;
+				food = 2;
+				break;	
+				
+			case 8:
+				inst = ghost_instruction;
+				obs_number = 3;
+				enemies = 2;
+				food = 2;
+				break;					
+
+			case 9:
+				inst = eat_instructions;
+				obs_number = 5;
+				enemies = 2;
+				food = 3;
+				break;
+
+			case 10:
+				inst = ghost_instruction;
+				obs_number = 5;
+				enemies = 4;
+				food = 2;
+				break;			
+
+			case 11:
+				BONUS_LEVEL = true;
+				POINTS_PER_LEVEL = 1;
+				inst = bonus;
+				obs_number = 0;
+				enemies = 0;
+				food = 40;
+				break;					
+
+			}
+			
+			/*
+			var templevel = level;
+			if (level <= 0) {
+				setTimeout(function() {
+					if (level == templevel)
+						play_audio(clickToContinue);
+				}, 6500);
+			}*/
+			
+			if (first_in_lvl) {
+				move.value = false;
+				setTimeout( stopEM, 200);
+				play_func(inst, enable_move_EM);
+			}
+			
+			else {
+				setTimeout(function() { startEM(); move.value = true; }, 3100 );
+				
+			}
+		}
+		
+		function markGap(n) {
+			for (var gapx=0 ; gapx<=PLAYER_SPACE_X ; gapx++) {
+				for (var gapy=0 ; gapy<=PLAYER_SPACE_Y ; gapy++) {
+					grid[gapx][gapy] = n;
+				}
+			}
+		}
+		
+		function put_obstacles(grid, n) {
+			// n = total number of obstacle *blocks*
+			var blocks = 0;
+			var startx;
+			var starty;
+			var timout = 0;
+			var add  = true;
+			
+			while (blocks < n && timout < 100) {
+
+				start = false;
+				while (!start) {
+					startx = Math.floor(Math.random()*(gridX - 1)) + 1;
+					starty = Math.floor(Math.random()*(gridY - 1)) + 1;
+					
+					start = checkEmpty(startx-2,startx+2,starty-2,starty+2);
+					
+					timout++;
+					if (timout>100) {
+						break;
+					}					
+				}
+				
+				obstacle(startx,starty);
+				blocks++;
+				
+				// direction can be 1 for horizontal obstacle - unused
+				var direction; // Math.floor(Math.random()*2);
+				direction = 0;
+				add = true;
+				var nextX = startx;
+				var nextY = starty;
+				var row = 0;
+				
+				while (add) {
+					// checks if there is a 4*3 space around the next block
+					switch(direction) {
+						case 1:	// go right
+							if (!checkEmpty(nextX+1,nextX+3,nextY-2,nextY+2)) {
+								add = false;
+								break;
+							}
+							nextX++;
+							break;
+						default: // go up
+							if (!checkEmpty(nextX-2,nextX+2,nextY-1,nextY-3)) {
+								add = false;
+								break;
+							}						
+							nextY--;
+							break;
+					}
+					
+					if (add) {
+						obstacle(nextX,nextY);
+						blocks++;
+						row++;
+						// row: number of blocks in current obstacle. must be smaller then gridY-MIN_OBS_SPACE
+					
+						if (blocks >=n || row >=gridY-MIN_OBS_SPACE) {
+							add = false;
+							row = 0;
+							break;
+						}
+					}
+					
+					timout++;
+					if (timout>200) {
+						break;
+					}	
+				}
+				
+				useCol(nextX);
+			}	
+		}
+
+		function obstacle(x,y) {
+			grid[x][y] = 2;
+			clearSquare(x,y,"white","black");
+		}
+		
+		function put_food(grid,n) {
+		
+			var put = 0;
+			var posx;
+			var posy;
+			var timeout = 0;
+			
+			while (put < n) {
+				posx = Math.floor(Math.random()*(gridX - 1)) + 1;
+				posy = Math.floor(Math.random()*(gridY - 1)) + 1;			
+				if (grid[posx][posy] == 0) {
+					putfood(posx,posy);
+					put ++;
+				}
+				
+				if (timeout > 150) { food = put;
+					if (put == 0) { alert(); }
+					break; } else {timeout++; }
+			}
+		}
+
+		function putfood(x,y) {
+			//put_message(x + ' ' + y);
+			var drawx = Math.floor(windowWidth/gridX)*x;
+			var drawy = Math.floor(windowHeight/gridY)*y;
+		
+			context.beginPath();
+			context.fillStyle = FOOD_COLOR;
+			
+			context.arc(drawx + windowWidth/(2*gridX),drawy + windowHeight/(gridY*2),FOOD_SIZE - colSpace, 0 ,2*Math.PI,false);
+			context.fill();
+			if (!BONUS_LEVEL) { useCol(x); }
+			grid[x][y] = 1;
+		}
+
+		function put_ghosts(grid,n) {
+			
+			var put = 0;
+			var posx;
+			var posy;
+			var timeout = 0;
+
+			for (var i=1 ; i<=n; i++) {
+				while (put < n) {
+					posx = Math.floor(Math.random()*(gridX - 1)) + 1;
+					posy = Math.floor(Math.random()*(gridY - 1)) + 1;		
+					if (grid[posx][posy] == 0) {
+						ghost(posx,posy);
+						put ++;
+					}
+					
+					if (timeout > 50) { break; } else {timeout++; }
+				}
+			}
+		}
+		
+		function ghost(x,y) {
+			var drawx = Math.floor(windowWidth/gridX)*x;
+			var drawy = Math.floor(windowHeight/gridY)*y;
+		
+			context.beginPath();
+			context.fillStyle = GHOST_COLOR;
+			
+			context.arc(drawx + windowWidth/(2*gridX),drawy + windowHeight/(gridY*2),GHOST_SIZE - colSpace, 0 ,2*Math.PI,false);
+			context.fill();
+			useCol(x);
+			grid[x][y] = 3;
+		}
+		
+		function useCol(x) {
+			// mark a collumn as used so nothing else will appear there
+			for (var i= 0 ; i<grid[x].length ; i++) {
+				if (grid[x][i] == 0) {
+					grid[x][i] = 5;
+				}
+			}
+		}
+		
+		
+		
+		function go(x,y) {
+			// check the location x,y and move pacman there if possible
+
+			if (!move.value || !gameStart) {
+				return;
+			}			
+			
+			if (level > 0) {
+
+				// touch edge of the screen
+				if (x<0 || x>gridX-1 || y<0 || y>gridY-1) {
+					play_audio(stuck);
+				} else {
+					
+					// move sounds
+					if (!mobilecheck) { if (playerChew) {	chomp.currentTime = 0; play_audio(chomp); }
+						else { chimp.currentTime = 0; play_audio(chimp); } }
+					
+					switch (grid[x][y]) {
+						case 1: // got food
+							food --;
+							var yummy = 'mp3/munch.mp3';
+							grid[x][y] = 0;
+							putPlayer(x,y,playerDir);
+							if (!checkWin()) {
+								play_audio(yummy);
+							}
+							break;
+						case 2: // hit wall
+							play_audio(stuck);
+							break;
+						case 3: // hit ghost
+							putPlayer(x,y,playerDir);
+							move.value = false;
+							first_in_lvl = false;						
+							play_audio(scream);
+							if (score > 0 )
+								score = score - 1;
+							setTimeout(clear,300);
+							setTimeout(function() { play_audio(hit_ghost); },300);
+							setTimeout(newRound, 1300);
+							break;
+						default: // just move
+							putPlayer(x,y,playerDir);
+							break;
+					}
+				}
+				
+			} else { // level < 0
+
+					move.value = true;
+					level++;
+					newRound();
+				
+			}
+		}
+		
+
+		
+		function putPlayer(x,y,d) {
+
+			clearSquare(player[0],player[1],BG_COLOR,BG_COLOR);
+			context.fillStyle = "yellow";
+			player = [x,y];
+			
+			if (playerChew) { d = 7 }
+			
+			switch (d) {
+				case 1: // look right
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 0.25 * Math.PI, 1.25 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 0.75 * Math.PI, 1.75 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					break;
+				case 2: // look up
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 1.75 * Math.PI, 0.75 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 0.25 * Math.PI, 1.25 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					break;			
+				case 3: // look left
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 1.75 * Math.PI, 0.75 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 1.25 * Math.PI, 0.25 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					break;	
+				case 4: // look down
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 0.75 * Math.PI, 1.75 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 1.25 * Math.PI, 0.25 * Math.PI, false);
+					context.fill();
+					context.beginPath();
+					break;						
+				default:
+					context.beginPath();
+					context.arc(blockX*(0.5+x), blockY*(0.5+y), playerSize, 0, 2 * Math.PI, false);
+					context.fill();
+					context.beginPath();		
+					break;
+			}
+			
+			playerChew = !playerChew;
+		}
+		
+		function checkWin() {
+			
+			if (food <= 0) {
+				stopEM();
+				move.value = false;
+				if (!mobilecheck) {
+					play_audio(win);
+				}
+				first_in_lvl = false;
+				score++;
+				var tmpLvl = level;
+				checkLevel();
+				if (level != tmpLvl) { first_in_lvl = true; }
+				setTimeout(newRound, 1300);
+				
+				return true;
+			}
+			
+			return false;
+		}
+		
+		
+		/* screen */
+		
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);	
+		
+		var tempGrid;
+		function resize() {
+			clear();
+			resize_canvas(canvas);
+			tempGrid = jQuery.extend(true, {}, grid);
+			grid = createGrid(gridX,gridY);
+			playerSize = Math.floor(Math.min(blockX,blockY)/2);
+			FOOD_SIZE = playerSize;
+			GHOST_SIZE = FOOD_SIZE;			
+			paint();
+		}
+		
+		function paint() {
+			for (var i=1 ; i<gridX ; i++) {
+				for (var j=0; j<gridY ; j++) {
+					switch (tempGrid[i][j]) {
+						case 2:
+							obstacle(i,j);
+							break;
+						case 1:
+							putfood(i,j);
+							break;
+						case 3:
+							ghost(i,j);
+							break;
+					}
+				}
+			}
+			if (level>0) {
+				putPlayer(player[0],player[1],0);
+			}
+		}
+		
+		/* interface */		
+		
+		function goLeft() {
+			playerDir = 3;
+			go(player[0]-1,player[1]);
+		}
+		
+		function goRight() {
+
+			playerDir = 1;
+			go(player[0]+1,player[1]);
+		}		
+		
+		function goDown() {
+			playerDir = 4;
+			go(player[0],player[1]+1);
+		}
+		
+		function goUp() {
+			playerDir = 2;
+			go(player[0],player[1]-1);
+		}	
+		
+		function spaceBar() {
+
+			if (!move.value || !gameStart) {
+				return;
+			}				
+			if (level == 1) {
+				level++;
+				newRound();
+			}								
+			go(player[0],player[1]);
+		}
+		
+		function clickFunc(x,y) {
+		
+			if (move.value) {
+				return;
+			}		
+		
+			if (x > windowWidth*2/3) {
+				goRight();
+			} else if (x < windowWidth/3) {
+				goLeft(); 
+			} else {
+				if (y < windowHeight/3) {
+					goUp();
+				} else if (y > windowHeight*2/3) {
+					goDown();
+				} else {
+					spaceBar();
+				}
+			}
+		}
+		
+		window.addEventListener('keydown', function(e) { 
+		
+			if (!move.value || !gameStart) {
+				return;
+			}
+		
+			if (level > 0) {
+			switch (e.keyCode) {
+				case 39:
+					goRight();
+					break;
+				case 40:
+					goDown();
+					break;
+				case 38:
+					goUp();
+					break;
+				case 37:
+					goLeft();
+					break;	
+				case 32:
+					spaceBar();
+					break;						
+				default:
+					break;
+
+			}
+			} else {
+				move.value = false;
+				level++;
+				newRound();
+				
+			}
+
+			
+		});
+		
+		
+
+	</script>
+	
+	<script src="js/mobileCheck.js"></script>
+	<script src="js/compatibility.js"></script>
+	
+</body></html>

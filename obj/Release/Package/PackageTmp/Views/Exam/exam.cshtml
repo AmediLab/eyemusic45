@@ -1,0 +1,336 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>exam, choose the correct image description according to audio</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/languages.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+
+        var numQuestions = @Model.num_question;
+        var numExam = @Model.exam_number;
+
+        $(document).bind('keydown', 'ctrl', function () {
+            UIplayButton_click();
+        });
+
+        $(document).bind('keydown', 'shift+f1', function () {
+            if (document.getElementById("thePlayaudio").playbackRate < 3.50)
+                document.getElementById("thePlayaudio").playbackRate += 0.1;
+        });
+
+        $(document).bind('keydown', 'shift+f2', function () {
+            if (document.getElementById("thePlayaudio").playbackRate > 0.59)
+                document.getElementById("thePlayaudio").playbackRate -= 0.1;
+        });
+
+        $(document).bind('keydown', 'shift+f4', function () {
+            (document.getElementById("next")).click();
+        });
+    </script>
+    <script type="text/javascript">
+        var recived;
+        var rethome;
+        var showall;
+        var retlessn;
+
+        function adjust()
+        {
+
+            window.lan = @Model.len;
+            doChange();
+
+        }
+        function doChange()
+        {
+            document.getElementById("UIplayButton").innerHTML = retstr(20);
+            recived = retstr(29); 
+            rethome = retstr(16);
+            showall = retstr(30);
+            retlessn = retstr(51);
+        }
+    </script>
+
+</head>
+
+@{
+    string first_float;
+    string secound_float;
+    
+    if (Model.len == "h")
+    {
+        @:<body onunload="" id="body1" dir="rtl">
+                first_float = "float-right";
+                secound_float = "float-left";
+        @:<h5 id="numQuestions">מבחן מספר @Model.exam_number , שאלה מספר @Model.num_question מתוך 10. </h5>
+        @:<h6 id="deletefinish">בחר את התיאור הנכון לצליל שאתה שומע כעת, לחץ ctrl להתחלה והפסקה של ההשמעה.</h6>
+            <audio id="myNo">
+        @{
+            string ddsno = "~/../../Sounds/no.mp3";
+            <source src="@ddsno" type="audio/mp3">
+        }
+    </audio>
+
+    <audio id="myYes">
+        @{
+            string ddsyes = "~/../../Sounds/yes.mp3";
+            <source src="@ddsyes" type="audio/mp3">
+        }
+    </audio> 
+    
+    
+        @:<div id="container" class="float-right">
+
+    }
+    else
+    {
+        @:<body onunload="" id="body1" dir="ltr">
+        first_float = "float-left";
+        secound_float = "float-right";
+
+            @:<h5 id="numQuestions"> Question number @Model.num_question from 10. exam number @Model.exam_number</h5>
+            @:<h6 id="deletefinish">Select the correct description for the image that you sound. Press ctrl to start and stop the audio.</h6>
+                <audio id="myNo">
+        @{
+            string ddsno = "~/../../Sounds/no.mp3";
+            <source src="@ddsno" type="audio/mp3">
+        }
+    </audio>
+
+    <audio id="myYes">
+        @{
+            string ddsyes = "~/../../Sounds/yes.mp3";
+            <source src="@ddsyes" type="audio/mp3">
+        }
+    </audio> 
+    
+    
+        @:<div id="container" class="float-left">
+
+
+    }
+}
+
+    <div id="menu" style="background-color: #FFFFFF; height: 200px; width: 100px; float: right;">
+
+        <table style="width:300px">
+            <tr>
+                <td>
+                    <button title="Play" id="UIplayButton" onclick="UIplayButton_click()">
+                        
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+        <audio id="thePlayaudio"  style="height:1px;width:1px" controls hidden="hidden">
+            @{
+    string dds3 = "~/../../" + Model.theUri;
+                <source src="@dds3" type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+
+
+        <script type="text/javascript">
+
+            var play = false;
+
+            myAudio = document.getElementById("thePlayaudio");
+
+            handlerBeep = function () {                
+                this.pause();
+                this.currentTime = 0;
+                this.play();
+            }
+
+            function init1() {
+                adjust();
+                document.getElementById("thePlayaudio").pause();
+
+            }
+
+
+            window.onload = init1;
+
+            function UIplayButton_click() {
+
+                if (play == false) {
+                    myAudio.addEventListener('ended', handlerBeep, false);
+                    myAudio.play();
+                    play = true;
+                }
+                else {
+                    myAudio.removeEventListener('ended', handlerBeep, false);
+                    play = false;
+                    myAudio.pause();
+                    myAudio.currentTime = 0;
+
+                }
+
+            }
+        </script>
+
+
+        @{
+            int i = 0;
+            foreach (string sd in Model.answers)
+            {
+                <button style=" width:700px;height:30px;margin-top:20px" id="answer @i" value="@sd" onclick="sendajax('@i')">@sd</button>
+                i++;
+            }
+        }
+
+
+
+
+        <table>
+            <tr>
+                <td id="PreviosImageText">
+                    @if (Model.previos_path != "")
+                    {
+                        @:<h3 id="previos">  </h3>
+                         }
+                </td>
+            </tr>
+            <tr>
+                <td id="PreviosImage">
+                    @if (Model.previos_path != "")
+                    {
+                        string dds = "~/../../" + Model.currImagePath;
+                        @:<img id="thePreviosImage" src="@dds" />
+                         }
+                </td>
+            </tr>
+        </table>
+
+        <script type="text/javascript">
+    function sendajax(answerCheck)
+    {
+        if (numQuestions < 10)
+        {
+            $("#thePlayaudio")[0].pause();
+            myAudio.removeEventListener('ended', handlerBeep, false);
+
+            $.ajax({
+                url: '@Url.Action("Examnext")',
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    answer: answerCheck
+                }),
+                success: function (data) {
+                    $("answer_table").html("");
+                    $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+
+                    var vid = document.getElementById("thePlayaudio");
+
+                    vid.oncanplay = function() {
+                        myAudio.addEventListener('ended', handlerBeep, false);
+                        $("#thePlayaudio")[0].play();
+                        vid.oncanplay = null;
+                    };
+
+
+                    document.getElementById("answer 0").innerHTML = data.next_des[0];
+                    document.getElementById("answer 1").innerHTML = data.next_des[1];
+                    document.getElementById("answer 2").innerHTML = data.next_des[2];
+                    document.getElementById("answer 3").innerHTML = data.next_des[3];
+
+                    if(window.lan == 'e')
+                    {
+                        $("#numQuestions").html("question number " + ++numQuestions + " from 10. exam number " + numExam);
+                    }
+                    else
+                    {
+                        $("#numQuestions").html(" מבחן מספר " + numExam + " שאלה מספר "  + ++numQuestions + " מתוך 10 " );
+                    }
+
+                    $("#PreviosImageText").html("");
+
+
+                    if (data.correct == 0) {
+                        if (window.lan == 'e')
+                        {
+                            $("#PreviosImageText").append("<h3> The previous image was: </h3>");
+                        }
+                        else
+                        {
+                            $("#PreviosImageText").append("<h3> התמונה הקודמת הייתה: </h3>");
+                        }
+
+                        $("#PreviosImage").html("")
+                        $("#PreviosImage").append('<img id="thePreviosImage" src="~/../../' + data.image + '" alt="' + data.prev_des + '"/>');
+                        $("#myNo")[0].play();
+                    }
+                    else {
+                        $("#PreviosImageText").html("");
+                        $("#PreviosImage").html("");
+                        $("#myYes")[0].play();
+                    }
+
+                    $("#0").focus();
+                }
+            });
+        }
+        else
+        {
+            $.ajax({
+                url: '@Url.Action("examResualt")',
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    id: answerCheck
+                }),success: function (data) {
+
+                    if(data.ifCorrect == 1)
+                        $("#myYes")[0].play();
+                    else
+                        $("#myNo")[0].play();
+
+                    $("#container").html("");
+                    $("#numQuestions").html("");
+                    $("#PreviosImageText").html("");
+                    $("#deletefinish").html("");
+
+                    $("#container").append(
+                    '<h2> '+ recived +' </h2>'  +    
+                    '<h3>' + data.num_correct * 10 + '% </h3> ' +
+                    '<ul> <li> <form action="/Home/index" id="submitHome2" method="post"> <input type="submit" value="' + rethome + '"> </form> </li> </ul>' +
+                    '<ul> <li> <form action="/Exam/grades" id="submitHome3" method="post"> <input type="submit" value="' + showall + '"> </form> </li> </ul>' +
+                    '<ul> <li> ' +
+                    '<form action="/Home/IselectedTrain" id="submitForm" method="post">' +
+                    '<input type="hidden" name="selected_stage" value="' + data.the_stage + '" />' +
+                    '<input type="hidden" name="selected_level" value="'+ data.the_level +'" /> ' +
+                    '<input type="submit" value="'+ retlessn +'" id="return_lesson"> ' +
+                    '</form> </li> </ul>');
+                }
+            });
+        }
+    }
+        </script>
+    </div>
+</div>
+</body>
+</html>
+

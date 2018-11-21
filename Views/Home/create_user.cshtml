@@ -1,0 +1,270 @@
+﻿@model eyemusic45.Models.ViewModels.userPass
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title id="createtitle">create new user for eye music</title>
+
+</head>
+<body>
+
+
+    <h2 id="create">create new user</h2>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/languages.js"></script>
+    <script type="text/javascript">
+
+        var ReturnUrl = "";
+        var len = "";
+
+        function blindYes()
+        {
+            var myselect = document.getElementById("blindYesNo");
+            if (myselect.options[myselect.selectedIndex].value == "n")
+            {
+                document.getElementById("precent").disabled = true;
+                document.getElementById("level_blind").disabled = true;
+                document.getElementById("age_of_blind").disabled = true;
+            }
+            else
+            {
+                document.getElementById("precent").disabled = false;
+                document.getElementById("level_blind").disabled = false;
+                document.getElementById("age_of_blind").disabled = false;
+            }
+        }
+
+        function haveExpirment()
+        {
+            var myselectexp = document.getElementById("expirment");
+            if (myselectexp.options[myselectexp.selectedIndex].value == "n")
+            {
+                document.getElementById("previos_expirments_more").disabled = true;
+
+            }
+            else
+            {
+                document.getElementById("previos_expirments_more").disabled = false;
+            }
+
+        }
+
+        function getreturnUrl()
+        {
+            var url = window.location.href;
+
+            if (url.indexOf("?") > 0) {
+                var Parameters = url.split("?")[1].substring(10);
+                console.log(Parameters);
+                ReturnUrl = Parameters.split("&")[0];
+                console.log(ReturnUrl);
+                len = Parameters.split("&")[1].substring(4);
+                console.log(len);
+                
+                document.getElementById("ReturnUrl").value = ReturnUrl;
+                document.getElementById("len").value = len;
+            }
+
+            DoChange();
+        }
+
+        function DoChange() {
+
+            //console.log("start");
+            window.lan = len;
+            document.getElementById("create").innerHTML = retstr(59);
+            document.getElementById("create2").innerHTML = retstr(59);
+            document.getElementById("createtitle").innerHTML = retstr(59);
+            $("label[for='name']").text(retstr(60));
+            $("label[for='password']").text(retstr(61));
+            document.getElementById("confirm").innerHTML = retstr(62);
+            document.getElementById("detials").innerHTML = retstr(58);
+            document.getElementById("birth").innerHTML = retstr(63);
+            document.getElementById("gander").innerHTML = retstr(64);
+            document.getElementById("famle").innerHTML = retstr(65);
+            document.getElementById("male").innerHTML = retstr(66);
+            document.getElementById("country").innerHTML = retstr(67);
+            document.getElementById("areblind").innerHTML = retstr(68);
+            document.getElementById("percentage").innerHTML = retstr(69);
+            document.getElementById("describe").innerHTML = retstr(70);
+            document.getElementById("visionlost").innerHTML = retstr(71);
+            document.getElementById("previosexp").innerHTML = retstr(72);
+            document.getElementById("ifso").innerHTML = retstr(73);
+            document.getElementById("trainingyour").innerHTML = retstr(74);
+            document.getElementById("yorself").innerHTML = retstr(75);
+            document.getElementById("withhelp").innerHTML = retstr(76);
+            document.getElementById("yes").innerHTML = retstr(48);
+            document.getElementById("no").innerHTML = retstr(49);
+            document.getElementById("yes2").innerHTML = retstr(48);
+            document.getElementById("no2").innerHTML = retstr(49);
+            document.getElementById("createsub").value = retstr(132);
+
+
+            document.getElementById("birth_year").value = 1900;
+            document.getElementById("blindYesNo").value = "n";
+            document.getElementById("expirment").value = "n";
+            document.getElementById("yourself").value = "y";
+            document.getElementById("place").value = "isreal";
+            document.getElementById("precent").disabled = true;
+            document.getElementById("level_blind").disabled = true;
+            document.getElementById("age_of_blind").disabled = true;
+            document.getElementById("previos_expirments_more").disabled = true;
+
+        }
+
+        window.onload = getreturnUrl;
+
+    </script>
+
+    @using (Html.BeginForm("CreateUser", "Home",  FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend id="create2">create new user</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.password)
+                @Html.ValidationMessageFor(model => model.password)
+            </div>
+
+            <div class="editor-label" id="confirm">
+                confirm Password
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.password2)
+                @Html.ValidationMessageFor(model => model.password2)
+            </div>
+
+            <h2 id="detials">These details are important for researching and upgrading this training program. Filling them out will give you full access to the website</h2>
+
+            <fieldset>
+                <div class="editor-label" id="birth">
+                    birth year in four digits:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.birth_year)
+                </div>
+
+                <div class="editor-label" id="gander">
+                    gender:
+                </div>
+                <div class="editor-field">
+
+                    <select id="gander" name="gander">
+                        <option value=" "> </option>
+                        <option id="famle" value="f">female</option>
+                        <option id="male" value="m">male</option>
+                    </select>
+
+                </div>
+
+                <div class="editor-label" id="country">
+                    country:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.place)
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <div class="editor-label" id="areblind">
+                    Are you blind or visually impaired ?
+                </div>
+
+                <div class="editor-field">
+
+                    <select id="blindYesNo" name="blindYesNo" onchange="blindYes()">
+                        <option value=" "> </option>
+                        <option id="yes" value="y">yes</option>
+                        <option id="no" value="n">no</option>
+                    </select>
+
+                </div>
+
+                <div class="editor-label" id="percentage">
+                    Percentage of remaining vision:
+                </div>
+
+                <div class="editor-field" >
+                    @Html.EditorFor(model => model.precent)
+                </div>
+
+                <div class="editor-label" id="describe">
+                    Please describe in your own words your level of vision:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.level_blind)
+                </div>
+
+                <div class="editor-label" id="visionlost">
+                    Age of vision loss:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.age_of_blind)
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="editor-label" id="previosexp">
+                    Do you have previous experience with the EyeMusic?
+                </div>
+
+                <div class="editor-field">
+
+                    <select id="expirment" name="expirment" onchange="haveExpirment()">
+                        <option value=" "> </option>
+                        <option id="yes2" value="y">yes</option>
+                        <option id="no2" value="n">no</option>
+                    </select>
+
+                </div>
+
+                <div class="editor-label" id="ifso">
+                    if so, how many hours:
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.previos_expirments_more)
+                </div>
+
+                <div class="editor-label" id="trainingyour">
+                    Are you training alone or with the assistance of a sighted person?
+                </div>
+
+                <div class="editor-field">
+
+                    <select id="yourself" name="yourself">
+                        <option value=" "> </option>
+                        <option id="yorself" value="y">yourself</option>
+                        <option id="withhelp" value="w">with help</option>
+                    </select>
+                        <input hidden name="ReturnUrl" id="ReturnUrl" value="@ViewBag.ReturnUrl" />
+                        <input hidden name="len" id="len" value="@ViewBag.len" />
+                    </div>
+            </fieldset>
+            
+            <p>
+                <input type="submit" value="Create" id="createsub" />
+            </p>
+        </fieldset>
+    }
+</body>
+</html>

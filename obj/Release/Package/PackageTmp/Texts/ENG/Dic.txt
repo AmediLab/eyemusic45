@@ -1,0 +1,3730 @@
+﻿ diagonal thin long up white
+ diagonal thin up white
+ diagonal thin short up white
+ diagonal thin long down white
+ diagonal thin down white
+ diagonal thin short down white
+ diagonal long up white
+ diagonal up white
+ diagonal short up white
+ diagonal long down white
+ diagonal down white
+ diagonal short down white
+ diagonal thick long up white
+ diagonal thick up white
+ diagonal thick short up white
+ diagonal thick long down white
+ diagonal thick down white
+ diagonal thick short down white
+ almost vertical thin long down white
+ almost vertical long down white
+ almost vertical thick long down white
+ almost vertical thin short up white
+ almost vertical short up white
+ almost vertical thick short up white
+ almost vertical thin short down white
+ almost vertical short down white
+ almost vertical thick short down white
+ low diagonal long up white
+ high diagonal long up white
+ high diagonal long down white
+ low diagonal long down white
+ 2 high diagonal thin up white
+ 2 low diagonal thin up white
+ diagonal thick up red and diagonal up white
+ diagonal thin up red and diagonal up white
+ diagonal thin short down red and diagonal up white
+ diagonal short down long up white
+ diagonal long up short down white
+ x white
+ diagonal thin long up red
+ diagonal thin up red
+ diagonal thin short up red
+ diagonal thin long down red
+ diagonal thin down red
+ diagonal thin short down red
+ diagonal long up red
+ diagonal up red
+ diagonal short up red
+ diagonal long down red
+ diagonal down red
+ diagonal short down red
+ diagonal thick long up red
+ diagonal thick up red
+ diagonal thick short up red
+ diagonal thick long down red
+ diagonal thick down red
+ diagonal thick short down red
+ almost vertical thin long down red
+ almost vertical long down red
+ almost vertical thick long down red
+ almost vertical thin short up red
+ almost vertical short up red
+ almost vertical thick short up red
+ almost vertical thin short down red
+ almost vertical short down red
+ almost vertical thick short down red
+ low diagonal long up red
+ high diagonal long up red
+ high diagonal long down red
+ low diagonal long down red
+ 2 high diagonal thin up red
+ 2 low diagonal thin up red
+ diagonal thick up red and diagonal up red
+ diagonal thin up red and diagonal up red
+ diagonal thin short down red and diagonal up red
+ diagonal short down long up red
+ diagonal long up short down red
+ x red
+ diagonal thin long up green
+ diagonal thin up green
+ diagonal thin short up green
+ diagonal thin long down green
+ diagonal thin down green
+ diagonal thin short down green
+ diagonal long up green
+ diagonal up green
+ diagonal short up green
+ diagonal long down green
+ diagonal down green
+ diagonal short down green
+ diagonal thick long up green
+ diagonal thick up green
+ diagonal thick short up green
+ diagonal thick long down green
+ diagonal thick down green
+ diagonal thick short down green
+ almost vertical thin long down green
+ almost vertical long down green
+ almost vertical thick long down green
+ almost vertical thin short up green
+ almost vertical short up green
+ almost vertical thick short up green
+ almost vertical thin short down green
+ almost vertical short down green
+ almost vertical thick short down green
+ low diagonal long up green
+ high diagonal long up green
+ high diagonal long down green
+ low diagonal long down green
+ 2 high diagonal thin up green
+ 2 low diagonal thin up green
+ diagonal thick up red and diagonal up green
+ diagonal thin up red and diagonal up green
+ diagonal thin short down red and diagonal up green
+ diagonal short down long up green
+ diagonal long up short down green
+ x green
+ diagonal thin long up blue
+ diagonal thin up blue
+ diagonal thin short up blue
+ diagonal thin long down blue
+ diagonal thin down blue
+ diagonal thin short down blue
+ diagonal long up blue
+ diagonal up blue
+ diagonal short up blue
+ diagonal long down blue
+ diagonal down blue
+ diagonal short down blue
+ diagonal thick long up blue
+ diagonal thick up blue
+ diagonal thick short up blue
+ diagonal thick long down blue
+ diagonal thick down blue
+ diagonal thick short down blue
+ almost vertical thin long down blue
+ almost vertical long down blue
+ almost vertical thick long down blue
+ almost vertical thin short up blue
+ almost vertical short up blue
+ almost vertical thick short up blue
+ almost vertical thin short down blue
+ almost vertical short down blue
+ almost vertical thick short down blue
+ low diagonal long up blue
+ high diagonal long up blue
+ high diagonal long down blue
+ low diagonal long down blue
+ 2 high diagonal thin up blue
+ 2 low diagonal thin up blue
+ diagonal thick up red and diagonal up blue
+ diagonal thin up red and diagonal up blue
+ diagonal thin short down red and diagonal up blue
+ diagonal short down long up blue
+ diagonal long up short down blue
+ x blue
+ diagonal thin long up yellow
+ diagonal thin up yellow
+ diagonal thin short up yellow
+ diagonal thin long down yellow
+ diagonal thin down yellow
+ diagonal thin short down yellow
+ diagonal long up yellow
+ diagonal up yellow
+ diagonal short up yellow
+ diagonal long down yellow
+ diagonal down yellow
+ diagonal short down yellow
+ diagonal thick long up yellow
+ diagonal thick up yellow
+ diagonal thick short up yellow
+ diagonal thick long down yellow
+ diagonal thick down yellow
+ diagonal thick short down yellow
+ almost vertical thin long down yellow
+ almost vertical long down yellow
+ almost vertical thick long down yellow
+ almost vertical thin short up yellow
+ almost vertical short up yellow
+ almost vertical thick short up yellow
+ almost vertical thin short down yellow
+ almost vertical short down yellow
+ almost vertical thick short down yellow
+ low diagonal long up yellow
+ high diagonal long up yellow
+ high diagonal long down yellow
+ low diagonal long down yellow
+ 2 high diagonal thin up yellow
+ 2 low diagonal thin up yellow
+ diagonal thick up red and diagonal up yellow
+ diagonal thin up red and diagonal up yellow
+ diagonal thin short down red and diagonal up yellow
+ diagonal short down long up yellow
+ diagonal long up short down yellow
+ x yellow
+ high diagonal short down red
+ diagonal down up red
+ diagonal up long green
+ diagonal long down short up red
+ diagonal long down short up blue
+ diagonal short up long down blue
+ diagonal short up long down yellow
+ diagonal long down short up yellow
+ diagonal long down short up green
+ diagonal short up long down green
+ high horizontal white
+ middle horizontal white
+ low horizontal white
+ high horizontal long white
+ middle horizontal long white
+ low horizontal long white
+ high Thick horizontal white
+ middle thick horizontal white 
+ low Thick horizontal white
+ high Thick horizontal long white
+ middle thick horizontal long white 
+ low Thick horizontal long white
+ 2 middle to right horizontal white
+ 2 low left horizontal white
+ 2 low right horizontal white
+ 2 high left horizontal white
+ 2 high right horizontal white
+ 3 middle horizontal white
+ 4 middle horizontal white
+ 1 low horizontal left 1 high horizontal white
+ 1 low thick horizontal left 1 high thick horizontal white
+ 1 high horizontal left 1 middle horizontal white
+ 1 high thick horizontal left 1 middle horizontal white
+ 1 middle 1 middle 1 middle 1 middle horizontal white
+ 3 pairs of 2 steps middle middle horizontal middle white
+ 5 high horizontal up left to down right white
+ 5 low horizontal up left to down right white
+ 6 high horizontal down left to up right white
+ 6 low horizontal down left to up right white
+ 6 horizontal left up to mid down to up left white
+ thin small Square to thick small Square white
+ thin big Square to thick big Square white
+ thick small Square to thin small Square white
+ thick big Square to thin big Square white
+ high thick Staircase rise middle to right white
+ low thick Staircase rise left to middle white
+ high thick staircase descending left to middle white
+ low thick staircase descending left to middle white
+ high horizontal red
+ middle horizontal red
+ high horizontal long red
+ middle horizontal long red
+ low horizontal long red
+ high Thick horizontal red
+ low Thick horizontal red
+ high Thick horizontal long red
+ low Thick horizontal long red
+ 2 middle to right horizontal red
+ 2 low left horizontal red
+ 2 low right horizontal red
+ 2 high left horizontal red
+ 2 high right horizontal red
+ 3 middle horizontal red
+ 4 middle horizontal red
+ 1 low horizontal left 1 high horizontal red
+ 1 low thick horizontal left 1 high thick horizontal red
+ 1 high horizontal left 1 middle horizontal red
+ 1 high thick horizontal left 1 middle horizontal red
+ 1 middle 1 middle 1 middle 1 middle horizontal red
+ 3 pairs of 2 steps middle middle horizontal middle red
+ 5 high horizontal up left to down right red
+ 5 low horizontal up left to down right red
+ 6 high horizontal down left to up right red
+ 6 low horizontal down left to up right red
+ 6 horizontal left up to mid down to up left red
+ thin small Square to thick small Square red
+ thin big Square to thick big Square red
+ thick small Square to thin small Square red
+ thick big Square to thin big Square red
+ high thick Staircase rise middle to right red
+ low thick Staircase rise left to middle red
+ high thick staircase descending left to middle red
+ low thick staircase descending left to middle red
+ high horizontal green
+ middle horizontal green
+ high horizontal long green
+ middle horizontal long green
+ low horizontal long green
+ high Thick horizontal green
+ low Thick horizontal green
+ high Thick horizontal long green
+ low Thick horizontal long green
+ 2 middle to right horizontal green
+ 2 low left horizontal green
+ 2 low right horizontal green
+ 2 high left horizontal green
+ 2 high right horizontal green
+ 3 middle horizontal green
+ 4 middle horizontal green
+ 1 low horizontal left 1 high horizontal green
+ 1 low thick horizontal left 1 high thick horizontal green
+ 1 high horizontal left 1 middle horizontal green
+ 1 high thick horizontal left 1 middle horizontal green
+ 1 middle 1 middle 1 middle 1 middle horizontal green
+ 3 pairs of 2 steps middle middle horizontal middle green
+ 5 high horizontal up left to down right green
+ 5 low horizontal up left to down right green
+ 6 high horizontal down left to up right green
+ 6 low horizontal down left to up right green
+ 6 horizontal left up to mid down to up left green
+ thin small Square to thick small Square green
+ thin big Square to thick big Square green
+ thick small Square to thin small Square green
+ thick big Square to thin big Square green
+ high thick Staircase rise middle to right green
+ low thick Staircase rise left to middle green
+ high thick staircase descending left to middle green
+ low thick staircase descending left to middle green
+ high horizontal blue
+ middle horizontal blue
+ high horizontal long blue
+ middle horizontal long blue
+ low horizontal long blue
+ high Thick horizontal blue
+ low Thick horizontal blue
+ high Thick horizontal long blue
+ low Thick horizontal long blue
+ 2 middle to right horizontal blue
+ 2 low left horizontal blue
+ 2 low right horizontal blue
+ 2 high left horizontal blue
+ 2 high right horizontal blue
+ 3 middle horizontal blue
+ 4 middle horizontal blue
+ 1 low horizontal left 1 high horizontal blue
+ 1 low thick horizontal left 1 high thick horizontal blue
+ 1 high horizontal left 1 middle horizontal blue
+ 1 high thick horizontal left 1 middle horizontal blue
+ 1 middle 1 middle 1 middle 1 middle horizontal blue
+ 3 pairs of 2 steps middle middle horizontal middle blue
+ 5 high horizontal up left to down right blue
+ 5 low horizontal up left to down right blue
+ 6 high horizontal down left to up right blue
+ 6 low horizontal down left to up right blue
+ 6 horizontal left up to mid down to up left blue
+ thin small Square to thick small Square blue
+ thin big Square to thick big Square blue
+ thick small Square to thin small Square blue
+ thick big Square to thin big Square blue
+ high thick Staircase rise middle to right blue
+ low thick Staircase rise left to middle blue
+ high thick staircase descending left to middle blue
+ low thick staircase descending left to middle blue
+ high horizontal yellow
+ middle horizontal yellow
+ high horizontal long yellow
+ middle horizontal long yellow
+ low horizontal long yellow
+ high Thick horizontal yellow
+ low Thick horizontal yellow
+ high Thick horizontal long yellow
+ low Thick horizontal long yellow
+ 2 middle to right horizontal yellow
+ 2 low left horizontal yellow
+ 2 low right horizontal yellow
+ 2 high left horizontal yellow
+ 2 high right horizontal yellow
+ 3 middle horizontal yellow
+ 4 middle horizontal yellow
+ 1 low horizontal left 1 high horizontal yellow
+ 1 low thick horizontal left 1 high thick horizontal yellow
+ 1 high horizontal left 1 middle horizontal yellow
+ 1 high thick horizontal left 1 middle horizontal yellow
+ 1 middle 1 middle 1 middle 1 middle horizontal yellow
+ 3 pairs of 2 steps middle middle horizontal middle yellow
+ 5 high horizontal up left to down right yellow
+ 5 low horizontal up left to down right yellow
+ 6 high horizontal down left to up right yellow
+ 6 low horizontal down left to up right yellow
+ 6 horizontal left up to mid down to up left yellow
+ thin small Square to thick small Square yellow
+ thin big Square to thick big Square yellow
+ thick small Square to thin small Square yellow
+ thick big Square to thin big Square yellow
+ high thick Staircase rise middle to right yellow
+ low thick Staircase rise left to middle yellow
+ high thick staircase descending left to middle yellow
+ low thick staircase descending left to middle yellow
+ low horizontal red
+ Thick horizontal blue low
+ low horizontal red low Thick horizontal blue low horizontal red
+ middle Thick horizontal blue
+ middle Thick horizontal blue low Thick horizontal white
+ low Thick horizontal yellow middle Thick horizontal white
+ middle horizontal red middle Thick horizontal red
+ middle Thick horizontal white high horizontal blue
+ low Thick horizontal yellow middle Thick horizontal green low Thick horizontal yellow
+ high Thick horizontal blue low horizontal white high Thick horizontal blue
+ high horizontal red low horizontal yellow
+ low horizontal green
+ middle horizontal blue high horizontal red
+ high horizontal white middle Thick horizontal red high horizontal white
+ high Thick horizontal white. low Thick horizontal red
+ low horizontal yellow
+ low Thick horizontal yellow high horizontal red
+ low Thick horizontal yellow middle Thick horizontal red
+ high Thick horizontal red high Thick horizontal blue high Thick horizontal red
+ middle horizontal yellow high Thick horizontal yellow
+ high Thick horizontal red. high Thick horizontal blue
+ low horizontal yellow low Thick horizontal yellow low horizontal yellow
+ high Thick horizontal green. middle Thick horizontal Green 
+ high Thick horizontal green low Thick horizontal green high Thick horizontal green
+ low horizontal white low horizontal blue
+ high horizontal red high Thick horizontal green
+ middle horizontal blue low Thick horizontal white middle horizontal blue
+ low horizontal yellow low Thick horizontal white
+ high Thick horizontal yellow middle horizontal red high Thick horizontal yellow
+ high Thick horizontal blue. low Thick horizontal red
+ middle Thick horizontal red middle horizontal red
+ high Thick horizontal white. middle Thick horizontal yellow
+ high horizontal green high horizontal yellow
+ middle Thick horizontal green high Thick horizontal green middle Thick horizontal green
+ middle horizontal green low horizontal blue
+ high horizontal blue high horizontal green
+ low Thick horizontal white high Thick horizontal white
+ middle horizontal red middle horizontal green middle horizontal red
+ low horizontal red high Thick horizontal red
+ middle Thick horizontal red
+ high horizontal green low horizontal red
+ middle Thick horizontal white middle Thick horizontal white
+ middle Thick horizontal blue high Thick horizontal red middle Thick horizontal blue
+ middle horizontal red middle Thick horizontal yellow
+ middle horizontal yellow middle Thick horizontal white middle horizontal yellow
+ high Thick horizontal red middle horizontal green
+ high Thick horizontal yellow. low Thick horizontal white
+ high horizontal green low horizontal blue high horizontal green
+ high horizontal red low Thick horizontal red high horizontal red
+ low horizontal blue high Thick horizontal white
+ high horizontal blue high horizontal green high horizontal blue
+ high Thick horizontal yellow. high Thick horizontal red
+ high horizontal yellow high Thick horizontal green
+ low Thick horizontal white middle horizontal white low Thick horizontal white
+ middle horizontal blue low horizontal white
+ high Thick horizontal white middle horizontal yellow high Thick horizontal white
+ high Thick horizontal blue. low horizontal green
+ middle horizontal green high horizontal white
+ low Thick horizontal red middle Thick horizontal blue
+ high Thick horizontal green. middle horizontal yellow
+ high Thick horizontal green high Thick horizontal green
+ low Thick horizontal green high horizontal blue
+ middle Thick horizontal green low horizontal green
+ low Thick horizontal blue middle horizontal white
+ middle horizontal green middle Thick horizontal blue middle horizontal green
+ middle Thick horizontal white high horizontal red middle Thick horizontal white
+ middle horizontal yellow middle horizontal green
+ low Thick horizontal red middle horizontal blue
+ high horizontal white low Thick horizontal yellow
+ high horizontal yellow high horizontal yellow
+ high horizontal yellow high horizontal blue high horizontal yellow
+ high horizontal white middle horizontal yellow
+ middle Thick horizontal green
+ high Thick horizontal blue high Thick horizontal blue
+ low Thick horizontal red low horizontal red low Thick horizontal red
+ low Thick horizontal green high Thick horizontal yellow low Thick horizontal green
+ middle Thick horizontal yellow
+ middle Thick horizontal blue middle horizontal red
+ low horizontal yellow high Thick horizontal yellow
+ middle Thick horizontal green low Thick horizontal blue
+ middle horizontal white low Thick horizontal green
+ low horizontal blue high horizontal white
+ middle Thick horizontal yellow high horizontal white middle Thick horizontal yellow
+ middle Thick horizontal yellow high Thick horizontal blue
+ low horizontal blue
+ middle horizontal white middle horizontal blue middle horizontal white
+ middle horizontal white low horizontal white
+ middle Thick horizontal blue low horizontal yellow
+ middle Thick horizontal red middle Thick horizontal yellow middle Thick horizontal red
+ low Thick horizontal blue low Thick horizontal blue
+ low Thick horizontal blue high horizontal yellow low Thick horizontal blue
+ low horizontal blue low horizontal green low horizontal blue
+ low horizontal green middle Thick horizontal green
+ low horizontal green high Thick horizontal white low horizontal green
+ low horizontal white middle Thick horizontal white
+ low horizontal green middle horizontal white
+ low horizontal white low horizontal yellow low horizontal white
+ low horizontal red low Thick horizontal yellow
+ vertical long mid red
+ vertical long right red
+ vertical long left red
+ 2 verticals long red
+ 3 vertical long red
+ 5 vertical long red
+ 2 verticals long left red
+ 3 verticals long right red
+ 3 verticals long left red
+ 3 verticals long mid red
+ 4 vertical long red
+ vertical short mid red
+ vertical short left red
+ vertical short right red
+ 3 verticals short red
+ 3 verticals short up left to down right red
+ 5 verticals short up left to down right red
+ 4 vertical short down left to up right red
+ 2 vertical short left up red
+ 2 vertical short right up red
+ 2 vertical short left down red
+ 2 vertical short right down red
+ vertical wide red
+ vertical vary wide red
+ verticals change wide red
+ vertical change wide right to left red
+ vertical grow bottom left to right red
+ vertical grow bottom right to left red
+ vertical grow top right to left red
+ vertical grow top left to right red
+ vertical grow mid red
+ vertical long mid green
+ vertical long right green
+ vertical long left green
+ 2 verticals long green
+ 3 vertical long green
+ 5 vertical long green
+ 2 verticals long left green
+ 3 verticals long right green
+ 3 verticals long left green
+ 3 verticals long mid green
+ 4 vertical long green
+ vertical short mid green
+ vertical short left green
+ vertical short right green
+ 3 verticals short green
+ 3 verticals short up left to down right green
+ 5 verticals short up left to down right green
+ 4 vertical short down left to up right green
+ 2 vertical short left up green
+ 2 vertical short right up green
+ 2 vertical short left down green
+ 2 vertical short right down green
+ vertical wide green
+ vertical vary wide green
+ verticals change wide green
+ vertical change wide right to left green
+ vertical grow bottom left to right green
+ vertical grow bottom right to left green
+ vertical grow top right to left green
+ vertical grow top left to right green
+ vertical grow mid green
+ vertical long mid blue
+ vertical long right blue
+ vertical long left blue
+ 2 verticals long blue
+ 3 vertical long blue
+ 5 vertical long blue
+ 2 verticals long left blue
+ 3 verticals long right blue
+ 3 verticals long left blue
+ 3 verticals long mid blue
+ 4 vertical long blue
+ vertical short mid blue
+ vertical short left blue
+ vertical short right blue
+ 3 verticals short blue
+ 3 verticals short up left to down right blue
+ 5 verticals short up left to down right blue
+ 4 vertical short down left to up right blue
+ 2 vertical short left up blue
+ 2 vertical short right up blue
+ 2 vertical short left down blue
+ 2 vertical short right down blue
+ vertical wide blue
+ vertical vary wide blue
+ verticals change wide blue
+ vertical change wide right to left blue
+ vertical grow bottom left to right blue
+ vertical grow bottom right to left blue
+ vertical grow top right to left blue
+ vertical grow top left to right blue
+ vertical grow mid blue
+ vertical long mid yellow
+ vertical long right yellow
+ vertical long left yellow
+ 2 verticals long yellow
+ 3 vertical long yellow
+ 5 vertical long yellow
+ 2 verticals long left yellow
+ 3 verticals long right yellow
+ 3 verticals long left yellow
+ 3 verticals long mid yellow
+ 4 vertical long yellow
+ vertical short mid yellow
+ vertical short left yellow
+ vertical short right yellow
+ 3 verticals short yellow
+ 3 verticals short up left to down right yellow
+ 5 verticals short up left to down right yellow
+ 4 vertical short down left to up right yellow
+ 2 vertical short left up yellow
+ 2 vertical short right up yellow
+ 2 vertical short left down yellow
+ 2 vertical short right down yellow
+ vertical wide yellow
+ vertical vary wide yellow
+ verticals change wide yellow
+ vertical change wide right to left yellow
+ vertical grow bottom left to right yellow
+ vertical grow bottom right to left yellow
+ vertical grow top right to left yellow
+ vertical grow top left to right yellow
+ vertical grow mid yellow
+ vertical long center blue
+ vertical  long right green
+ 2 verticals blue red
+ 3 verticals yellow blue yellow
+ 5 verticals blue red yellow white green
+ multiple verticals white blue
+ multiple verticals RED
+ multiple vertical GREEN
+ multiple verticals Tight YELLOW
+ multiple verticals red red blue blue
+ vertical small blue
+ vertical small left RED
+ vertical small right blue
+ 3 verticals small blue green blue
+ 3 verticals diagonal yellow green yellow
+ 5 verticals diagonal yellow blue red blue yellow
+ 4 verticals diagonal up yellow red white green
+ 2 verticals small blue
+ 2 verticals small top right red
+ 2 verticals small bottom left green
+ 2 verticals small bottom right YELLOW
+ vertical wide center YELLOW
+ vertical wide center green
+ vertical wide center RED
+ vertical wide red yellow interchangeably
+ vertical grow red yellow blue white
+ vertical grow blue
+ vertical grow top yellow white yellow white
+ vertical grow Center RED
+ right vertical short white right vertical short white
+ diagonal descending long white right vertical white
+ middle horizontal white diagonal indicate long white
+ middle vertical short white middle vertical short white
+ high horizontal white high Thick horizontal white
+ low horizontal white diagonal indicate short white
+ diagonal indicate long white left vertical white
+ left vertical short white left vertical short white
+ right vertical white right vertical short white
+ high horizontal white middle vertical short white
+ diagonal indicate short white diagonal descending short white
+ diagonal indicate short white low horizontal white
+ diagonal descending long white
+ diagonal descending short white middle horizontal white
+ diagonal descending long white diagonal descending short white
+ right vertical white middle Thick horizontal white 
+ right vertical white low Thick horizontal white
+ low horizontal white middle horizontal white
+ left vertical short white high horizontal white
+ left vertical short white diagonal indicate short white
+ high Thick horizontal white high horizontal white
+ middle vertical short white low Thick horizontal white
+ right vertical white low horizontal white
+ low horizontal white middle vertical white
+ left vertical short white middle Thick horizontal white 
+ left vertical short white high Thick horizontal white
+ diagonal indicate short white diagonal indicate short white
+ diagonal descending long white low horizontal white
+ left vertical short white
+ diagonal indicate long white
+ low Thick horizontal white diagonal indicate long white
+ right vertical short white diagonal descending short white
+ diagonal descending short white
+ diagonal descending short white diagonal indicate short white
+ diagonal descending short white low Thick horizontal white
+ middle Thick horizontal white low Thick horizontal white
+ right vertical white diagonal descending long white
+ diagonal descending short white right vertical short white
+ diagonal indicate long white high Thick horizontal white
+ left vertical short white diagonal indicate long white
+ diagonal descending short white high Thick horizontal white
+ low Thick horizontal white high horizontal white
+ left vertical white
+ diagonal indicate long white low Thick horizontal white
+ diagonal indicate short white right vertical short white
+ high Thick horizontal white low horizontal white
+ diagonal indicate long white middle Thick horizontal white 
+ left vertical white diagonal indicate short white
+ middle Thick horizontal white  diagonal indicate long white
+ middle vertical white high horizontal white
+ left vertical white middle vertical short white
+ low Thick horizontal white diagonal descending short white
+ left vertical white left vertical short white
+ middle horizontal white right vertical white
+ middle vertical short white right vertical white
+ middle vertical white diagonal descending long white
+ diagonal indicate long white right vertical white
+ middle vertical white left vertical short white
+ middle Thick horizontal white diagonal descending long white
+ middle horizontal white middle horizontal white
+ diagonal indicate short white
+ low Thick horizontal white left vertical short white
+ left vertical white middle Thick horizontal white 
+ left vertical white middle horizontal white
+ diagonal descending long white middle vertical short white
+ right vertical short white left vertical white
+ middle vertical short white middle horizontal white
+ diagonal indicate short white diagonal descending long white
+ diagonal descending long white middle vertical white
+ high horizontal white right vertical short white
+ low horizontal white left vertical short white
+ high horizontal white diagonal descending short white
+ diagonal descending short white middle Thick horizontal white 
+ high Thick horizontal white diagonal descending long white
+ high horizontal white right vertical white
+ high Thick horizontal white diagonal indicate short white
+ low horizontal white low horizontal white
+ high Thick horizontal white middle vertical short white
+ middle vertical white middle horizontal white
+ right vertical short white high Thick horizontal white
+ low Thick horizontal white middle vertical white
+ right vertical white
+ middle horizontal white high horizontal white
+ middle vertical short white right vertical short white
+ right vertical short white
+ right vertical short white high horizontal white
+ middle vertical white left vertical white
+ middle vertical short white
+ middle vertical short white diagonal indicate long white
+ middle Thick horizontal white middle vertical white
+ low Thick horizontal white middle Thick horizontal white 
+ middle horizontal white left vertical white
+ middle vertical white
+ middle vertical short white right vertical short white diagonal descending short white
+ diagonal descending short white low Thick horizontal white diagonal indicate short white
+ high horizontal white right vertical white right vertical white
+ low horizontal white low horizontal white right vertical short white
+ diagonal descending short white right vertical short white high horizontal white
+ left vertical white diagonal indicate short white left vertical short white
+ low Thick horizontal white middle Thick horizontal white  middle vertical white
+ right vertical white low Thick horizontal white high horizontal white
+ diagonal descending short white middle horizontal white left vertical short white
+ diagonal descending long white right vertical white left vertical white
+ left vertical white left vertical short white diagonal indicate long white
+ middle horizontal white left vertical white low Thick horizontal white
+ diagonal descending short white diagonal indicate short white diagonal indicate long white
+ middle Thick horizontal white  low Thick horizontal white high Thick horizontal white
+ left vertical short white middle Thick horizontal white  diagonal descending long white
+ diagonal descending long white middle vertical white low horizontal white
+ diagonal descending short white high Thick horizontal white right vertical short white
+ high Thick horizontal white diagonal descending long white low horizontal white
+ diagonal indicate short white right vertical short white left vertical white
+ right vertical short white right vertical short white middle vertical white
+ diagonal indicate long white low Thick horizontal white diagonal indicate long white
+ diagonal descending long white diagonal descending short white middle vertical short white
+ diagonal descending short white middle Thick horizontal white middle vertical white
+ middle vertical short white middle vertical short white diagonal indicate short white
+ diagonal indicate long white high Thick horizontal white right vertical short white
+ right vertical white right vertical short white left vertical short white
+ middle Thick horizontal white  diagonal indicate long white diagonal indicate short white
+ middle vertical white high horizontal white middle horizontal white
+ low horizontal white left vertical short white high Thick horizontal white
+ diagonal descending long white middle vertical short white low Thick horizontal white
+ middle vertical white left vertical short white left vertical short white
+ left vertical short white diagonal indicate long white middle horizontal white
+ high Thick horizontal white diagonal indicate short white middle Thick horizontal white 
+ middle vertical white diagonal descending long white diagonal indicate long white
+ middle horizontal white left vertical white diagonal descending short white
+ diagonal indicate short white diagonal indicate short white right vertical white
+ middle Thick horizontal white  diagonal descending long white middle vertical white
+ diagonal descending long white low horizontal white right vertical white
+ left vertical white left vertical short white middle horizontal white
+ middle vertical short white middle horizontal white low horizontal white
+ left vertical white middle horizontal white middle Thick horizontal white 
+ left vertical white middle Thick horizontal white middle horizontal white
+ high horizontal white diagonal descending short white diagonal indicate short white
+ diagonal descending long white low horizontal white high horizontal white
+ diagonal indicate long white left vertical white middle Thick horizontal white 
+ low Thick horizontal white middle vertical white middle Thick horizontal white 
+ low Thick horizontal white left vertical short white left vertical short white
+ right vertical white diagonal descending long white left vertical white
+ low Thick horizontal white diagonal descending short white low horizontal white
+ middle vertical short white diagonal indicate long white diagonal descending long white
+ middle vertical short white low Thick horizontal white diagonal descending long white
+ high horizontal white high Thick horizontal white diagonal descending long white
+ diagonal indicate short white diagonal descending short white low Thick horizontal white
+ middle vertical white left vertical white right vertical white
+ middle vertical white middle horizontal white low horizontal white
+ middle vertical short white right vertical white diagonal descending long white
+ middle vertical white diagonal descending long white high Thick horizontal white
+ middle Thick horizontal white  diagonal indicate long white right vertical white
+ right vertical white low horizontal white right vertical short white
+ high Thick horizontal white middle vertical short white right vertical white
+ diagonal indicate long white right vertical white diagonal indicate long white
+ diagonal indicate short white low horizontal white low Thick horizontal white
+ left vertical white middle vertical short white right vertical short white
+ left vertical short white diagonal indicate short white high horizontal white
+ right vertical white middle Thick horizontal white  high Thick horizontal white
+ low Thick horizontal white high horizontal white low Thick horizontal white
+ right vertical white middle vertical white middle vertical white
+ left vertical short white left vertical short white middle vertical short white
+ right vertical short white left vertical white diagonal descending long white
+ middle horizontal white diagonal indicate long white middle vertical short white
+ left vertical short white high Thick horizontal white middle Thick horizontal white 
+ middle horizontal white high horizontal white right vertical short white
+ middle horizontal white right vertical white middle vertical short white
+ right vertical short white left vertical white high horizontal white
+ right vertical short white high Thick horizontal white middle Thick horizontal white 
+ diagonal indicate long white middle Thick horizontal white  diagonal descending short white
+ middle Thick horizontal white  middle vertical white left vertical short white
+ high Thick horizontal white high horizontal white diagonal indicate short white
+ high horizontal white right vertical white middle vertical short white
+ high Thick horizontal white middle vertical short white middle horizontal white
+ high horizontal white middle vertical short white high horizontal white
+ low horizontal white middle horizontal white diagonal descending short white
+ high Thick horizontal white low horizontal white diagonal descending short white
+ high horizontal white right vertical short white left vertical white
+ low horizontal white middle vertical white diagonal indicate short white
+ diagonal indicate short white diagonal descending long white diagonal indicate long white
+ diagonal indicate short white diagonal descending short white high Thick horizontal white
+ diagonal indicate long white high Thick horizontal white middle vertical white
+ middle Thick horizontal white  low Thick horizontal white middle vertical short white
+ middle horizontal white middle horizontal white middle horizontal white
+ right vertical short white diagonal descending short white low horizontal white
+ low horizontal white middle vertical white left vertical white
+ right vertical short white high horizontal white high Thick horizontal white
+ low horizontal white diagonal indicate short white low Thick horizontal white
+ low Thick horizontal white diagonal indicate long white diagonal descending short white
+ right vertical short red right vertical short red
+ diagonal descending long red right vertical red
+ middle horizontal red diagonal indicate long red
+ middle vertical short red middle vertical short red
+ high horizontal red high Thick horizontal red
+ low horizontal red diagonal indicate short red
+ diagonal indicate long red left vertical red
+ left vertical short red left vertical short red
+ right vertical red right vertical short red
+ high horizontal red middle vertical short red
+ diagonal indicate short red diagonal descending short red
+ diagonal indicate short red low horizontal red
+ diagonal descending long red
+ diagonal descending short red middle horizontal red
+ diagonal descending long red diagonal descending short red
+ right vertical red middle Thick horizontal red 
+ right vertical red low Thick horizontal red
+ low horizontal red middle horizontal red
+ left vertical short red high horizontal red
+ left vertical short red diagonal indicate short red
+ high Thick horizontal red high horizontal red
+ middle vertical short red low Thick horizontal red
+ right vertical red low horizontal red
+ low horizontal red middle vertical red
+ left vertical short red middle Thick horizontal red 
+ left vertical short red high Thick horizontal red
+ diagonal indicate short red diagonal indicate short red
+ diagonal descending long red low horizontal red
+ left vertical short red
+ diagonal indicate long red
+ low Thick horizontal red diagonal indicate long red
+ right vertical short red diagonal descending short red
+ diagonal descending short red
+ diagonal descending short red diagonal indicate short red
+ diagonal descending short red low Thick horizontal red
+ middle Thick horizontal red low Thick horizontal red
+ right vertical red diagonal descending long red
+ diagonal descending short red right vertical short red
+ diagonal indicate long red high Thick horizontal red
+ left vertical short red diagonal indicate long red
+ diagonal descending short red high Thick horizontal red
+ low Thick horizontal red high horizontal red
+ left vertical red
+ diagonal indicate long red low Thick horizontal red
+ diagonal indicate short red right vertical short red
+ high Thick horizontal red low horizontal red
+ diagonal indicate long red middle Thick horizontal red 
+ left vertical red diagonal indicate short red
+ middle Thick horizontal red  diagonal indicate long red
+ middle vertical red high horizontal red
+ left vertical red middle vertical short red
+ low Thick horizontal red diagonal descending short red
+ left vertical red left vertical short red
+ middle horizontal red right vertical red
+ middle vertical short red right vertical red
+ middle vertical red diagonal descending long red
+ diagonal indicate long red right vertical red
+ middle vertical red left vertical short red
+ middle Thick horizontal red diagonal descending long red
+ middle horizontal red middle horizontal red
+ diagonal indicate short red
+ low Thick horizontal red left vertical short red
+ left vertical red middle Thick horizontal red 
+ left vertical red middle horizontal red
+ diagonal descending long red middle vertical short red
+ right vertical short red left vertical red
+ middle vertical short red middle horizontal red
+ diagonal indicate short red diagonal descending long red
+ diagonal descending long red middle vertical red
+ high horizontal red right vertical short red
+ low horizontal red left vertical short red
+ high horizontal red diagonal descending short red
+ diagonal descending short red middle Thick horizontal red 
+ high Thick horizontal red diagonal descending long red
+ high horizontal red right vertical red
+ high Thick horizontal red diagonal indicate short red
+ low horizontal red low horizontal red
+ high Thick horizontal red middle vertical short red
+ middle vertical red middle horizontal red
+ right vertical short red high Thick horizontal red
+ low Thick horizontal red middle vertical red
+ right vertical red
+ middle horizontal red high horizontal red
+ middle vertical short red right vertical short red
+ right vertical short red
+ right vertical short red high horizontal red
+ middle vertical red left vertical red
+ middle vertical short red
+ middle vertical short red diagonal indicate long red
+ middle Thick horizontal red middle vertical red
+ low Thick horizontal red middle Thick horizontal red 
+ middle horizontal red left vertical red
+ middle vertical red
+ middle vertical short red right vertical short red diagonal descending short red
+ diagonal descending short red low Thick horizontal red diagonal indicate short red
+ high horizontal red right vertical red right vertical red
+ low horizontal red low horizontal red right vertical short red
+ diagonal descending short red right vertical short red high horizontal red
+ left vertical red diagonal indicate short red left vertical short red
+ low Thick horizontal red middle Thick horizontal red  mid vertical red
+ right vertical red low Thick horizontal red high horizontal red
+ diagonal descending short red middle horizontal red left vertical short red
+ diagonal descending long red right vertical red left vertical red
+ left vertical red left vertical short red diagonal indicate long red
+ middle horizontal red left vertical red low Thick horizontal red
+ diagonal descending short red diagonal indicate short red diagonal indicate long red
+ middle Thick horizontal red  low Thick horizontal red high Thick horizontal red
+ left vertical short red middle Thick horizontal red  diagonal descending long red
+ diagonal descending long red middle vertical red low horizontal red
+ diagonal descending short red high Thick horizontal red right vertical short red
+ high Thick horizontal red diagonal descending long red low horizontal red
+ diagonal indicate short red right vertical short red left vertical red
+ right vertical short red right vertical short red middle vertical red
+ diagonal indicate long red low Thick horizontal red diagonal indicate long red
+ diagonal descending long red diagonal descending short red middle vertical short red
+ diagonal descending short red middle Thick horizontal red middle vertical red
+ middle vertical short red middle vertical short red diagonal indicate short red
+ diagonal indicate long red high Thick horizontal red right vertical short red
+ right vertical red right vertical short red left vertical short red
+ middle Thick horizontal red  diagonal indicate long red diagonal indicate short red
+ middle vertical red high horizontal red middle horizontal red
+ low horizontal red left vertical short red high Thick horizontal red
+ diagonal descending long red middle vertical short red low Thick horizontal red
+ middle vertical red left vertical short red left vertical short red
+ left vertical short red diagonal indicate long red middle horizontal red
+ high Thick horizontal red diagonal indicate short red middle Thick horizontal red 
+ middle vertical red diagonal descending long red diagonal indicate long red
+ middle horizontal red left vertical red diagonal descending short red
+ diagonal indicate short red diagonal indicate short red right vertical red
+ middle Thick horizontal red  diagonal descending long red middle vertical red
+ diagonal descending long red low horizontal red right vertical red
+ left vertical red left vertical short red middle horizontal red
+ middle vertical short red middle horizontal red low horizontal red
+ left vertical red middle horizontal red middle Thick horizontal red 
+ left vertical red middle Thick horizontal red middle horizontal red
+ high horizontal red diagonal descending short red diagonal indicate short red
+ diagonal descending long red low horizontal red high horizontal red
+ diagonal indicate long red left vertical red middle Thick horizontal red 
+ low Thick horizontal red middle vertical red middle Thick horizontal red 
+ low Thick horizontal red left vertical short red left vertical short red
+ right vertical red diagonal descending long red left vertical red
+ low Thick horizontal red diagonal descending short red low horizontal red
+ middle vertical short red diagonal indicate long red diagonal descending long red
+ middle vertical short red low Thick horizontal red diagonal descending long red
+ high horizontal red high Thick horizontal red diagonal descending long red
+ diagonal indicate short red diagonal descending short red low Thick horizontal red
+ middle vertical red left vertical red right vertical red
+ middle vertical red middle horizontal red low horizontal red
+ middle vertical short red right vertical red diagonal descending long red
+ middle vertical red diagonal descending long red high Thick horizontal red
+ middle Thick horizontal red  diagonal indicate long red right vertical red
+ right vertical red low horizontal red right vertical short red
+ high Thick horizontal red middle vertical short red right vertical red
+ diagonal indicate long red right vertical red diagonal indicate long red
+ diagonal indicate short red low horizontal red low Thick horizontal red
+ left vertical red middle vertical short red right vertical short red
+ left vertical short red diagonal indicate short red high horizontal red
+ right vertical red middle Thick horizontal red  high Thick horizontal red
+ low Thick horizontal red high horizontal red low Thick horizontal red
+ right vertical red middle vertical red middle vertical red
+ left vertical short red left vertical short red middle vertical short red
+ right vertical short red left vertical red diagonal descending long red
+ middle horizontal red diagonal indicate long red middle vertical short red
+ left vertical short red high Thick horizontal red middle Thick horizontal red 
+ middle horizontal red high horizontal red right vertical short red
+ middle horizontal red right vertical red middle vertical short red
+ right vertical short red left vertical red high horizontal red
+ right vertical short red high Thick horizontal red middle Thick horizontal red 
+ diagonal indicate long red middle Thick horizontal red  diagonal descending short red
+ middle Thick horizontal red  middle vertical red left vertical short red
+ high Thick horizontal red high horizontal red diagonal indicate short red
+ high horizontal red right vertical red middle vertical short red
+ high Thick horizontal red middle vertical short red middle horizontal red
+ high horizontal red middle vertical short red high horizontal red
+ low horizontal red middle horizontal red diagonal descending short red
+ high Thick horizontal red low horizontal red diagonal descending short red
+ high horizontal red right vertical short red left vertical red
+ low horizontal red middle vertical red diagonal indicate short red
+ diagonal indicate short red diagonal descending long red diagonal indicate long red
+ diagonal indicate short red diagonal descending short red high Thick horizontal red
+ diagonal indicate long red high Thick horizontal red middle vertical red
+ middle Thick horizontal red  low Thick horizontal red middle vertical short red
+ middle horizontal red middle horizontal red middle horizontal red
+ right vertical short red diagonal descending short red low horizontal red
+ low horizontal red middle vertical red left vertical red
+ right vertical short red high horizontal red high Thick horizontal red
+ low horizontal red diagonal indicate short red low Thick horizontal red
+ low Thick horizontal red diagonal indicate long red diagonal descending short red
+ right vertical short green right vertical short green
+ diagonal descending long green right vertical green
+ middle horizontal green diagonal indicate long green
+ middle vertical short green middle vertical short green
+ high horizontal green high Thick horizontal green
+ low horizontal green diagonal indicate short green
+ diagonal indicate long green left vertical green
+ left vertical short green left vertical short green
+ right vertical green right vertical short green
+ high horizontal green middle vertical short green
+ diagonal indicate short green diagonal descending short green
+ diagonal indicate short green low horizontal green
+ diagonal descending long green
+ diagonal descending short green middle horizontal green
+ diagonal descending long green diagonal descending short green
+ right vertical green middle Thick horizontal green 
+ right vertical green low Thick horizontal green
+ low horizontal green middle horizontal green
+ left vertical short green high horizontal green
+ left vertical short green diagonal indicate short green
+ high Thick horizontal green high horizontal green
+ middle vertical short green low Thick horizontal green
+ right vertical green low horizontal green
+ low horizontal green middle vertical green
+ left vertical short green middle Thick horizontal green 
+ left vertical short green high Thick horizontal green
+ diagonal indicate short green diagonal indicate short green
+ diagonal descending long green low horizontal green
+ left vertical short green
+ diagonal indicate long green
+ low Thick horizontal green diagonal indicate long green
+ right vertical short green diagonal descending short green
+ diagonal descending short green
+ diagonal descending short green diagonal indicate short green
+ diagonal descending short green low Thick horizontal green
+ middle Thick horizontal green low Thick horizontal green
+ right vertical green diagonal descending long green
+ diagonal descending short green right vertical short green
+ diagonal indicate long green high Thick horizontal green
+ left vertical short green diagonal indicate long green
+ diagonal descending short green high Thick horizontal green
+ low Thick horizontal green high horizontal green
+ left vertical green
+ diagonal indicate long green low Thick horizontal green
+ diagonal indicate short green right vertical short green
+ high Thick horizontal green low horizontal green
+ diagonal indicate long green middle Thick horizontal green 
+ left vertical green diagonal indicate short green
+ middle Thick horizontal green  diagonal indicate long green
+ middle vertical green high horizontal green
+ left vertical green middle vertical short green
+ low Thick horizontal green diagonal descending short green
+ left vertical green left vertical short green
+ middle horizontal green right vertical green
+ middle vertical short green right vertical green
+ middle vertical green diagonal descending long green
+ diagonal indicate long green right vertical green
+ middle vertical green left vertical short green
+ middle Thick horizontal green diagonal descending long green
+ middle horizontal green middle horizontal green
+ diagonal indicate short green
+ low Thick horizontal green left vertical short green
+ left vertical green middle Thick horizontal green 
+ left vertical green middle horizontal green
+ diagonal descending long green middle vertical short green
+ right vertical short green left vertical green
+ middle vertical short green middle horizontal green
+ diagonal indicate short green diagonal descending long green
+ diagonal descending long green middle vertical green
+ high horizontal green right vertical short green
+ low horizontal green left vertical short green
+ high horizontal green diagonal descending short green
+ diagonal descending short green middle Thick horizontal green 
+ high Thick horizontal green diagonal descending long green
+ high horizontal green right vertical green
+ high Thick horizontal green diagonal indicate short green
+ low horizontal green low horizontal green
+ high Thick horizontal green middle vertical short green
+ middle vertical green middle horizontal green
+ right vertical short green high Thick horizontal green
+ low Thick horizontal green middle vertical green
+ right vertical green
+ middle horizontal green high horizontal green
+ middle vertical short green right vertical short green
+ right vertical short green
+ right vertical short green high horizontal green
+ middle vertical green left vertical green
+ middle vertical short green
+ middle vertical short green diagonal indicate long green
+ middle Thick horizontal green middle vertical green
+ low Thick horizontal green middle Thick horizontal green 
+ middle horizontal green left vertical green
+ middle vertical green
+ middle vertical short green right vertical short green diagonal descending short green
+ diagonal descending short green low Thick horizontal green diagonal indicate short green
+ high horizontal green right vertical green right vertical green
+ low horizontal green low horizontal green right vertical short green
+ diagonal descending short green right vertical short green high horizontal green
+ left vertical green diagonal indicate short green left vertical short green
+ low Thick horizontal green middle Thick horizontal green  midd vertical green
+ right vertical green low Thick horizontal green high horizontal green
+ diagonal descending short green middle horizontal green left vertical short green
+ diagonal descending long green right vertical green left vertical green
+ left vertical green left vertical short green diagonal indicate long green
+ middle horizontal green left vertical green low Thick horizontal green
+ diagonal descending short green diagonal indicate short green diagonal indicate long green
+ middle Thick horizontal green  low Thick horizontal green high Thick horizontal green
+ left vertical short green middle Thick horizontal green  diagonal descending long green
+ diagonal descending long green middle vertical green low horizontal green
+ diagonal descending short green high Thick horizontal green right vertical short green
+ high Thick horizontal green diagonal descending long green low horizontal green
+ diagonal indicate short green right vertical short green left vertical green
+ right vertical short green right vertical short green middle vertical green
+ diagonal indicate long green low Thick horizontal green diagonal indicate long green
+ diagonal descending long green diagonal descending short green middle vertical short green
+ diagonal descending short green middle Thick horizontal green middle vertical green
+ middle vertical short green middle vertical short green diagonal indicate short green
+ diagonal indicate long green high Thick horizontal green right vertical short green
+ right vertical green right vertical short green left vertical short green
+ middle Thick horizontal green  diagonal indicate long green diagonal indicate short green
+ middle vertical green high horizontal green middle horizontal green
+ low horizontal green left vertical short green high Thick horizontal green
+ diagonal descending long green middle vertical short green low Thick horizontal green
+ middle vertical green left vertical short green left vertical short green
+ left vertical short green diagonal indicate long green middle horizontal green
+ high Thick horizontal green diagonal indicate short green middle Thick horizontal green 
+ middle vertical green diagonal descending long green diagonal indicate long green
+ middle horizontal green left vertical green diagonal descending short green
+ diagonal indicate short green diagonal indicate short green right vertical green
+ middle Thick horizontal green  diagonal descending long green middle vertical green
+ diagonal descending long green low horizontal green right vertical green
+ left vertical green left vertical short green middle horizontal green
+ middle vertical short green middle horizontal green low horizontal green
+ left vertical green middle horizontal green middle Thick horizontal green 
+ left vertical green middle Thick horizontal green middle horizontal green
+ high horizontal green diagonal descending short green diagonal indicate short green
+ diagonal descending long green low horizontal green high horizontal green
+ diagonal indicate long green left vertical green middle Thick horizontal green 
+ low Thick horizontal green middle vertical green middle Thick horizontal green 
+ low Thick horizontal green left vertical short green left vertical short green
+ right vertical green diagonal descending long green left vertical green
+ low Thick horizontal green diagonal descending short green low horizontal green
+ middle vertical short green diagonal indicate long green diagonal descending long green
+ middle vertical short green low Thick horizontal green diagonal descending long green
+ high horizontal green high Thick horizontal green diagonal descending long green
+ diagonal indicate short green diagonal descending short green low Thick horizontal green
+ middle vertical green left vertical green right vertical green
+ middle vertical green middle horizontal green low horizontal green
+ middle vertical short green right vertical green diagonal descending long green
+ middle vertical green diagonal descending long green high Thick horizontal green
+ middle Thick horizontal green  diagonal indicate long green right vertical green
+ right vertical green low horizontal green right vertical short green
+ high Thick horizontal green middle vertical short green right vertical green
+ diagonal indicate long green right vertical green diagonal indicate long green
+ diagonal indicate short green low horizontal green low Thick horizontal green
+ left vertical green middle vertical short green right vertical short green
+ left vertical short green diagonal indicate short green high horizontal green
+ right vertical green middle Thick horizontal green  high Thick horizontal green
+ low Thick horizontal green high horizontal green low Thick horizontal green
+ right vertical green middle vertical green middle vertical green
+ left vertical short green left vertical short green middle vertical short green
+ right vertical short green left vertical green diagonal descending long green
+ middle horizontal green diagonal indicate long green middle vertical short green
+ left vertical short green high Thick horizontal green middle Thick horizontal green 
+ middle horizontal green high horizontal green right vertical short green
+ middle horizontal green right vertical green middle vertical short green
+ right vertical short green left vertical green high horizontal green
+ right vertical short green high Thick horizontal green middle Thick horizontal green 
+ diagonal indicate long green middle Thick horizontal green  diagonal descending short green
+ middle Thick horizontal green  middle vertical green left vertical short green
+ high Thick horizontal green high horizontal green diagonal indicate short green
+ high horizontal green right vertical green middle vertical short green
+ high Thick horizontal green middle vertical short green middle horizontal green
+ high horizontal green middle vertical short green high horizontal green
+ low horizontal green middle horizontal green diagonal descending short green
+ high Thick horizontal green low horizontal green diagonal descending short green
+ high horizontal green right vertical short green left vertical green
+ low horizontal green middle vertical green diagonal indicate short green
+ diagonal indicate short green diagonal descending long green diagonal indicate long green
+ diagonal indicate short green diagonal descending short green high Thick horizontal green
+ diagonal indicate long green high Thick horizontal green middle vertical green
+ middle Thick horizontal green  low Thick horizontal green middle vertical short green
+ middle horizontal green middle horizontal green middle horizontal green
+ right vertical short green diagonal descending short green low horizontal green
+ low horizontal green middle vertical green left vertical green
+ right vertical short green high horizontal green high Thick horizontal green
+ low horizontal green diagonal indicate short green low Thick horizontal green
+ low Thick horizontal green diagonal indicate long green diagonal descending short green
+ right vertical short blue right vertical short blue
+ diagonal descending long blue right vertical blue
+ middle horizontal blue diagonal indicate long blue
+ middle vertical short blue middle vertical short blue
+ high horizontal blue high Thick horizontal blue
+ low horizontal blue diagonal indicate short blue
+ diagonal indicate long blue left vertical blue
+ left vertical short blue left vertical short blue
+ right vertical blue right vertical short blue
+ high horizontal blue middle vertical short blue
+ diagonal indicate short blue diagonal descending short blue
+ diagonal indicate short blue low horizontal blue
+ diagonal descending long blue
+ diagonal descending short blue middle horizontal blue
+ diagonal descending long blue diagonal descending short blue
+ right vertical blue middle Thick horizontal blue 
+ right vertical blue low Thick horizontal blue
+ low horizontal blue middle horizontal blue
+ left vertical short blue high horizontal blue
+ left vertical short blue diagonal indicate short blue
+ high Thick horizontal blue high horizontal blue
+ middle vertical short blue low Thick horizontal blue
+ right vertical blue low horizontal blue
+ low horizontal blue middle vertical blue
+ left vertical short blue middle Thick horizontal blue 
+ left vertical short blue high Thick horizontal blue
+ diagonal indicate short blue diagonal indicate short blue
+ diagonal descending long blue low horizontal blue
+ left vertical short blue
+ diagonal indicate long blue
+ low Thick horizontal blue diagonal indicate long blue
+ right vertical short blue diagonal descending short blue
+ diagonal descending short blue
+ diagonal descending short blue diagonal indicate short blue
+ diagonal descending short blue low Thick horizontal blue
+ middle Thick horizontal blue low Thick horizontal blue
+ right vertical blue diagonal descending long blue
+ diagonal descending short blue right vertical short blue
+ diagonal indicate long blue high Thick horizontal blue
+ left vertical short blue diagonal indicate long blue
+ diagonal descending short blue high Thick horizontal blue
+ low Thick horizontal blue high horizontal blue
+ left vertical blue
+ diagonal indicate long blue low Thick horizontal blue
+ diagonal indicate short blue right vertical short blue
+ high Thick horizontal blue low horizontal blue
+ diagonal indicate long blue middle Thick horizontal blue 
+ left vertical blue diagonal indicate short blue
+ middle Thick horizontal blue  diagonal indicate long blue
+ middle vertical blue high horizontal blue
+ left vertical blue middle vertical short blue
+ low Thick horizontal blue diagonal descending short blue
+ left vertical blue left vertical short blue
+ middle horizontal blue right vertical blue
+ middle vertical short blue right vertical blue
+ middle vertical blue diagonal descending long blue
+ diagonal indicate long blue right vertical blue
+ middle vertical blue left vertical short blue
+ middle Thick horizontal blue diagonal descending long blue
+ middle horizontal blue middle horizontal blue
+ diagonal indicate short blue
+ low Thick horizontal blue left vertical short blue
+ left vertical blue middle Thick horizontal blue 
+ left vertical blue middle horizontal blue
+ diagonal descending long blue middle vertical short blue
+ right vertical short blue left vertical blue
+ middle vertical short blue middle horizontal blue
+ diagonal indicate short blue diagonal descending long blue
+ diagonal descending long blue middle vertical blue
+ high horizontal blue right vertical short blue
+ low horizontal blue left vertical short blue
+ high horizontal blue diagonal descending short blue
+ diagonal descending short blue middle Thick horizontal blue 
+ high Thick horizontal blue diagonal descending long blue
+ high horizontal blue right vertical blue
+ high Thick horizontal blue diagonal indicate short blue
+ low horizontal blue low horizontal blue
+ high Thick horizontal blue middle vertical short blue
+ middle vertical blue middle horizontal blue
+ right vertical short blue high Thick horizontal blue
+ low Thick horizontal blue middle vertical blue
+ right vertical blue
+ middle horizontal blue high horizontal blue
+ middle vertical short blue right vertical short blue
+ right vertical short blue
+ right vertical short blue high horizontal blue
+ middle vertical blue left vertical blue
+ middle vertical short blue
+ middle vertical short blue diagonal indicate long blue
+ middle Thick horizontal blue middle vertical blue
+ low Thick horizontal blue middle Thick horizontal blue 
+ middle horizontal blue left vertical blue
+ middle vertical blue
+ middle vertical short blue right vertical short blue diagonal descending short blue
+ diagonal descending short blue low Thick horizontal blue diagonal indicate short blue
+ high horizontal blue right vertical blue right vertical blue
+ low horizontal blue low horizontal blue right vertical short blue
+ diagonal descending short blue right vertical short blue high horizontal blue
+ left vertical blue diagonal indicate short blue left vertical short blue
+ low Thick horizontal blue middle Thick horizontal blue  midd vertical blue
+ right vertical blue low Thick horizontal blue high horizontal blue
+ diagonal descending short blue middle horizontal blue left vertical short blue
+ diagonal descending long blue right vertical blue left vertical blue
+ left vertical blue left vertical short blue diagonal indicate long blue
+ middle horizontal blue left vertical blue low Thick horizontal blue
+ diagonal descending short blue diagonal indicate short blue diagonal indicate long blue
+ middle Thick horizontal blue  low Thick horizontal blue high Thick horizontal blue
+ left vertical short blue middle Thick horizontal blue  diagonal descending long blue
+ diagonal descending long blue middle vertical blue low horizontal blue
+ diagonal descending short blue high Thick horizontal blue right vertical short blue
+ high Thick horizontal blue diagonal descending long blue low horizontal blue
+ diagonal indicate short blue right vertical short blue left vertical blue
+ right vertical short blue right vertical short blue middle vertical blue
+ diagonal indicate long blue low Thick horizontal blue diagonal indicate long blue
+ diagonal descending long blue diagonal descending short blue middle vertical short blue
+ diagonal descending short blue middle Thick horizontal blue middle vertical blue
+ middle vertical short blue middle vertical short blue diagonal indicate short blue
+ diagonal indicate long blue high Thick horizontal blue right vertical short blue
+ right vertical blue right vertical short blue left vertical short blue
+ middle Thick horizontal blue  diagonal indicate long blue diagonal indicate short blue
+ middle vertical blue high horizontal blue middle horizontal blue
+ low horizontal blue left vertical short blue high Thick horizontal blue
+ diagonal descending long blue middle vertical short blue low Thick horizontal blue
+ middle vertical blue left vertical short blue left vertical short blue
+ left vertical short blue diagonal indicate long blue middle horizontal blue
+ high Thick horizontal blue diagonal indicate short blue middle Thick horizontal blue 
+ middle vertical blue diagonal descending long blue diagonal indicate long blue
+ middle horizontal blue left vertical blue diagonal descending short blue
+ diagonal indicate short blue diagonal indicate short blue right vertical blue
+ middle Thick horizontal blue  diagonal descending long blue middle vertical blue
+ diagonal descending long blue low horizontal blue right vertical blue
+ left vertical blue left vertical short blue middle horizontal blue
+ middle vertical short blue middle horizontal blue low horizontal blue
+ left vertical blue middle horizontal blue middle Thick horizontal blue 
+ left vertical blue middle Thick horizontal blue middle horizontal blue
+ high horizontal blue diagonal descending short blue diagonal indicate short blue
+ diagonal descending long blue low horizontal blue high horizontal blue
+ diagonal indicate long blue left vertical blue middle Thick horizontal blue 
+ low Thick horizontal blue middle vertical blue middle Thick horizontal blue 
+ low Thick horizontal blue left vertical short blue left vertical short blue
+ right vertical blue diagonal descending long blue left vertical blue
+ low Thick horizontal blue diagonal descending short blue low horizontal blue
+ middle vertical short blue diagonal indicate long blue diagonal descending long blue
+ middle vertical short blue low Thick horizontal blue diagonal descending long blue
+ high horizontal blue high Thick horizontal blue diagonal descending long blue
+ diagonal indicate short blue diagonal descending short blue low Thick horizontal blue
+ middle vertical blue left vertical blue right vertical blue
+ middle vertical blue middle horizontal blue low horizontal blue
+ middle vertical short blue right vertical blue diagonal descending long blue
+ middle vertical blue diagonal descending long blue high Thick horizontal blue
+ middle Thick horizontal blue  diagonal indicate long blue right vertical blue
+ right vertical blue low horizontal blue right vertical short blue
+ high Thick horizontal blue middle vertical short blue right vertical blue
+ diagonal indicate long blue right vertical blue diagonal indicate long blue
+ diagonal indicate short blue low horizontal blue low Thick horizontal blue
+ left vertical blue middle vertical short blue right vertical short blue
+ left vertical short blue diagonal indicate short blue high horizontal blue
+ right vertical blue middle Thick horizontal blue  high Thick horizontal blue
+ low Thick horizontal blue high horizontal blue low Thick horizontal blue
+ right vertical blue middle vertical blue middle vertical blue
+ left vertical short blue left vertical short blue middle vertical short blue
+ right vertical short blue left vertical blue diagonal descending long blue
+ middle horizontal blue diagonal indicate long blue middle vertical short blue
+ left vertical short blue high Thick horizontal blue middle Thick horizontal blue 
+ middle horizontal blue high horizontal blue right vertical short blue
+ middle horizontal blue right vertical blue middle vertical short blue
+ right vertical short blue left vertical blue high horizontal blue
+ right vertical short blue high Thick horizontal blue middle Thick horizontal blue 
+ diagonal indicate long blue middle Thick horizontal blue  diagonal descending short blue
+ middle Thick horizontal blue  middle vertical blue left vertical short blue
+ high Thick horizontal blue high horizontal blue diagonal indicate short blue
+ high horizontal blue right vertical blue middle vertical short blue
+ high Thick horizontal blue middle vertical short blue middle horizontal blue
+ high horizontal blue middle vertical short blue high horizontal blue
+ low horizontal blue middle horizontal blue diagonal descending short blue
+ high Thick horizontal blue low horizontal blue diagonal descending short blue
+ high horizontal blue right vertical short blue left vertical blue
+ low horizontal blue middle vertical blue diagonal indicate short blue
+ diagonal indicate short blue diagonal descending long blue diagonal indicate long blue
+ diagonal indicate short blue diagonal descending short blue high Thick horizontal blue
+ diagonal indicate long blue high Thick horizontal blue middle vertical blue
+ middle Thick horizontal blue  low Thick horizontal blue middle vertical short blue
+ middle horizontal blue middle horizontal blue middle horizontal blue
+ right vertical short blue diagonal descending short blue low horizontal blue
+ low horizontal blue middle vertical blue left vertical blue
+ right vertical short blue high horizontal blue high Thick horizontal blue
+ low horizontal blue diagonal indicate short blue low Thick horizontal blue
+ low Thick horizontal blue diagonal indicate long blue diagonal descending short blue
+ right vertical short yellow right vertical short yellow
+ diagonal descending long yellow right vertical yellow
+ middle horizontal yellow diagonal indicate long yellow
+ middle vertical short yellow middle vertical short yellow
+ high horizontal yellow high Thick horizontal yellow
+ low horizontal yellow diagonal indicate short yellow
+ diagonal indicate long yellow left vertical yellow
+ left vertical short yellow left vertical short yellow
+ right vertical yellow right vertical short yellow
+ high horizontal yellow middle vertical short yellow
+ diagonal indicate short yellow diagonal descending short yellow
+ diagonal indicate short yellow low horizontal yellow
+ diagonal descending long yellow
+ diagonal descending short yellow middle horizontal yellow
+ diagonal descending long yellow diagonal descending short yellow
+ right vertical yellow middle Thick horizontal yellow 
+ right vertical yellow low Thick horizontal yellow
+ low horizontal yellow middle horizontal yellow
+ left vertical short yellow high horizontal yellow
+ left vertical short yellow diagonal indicate short yellow
+ high Thick horizontal yellow high horizontal yellow
+ middle vertical short yellow low Thick horizontal yellow
+ right vertical yellow low horizontal yellow
+ low horizontal yellow middle vertical yellow
+ left vertical short yellow middle Thick horizontal yellow 
+ left vertical short yellow high Thick horizontal yellow
+ diagonal indicate short yellow diagonal indicate short yellow
+ diagonal descending long yellow low horizontal yellow
+ left vertical short yellow
+ diagonal indicate long yellow
+ low Thick horizontal yellow diagonal indicate long yellow
+ right vertical short yellow diagonal descending short yellow
+ diagonal descending short yellow
+ diagonal descending short yellow diagonal indicate short yellow
+ diagonal descending short yellow low Thick horizontal yellow
+ middle Thick horizontal yellow low Thick horizontal yellow
+ right vertical yellow diagonal descending long yellow
+ diagonal descending short yellow right vertical short yellow
+ diagonal indicate long yellow high Thick horizontal yellow
+ left vertical short yellow diagonal indicate long yellow
+ diagonal descending short yellow high Thick horizontal yellow
+ low Thick horizontal yellow high horizontal yellow
+ left vertical yellow
+ diagonal indicate long yellow low Thick horizontal yellow
+ diagonal indicate short yellow right vertical short yellow
+ high Thick horizontal yellow low horizontal yellow
+ diagonal indicate long yellow middle Thick horizontal yellow 
+ left vertical yellow diagonal indicate short yellow
+ middle Thick horizontal yellow  diagonal indicate long yellow
+ middle vertical yellow high horizontal yellow
+ left vertical yellow middle vertical short yellow
+ low Thick horizontal yellow diagonal descending short yellow
+ left vertical yellow left vertical short yellow
+ middle horizontal yellow right vertical yellow
+ middle vertical short yellow right vertical yellow
+ middle vertical yellow diagonal descending long yellow
+ diagonal indicate long yellow right vertical yellow
+ middle vertical yellow left vertical short yellow
+ middle Thick horizontal yellow diagonal descending long yellow
+ middle horizontal yellow middle horizontal yellow
+ diagonal indicate short yellow
+ low Thick horizontal yellow left vertical short yellow
+ left vertical yellow middle Thick horizontal yellow 
+ left vertical yellow middle horizontal yellow
+ diagonal descending long yellow middle vertical short yellow
+ right vertical short yellow left vertical yellow
+ middle vertical short yellow middle horizontal yellow
+ diagonal indicate short yellow diagonal descending long yellow
+ diagonal descending long yellow middle vertical yellow
+ high horizontal yellow right vertical short yellow
+ low horizontal yellow left vertical short yellow
+ high horizontal yellow diagonal descending short yellow
+ diagonal descending short yellow middle Thick horizontal yellow 
+ high Thick horizontal yellow diagonal descending long yellow
+ high horizontal yellow right vertical yellow
+ high Thick horizontal yellow diagonal indicate short yellow
+ low horizontal yellow low horizontal yellow
+ high Thick horizontal yellow middle vertical short yellow
+ middle vertical yellow middle horizontal yellow
+ right vertical short yellow high Thick horizontal yellow
+ low Thick horizontal yellow middle vertical yellow
+ right vertical yellow
+ middle horizontal yellow high horizontal yellow
+ middle vertical short yellow right vertical short yellow
+ right vertical short yellow
+ right vertical short yellow high horizontal yellow
+ middle vertical yellow left vertical yellow
+ middle vertical short yellow
+ middle vertical short yellow diagonal indicate long yellow
+ middle Thick horizontal yellow middle vertical yellow
+ low Thick horizontal yellow middle Thick horizontal yellow 
+ middle horizontal yellow left vertical yellow
+ middle vertical yellow
+ middle vertical short yellow right vertical short yellow diagonal descending short yellow
+ diagonal descending short yellow low Thick horizontal yellow diagonal indicate short yellow
+ high horizontal yellow right vertical yellow right vertical yellow
+ low horizontal yellow low horizontal yellow right vertical short yellow
+ diagonal descending short yellow right vertical short yellow high horizontal yellow
+ left vertical yellow diagonal indicate short yellow left vertical short yellow
+ low Thick horizontal yellow middle Thick horizontal yellow  midd vertical yellow
+ right vertical yellow low Thick horizontal yellow high horizontal yellow
+ diagonal descending short yellow middle horizontal yellow left vertical short yellow
+ diagonal descending long yellow right vertical yellow left vertical yellow
+ left vertical yellow left vertical short yellow diagonal indicate long yellow
+ middle horizontal yellow left vertical yellow low Thick horizontal yellow
+ diagonal descending short yellow diagonal indicate short yellow diagonal indicate long yellow
+ middle Thick horizontal yellow  low Thick horizontal yellow high Thick horizontal yellow
+ left vertical short yellow middle Thick horizontal yellow  diagonal descending long yellow
+ diagonal descending long yellow middle vertical yellow low horizontal yellow
+ diagonal descending short yellow high Thick horizontal yellow right vertical short yellow
+ high Thick horizontal yellow diagonal descending long yellow low horizontal yellow
+ diagonal indicate short yellow right vertical short yellow left vertical yellow
+ right vertical short yellow right vertical short yellow middle vertical yellow
+ diagonal indicate long yellow low Thick horizontal yellow diagonal indicate long yellow
+ diagonal descending long yellow diagonal descending short yellow middle vertical short yellow
+ diagonal descending short yellow middle Thick horizontal yellow middle vertical yellow
+ middle vertical short yellow middle vertical short yellow diagonal indicate short yellow
+ diagonal indicate long yellow high Thick horizontal yellow right vertical short yellow
+ right vertical yellow right vertical short yellow left vertical short yellow
+ middle Thick horizontal yellow  diagonal indicate long yellow diagonal indicate short yellow
+ middle vertical yellow high horizontal yellow middle horizontal yellow
+ low horizontal yellow left vertical short yellow high Thick horizontal yellow
+ diagonal descending long yellow middle vertical short yellow low Thick horizontal yellow
+ middle vertical yellow left vertical short yellow left vertical short yellow
+ left vertical short yellow diagonal indicate long yellow middle horizontal yellow
+ high Thick horizontal yellow diagonal indicate short yellow middle Thick horizontal yellow 
+ middle vertical yellow diagonal descending long yellow diagonal indicate long yellow
+ middle horizontal yellow left vertical yellow diagonal descending short yellow
+ diagonal indicate short yellow diagonal indicate short yellow right vertical yellow
+ middle Thick horizontal yellow  diagonal descending long yellow middle vertical yellow
+ diagonal descending long yellow low horizontal yellow right vertical yellow
+ left vertical yellow left vertical short yellow middle horizontal yellow
+ middle vertical short yellow middle horizontal yellow low horizontal yellow
+ left vertical yellow middle horizontal yellow middle Thick horizontal yellow 
+ left vertical yellow middle Thick horizontal yellow middle horizontal yellow
+ high horizontal yellow diagonal descending short yellow diagonal indicate short yellow
+ diagonal descending long yellow low horizontal yellow high horizontal yellow
+ diagonal indicate long yellow left vertical yellow middle Thick horizontal yellow 
+ low Thick horizontal yellow middle vertical yellow middle Thick horizontal yellow 
+ low Thick horizontal yellow left vertical short yellow left vertical short yellow
+ right vertical yellow diagonal descending long yellow left vertical yellow
+ low Thick horizontal yellow diagonal descending short yellow low horizontal yellow
+ middle vertical short yellow diagonal indicate long yellow diagonal descending long yellow
+ middle vertical short yellow low Thick horizontal yellow diagonal descending long yellow
+ high horizontal yellow high Thick horizontal yellow diagonal descending long yellow
+ diagonal indicate short yellow diagonal descending short yellow low Thick horizontal yellow
+ middle vertical yellow left vertical yellow right vertical yellow
+ middle vertical yellow middle horizontal yellow low horizontal yellow
+ middle vertical short yellow right vertical yellow diagonal descending long yellow
+ middle vertical yellow diagonal descending long yellow high Thick horizontal yellow
+ middle Thick horizontal yellow  diagonal indicate long yellow right vertical yellow
+ right vertical yellow low horizontal yellow right vertical short yellow
+ high Thick horizontal yellow middle vertical short yellow right vertical yellow
+ diagonal indicate long yellow right vertical yellow diagonal indicate long yellow
+ diagonal indicate short yellow low horizontal yellow low Thick horizontal yellow
+ left vertical yellow middle vertical short yellow right vertical short yellow
+ left vertical short yellow diagonal indicate short yellow high horizontal yellow
+ right vertical yellow middle Thick horizontal yellow  high Thick horizontal yellow
+ low Thick horizontal yellow high horizontal yellow low Thick horizontal yellow
+ right vertical yellow middle vertical yellow middle vertical yellow
+ left vertical short yellow left vertical short yellow middle vertical short yellow
+ right vertical short yellow left vertical yellow diagonal descending long yellow
+ middle horizontal yellow diagonal indicate long yellow middle vertical short yellow
+ left vertical short yellow high Thick horizontal yellow middle Thick horizontal yellow 
+ middle horizontal yellow high horizontal yellow right vertical short yellow
+ middle horizontal yellow right vertical yellow middle vertical short yellow
+ right vertical short yellow left vertical yellow high horizontal yellow
+ right vertical short yellow high Thick horizontal yellow middle Thick horizontal yellow 
+ diagonal indicate long yellow middle Thick horizontal yellow  diagonal descending short yellow
+ middle Thick horizontal yellow  middle vertical yellow left vertical short yellow
+ high Thick horizontal yellow high horizontal yellow diagonal indicate short yellow
+ high horizontal yellow right vertical yellow middle vertical short yellow
+ high Thick horizontal yellow middle vertical short yellow middle horizontal yellow
+ high horizontal yellow middle vertical short yellow high horizontal yellow
+ low horizontal yellow middle horizontal yellow diagonal descending short yellow
+ high Thick horizontal yellow low horizontal yellow diagonal descending short yellow
+ high horizontal yellow right vertical short yellow left vertical yellow
+ low horizontal yellow middle vertical yellow diagonal indicate short yellow
+ diagonal indicate short yellow diagonal descending long yellow diagonal indicate long yellow
+ diagonal indicate short yellow diagonal descending short yellow high Thick horizontal yellow
+ diagonal indicate long yellow high Thick horizontal yellow middle vertical yellow
+ middle Thick horizontal yellow  low Thick horizontal yellow middle vertical short yellow
+ middle horizontal yellow middle horizontal yellow middle horizontal yellow
+ right vertical short yellow diagonal descending short yellow low horizontal yellow
+ low horizontal yellow middle vertical yellow left vertical yellow
+ right vertical short yellow high horizontal yellow high Thick horizontal yellow
+ low horizontal yellow diagonal indicate short yellow low Thick horizontal yellow
+ low Thick horizontal yellow diagonal indicate long yellow diagonal descending short yellow
+6 left vertical diagonal descending red
+7 vertical horizontal yellow
+8 left to right 2 vertical 1 horizontal middle 1 horizontal middle 1 vertical 1 horizontal middle yellow
+9 2 vertical 1 horizontal 1 vertical blue
+0 between 2 vertical 1 middle horizontal 1 middle horizontal white
+2 1 left vertical long 2 horizontal 1 high left 1 middle yellow
+4 Frame open to down blue
+ 1 left vertical 1 middle high v green
+ horizontal blue diagonal up and down white blue
+ high v between 2 vertical red
+ high v between 2 vertical white red yellow
+ 1 left vertical long 2 horizontal 1 high left 1 middle yellow red
+ between 2 vertical 1 middle horizontal 1 middle horizontal red green white blue
+ 4 diagonals blue
+ high Thick horizontal green diagonal descending long red low horizontal white
+ diagonal indicate long green low Thick horizontal yellow diagonal indicate long red
+ diagonal descending long green middle vertical short red low Thick horizontal yellow
+ middle Thick horizontal yellow  diagonal descending long blue middle vertical red
+ vertical yellow diagonal descending long red vertical blue
+ low Thick horizontal white diagonal descending short red low horizontal yellow
+ middle vertical short white diagonal indicate long blue diagonal descending long green
+ diagonal indicate long green right vertical yellow diagonal indicate long red
+ diagonal indicate short green low horizontal blue low Thick horizontal white
+ vertical short blue vertical red diagonal descending long green
+ right vertical short blue high Thick horizontal yellow middle Thick horizontal red
+ diagonal indicate long blue middle Thick horizontal green diagonal descending short yellow
+ diagonal indicate short blue diagonal descending short red high Thick horizontal white
+ horizontal diagonal up and down white
+ horizontal red diagonal up and down white red
+ horizontal green diagonal up and down white green
+ horizontal yellow diagonal up and down white yellow
+ low Thick horizontal blue diagonal indicate long red diagonal descending short green
+ long horizontal  white above long horizontal  white
+ 1 up tends right 1 down middle horizontal white
+ high middle short horizontal thin above low long horizontal thin white
+ high middle short horizontal thick above low long horizontal thick white
+ 3 up to down horizontal second tends left white
+ 3 horizontal thin middle one above other white
+ 3 horizontal thick middle one above other white
+ horizontal thin long down white horizontal thin mid white horizontal thin short up white
+ horizontal thick long down white horizontal thick mid white horizontal thick short up white
+ 4 short horizontal thin one above other in shape of diagonal up white
+ 4 short horizontal thin one above other in shape of diagonal down white
+ 6 short horizontal thin one above other in shape of diagonal up white
+ 6 short horizontal thin one above other in shape of diagonal down white
+ 4 short horizontal thick one above other in shape of diagonal up white
+ 4 short horizontal thick one above other in shape of diagonal down white
+ low long horizontal  white above short horizontal  white
+ short horizontal  white above long horizontal  white 
+ high short horizontal  white above high long horizontal  white 
+ high right short horizontal  white above high long horizontal  white 
+ high left short horizontal  white above high long horizontal  white 
+ low short horizontal  white above long horizontal  white
+ low right short horizontal  white above long horizontal  white
+ high left short horizontal white and low right short horizontal  white above long horizontal  white
+ thick high left short horizontal white and low right short horizontal  white above long horizontal  white
+ thick left short horizontal white and thick high right short horizontal  white above long horizontal  white.
+ high left short horizontal white above long horizontal  white above right short horizontal white
+ thick high left short horizontal white above long horizontal  white above right short horizontal white
+ high left short horizontal white above long horizontal  white above thick right short horizontal white
+ long horizontal  white above low thick left short horizontal white and right short horizontal white
+ long horizontal  white above left short horizontal white and right short horizontal white
+ high left short horizontal white and high right short horizontal white above long horizontal  white
+ long horizontal  white above thick left short horizontal white and right short horizontal white
+ long horizontal  white above left short horizontal white and low right short horizontal white
+ thick long horizontal  white above left short horizontal white
+ thick long horizontal  white above right short horizontal white
+ high left short horizontal white and low right thick short horizontal  white above long horizontal white
+ long horizontal  white and short horizontal  white above long horizontal  white and short horizontal  white
+ long horizontal white and thick short horizontal  white above thick long horizontal white and short horizontal  white
+ long horizontal  red above long horizontal  red
+ 1 up tends right 1 down middle horizontal red
+ high middle short horizontal thin above low long horizontal thin red
+ high middle short horizontal thick above low long horizontal thick red
+ 3 up to down horizontal second tends left red
+ 3 horizontal thin middle one above other red
+ 3 horizontal thick middle one above other red
+ horizontal thin long down red horizontal thin mid red horizontal thin short up red
+ horizontal thick long down red horizontal thick mid red horizontal thick short up red
+ 4 short horizontal thin one above other in shape of diagonal up red
+ 4 short horizontal thin one above other in shape of diagonal down red
+ 6 short horizontal thin one above other in shape of diagonal up red
+ 6 short horizontal thin one above other in shape of diagonal down red
+ 4 short horizontal thick one above other in shape of diagonal up red
+ 4 short horizontal thick one above other in shape of diagonal down red
+ low long horizontal  red above short horizontal  red
+ short horizontal  red above long horizontal  red 
+ high short horizontal  red above high long horizontal  red 
+ high right short horizontal  red above high long horizontal  red 
+ high left short horizontal  red above high long horizontal  red 
+ low short horizontal  red above long horizontal  red
+ low right short horizontal  red above long horizontal  red
+ high left short horizontal red and low right short horizontal  red above long horizontal  red
+ thick high left short horizontal red and low right short horizontal  red above long horizontal  red
+ thick left short horizontal red and thick high right short horizontal  red above long horizontal  red.
+ high left short horizontal red above long horizontal  red above right short horizontal red
+ thick high left short horizontal red above long horizontal  red above right short horizontal red
+ high left short horizontal red above long horizontal  red above thick right short horizontal red
+ long horizontal  red above low thick left short horizontal red and right short horizontal red
+ long horizontal  red above left short horizontal red and right short horizontal red
+ high left short horizontal red and high right short horizontal red above long horizontal  red
+ long horizontal  red above thick left short horizontal red and right short horizontal red
+ long horizontal  red above left short horizontal red and low right short horizontal red
+ thick long horizontal  red above left short horizontal red
+ thick long horizontal  red above right short horizontal red
+ high left short horizontal red and low right thick short horizontal  red above long horizontal red
+ long horizontal  red and short horizontal  red above long horizontal  red and short horizontal  red
+ long horizontal red and thick short horizontal  red above thick long horizontal red and short horizontal  red
+ long horizontal  green above long horizontal  green
+ 1 up tends right 1 down middle horizontal green
+ high middle short horizontal thin above low long horizontal thin green
+ high middle short horizontal thick above low long horizontal thick green
+ 3 up to down horizontal second tends left green
+ 3 horizontal thin middle one above other green
+ 3 horizontal thick middle one above other green
+ horizontal thin long down green horizontal thin mid green horizontal thin short up green
+ horizontal thick long down green horizontal thick mid green horizontal thick short up green
+ 4 short horizontal thin one above other in shape of diagonal up green
+ 4 short horizontal thin one above other in shape of diagonal down green
+ 6 short horizontal thin one above other in shape of diagonal up green
+ 6 short horizontal thin one above other in shape of diagonal down green
+ 4 short horizontal thick one above other in shape of diagonal up green
+ 4 short horizontal thick one above other in shape of diagonal down green
+ low long horizontal  green above short horizontal  green
+ short horizontal  green above long horizontal  green 
+ high short horizontal  green above high long horizontal  green 
+ high right short horizontal  green above high long horizontal  green 
+ high left short horizontal  green above high long horizontal  green 
+ low short horizontal  green above long horizontal  green
+ low right short horizontal  green above long horizontal  green
+ high left short horizontal green and low right short horizontal  green above long horizontal  green
+ thick high left short horizontal green and low right short horizontal  green above long horizontal  green
+ thick left short horizontal green and thick high right short horizontal  green above long horizontal  green.
+ high left short horizontal green above long horizontal  green above right short horizontal green
+ thick high left short horizontal green above long horizontal  green above right short horizontal green
+ high left short horizontal green above long horizontal  green above thick right short horizontal green
+ long horizontal  green above low thick left short horizontal green and right short horizontal green
+ long horizontal  green above left short horizontal green and right short horizontal green
+ high left short horizontal green and high right short horizontal green above long horizontal  green
+ long horizontal  green above thick left short horizontal green and right short horizontal green
+ long horizontal  green above left short horizontal green and low right short horizontal green
+ thick long horizontal  green above left short horizontal green
+ thick long horizontal  green above right short horizontal green
+ high left short horizontal green and low right thick short horizontal  green above long horizontal green
+ long horizontal  green and short horizontal  green above long horizontal  green and short horizontal  green
+ long horizontal green and thick short horizontal  green above thick long horizontal green and short horizontal  green
+ long horizontal  blue above long horizontal  blue
+ 1 up tends right 1 down middle horizontal blue
+ high middle short horizontal thin above low long horizontal thin blue
+ high middle short horizontal thick above low long horizontal thick blue
+ 3 up to down horizontal second tends left blue
+ 3 horizontal thin middle one above other blue
+ 3 horizontal thick middle one above other blue
+ horizontal thin long down blue horizontal thin mid blue horizontal thin short up blue
+ horizontal thick long down blue horizontal thick mid blue horizontal thick short up blue
+ 4 short horizontal thin one above other in shape of diagonal up blue
+ 4 short horizontal thin one above other in shape of diagonal down blue
+ 6 short horizontal thin one above other in shape of diagonal up blue
+ 6 short horizontal thin one above other in shape of diagonal down blue
+ 4 short horizontal thick one above other in shape of diagonal up blue
+ 4 short horizontal thick one above other in shape of diagonal down blue
+ low long horizontal  blue above short horizontal  blue
+ short horizontal  blue above long horizontal  blue 
+ high short horizontal  blue above high long horizontal  blue 
+ high right short horizontal  blue above high long horizontal  blue 
+ high left short horizontal  blue above high long horizontal  blue 
+ low short horizontal  blue above long horizontal  blue
+ low right short horizontal  blue above long horizontal  blue
+ high left short horizontal blue and low right short horizontal  blue above long horizontal  blue
+ thick high left short horizontal blue and low right short horizontal  blue above long horizontal  blue
+ thick left short horizontal blue and thick high right short horizontal  blue above long horizontal  blue.
+ high left short horizontal blue above long horizontal  blue above right short horizontal blue
+ thick high left short horizontal blue above long horizontal  blue above right short horizontal blue
+ high left short horizontal blue above long horizontal  blue above thick right short horizontal blue
+ long horizontal  blue above low thick left short horizontal blue and right short horizontal blue
+ long horizontal  blue above left short horizontal blue and right short horizontal blue
+ high left short horizontal blue and high right short horizontal blue above long horizontal  blue
+ long horizontal  blue above thick left short horizontal blue and right short horizontal blue
+ long horizontal  blue above left short horizontal blue and low right short horizontal blue
+ thick long horizontal  blue above left short horizontal blue
+ thick long horizontal  blue above right short horizontal blue
+ high left short horizontal blue and low right thick short horizontal  blue above long horizontal blue
+ long horizontal  blue and short horizontal  blue above long horizontal  blue and short horizontal  blue
+ long horizontal blue and thick short horizontal  blue above thick long horizontal blue and short horizontal  blue
+ long horizontal  yellow above long horizontal  yellow
+ 1 up tends right 1 down middle horizontal yellow
+ high middle short horizontal thin above low long horizontal thin yellow
+ high middle short horizontal thick above low long horizontal thick yellow
+ 3 up to down horizontal second tends left yellow
+ 3 horizontal thin middle one above other yellow
+ 3 horizontal thick middle one above other yellow
+ horizontal thin long down yellow horizontal thin mid yellow horizontal thin short up yellow
+ horizontal thick long down yellow horizontal thick mid yellow horizontal thick short up yellow
+ 4 short horizontal thin one above other in shape of diagonal up yellow
+ 4 short horizontal thin one above other in shape of diagonal down yellow
+ 6 short horizontal thin one above other in shape of diagonal up yellow
+ 6 short horizontal thin one above other in shape of diagonal down yellow
+ 4 short horizontal thick one above other in shape of diagonal up yellow
+ 4 short horizontal thick one above other in shape of diagonal down yellow
+ low long horizontal  yellow above short horizontal  yellow
+ short horizontal  yellow above long horizontal  yellow 
+ high short horizontal  yellow above high long horizontal  yellow 
+ high right short horizontal  yellow above high long horizontal  yellow 
+ high left short horizontal  yellow above high long horizontal  yellow 
+ low short horizontal  yellow above long horizontal  yellow
+ low right short horizontal  yellow above long horizontal  yellow
+ high left short horizontal yellow and low right short horizontal  yellow above long horizontal  yellow
+ thick high left short horizontal yellow and low right short horizontal  yellow above long horizontal  yellow
+ thick left short horizontal yellow and thick high right short horizontal  yellow above long horizontal  yellow.
+ high left short horizontal yellow above long horizontal  yellow above right short horizontal yellow
+ thick high left short horizontal yellow above long horizontal  yellow above right short horizontal yellow
+ high left short horizontal yellow above long horizontal  yellow above thick right short horizontal yellow
+ long horizontal  yellow above low thick left short horizontal yellow and right short horizontal yellow
+ long horizontal  yellow above left short horizontal yellow and right short horizontal yellow
+ high left short horizontal yellow and high right short horizontal yellow above long horizontal  yellow
+ long horizontal  yellow above thick left short horizontal yellow and right short horizontal yellow
+ long horizontal  yellow above left short horizontal yellow and low right short horizontal yellow
+ thick long horizontal  yellow above left short horizontal yellow
+ thick long horizontal  yellow above right short horizontal yellow
+ high left short horizontal yellow and low right thick short horizontal  yellow above long horizontal yellow
+ long horizontal  yellow and short horizontal  yellow above long horizontal  yellow and short horizontal  yellow
+ long horizontal yellow and thick short horizontal  yellow above thick long horizontal yellow and short horizontal  yellow
+ 1 up tends right white 1 down middle horizontal green
+ 1 up tends right red 1 down middle horizontal green
+ 1 up tends right red 1 down middle horizontal blue
+ 1 up tends right blue 1 down middle horizontal white
+ high middle short horizontal thin blue low long horizontal thin yellow
+ high middle short horizontal thin red low long horizontal thin green
+ high middle short horizontal thin red low long horizontal thin yellow
+ high middle short horizontal thick blue above low long horizontal thick red
+ high middle short horizontal thick blue above low long horizontal thick white
+ high middle short horizontal thick yellow above low long horizontal thick white
+ 1 up horizontal thin short blue 1 mid horizontal thin short left white 1 down horizontal thin short blue
+ 1 up horizontal thin short blue 1 mid horizontal thin short left white 1 down horizontal thin short yellow
+ 1 up horizontal thin short red 1 mid horizontal thin short left yellow 1 down horizontal thin short green
+ 1 up horizontal thin short white 1 mid horizontal thin short left red 1 down horizontal thin short green
+ 3 horizontal thick middle one above other up white mid white down white 
+ 3 horizontal thick middle one above other up blue mid white down green 
+ 3 horizontal thick middle one above other up red mid green down yellow 
+ 3 horizontal thick middle one above other up red mid white down green 
+ horizontal thin long down red horizontal thin mid green horizontal thin short up blue
+ horizontal thin long down red horizontal thin mid green horizontal thin short up white
+ horizontal thick long down green horizontal thick mid blue horizontal thick short up blue
+ horizontal thick long down green horizontal thick mid red horizontal thick short up red
+ low long horizontal red above short horizontal green
+ low long horizontal red above short horizontal white
+ short horizontal blue above long horizontal yellow
+ short horizontal red above long horizontal yellow
+ high left short horizontal yellow and low right short horizontal  red above long horizontal  blue
+ high left short horizontal yellow and low right short horizontal  white above long horizontal green
+ thick high left short horizontal green and low right short horizontal blue above long horizontal yellow
+ thick high left short horizontal red and low right short horizontal blue above long horizontal white
+ thick left short horizontal green and thick high right short horizontal  green above long horizontal  white.
+ thick left short horizontal green and thick high right short horizontal  green above long horizontal  red
+ thick left short horizontal green and thick high right short horizontal  green above long horizontal  yellow
+ high left short horizontal red above long horizontal  white above right short horizontal red
+ high left short horizontal red above long horizontal green above right short horizontal blue
+ thick high left short horizontal red above long horizontal white above right short horizontal red
+ thick high left short horizontal red above long horizontal  green above right short horizontal blue
+ high left short horizontal white above long horizontal green above thick right short horizontal yellow
+ high left short horizontal white above long horizontal red above thick right short horizontal yellow
+ thick long horizontal  red above left short horizontal white
+ long horizontal red and short horizontal  green above long horizontal green and short horizontal  red
+ long horizontal red and short horizontal  green above long horizontal yellow and short horizontal  yellow
+ long horizontal blue and thick short horizontal  red above thick long horizontal red and short horizontal  blue
+ high left short horizontal yellow and low right thick short horizontal  red above long horizontal yellow
+ high left short horizontal yellow and low right thick short horizontal  red above long horizontal blue
+ long horizontal yellow and thick short horizontal  red above thick long horizontal red and short horizontal  red
+ horizontal line white bottom center white
+ vertical line left white
+ vertical left vertical right white
+ horizontal top white horizontal bottom white
+ horizontal bottom and vertical left lines white
+ horizontal bottom and vertical right lines white
+ horizontal bottom and vertical left right lines white
+ horizontal top bottom and vertical left lines white
+ horizontal top and vertical left right lines white
+ horizontal top bottom and vertical right lines white
+ square white
+ square white fill
+ short horizontal line white bottom center
+ short vertical line white left
+ short vertical left short vertical right white
+ short horizontal top white short horizontal bottom white
+ short horizontal bottom and short vertical left lines white
+ short horizontal bottom and short vertical right lines white
+ short horizontal bottom and short vertical left right lines white
+ short horizontal top bottom and short vertical left lines white
+ short horizontal top and short vertical left right lines white
+ short horizontal top bottom and short vertical right lines white
+ small left square white
+ small left full square white
+ horizontal line red bottom center red
+ vertical line left red
+ vertical left vertical right red
+ horizontal top red horizontal bottom red
+ horizontal bottom and vertical left lines red
+ horizontal bottom and vertical right lines red
+ horizontal bottom and vertical left right lines red
+ horizontal top bottom and vertical left lines red
+ horizontal top and vertical left right lines red
+ horizontal top bottom and vertical right lines red
+ square red
+ square red fill
+ short horizontal line red bottom center
+ short vertical line red left
+ short vertical left short vertical right red
+ short horizontal top red short horizontal bottom red
+ short horizontal bottom and short vertical left lines red
+ short horizontal bottom and short vertical right lines red
+ short horizontal bottom and short vertical left right lines red
+ short horizontal top bottom and short vertical left lines red
+ short horizontal top and short vertical left right lines red
+ short horizontal top bottom and short vertical right lines red
+ small left square red
+ small left full square red
+ horizontal line green bottom center green
+ vertical line left green
+ vertical left vertical right green
+ horizontal top green horizontal bottom green
+ horizontal bottom and vertical left lines green
+ horizontal bottom and vertical right lines green
+ horizontal bottom and vertical left right lines green
+ horizontal top bottom and vertical left lines green
+ horizontal top and vertical left right lines green
+ horizontal top bottom and vertical right lines green
+ square green
+ square green fill
+ short horizontal line green bottom center
+ short vertical line green left
+ short vertical left short vertical right green
+ short horizontal top green short horizontal bottom green
+ short horizontal bottom and short vertical left lines green
+ short horizontal bottom and short vertical right lines green
+ short horizontal bottom and short vertical left right lines green
+ short horizontal top bottom and short vertical left lines green
+ short horizontal top and short vertical left right lines green
+ short horizontal top bottom and short vertical right lines green
+ small left square green
+ small left full square green
+ horizontal line blue bottom center blue
+ vertical line left blue
+ vertical left vertical right blue
+ horizontal top blue horizontal bottom blue
+ horizontal bottom and vertical left lines blue
+ horizontal bottom and vertical right lines blue
+ horizontal bottom and vertical left right lines blue
+ horizontal top bottom and vertical left lines blue
+ horizontal top and vertical left right lines blue
+ horizontal top bottom and vertical right lines blue
+ square blue
+ square blue fill
+ short horizontal line blue bottom center
+ short vertical line blue left
+ short vertical left short vertical right blue
+ short horizontal top blue short horizontal bottom blue
+ short horizontal bottom and short vertical left lines blue
+ short horizontal bottom and short vertical right lines blue
+ short horizontal bottom and short vertical left right lines blue
+ short horizontal top bottom and short vertical left lines blue
+ short horizontal top and short vertical left right lines blue
+ short horizontal top bottom and short vertical right lines blue
+ small left square blue
+ small left full square blue
+ horizontal line yellow bottom center yellow
+ vertical line left yellow
+ vertical left vertical right yellow
+ horizontal top yellow horizontal bottom yellow
+ horizontal bottom and vertical left lines yellow
+ horizontal bottom and vertical right lines yellow
+ horizontal bottom and vertical left right lines yellow
+ horizontal top bottom and vertical left lines yellow
+ horizontal top and vertical left right lines yellow
+ horizontal top bottom and vertical right lines yellow
+ square yellow
+ square yellow fill
+ short horizontal line yellow bottom center
+ short vertical line yellow left
+ short vertical left short vertical right yellow
+ short horizontal top yellow short horizontal bottom yellow
+ short horizontal bottom and short vertical left lines yellow
+ short horizontal bottom and short vertical right lines yellow
+ short horizontal bottom and short vertical left right lines yellow
+ short horizontal top bottom and short vertical left lines yellow
+ short horizontal top and short vertical left right lines yellow
+ short horizontal top bottom and short vertical right lines yellow
+ small left square yellow
+ small left full square yellow
+ short vertical line left thin white
+ vertical line left thin and horizontal bottom thin white
+ vertical lines left right thin and horizontal bottom thin white
+ white rectangle thin horizontal top
+ vertical line left thick white
+ vertical line right thick white
+ horizontal line mid thick white
+ horizontal line top thick white
+ vertical line left thick and horizontal bottom thick white
+ vertical lines left right thick and horizontal bottom thick white
+ white rectangle horizontal top thick
+ white rectangle horizontal thick
+ long vertical line left white
+ horizontal top line white
+ vertical lines left and right and horizontal top line white
+ center vertical rectangle white
+ center vertical rectangle filled white
+ short vertical line left thin red
+ vertical line left thin and horizontal bottom thin red
+ vertical lines left right thin and horizontal bottom thin red
+ red rectangle thin horizontal top
+ vertical line left thick red
+ vertical line right thick red
+ horizontal line mid thick red
+ horizontal line top thick red
+ vertical line left thick and horizontal bottom thick red
+ vertical lines left right thick and horizontal bottom thick red
+ red rectangle horizontal top thick
+ red rectangle horizontal thick
+ long vertical line left red
+ horizontal top line red
+ vertical lines left and right and horizontal top line red
+ center vertical rectangle red
+ center vertical rectangle filled red
+ short vertical line left thin green
+ vertical line left thin and horizontal bottom thin green
+ vertical lines left right thin and horizontal bottom thin green
+ green rectangle thin horizontal top
+ vertical line left thick green
+ vertical line right thick green
+ horizontal line mid thick green
+ horizontal line top thick green
+ vertical line left thick and horizontal bottom thick green
+ vertical lines left right thick and horizontal bottom thick green
+ green rectangle horizontal top thick
+ green rectangle horizontal thick
+ long vertical line left green
+ horizontal top line green
+ vertical lines left and right and horizontal top line green
+ center vertical rectangle green
+ center vertical rectangle filled green
+ short vertical line left thin blue
+ vertical line left thin and horizontal bottom thin blue
+ vertical lines left right thin and horizontal bottom thin blue
+ blue rectangle thin horizontal top
+ vertical line left thick blue
+ vertical line right thick blue
+ horizontal line mid thick blue
+ horizontal line top thick blue
+ vertical line left thick and horizontal bottom thick blue
+ vertical lines left right thick and horizontal bottom thick blue
+ blue rectangle horizontal top thick
+ blue rectangle horizontal thick
+ long vertical line left blue
+ horizontal top line blue
+ vertical lines left and right and horizontal top line blue
+ center vertical rectangle blue
+ center vertical rectangle filled blue
+ short vertical line left thin yellow
+ vertical line left thin and horizontal bottom thin yellow
+ vertical lines left right thin and horizontal bottom thin yellow
+ yellow rectangle thin horizontal top
+ vertical line left thick yellow
+ vertical line right thick yellow
+ horizontal line mid thick yellow
+ horizontal line top thick yellow
+ vertical line left thick and horizontal bottom thick yellow
+ vertical lines left right thick and horizontal bottom thick yellow
+ yellow rectangle horizontal top thick
+ yellow rectangle horizontal thick
+ long vertical line left yellow
+ horizontal top line yellow
+ vertical lines left and right and horizontal top line yellow
+ center vertical rectangle yellow
+ center vertical rectangle filled yellow
+ high diagonal up flip white
+ high diagonal down flip white
+ high base flip white
+ high diagonal down base flip white
+ high triangle flip white
+ high triangle full flip white
+ high left triangle white
+ low diagonal up white
+ low diagonal down white
+ low base white
+ low diagonal up base white
+ low diagonal down base white
+ low triangle white
+ low triangle full white
+ high diagonal up flip red
+ high diagonal down flip red
+ high base flip red
+ high diagonal down base flip red
+ high triangle flip red
+ high triangle full flip red
+ high left triangle red
+ low diagonal up red
+ low diagonal down red
+ low base red
+ low diagonal up base red
+ low diagonal down base red
+ low triangle red
+ low triangle full red
+ high diagonal up flip green
+ high diagonal down flip green
+ high base flip green
+ high diagonal down base flip green
+ high triangle flip green
+ high triangle full flip green
+ high left triangle green
+ low diagonal up green
+ low diagonal down green
+ low base green
+ low diagonal up base green
+ low diagonal down base green
+ low triangle green
+ low triangle full green
+ high diagonal up flip blue
+ high diagonal down flip blue
+ high base flip blue
+ high diagonal down base flip blue
+ high triangle flip blue
+ high triangle full flip blue
+ high left triangle blue
+ low diagonal up blue
+ low diagonal down blue
+ low base blue
+ low diagonal up base blue
+ low diagonal down base blue
+ low triangle blue
+ low triangle full blue
+ high diagonal up flip yellow
+ high diagonal down flip yellow
+ high base flip yellow
+ high diagonal down base flip yellow
+ high triangle flip yellow
+ high triangle full flip yellow
+ high left triangle yellow
+ low diagonal up yellow
+ low diagonal down yellow
+ low base yellow
+ low diagonal up base yellow
+ low diagonal down base yellow
+ low triangle yellow
+ low triangle full yellow
+ half empty circle up white
+ half empty circle down white
+ half empty circle left white
+ half empty circle right white
+ half circle full up white
+ half circle full down white
+ half circle full left white
+ half circle full right white
+ empty circle white
+ circle full white
+ half empty circle up red
+ half empty circle down red
+ half empty circle left red
+ half empty circle right red
+ half circle full up red
+ half circle full down red
+ half circle full left red
+ half circle full right red
+ empty circle red
+ circle full red
+ half empty circle up green
+ half empty circle down green
+ half empty circle left green
+ half empty circle right green
+ half circle full up green
+ half circle full down green
+ half circle full left green
+ half circle full right green
+ empty circle green
+ circle full green
+ half empty circle up blue
+ half empty circle down blue
+ half empty circle left blue
+ half empty circle right blue
+ half circle full up blue
+ half circle full down blue
+ half circle full left blue
+ half circle full right blue
+ empty circle blue
+ circle full blue
+ half empty circle up yellow
+ half empty circle down yellow
+ half empty circle left yellow
+ half empty circle right yellow
+ half circle full up yellow
+ half circle full down yellow
+ half circle full left yellow
+ half circle full right yellow
+ empty circle yellow
+ circle full yellow
+ small and big white squares
+ top left and bottom right squares white
+ top left and bottom right squares one filled white
+ horizontal white rectangle and vertical rectangle white
+ red square under rectangle white
+ filled square under white rectangle white
+ left white rectangle and middle white square and right white square
+ Little white square inside big white square
+ triangles white and white
+ Two triangles on the side connected with a line between the vertexes white
+ left white rectangle right white flipped triangle
+ white full low triangle right full blue rectangle
+ white full left rectangle up middle flipped white triangle low right white triangle
+ left white square right white rectangle
+ small triangle white in large triangle white
+ small full square white in large triangle white
+ small full square white in large circle white
+ small and big red squares
+ top left and bottom right squares red
+ top left and bottom right squares one filled red
+ horizontal red rectangle and vertical rectangle red
+ red square under rectangle red
+ filled square under red rectangle red
+ left red rectangle and middle red square and right red square
+ Little red square inside big red square
+ triangles red and red
+ Two triangles on the side connected with a line between the vertexes red
+ left red rectangle right red flipped triangle
+ red full low triangle right full blue rectangle
+ red full left rectangle up middle flipped red triangle low right red triangle
+ left red square right red rectangle
+ small triangle red in large triangle red
+ small full square red in large triangle red
+ small full square red in large circle red
+ small and big green squares
+ top left and bottom right squares green
+ top left and bottom right squares one filled green
+ horizontal green rectangle and vertical rectangle green
+ red square under rectangle green
+ filled square under green rectangle green
+ left green rectangle and middle green square and right green square
+ Little green square inside big green square
+ triangles green and green
+ Two triangles on the side connected with a line between the vertexes green
+ left green rectangle right green flipped triangle
+ green full low triangle right full blue rectangle
+ green full left rectangle up middle flipped green triangle low right green triangle
+ left green square right green rectangle
+ small triangle green in large triangle green
+ small full square green in large triangle green
+ small full square green in large circle green
+ small and big blue squares
+ top left and bottom right squares blue
+ top left and bottom right squares one filled blue
+ horizontal blue rectangle and vertical rectangle blue
+ red square under rectangle blue
+ filled square under blue rectangle blue
+ left blue rectangle and middle blue square and right blue square
+ Little blue square inside big blue square
+ triangles blue and blue
+ Two triangles on the side connected with a line between the vertexes blue
+ left blue rectangle right blue flipped triangle
+ blue full low triangle right full blue rectangle
+ blue full left rectangle up middle flipped blue triangle low right blue triangle
+ left blue square right blue rectangle
+ small triangle blue in large triangle blue
+ small full square blue in large triangle blue
+ small full square blue in large circle blue
+ small and big yellow squares
+ top left and bottom right squares yellow
+ top left and bottom right squares one filled yellow
+ horizontal yellow rectangle and vertical rectangle yellow
+ red square under rectangle yellow
+ filled square under yellow rectangle yellow
+ left yellow rectangle and middle yellow square and right yellow square
+ Little yellow square inside big yellow square
+ triangles yellow and yellow
+ Two triangles on the side connected with a line between the vertexes yellow
+ left yellow rectangle right yellow flipped triangle
+ yellow full low triangle right full blue rectangle
+ yellow full left rectangle up middle flipped yellow triangle low right yellow triangle
+ left yellow square right yellow rectangle
+ small triangle yellow in large triangle yellow
+ small full square yellow in large triangle yellow
+ small full square yellow in large circle yellow
+ horizontal yellow rectangle and vertical rectangle white
+ left red rectangle and middle yellow square and right blue square
+ Little red square inside big white square
+ triangle white and red
+ white triangles on the side connected with a yellow line to a red triangle on side
+ left white rectangle right green flipped triangle
+ red full left rectangle up middle flipped yellow triangle low right green triangle
+ left yellow square right red rectangle
+ small triangle red in large triangle blue
+ small full square yellow in large triangle blue
+ small full square green in large triangle yellow
+ small full square red in large circle yellow
+ small full square white in large circle blue
+ number one white
+ number two white
+ number three white
+ number four white
+ number five white
+ number six white
+ number seven white
+ number eight white
+ number nine white
+ number twelve white
+ number fifteen white
+ number twenty one white
+ number thirty one white
+ number fourty one white
+ number fourty nine white
+ number fifty eight white
+ number sixty three white
+ number seventy six white
+ number ninety one white
+ number one red
+ number two red
+ number three red
+ number four red
+ number five red
+ number six red
+ number seven red
+ number eight red
+ number nine red
+ number twelve red
+ number fifteen red
+ number twenty one red
+ number thirty one red
+ number fourty one red
+ number fourty nine red
+ number fifty eight red
+ number sixty three red
+ number seventy six red
+ number ninety one red
+ number one green
+ number two green
+ number three green
+ number four green
+ number five green
+ number six green
+ number seven green
+ number eight green
+ number nine green
+ number twelve green
+ number fifteen green
+ number twenty one green
+ number thirty one green
+ number fourty one green
+ number fourty nine green
+ number fifty eight green
+ number sixty three green
+ number seventy six green
+ number ninety one green
+ number one blue
+ number two blue
+ number three blue
+ number four blue
+ number five blue
+ number six blue
+ number seven blue
+ number eight blue
+ number nine blue
+ number twelve blue
+ number fifteen blue
+ number twenty one blue
+ number thirty one blue
+ number fourty one blue
+ number fourty nine blue
+ number fifty eight blue
+ number sixty three blue
+ number seventy six blue
+ number ninety one blue
+ number one yellow
+ number two yellow
+ number three yellow
+ number four yellow
+ number five yellow
+ number six yellow
+ number seven yellow
+ number eight yellow
+ number nine yellow
+ number twelve yellow
+ number fifteen yellow
+ number twenty one yellow
+ number thirty one yellow
+ number fourty one yellow
+ number fourty nine yellow
+ number fifty eight yellow
+ number sixty three yellow
+ number seventy six yellow
+ number ninety one yellow
+ number twelve red green blue
+ number twelve red white
+ number twelve red red blue
+ number fifteen blue red
+ number fifteen white red
+ number twenty one green red
+ number twenty one green yellow
+ number twenty one white yellow
+ number thirty one white yellow
+ number thirty one red yellow
+ number thirty one red green
+ number fourty one blue white
+ number fourty one blue yellow
+ number fourty one green yellow
+ number fourty nine white red
+ number fourty nine yellow red
+ number fourty nine blue red
+ number fifty eight yellow white
+ number fifty eight yellow green
+ number fifty eight blue green
+ number sixty three green white
+ number sixty three green red
+ number sixty three green yellow
+ number seventy six white blue
+ number seventy six white yellow
+ number ninety one green white
+ number ninety one green red
+ number ninety one blue red
+ 21 white
+ 59 white
+ 743 red green
+ 49 white
+ 51 white
+ 28 white
+ 15 blue green
+ 22 white
+ 89 white red
+ 261 red green green
+ 16 red
+ 50 white
+ 39 white
+ 25 yellow white
+ 63 red blue
+ 612 green blue
+ 53 white
+ 52 white
+ 16 green blue
+ 58 white
+ 29 white
+ 59 red green
+ 35 white
+ 64 white
+ 60 white
+ 76 white red
+ 55 white
+ 69 blue green
+ 52 green blue
+ 40 yellow red
+ 15 blue yellow
+ 87 blue green
+ 21 green
+ 86 white red
+ 61 white
+ 27 blue yellow
+ 25 white
+ 74 blue white
+ 92 white
+ 15 yellow green
+ 11 blue red
+ 63 white
+ 30 blue yellow
+ 21 greenred
+ 743 red
+ 42 white
+ 364 yellow green
+ 47 green yellow
+ 32 white
+ 76 blue yellow
+ 52 red yellow
+ 24 white
+ 63 green yellow
+ 19 red yellow
+ 40 green red
+ 905 blue yellow green
+ 23 white
+ 48 yellow green
+ 76 green yellow
+ 54 white
+ 69 blue yellow
+ 48 blue red
+ 48 white
+ 57 white
+ 30 red green
+ 67 red yellow
+ 59 yellow red
+ 743 blue green
+ 30 white
+ 13 green yellow
+ 67 green yellow
+ 67 green red
+ 59 yellow blue
+ 905 yellow red
+ 27 red green
+ 748 blue green red
+ 45 white
+ 63 yellow blue
+ 62 white
+ 13 blue red
+ 66 white
+ 56 white
+ 13 green red
+ 40 white
+ 76 green red
+ 11 yellow
+ 87 red yellow
+ 52 red blue
+ 86 yellow green
+ 59 yellow green
+ 27 white
+ 48 red green
+ 44 white
+ 11 red green
+ 33 white
+ 40 yellow green
+ 47 blue red
+ 74 red blue
+ 67 white red
+ 27 blue green
+ 96 white
+ 189 green blue red
+ 83 green
+ 31 white
+ 30 blue green
+ 25 blue red
+ 36 white
+ 86 yellow blue
+ 65 white
+ 16 blue yellow
+ 21 blue yellow
+ 63 red yellow
+ 48 blue green
+ 41 white
+ 87 blue white
+ 43 white
+ 83 blue yellow
+ 837 green yellow
+ 86 yellow red
+ 34 white
+ 46 white
+ 25 yellow green
+ 19 green blue
+ 38 blue green
+ 269 red green red
+ 47 white
+ 19 green yellow
+ 19 red blue
+ 40 white green
+ 99 green red
+ 87 red green
+ 902 blue green
+ 183 red blue yellow
+ 37 white
+ 26 white
+ 38 white
+ 25 blue white
+ 269 red blue yellow
+ 38 yellow red
+ a white
+ b white
+ c white
+ d white
+ e white
+ f white
+ g white
+ h white
+ i white
+ j white
+ k white
+ l white
+ m white
+ n white
+ o white
+ p white
+ q white
+ r white
+ s white
+ t white
+ u white
+ v white
+ w white
+ Y white
+ z white
+ cat white
+ fat white
+ hat white
+ car white
+ key white
+ dog white
+ eat white
+ hot white
+ sad white
+ sum white
+ sun white
+ run white
+ see white
+ old white
+ new white
+ zoo white
+ king white
+ love white
+ feel white
+ push white
+ child white
+ cat red
+ fat red
+ hat red
+ car red
+ key red
+ dog red
+ eat red
+ hot red
+ sad red
+ sum red
+ sun red
+ run red
+ see red
+ old red
+ new red
+ zoo red
+ king red
+ love red
+ feel red
+ push red
+ child red
+ cat green
+ fat green
+ hat green
+ car green
+ key green
+ dog green
+ eat green
+ hot green
+ sad green
+ sum green
+ sun green
+ run green
+ see green
+ old green
+ new green
+ zoo green
+ king green
+ love green
+ feel green
+ push green
+ child green
+ cat blue
+ fat blue
+ hat blue
+ car blue
+ key blue
+ dog blue
+ eat blue
+ hot blue
+ sad blue
+ sum blue
+ sun blue
+ run blue
+ see blue
+ old blue
+ new blue
+ zoo blue
+ king blue
+ love blue
+ feel blue
+ push blue
+ child blue
+ cat yellow
+ fat yellow
+ hat yellow
+ car yellow
+ key yellow
+ dog yellow
+ eat yellow
+ hot yellow
+ sad yellow
+ sum yellow
+ sun yellow
+ run yellow
+ see yellow
+ old yellow
+ new yellow
+ zoo yellow
+ king yellow
+ love yellow
+ feel yellow
+ push yellow
+ child yellow
+ DR blue
+ HI red yellow
+ IS red
+ IT white yellow
+ my red
+ ON green yellow
+ up white
+ IT white
+ we red
+ ON blue
+ IY blue green
+ HI yellow
+ you red white green
+ now yellow red blue
+ fox red green yellow
+ box white green red
+ son red green red
+ jam green green red
+ que yellow blue yellow
+ dad blue green red
+ bat red blue white
+ eye green green white
+ wow yellow white blue
+ fun white red yellow
+ play yellow white red green
+ pay  blue white yellow
+ say  green blue yellow
+ safe  red blue yellow green
+ sale  red blue white green
+ else green white red blue
+ rat yellow blue red
+ race red blue white green
+ Alef white
+ Beit white
+ Gimel white
+ Daled white
+ Hey white
+ Vav white
+ Zain white
+ Cheit white
+ Tet white
+ Yud white
+ Kaf white
+ Lamed white
+ Mem white
+ Noon white
+ Samach white
+ Ayn white
+ Pey white
+ Zadik white
+ Koof white
+ Reish white
+ Shin white
+ Taf white
+ Mem sofit white
+ Noon sofit white
+ Zadik sofit white
+ Pey sofit white
+ Kaf sofit white
+ Alef red
+ Beit red
+ Gimel red
+ Daled red
+ Hey red
+ Vav red
+ Zain red
+ Cheit red
+ Tet red
+ Yud red
+ Kaf red
+ Lamed red
+ Mem red
+ Noon red
+ Samach red
+ Ayn red
+ Pey red
+ Zadik red
+ Koof red
+ Reish red
+ Shin red
+ Taf red
+ Mem sofit red
+ Noon sofit red
+ Zadik sofit red
+ Pey sofit red
+ Kaf sofit red
+ Alef green
+ Beit green
+ Gimel green
+ Daled green
+ Hey green
+ Vav green
+ Zain green
+ Cheit green
+ Tet green
+ Yud green
+ Kaf green
+ Lamed green
+ Mem green
+ Noon green
+ Samach green
+ Ayn green
+ Pey green
+ Zadik green
+ Koof green
+ Reish green
+ Shin green
+ Taf green
+ Mem sofit green
+ Noon sofit green
+ Zadik sofit green
+ Pey sofit green
+ Kaf sofit green
+ Alef blue
+ Beit blue
+ Gimel blue
+ Daled blue
+ Hey blue
+ Vav blue
+ Zain blue
+ Cheit blue
+ Tet blue
+ Yud blue
+ Kaf blue
+ Lamed blue
+ Mem blue
+ Noon blue
+ Samach blue
+ Ayn blue
+ Pey blue
+ Zadik blue
+ Koof blue
+ Reish blue
+ Shin blue
+ Taf blue
+ Mem sofit blue
+ Noon sofit blue
+ Zadik sofit blue
+ Pey sofit blue
+ Kaf sofit blue
+ Alef yellow
+ Beit yellow
+ Gimel yellow
+ Daled yellow
+ Hey yellow
+ Vav yellow
+ Zain yellow
+ Cheit yellow
+ Tet yellow
+ Yud yellow
+ Kaf yellow
+ Lamed yellow
+ Mem yellow
+ Noon yellow
+ Samach yellow
+ Ayn yellow
+ Pey yellow
+ Zadik yellow
+ Koof yellow
+ Reish yellow
+ Shin yellow
+ Taf yellow
+ Mem sofit yellow
+ Noon sofit yellow
+ Zadik sofit yellow
+ Pey sofit yellow
+ Kaf sofit yellow
+ har white
+ perach white
+ ZANAV white
+ Gamal white
+ KERAH White
+ keshet White
+ KELEV White
+ Anan White
+ Bat white
+ Beged White
+ SHEMESH White
+ TZAV white
+ YELED White
+ Sameach white
+ KESEM White
+ har red
+ perach red
+ ZANAV red
+ Gamal red
+ KERAH red
+ keshet red
+ KELEV red
+ Anan red
+ Bat red
+ Beged red
+ SHEMESH red
+ TZAV red
+ YELED red
+ Sameach red
+ KESEM red
+ har green
+ perach green
+ ZANAV green
+ Gamal green
+ KERAH green
+ keshet green
+ KELEV green
+ Anan green
+ Bat green
+ Beged green
+ SHEMESH green
+ TZAV green
+ YELED green
+ Sameach green
+ KESEM green
+ har blue
+ perach blue
+ ZANAV blue
+ Gamal blue
+ KERAH blue
+ keshet blue
+ KELEV blue
+ Anan blue
+ Bat blue
+ Beged blue
+ SHEMESH blue
+ TZAV blue
+ YELED blue
+ Sameach blue
+ KESEM blue
+ har yellow
+ perach yellow
+ ZANAV yellow
+ Gamal yellow
+ KERAH yellow
+ keshet yellow
+ KELEV yellow
+ Anan yellow
+ Bat yellow
+ Beged yellow
+ SHEMESH yellow
+ TZAV yellow
+ YELED yellow
+ Sameach yellow
+ KESEM yellow
+ har red green
+ har yellow green
+ perach green yellow white
+ perach red blue yellow
+ ZANAV blue white yellow
+ ZANAV green red yellow
+ Gamal green red blue
+ Gamal yellow red yellow
+ KERAH blue green yellow
+ KERAH yellow red yellow
+ keshet red green white
+ keshet red yellow blue
+ KELEV red yellow red
+ KELEV White blue red
+ Anan blue yellow blue
+ Anan green yellow red
+ Bat blue yellow
+ Bat red white
+ Beged blue green white
+ Beged red red yellow
+ SHEMESH blue white blue
+ SHEMESH red yellow red
+ TZAV blue yellow
+ TZAV white red
+ YELED White green white
+ Sameach red yellow white
+ KESEM green yellow blue
+ KESEM yellow red blue
+ circle eyes white
+ nose white
+ circle eyes nose white
+ smile white
+ smile nose white
+ circle eyes  smile white
+ circle eyes smiling face white
+ circle eyes sad white
+ sad nose white
+ circle eyes sad face white
+ apathetic white
+ apathetic nose white
+ circle eyes apathetic white
+ circle eyes apathetic face white
+ surprised white
+ circle eyes surprised white
+ surprised nose white
+ circle eyes surprised face white
+ square eyes white
+ square eyes nose white
+ square eyes smiling white
+ square eyes smiling face white
+ square eyes sad white
+ square eyes sad face white
+ square eyes apathetic white
+ square eyes apathetic face white
+ square eyes surprise white
+ square eyes surprise face white
+ triangle eyes white
+ triangle eyes nose white
+ triangle eyes smile white
+ triangle eyes smiling face white
+ triangle eyes sad white
+ triangle eyes sad face white
+ triangle eyes apathetic white
+ triangle eyes apathetic face white
+ triangle eyes surprise white
+ triangle eyes surprise face white
+ circle eyes red
+ nose red
+ circle eyes nose red
+ smile red
+ smile nose red
+ circle eyes  smile red
+ circle eyes smiling face red
+ circle eyes sad red
+ sad nose red
+ circle eyes sad face red
+ apathetic red
+ apathetic nose red
+ circle eyes apathetic red
+ circle eyes apathetic face red
+ surprised red
+ circle eyes surprised red
+ surprised nose red
+ circle eyes surprised face red
+ square eyes red
+ square eyes nose red
+ square eyes smiling red
+ square eyes smiling face red
+ square eyes sad red
+ square eyes sad face red
+ square eyes apathetic red
+ square eyes apathetic face red
+ square eyes surprise red
+ square eyes surprise face red
+ triangle eyes red
+ triangle eyes nose red
+ triangle eyes smile red
+ triangle eyes smiling face red
+ triangle eyes sad red
+ triangle eyes sad face red
+ triangle eyes apathetic red
+ triangle eyes apathetic face red
+ triangle eyes surprise red
+ triangle eyes surprise face red
+ circle eyes green
+ nose green
+ circle eyes nose green
+ smile green
+ smile nose green
+ circle eyes  smile green
+ circle eyes smiling face green
+ circle eyes sad green
+ sad nose green
+ circle eyes sad face green
+ apathetic green
+ apathetic nose green
+ circle eyes apathetic green
+ circle eyes apathetic face green
+ surprised green
+ circle eyes surprised green
+ surprised nose green
+ circle eyes surprised face green
+ square eyes green
+ square eyes nose green
+ square eyes smiling green
+ square eyes smiling face green
+ square eyes sad green
+ square eyes sad face green
+ square eyes apathetic green
+ square eyes apathetic face green
+ square eyes surprise green
+ square eyes surprise face green
+ triangle eyes green
+ triangle eyes nose green
+ triangle eyes smile green
+ triangle eyes smiling face green
+ triangle eyes sad green
+ triangle eyes sad face green
+ triangle eyes apathetic green
+ triangle eyes apathetic face green
+ triangle eyes surprise green
+ triangle eyes surprise face green
+ circle eyes blue
+ nose blue
+ circle eyes nose blue
+ smile blue
+ smile nose blue
+ circle eyes  smile blue
+ circle eyes smiling face blue
+ circle eyes sad blue
+ sad nose blue
+ circle eyes sad face blue
+ apathetic blue
+ apathetic nose blue
+ circle eyes apathetic blue
+ circle eyes apathetic face blue
+ surprised blue
+ circle eyes surprised blue
+ surprised nose blue
+ circle eyes surprised face blue
+ square eyes blue
+ square eyes nose blue
+ square eyes smiling blue
+ square eyes smiling face blue
+ square eyes sad blue
+ square eyes sad face blue
+ square eyes apathetic blue
+ square eyes apathetic face blue
+ square eyes surprise blue
+ square eyes surprise face blue
+ triangle eyes blue
+ triangle eyes nose blue
+ triangle eyes smile blue
+ triangle eyes smiling face blue
+ triangle eyes sad blue
+ triangle eyes sad face blue
+ triangle eyes apathetic blue
+ triangle eyes apathetic face blue
+ triangle eyes surprise blue
+ triangle eyes surprise face blue
+ circle eyes yellow
+ nose yellow
+ circle eyes nose yellow
+ smile yellow
+ smile nose yellow
+ circle eyes  smile yellow
+ circle eyes smiling face yellow
+ circle eyes sad yellow
+ sad nose yellow
+ circle eyes sad face yellow
+ apathetic yellow
+ apathetic nose yellow
+ circle eyes apathetic yellow
+ circle eyes apathetic face yellow
+ surprised yellow
+ circle eyes surprised yellow
+ surprised nose yellow
+ circle eyes surprised face yellow
+ square eyes yellow
+ square eyes nose yellow
+ square eyes smiling yellow
+ square eyes smiling face yellow
+ square eyes sad yellow
+ square eyes sad face yellow
+ square eyes apathetic yellow
+ square eyes apathetic face yellow
+ square eyes surprise yellow
+ square eyes surprise face yellow
+ triangle eyes yellow
+ triangle eyes nose yellow
+ triangle eyes smile yellow
+ triangle eyes smiling face yellow
+ triangle eyes sad yellow
+ triangle eyes sad face yellow
+ triangle eyes apathetic yellow
+ triangle eyes apathetic face yellow
+ triangle eyes surprise yellow
+ triangle eyes surprise face yellow
+ blue circle eyes green nose apathetic yellow
+ green circle eyes white nose yellow smile
+ white triangle eyes yellow nose red surprise
+ blue circle eyes red nose sad yellow
+ yellow square eyes red nose white apathetic
+ red circle eyes green nose sad red
+ blue square eyes green nose red apathetic
+ blue circle eyes green nose apathetic red
+ green circle eyes blue nose surprised yellow
+ white triangle eyes green-nose red sad
+ green triangle eyes white nose yellow apathetic
+ blue circle eyes yellow nose apathetic green
+ blue circle eyes red nose white smile
+ red square eyes white nose green apathetic
+ blue circle eyes yellow nose red smile
+ yellow circle eyes green nose surprised red
+ green square eyes white nose yellow smile
+ green circle eyes yellow nose red smile
+ blue triangle eyes yellow nose red apathetic
+ yellow square eyes green nose blue sad
+ green circle eyes red nose surprised white
+ blue square eyes yellow nose red smile
+ yellow circle eyes red nose surprised red
+ blue triangle eyes red nose yellow smile
+ red circle eyes blue nose sad white
+ yellow circle eyes yellow nose apathetic red
+ blue triangle eyes white nose red smile
+ yellow circle eyes red nose sad blue
+ green square eyes red nose white smile
+ yellow triangle eyes blue nose green surprise
+ red square eyes white nose yellow sad
+ red square eyes yellow nose red apathetic
+ yellow triangle eyes green nose blue sad
+ triangle white small
+ rectangle white small
+ house white small
+ triangle white small full
+ rectangle white small full
+ house white small full
+ house white small left
+ house white small right full
+ triangle white medium
+ rectangle white medium
+ house white medium
+ triangle white medium full
+ rectangle white medium full
+ house white medium full
+ triangle white big
+ rectangle white big
+ house white big
+ triangle white big full
+ rectangle white big full
+ house white big full
+ house white medium right
+ house white big right full
+ house white medium left full
+ 2 houses white big left full
+ 2 houses white medium
+ 3 houses white small
+ 3 houses white small middle full
+ triangle red small
+ rectangle red small
+ house red small
+ triangle red small full
+ rectangle red small full
+ house red small full
+ house red small left
+ house red small right full
+ triangle red medium
+ rectangle red medium
+ house red medium
+ triangle red medium full
+ rectangle red medium full
+ house red medium full
+ triangle red big
+ rectangle red big
+ house red big
+ triangle red big full
+ rectangle red big full
+ house red big full
+ house red medium right
+ house red big right full
+ house red medium left full
+ 2 houses red big left full
+ 2 houses red medium
+ 3 houses red small
+ 3 houses red small middle full
+ triangle green small
+ rectangle green small
+ house green small
+ triangle green small full
+ rectangle green small full
+ house green small full
+ house green small left
+ house green small right full
+ triangle green medium
+ rectangle green medium
+ house green medium
+ triangle green medium full
+ rectangle green medium full
+ house green medium full
+ triangle green big
+ rectangle green big
+ house green big
+ triangle green big full
+ rectangle green big full
+ house green big full
+ house green medium right
+ house green big right full
+ house green medium left full
+ 2 houses green big left full
+ 2 houses green medium
+ 3 houses green small
+ 3 houses green small middle full
+ triangle blue small
+ rectangle blue small
+ house blue small
+ triangle blue small full
+ rectangle blue small full
+ house blue small full
+ house blue small left
+ house blue small right full
+ triangle blue medium
+ rectangle blue medium
+ house blue medium
+ triangle blue medium full
+ rectangle blue medium full
+ house blue medium full
+ triangle blue big
+ rectangle blue big
+ house blue big
+ triangle blue big full
+ rectangle blue big full
+ house blue big full
+ house blue medium right
+ house blue big right full
+ house blue medium left full
+ 2 houses blue big left full
+ 2 houses blue medium
+ 3 houses blue small
+ 3 houses blue small middle full
+ triangle yellow small
+ rectangle yellow small
+ house yellow small
+ triangle yellow small full
+ rectangle yellow small full
+ house yellow small full
+ house yellow small left
+ house yellow small right full
+ triangle yellow medium
+ rectangle yellow medium
+ house yellow medium
+ triangle yellow medium full
+ rectangle yellow medium full
+ house yellow medium full
+ triangle yellow big
+ rectangle yellow big
+ house yellow big
+ triangle yellow big full
+ rectangle yellow big full
+ house yellow big full
+ house yellow medium right
+ house yellow big right full
+ house yellow medium left full
+ 2 houses yellow big left full
+ 2 houses yellow medium
+ 3 houses yellow small
+ 3 houses yellow small middle full
+ house red roof green wall small
+ house roof red walls blue small
+ house roof yellow walls blue small
+ house white small full roof red walls white
+ house white small full roof white walls blue
+ house white small right full roof yellow walls green
+ house roof green yellow walls medium
+ house roof blue walls yellow medium full
+ house roof red walls green big
+ house roof yellow walls blue big full
+ 2 houses big left full red right green
+ 2 houses left yellow right blue medium
+ 3 houses blue white blue small
+ 3 houses red green blue small
+ 3 houses roof green walls yellow small
+ 3 houses roof red walls blue small middle full
+ 3 houses roof red walls green small middle full
+ Body Separate components white
+ Body White
+ Body Hands Spread White
+ 3 Bodies White
+ 2 Bodies White
+ Woman Separate Components white
+ Woman White
+ Man White Woman White
+ 2 Bodies Stand Walk White
+ Body Separate components red
+ Body red
+ Body Hands Spread red
+ 3 Bodies red
+ 2 Bodies red
+ Woman Separate Components red
+ Woman red
+ Man red Woman red
+ 2 Bodies Stand Walk red
+ Body Separate components green
+ Body green
+ Body Hands Spread green
+ 3 Bodies green
+ 2 Bodies green
+ Woman Separate Components blue
+ Woman green
+ Man green Woman green
+ 2 Bodies Stand Walk green
+ Body Separate components blue
+ Body blue
+ Body Hands Spread blue
+ 3 Bodies blue
+ 2 Bodies blue
+ Woman blue
+ Man blue Woman blue
+ 2 Bodies Stand Walk blue
+ Body Separate components yellow
+ Body yellow
+ Body Hands Spread yellow
+ 3 Bodies yellow
+ 2 Bodies yellow
+ Woman Separate Components yellow
+ Woman yellow
+ Man yellow Woman yellow
+ 2 Bodies Stand Walk yellow
+ 3 Bodies White Green White
+ 3 Bodies White Green Red
+ 3 Bodies blue Green Red
+ 2 Bodies blue Regular Red Hands Spread
+ 2 Bodies blue Regular Green Hands Spread
+ Body Up White Legs blue
+ Body Head White Up Red Legs blue
+ Body Head White Up Red Legs Green
+ Body Up Red Legs Green
+ 2 Bodies Heads White Up Green blue Legs Red
+ 3 Bodies Heads White Up blue Red Legs Red
+ 3 Bodies Heads White Up blue Green Legs Red
+ Woman Head White Up Red Legs Green
+ Man Woman Man Head White Up Red Legs Green
+ 2 Bodies Stand Walk Red Green
+ blue pupils eyes Clair
+ eye surroundings Clair
+ eyebrows white Clair
+ eye Clair
+ face eye hole no hair Clair
+ face no hair Clair
+ hair Clair
+ hair and eyes Clair
+ black eyes Ean
+ eye surroundings Ean
+ glasses outline En
+ hair Ean
+ hair and eye surrounding Ean
+ face no hair Ean
+ face no hair with eye surroundings Ean
+ face no eye surroundings Ean
+ eyes Linda
+ glasses outline Linda
+ face no hair no eyes Linda
+ face no hair Linda
+ hair Linda
+ face no eyes no glasses Linda
+ face no glasses Linda
+ eyes Tracy
+ face no hair no eyes Tracy
+ face with eyes no hair Tracy
+ hair Tracy
+ hair and eyes Tracy
+ face with hair no eyes Tracy
+ beard and Eyebrows richard
+ beard and mouth nicolas
+ beard and mouth richard
+ beard no mouth nicolas
+ beard richard
+ eyebrows eyes glasses mouth beard richard
+ eyebrows eyes glasses mouth richard
+ eyebrows glasses mouth beard richard
+ Eyebrows richard
+ eyes and beard no mouth nicolas
+ eyes and beard richard
+ eyes and Eyebrows richard
+ eyes and mouth richard
+ eyes and mouth nicolas
+ eyes beard and mouth nicolas
+ eyes beard and mouth richard
+ eyes eyebrows and mouth richard
+ eyes eyebrows glasses and beard richard
+ eyes eyebrows mouth and beard richard
+ eyes glasses and mouth richard
+ eyes nicolas
+ eyes richard
+ face and beard no eyes no hair no mouth nicolas
+ face and beard  no hair no mouth nicolas
+ face beard and mouth no eyes no hair nicolas
+ face beard no eyes no mouth nicolas
+ face eyebrows and mouth richard
+ face eyes and glasses richard
+ face glasses and eyebrows richard
+ face glasses and mouth richard
+ face no beard no mouth no glasses richard
+ face no beard no mouth richard
+ face no beard richard
+ face no eyebrows no beard richard
+ face no eyebrows no glasses richard
+ face no eyebrows no mouth richard
+ face no eyes no beard nicolas
+ face no eyes no eyebrows no glasses richard
+ face no eyes no eyebrows richard
+ face no eyes no glasses no beard richard
+ face no eyes no glasses richard
+ face no eyes no hair nicolas
+ face no eyes no hair no mouth nicolas
+ face no eyes no mouth nicolas
+ face no glasses  no beard no eyebrows richard
+ face no glasses no mouth richard
+ face no hair no beard nicolas
+ face no hair no mouth nicolas
+ face no mouth no beard nicolas
+ face no-eyebrows richard
+ face with only beard richard
+ face with only eyes richard
+ face with only glasses richard
+ face with only mouth richard
+ glasses and beard richard
+ glasses and eyes richard
+ glasses and mouth richard
+ glasses Eyebrows richard
+ glasses eyes and eyebrows richard
+ glasses eyes beard mouth richard
+ glasses mouth and beard richard
+ glasses mouth eyebrows richard
+ glasses richard
+ mouth and Eyebrows richard
+ mouth nicolas
+ mouth richard
+ side hair and beard nicolas
+ side hair and eyes nicolas
+ side hair and mouth nicolas
+ side hair beard and mouth nicolas
+ side hair eyes and beard nicolas
+ side hair eyes and mouth nicolas
+ side hair nicolas
+ middle strip clair
+ bottom strip Clair
+ top strip Clair
+ middle strip Ean
+ bottom strip Ean
+ top strip Ean
+ middle strip Linda
+ bottom strip Linda
+ top strip Linda
+ middle strip Tracy
+ bottom strip Tracy
+ top strip tracy
+ middle strip Richard
+ bottom strip Richard
+ top strip Richard
+ middle strip Niculas
+ bottom strip Niculs
+ top strip Niculas
+ top left quarter Clair
+ bottom left quarter Clair
+ bottom right quarter Clair
+ top right quarter Clair
+ top left quarter Ean
+ bottom left quarter Ean
+ top right quarter Ean
+ top left quarter Linda
+ bottom left quarter Linda
+ bottom right quarter Linda
+ top right quarter linda
+ top left quarter Tracy
+ bottom left quarter Tracy
+ bottom right quarter Tracy
+ top right quarter Tracy
+ top left quarter Richared
+ bottom left quarter Richared
+ bottom right quarter richared
+ top right quarter Richared
+ top right quarter Niculas
+ bottom left quarter Niculas
+ bottom right quarter Niculas
+ left half Clair
+ right half Clair
+ left half Ean
+ right half Ean
+ left half Linda
+ right half Linda
+ left half Tracy
+ right half Tracy
+ left half richard
+ right half Richared
+ left half Niculas
+ right half Niculas
+ Clair
+ Ean
+ Linda
+ Tracy
+ Richared
+ Niculas
+bart full
+bottom bart
+half left bart
+half right bart
+middle bart
+no eyes bart
+no eyes Tshirt bart
+eyes bart
+quarter bottom left bart
+quarter bottom right bart
+quarter top left bart
+quarter top right bart
+upper bart
+half right
+homer full
+middle homer
+no beard homer
+no eyes homer
+no eyes no beard homer
+quarter bottom left homer
+quarter bottom right homer
+quarter top left homer
+quarter top right homer
+upper homer
+bottom homer
+eyes Tshirt homer
+half left homer
+bottom lisa
+eyes dress lisa
+half left lisa
+half right lisa
+lisa full
+middle lisa
+no eyes lisa
+no eyes no dress lisa
+quarter bottom left lisa
+quarter bottom right lisa
+quarter top left lisa
+quarter top right lisa
+top lisa
+middle marge
+no eyes marge
+no hair marge
+no hair no eyes marge
+no necklace marge
+only hair marge
+quarter bottom left marge
+quarter bottom right marge
+quarter top left marge
+quarter top right marge
+upper marge
+bottom marge
+hair eye marge
+half left marge
+half right marge
+marge full
+bottom meggie
+half left meggie
+half right meggie
+meggie full
+middle megia
+no eyes meggie
+no eye no headband meggie
+no eyes dummy meggie
+no eyes dummy headband meggie
+no dummy meggie
+no dummy headband meggie
+no headband meggie
+quarter bottom left meggie
+quarter bottom right meggie
+quarter top left meggie
+quarter top right meggie
+upper meggie
+back support
+seat
+back support and seat
+chair legs
+chair
+left wheel
+right wheel
+two wheels
+top of bicycle
+bicycle
+left lens
+right lens
+two lenses
+glasses handles
+glasses
+green house lower part
+green house upper part
+green house full house
+green house house and trees
+green house house trees and sky
+white house body
+white house roof
+white house
+white house with floor
+white house with floor and sky
+lower house body
+lower house roof
+lower house body and roof
+lower house and floor background
+lower house with floor and sky background
+gray house roof
+gray house left side
+gray house right side
+gray house body
+gray house the full house
+gray house with sky
+brown house roof
+brown house body
+brown house
+brown house with trees
+brown house with trees and sky
+house door
+house windows
+gray roof house roof only
+ gray roof house body
+ gray roof house
+ gray roof house with sky
+tree trunk
+tree top
+tree
+tree with grass
+tree with sky
+table leg
+two table legs
+three table legs
+four table legs
+table notop
+table
+table with background
+ plate
+ plate exterior part
+ spoon
+ spoon handle
+ spoon bowl
+ Glass Lower part
+ glass
+ Glass upper part
+ wine bowl
+ wine stem foot
+ wine full
+ Beer glass
+ Beer glass Lower part
+ Beer glass Without handle
+ Beer glass handle
+milk chocolate
+white chocolate
+bitter sweat chocolate
+milk chocolate kif kef
+white chocolate kif kef
+red klick
+blue click
+green click
+yellow click
+mekopelet
+milk 3 percent
+milk 1 percent new
+chocolate milk
+strawberry flavored yogurt
+plain yogurt
+cream cheese
+symphnia cream cheese
+symphnia olive cream cheese
+yellow cheese
+ bicycle
+ bottle
+ bus
+ CAR
+ chair
+ GLASSES
+ KEY
+ motorcycle
+ pizza
+ truck
+rabbit
+parrot
+bird
+piano
+soccer
+old time key
+salad
+green house
+white house 3
+lower house 4
+terrace house 5
+gray house
+eglo
+house 8
+house 9
+flower
+lily
+orchid
+rose
+tulip
+banzai tree
+christmas tree
+maple tree
+oak tree
+palm tree
+pine tree in snow
+pine tree in summer
+ladder
+Beer glass
+plate
+glass
+spoon
+wine

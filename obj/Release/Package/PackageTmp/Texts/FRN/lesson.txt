@@ -1,0 +1,25 @@
+﻿Leçon numéro 1: ligne diagonale blanche
+Leçon numéro 2: blanc diagonale blanche 
+Leçon numéro 3: rouge diagonale blanche 
+Leçon numéro 4: vert diagonale blanche 
+Leçon numéro 5: bleu diagonale blanche
+Leçon numéro 6: lignes diagonales de couleurs
+Leçon numéro 7: lignes horizontales
+Leçon numéro 8: lignes Multiples.
+Leçon numéro 9: ligne verticales.
+Leçon numéro 10: tout les types de lignes.
+Leçon numéro 11: lignes parralèles.
+Leçon numéro 12: formes
+Leçon numéro 13: nombres
+Leçon numéro 14: alphabet latin, majuscules
+Leçon numéro 15: mots en majuscules.
+Leçon numéro 16: alphabet latin, minuscule
+Leçon numéro 17: mots en minuscules
+Leçon numéro 18: lettre en hébreu
+Leçon numéro 19: mots en hébreu
+Leçon numéro 20: Passons mainteanant aux visages et expréssions faciales.
+Leçon numéro 21: Voyons maintenant les maisons. 
+Leçon numéro 22: Descriptions des parties du coprs.
+Leçon numéro 23: Les Simpsons
+Leçon numéro 24: Les obets du monde réel.
+Leçon numéro 25: plus d'objets.

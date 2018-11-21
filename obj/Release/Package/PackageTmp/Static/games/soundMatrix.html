@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title> sound matrix </title>
+	<style>
+		@import url("css/gameStyle.css");
+		#table .clicked {    color: white;}
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>	
+	<script src="js/interface.js"></script>	
+	
+	<script>
+	
+		voiceOver = true;
+	
+		// silence voiceOver
+	
+		var BG_COLOR = "black";
+		var horCells = 30;
+		var verCells = 15;
+		var load = false;
+		var coord;
+		GET();	
+		createTable(horCells,verCells);
+		
+		var canvas = document.getElementById("game");
+		canvas.style.background = BG_COLOR;
+		canvas.width = windowWidth;
+		canvas.height = windowHeight;
+		canvas.offsetWidth = windowWidth;
+		canvas.offsetHeight = windowHeight;
+		var context = canvas.getContext('2d');
+		
+		
+		// change text cell color
+		var CELL_COLOR = "red";
+		var stylesheet = document.styleSheets[0];
+		var selector = "#table .clicked";
+		var rule = " {color: "+CELL_COLOR+"}";
+
+		if (stylesheet.insertRule) {
+			stylesheet.insertRule(selector + rule, stylesheet.cssRules.length);
+		} else if (stylesheet.addRule) {
+			stylesheet.addRule(selector, rule, -1);
+		}
+			
+		
+		function clickFunc(x,y,lbl) {
+
+			x = Math.floor(x);
+			y = Math.floor(y);
+		
+			context.beginPath();
+			
+			if (lbl == 1) {
+				context.fillStyle = CELL_COLOR ;
+			} else {
+				context.fillStyle = BG_COLOR;
+			}
+
+			var fixX = Math.ceil((windowWidth/horCells) / 2)
+			var fixY = Math.ceil((windowHeight/verCells) / 2);	
+			
+			context.fillRect(x-fixX , y-fixY , 2*fixX +1 , 2*fixY + 1);
+			
+		}
+
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);		
+
+		function resize() {
+			resize_canvas(canvas);
+			redoClicks();
+		}		
+		
+		function redoClicks() {
+			$("#touch .tr div").each(function() {
+				if ($(this).children("a").hasClass("clicked")) {
+					$(this).children("a").removeClass("clicked");
+					$(this).trigger("click");
+				}
+			});
+		}
+
+		
+		/* load saved sound */
+		$(document).ready(function() {
+			if (load) { loadSound(coord); }
+		});
+		
+		function GET() {
+			// parse tune from $_GET
+			var parts = window.location.search.substr(1).split("&");
+			var $_GET = {};
+			for (var i = 0; i < parts.length; i++) {
+				var temp = parts[i].split("=");
+				$_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+			}
+			
+			if (parts.length >= 2) {
+				horCells = parts[0].split("=")[1];
+				verCells = parts[1].split("=")[1];
+				if (parts.length == 3) {
+					load = true;
+					coord = parts[2];
+				}
+			}
+		}
+		
+		function loadSound(coordinates) {
+			
+			var click = coordinates.split("=")[1].split(";");
+			var press;
+			for (var clk = 0 ; clk < click.length ; clk++) {
+				press = click[clk].split(",");
+				$('#touch #'+press[0]+' .'+press[1]).trigger("click");
+			}
+		}
+		
+		/* export sound */
+		
+		window.addEventListener('keydown', function(e) { 
+			if (e.keyCode == 83) {		
+				window.location.href = location.protocol + '//' + location.host 
+				+ location.pathname+'?'+calcSound();
+			}
+		});
+		
+		
+		function calcSound() {
+			var text = 'rows='+horCells+'&cols='+verCells;
+			var boxes = 0;
+			$("#touch .tr div a.clicked").each(function() {
+				if (boxes == 0) {
+					text = text + '&sound=';
+					boxes++;
+				}
+				text = text + $(this).parent("div").parent(".tr").attr("id")+','+
+				$(this).parent("div").attr("class")+';';
+			});
+			text = text.replace(";$","");
+			return text;
+		}
+
+	</script>
+	
+	
+	
+</body></html>

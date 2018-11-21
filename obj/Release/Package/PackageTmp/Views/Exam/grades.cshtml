@@ -1,0 +1,155 @@
+﻿@model List<eyemusic45.DAL.resualt_exam_row>
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title id="title">the result of exams</title>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+@{
+    if (ViewBag.len == "h")
+    {
+        @:<body onunload="" id="body1" dir="rtl">
+
+        int i = 0;
+        string stage = "";
+        string level = "";
+        string show;
+
+            <ul>
+            <li>
+                <form action="/Home/IselectedTrain" id="submitForm" method="post">
+                    <input type="hidden" name="selected_stage" value="@ViewBag.stage" />
+                    <input type="hidden" name="selected_level" value="@ViewBag.level" />
+                    <input type="submit" value="חזור לשיעור" id="return_lesson">
+                </form>
+            </li>
+        </ul>
+        <ul>
+          <li>
+                <form action="/Home/index" id="submitHome2" method="post"> <input type="submit" value="חזור לדף הבית"> </form> 
+          </li>
+        </ul>
+    
+        if (Model.Count() == 0)
+        {
+            <h2> אין ציונים עדיין</h2>
+        }
+        else
+        {
+    
+            foreach (eyemusic45.DAL.resualt_exam_row thth in Model)
+            {
+                if (i == 0)
+                {
+                    <h2> קיבלת את הציונים הבאים:</h2>
+                    <h3> רמה: @thth.level  </h3>
+                    <h3> שיעור: @thth.stage   </h3>
+                    show =  thth.num_correct.ToString() + " מתוך 10 ";
+                    <h4> @show</h4>
+                    stage = thth.stage;
+                    level = thth.level;
+                }
+                else
+                {
+                    if (thth.level != level)
+                    {
+                        <h3>רמה: @thth.level  </h3>
+                    }
+
+                    if (thth.stage != stage || thth.level != level)
+                    {
+                        <h3>שיעור:  @thth.stage  </h3>
+                    }
+                    show =  thth.num_correct.ToString() + " מתוך 10 ";
+                    @:<h4>@show</h4>
+                    stage = thth.stage;
+                    level = thth.level;
+                }
+                i++;
+            }
+        }
+    }
+    else
+    {
+        @:<body onunload="" id="body1" dir="ltr">
+
+    <ul>
+            <li>
+                <form action="/Home/IselectedTrain" id="submitForm" method="post">
+                    <input type="hidden" name="selected_stage" value="@ViewBag.stage" />
+                    <input type="hidden" name="selected_level" value="@ViewBag.level" />
+                    <input type="submit" value="return to lesson" id="return_lesson">
+                </form>
+            </li>
+        </ul>
+        <ul>
+          <li>
+                <form action="/Home/index" id="submitHome2" method="post"> <input type="submit" value=" return to home "> </form> 
+          </li>
+        </ul>
+
+        int i = 0;
+        string stage = "";
+        string level = "";
+        string show;
+
+        if (Model.Count() == 0)
+        {
+            <h2> not grades yet</h2>
+        }
+        else
+        {
+            foreach (eyemusic45.DAL.resualt_exam_row thth in Model)
+            {
+                if (i == 0)
+                {
+                    <h2> you get this grades:</h2>
+                    <h3> level: @thth.level</h3>
+                    <h3> class: @thth.stage</h3>
+
+                    show = thth.num_correct.ToString() + " from 10";
+                    <h4> @show</h4>
+                    stage = thth.stage;
+                    level = thth.level;
+                }
+                else
+                {
+                    if (thth.level != level)
+                    {
+                        <h3> level: @thth.level</h3>
+                    }
+
+                    if (thth.stage != stage || thth.level != level)
+                    {
+                        <h3> stage: @thth.stage</h3>
+                    }
+                    show = thth.num_correct.ToString() + " from 10";
+                    @:<h4>@show</h4>
+                    stage = thth.stage;
+                    level = thth.level;
+                }
+                i++;
+            }
+        }
+      
+    }
+}
+
+</body>
+</html>

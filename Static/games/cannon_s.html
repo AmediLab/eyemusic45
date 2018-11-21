@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> cannon game </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/targetGame.js"></script>
+    <script src="js/points.js"></script>    
+	<script src="js/joystick.js"></script>	
+	<script src="js/cannon_general.js"></script>
+
+	<script>
+
+		screen_compatibility = 1;
+		voiceOver = true;
+		joystick();
+		var BG_COLOR = "black";
+	
+		
+
+		var score = 0;
+		var level = 1; //Default value. Should always be followed by 
+		getLevel();
+		var cannonAngle = 0;
+		var hitAngle;
+		var dAngle;
+		var distRadius = 50;
+		var msg;
+		var refractory = false;
+
+		var MAX_LEVEL = 5;
+		var POINTS_PER_LEVEL = 5;
+		
+		var TT_LEVEL_NULL = -1;
+		var TUTORIAL_LEVEL_AFTER_THIS = TT_LEVEL_NULL; // is not -1, player will go to respecting toturial after.
+		var LAST_LEVEL_BEFORE_TUTORIAL = 0;
+		
+		function newGame() {
+
+					/*/play_audio(canon_stage_2);
+					/sound_interval_EM(canon_stage_2);
+					assignment_after_duration(move, true, canon_stage_2);*/							
+
+			stopEM();
+			play_func(startGame, enable_move_EM);			
+
+			levelSettings();
+			context.translate(cannonX, windowHeight); 
+			newRound();
+		}
+		
+		function levelSettings() {
+
+			calcSizes();
+			
+			if (LAST_LEVEL_BEFORE_TUTORIAL == level - 1 && TUTORIAL_LEVEL_AFTER_THIS != TT_LEVEL_NULL)
+			{
+				doTutorial(TUTORIAL_LEVEL_AFTER_THIS);
+			}
+			TUTORIAL_LEVEL_AFTER_THIS = TT_LEVEL_NULL;
+			
+			switch (level) {
+				case 1:
+					CANNON_ACCURACY = 30;
+					targetRadius = targetDefaultRadius*3/4;
+					distractor = false;
+					break;
+				case 2:
+					CANNON_ACCURACY = 20;
+					targetRadius = targetDefaultRadius*3/4;
+					distractor = false;
+					break;				
+				case 3:
+					CANNON_ACCURACY = 15;
+					targetRadius = targetDefaultRadius*3/4;
+					distractor = false;
+					TUTORIAL_LEVEL_AFTER_THIS = 7;
+					LAST_LEVEL_BEFORE_TUTORIAL = 3;					
+					break;		
+
+					
+				case 4:	// stage 2
+					CANNON_ACCURACY = 15;
+					targetRadius = targetDefaultRadius*7/8;
+					cannonHeight = windowHeight/3;
+					distractor = true;
+					distRadius = targetRadius / 2;
+					break;	
+				
+				case 5:
+					CANNON_ACCURACY = 15;
+					targetRadius = targetDefaultRadius*3/5;
+					cannonHeight = windowHeight/3;
+					distractor = true;
+					distRadius = targetRadius;
+					break;						
+				default:
+					break;					
+			}
+
+		}
+
+		
+		function newRound() {
+			
+			levelSettings();
+			
+			context.clearRect(-cannonX , 0 , cannonX*2, - windowHeight);
+			var screenWidth = windowWidth; 
+			var targetY = -windowHeight + targetHeight;
+			
+			// find a hit angle
+			var maxAngle = Math.atan2(Math.abs(cannonX - centerlize),-targetY) * 180 / Math.PI;
+			maxAngle = maxAngle - maxAngle%CANNON_ACCURACY;
+			var steps = Math.floor(maxAngle / CANNON_ACCURACY) * 2;
+			hitAngle = -Math.floor(maxAngle) + Math.floor(Math.random()*(steps + 1))*CANNON_ACCURACY;
+			
+			// find a distractor angle
+			var timeOut = 0;
+			dAngle = hitAngle;
+			while (dAngle == hitAngle) {
+				dAngle = -Math.floor(maxAngle) + Math.floor(Math.random()*(steps + 1))*CANNON_ACCURACY;
+				timeOut ++;
+				if (timeOut > 6) {
+					break;
+				}
+			}
+			
+			// find an x point for the target
+			var targetX = Math.tan(-hitAngle * Math.PI / 180) * targetY;		
+			
+			putTargetSimple(context,targetX,targetY,targetRadius);
+			if (distractor) {
+				var distX = Math.tan(-dAngle * Math.PI / 180) * targetY;	
+				putDistractor(distX,targetY,distRadius);
+			}
+			
+			cannonAngle = 0;
+			restartCannon();
+			hideShame();
+		}
+		
+
+		function fire() {
+			
+			if (!move.value || !gameStart) { return;	}
+
+			if (Math.abs(cannonAngle - hitAngle) < NEEDED_ACCURACY) {
+				score = score+2;
+				stopEM();
+				play_audio(firehit); 
+				setTimeout(function(){
+						refractory = true;
+						checkLevel(); 
+						clear();
+						setTimeout(function(){
+							startEM();
+							newRound();
+							refractory = false;
+						}, 500);
+					}, 500);	
+				}
+			else if (distractor && Math.abs(cannonAngle - dAngle) < NEEDED_ACCURACY) {
+				play_audio(scream);
+				score = score - 2;
+				if (score < 0 ) { score = 0; }
+				newRound();
+			} else {
+				play_audio(laser);
+				hitmark(cannonAngle);
+				if (score > 0) {
+					score = score - 1;
+					}
+				}
+			
+		}
+		
+
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);		
+		
+		function clickFunc(x,y) {
+			if (x <= windowWidth/3) {
+				cannonShift(cannonAngle-CANNON_ACCURACY);
+			} else if (x <= windowWidth*2/3) {
+				fire();
+			} else {
+				cannonShift(cannonAngle+CANNON_ACCURACY);
+			}
+		}
+		
+
+
+		function resize() {
+			clear();
+			resize_canvas(canvas);
+			calcSizes();
+			levelSettings();
+			context.translate(cannonX, windowHeight);
+			newRound();
+		}
+		
+		function spaceBar() {	
+
+		}			
+
+		
+		function doTutorial(level)
+		{
+			stopEm_url("cannon_toturial_s.html?level="+level);
+		}
+
+	</script>
+	<script src="js/mobileCheck.js"></script>	
+	<script src="js/compatibility.js"></script>
+	
+</body></html>

@@ -1,0 +1,186 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@{
+    Layout = "";
+}
+
+<script> var logged = 1; var id = 312; var nickname = 'ev';</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>eye music application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.json-2.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.0.custom.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/jquery-ui-1.9.0.custom.css" />
+    <link rel="stylesheet" type="text/css" href="~/App_Themes/design.css" />
+    <link rel="stylesheet" href="~/App_Themes/jquery.fancybox.css" type="text/css" media="screen" />
+
+
+    <script type="text/javascript">
+        window.speedjs = "@Model.speed";
+        window.voilumejs = "@Model.volume";
+        window.beep_noise = "@Model.beep_noise";
+    </script>
+
+    <script type="text/javascript" src="~/Scripts/client.js"></script>
+    <script type="text/javascript">
+        var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+        if (document.location.protocol == 'https:')
+            unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+        document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+
+    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div class="float-right">
+        <h3>
+            hello @Model.userid
+            @Html.ActionLink("Logout", "Logout", "Home")
+        </h3>
+    </div>
+   <p class="site-title">Eye Music</p>
+
+    <h5> welcome to eye music, with the eye music we can sound picture 
+     in all the pages you can start and stop the music with CTRL 
+     you can change the speed with shift + F1 and shift + F2 buttons</h5>
+
+    <h6> LINKS </h6>
+    <ul>
+        <li>
+            <a href="~/Home/selectclass"> subject training </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/Home/selectclassTrain"> training new order</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/Herzel/selectLesson" id="upload">New training</a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="~/herzel/input" id="upload">Admin enter</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <div id="userFrame">
+                
+                        <a rel="group" href="#unityPlayer" id="camera">
+                            play camera
+                        </a>
+                
+                <!-- Unity player part-->
+                <div id="unityPlayer" style="display:none">
+
+                </div>
+                <div id="missing" style="display:none;text-align:center;">
+                    you need to install the add plugin<br />
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!" target="_blank">
+                        <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                    </a>
+                </div>
+                <div id="broken" style="display:none;text-align:center;">
+                    you need to install the add plugin and reinstall browser<br />
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install." target="_blank">
+                        <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                    </a>
+                </div>
+                </div>
+</li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/Home/virtual_training"> Virtual Training </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/Static/Mobile.html"> new games</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/SVG/dragdrop"> upload your file to eye music </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="~/Home/paramters"> paramters </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <div id="userFrame">
+
+                <a rel="group" href="#unityPlayer" id="shadow">
+                    shadow game
+                </a>
+
+                <!-- Unity player part-->
+                <div id="unityPlayer" style="display:none">
+
+                </div>
+                <div id="missing" style="display:none;text-align:center;">
+                    you need to install the add plugin<br />
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!" target="_blank">
+                        <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                    </a>
+                </div>
+                <div id="broken" style="display:none;text-align:center;">
+                    you need to install the add plugin and reinstall browser<br />
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install." target="_blank">
+                        <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul><ul>
+    <li>
+        <div id="userFrame">
+
+            <a rel="group" href="#unityPlayer" id="realroom">
+                real room
+            </a>
+
+            <!-- Unity player part-->
+            <div id="unityPlayer" style="display:none">
+
+            </div>
+            <div id="missing" style="display:none;text-align:center;">
+                you need to install the add plugin<br />
+                <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!" target="_blank">
+                    <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                </a>
+            </div>
+            <div id="broken" style="display:none;text-align:center;">
+                you need to install the add plugin and reinstall browser<br />
+                <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install." target="_blank">
+                    <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                </a>
+            </div>
+        </div>
+    </li>
+</ul>
+    <ul>
+        <li>
+            <a href="~/Home/feedback"> write feedback</a>
+        </li>
+    </ul>
+
+</body>
+</html>

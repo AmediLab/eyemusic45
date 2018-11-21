@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> EM toturial	</title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/targetGame.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/drawShapes.js"></script>
+	<script src="js/joystick.js"></script>	
+	
+	<script>
+		screen_compatibility = 1;
+		voiceOver = true;
+		joystick();
+		var BG_COLOR = "black";
+		calcGrid();
+		createGrid();
+
+		startMessage = startMessages[1];
+		
+		// setup sounds
+		var level_audio = 'embasics/welcome.mp3';
+		var welcome = 'embasics/welcome.mp3';
+		var laser = 'cannonGame/laser.'+SOUND_FORMAT;
+		
+		var game = check_get_param('game');
+		var level = 1;
+		getLevel();
+		
+		var CIRCLE_RADIUS = Math.min(windowWidth,windowHeight) / 10;
+		var LINE_WIDTH = Math.min(windowWidth,windowHeight) / 15;
+		var LEVEL_TIMOUT = 500;
+		
+		var move = {value: true};
+		
+		function newGame() {
+			stopEM();
+			//if ( level == 1 ) { play_audio(welcome); }
+			newRound();
+			gameStart = true;
+		}			
+		
+		function newRound() {
+
+			clear();
+			var playAudio = true;
+			move.value = false;
+
+			switch (level) {
+			
+				case 1:
+					level_audio = welcome;
+					break;
+				
+				case 2:
+					level_audio  = 'embasics/seeFirstShapeRedCircle.mp3' ;
+					drawCircle(context, windowWidth / 2 , windowHeight / 2, CIRCLE_RADIUS, "red");
+					break;		
+
+				case 3:
+					level_audio  = 'embasics/nowYellowCircle.mp3' ;
+					drawCircle(context, windowWidth / 2 , windowHeight / 2, CIRCLE_RADIUS, "yellow");
+					break;
+					
+				case 4:
+					level_audio  = 'embasics/twoCircles.mp3' ;
+					drawCircle(context, windowWidth / 3 , windowHeight / 2, CIRCLE_RADIUS, "red");
+					drawCircle(context, windowWidth * 2 / 3 , windowHeight / 2, CIRCLE_RADIUS, "yellow");					
+					break;
+					
+				case 5:
+					level_audio  = 'embasics/threeCirclesDifferentHeights.mp3' ;
+					drawCircle(context, windowWidth / 4 , windowHeight / 4, CIRCLE_RADIUS, "white");
+					drawCircle(context, windowWidth / 2 , windowHeight / 2, CIRCLE_RADIUS, "white");
+					drawCircle(context, windowWidth * 3 / 4 , windowHeight * 3 / 4, CIRCLE_RADIUS, "white");
+					break;					
+					
+				case 6:
+					level_audio  = 'embasics/whiteDiagonal.mp3' ;
+					drawLine( windowWidth / 4 , windowHeight / 4 , windowWidth * 3 / 4 , windowHeight * 3 / 4, LINE_WIDTH, "white");
+					break;
+
+				case 7:
+					level_audio  = 'embasics/otherWayDiagonal.mp3' ;
+					drawLine( windowWidth / 4 , windowHeight * 3 / 4, windowWidth * 3 / 4 , windowHeight / 4 , LINE_WIDTH, "white");
+					break;
+
+				case 8:
+					level_audio  = 'embasics/higherGradient.mp3' ;
+					drawLine( windowWidth / 3 , windowHeight * 4 / 5, windowWidth * 2 / 3 , windowHeight / 5 , LINE_WIDTH, "white");
+					break;			
+
+				case 9:
+					level_audio  = 'embasics/noGradient.mp3' ;
+					drawLine( windowWidth / 2 , windowHeight * 4 / 5, windowWidth / 2 , windowHeight / 5 , LINE_WIDTH, "white");
+					break;		
+					
+				case 10:
+					level_audio  = 'embasics/horizontal.mp3' ;
+					drawLine( windowWidth / 4 , windowHeight / 2, windowWidth * 3 / 4 , windowHeight / 2 , LINE_WIDTH, "white");
+					break;						
+
+				case 11:
+					level_audio  = 'embasics/readyToPlay.mp3' ;
+					break;
+
+				case 12:
+					stopEm_url("cannon_toturial_s.html");
+					playAudio = false;
+					break;
+					
+				default:
+					
+					break;					
+			}
+			
+			
+			if (playAudio) { 
+				stopEM();
+				play_func(level_audio, enable_move_EM);
+			}
+		}		
+		
+		function drawCircle(context,centerX,centerY,radius,color) {
+
+		  context.beginPath();
+		  context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+		  context.fillStyle = color;
+		  context.fill();		  
+ 
+		}	
+		
+		function drawLine(x1,y1,x2,y2,width,color) {
+			
+			context.beginPath();
+
+
+			context.moveTo(x1, y1);
+			context.lineTo(x2, y2);
+			
+			context.strokeStyle = color;
+			context.lineWidth = width;
+
+			
+			context.stroke();
+
+		}
+
+		window.addEventListener('keydown', function(e) { 
+			spaceBar();
+
+		});	
+	
+		window.addEventListener('resize', resize , false);
+		function resize() {
+			resize_canvas(canvas);
+			grid = createGrid(gridX,gridY);					
+		}
+		
+		function goLeft() {
+			return;
+		}
+		
+		function goRight() {
+			return;
+		}		
+		
+		function goDown() {
+			return;
+		}
+		
+		function goUp() {
+			return;
+		}	
+		
+		function spaceBar() {	
+
+			if (move.value && gameStart)
+			{
+				setTimeout(function() {
+					level = level+1;
+					newRound();
+				}, LEVEL_TIMOUT);
+				move.value = false;
+			}	
+		}				
+  	
+	</script>
+	<script src="js/compatibility.js"></script>
+	<script src="js/mobileCheck.js"></script>	
+	
+	</body></html>

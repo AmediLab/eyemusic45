@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="amedilab_dataModelStoreContainer" CdmEntityContainer="amedilab_dataEntities">
+    <EntitySetMapping Name="desacriptaions">
+      <EntityTypeMapping TypeName="amedilab_dataModel.desacriptaion">
+        <MappingFragment StoreEntitySet="desacriptaions">
+          <ScalarProperty Name="desacriptaion1" ColumnName="desacriptaion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exams">
+      <EntityTypeMapping TypeName="amedilab_dataModel.exam">
+        <MappingFragment StoreEntitySet="exam">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="correct" ColumnName="correct" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="num_q" ColumnName="num_q" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+          <ScalarProperty Name="session" ColumnName="session" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exam_q">
+      <EntityTypeMapping TypeName="amedilab_dataModel.exam_q">
+        <MappingFragment StoreEntitySet="exam_q">
+          <ScalarProperty Name="true" ColumnName="true" />
+          <ScalarProperty Name="d" ColumnName="d" />
+          <ScalarProperty Name="c" ColumnName="c" />
+          <ScalarProperty Name="b" ColumnName="b" />
+          <ScalarProperty Name="a" ColumnName="a" />
+          <ScalarProperty Name="num_question" ColumnName="num_question" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="exam_name" ColumnName="exam_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exam_q_levels">
+      <EntityTypeMapping TypeName="amedilab_dataModel.exam_q_levels">
+        <MappingFragment StoreEntitySet="exam_q_levels">
+          <ScalarProperty Name="the_true" ColumnName="the_true" />
+          <ScalarProperty Name="d" ColumnName="d" />
+          <ScalarProperty Name="c" ColumnName="c" />
+          <ScalarProperty Name="b" ColumnName="b" />
+          <ScalarProperty Name="a" ColumnName="a" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="exam_stage" ColumnName="exam_stage" />
+          <ScalarProperty Name="exam_level" ColumnName="exam_level" />
+          <ScalarProperty Name="num_question" ColumnName="num_question" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="feedBackWithDetails">
+      <EntityTypeMapping TypeName="amedilab_dataModel.feedBackWithDetail">
+        <MappingFragment StoreEntitySet="feedBackWithDetails">
+          <ScalarProperty Name="blind_details" ColumnName="blind_details" />
+          <ScalarProperty Name="free_text" ColumnName="free_text" />
+          <ScalarProperty Name="suggetion" ColumnName="suggetion" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="mailList" ColumnName="mailList" />
+          <ScalarProperty Name="blind" ColumnName="blind" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level_1">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level_1">
+        <MappingFragment StoreEntitySet="level_1">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="shape" ColumnName="shape" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="y" ColumnName="y" />
+          <ScalarProperty Name="x" ColumnName="x" />
+          <ScalarProperty Name="feame" ColumnName="feame" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level_2">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level_2">
+        <MappingFragment StoreEntitySet="level_2">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="shape2" ColumnName="shape2" />
+          <ScalarProperty Name="color2" ColumnName="color2" />
+          <ScalarProperty Name="Y2" ColumnName="Y2" />
+          <ScalarProperty Name="X2" ColumnName="X2" />
+          <ScalarProperty Name="shape1" ColumnName="shape1" />
+          <ScalarProperty Name="color1" ColumnName="color1" />
+          <ScalarProperty Name="Y1" ColumnName="Y1" />
+          <ScalarProperty Name="X1" ColumnName="X1" />
+          <ScalarProperty Name="Frame" ColumnName="Frame" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level_3">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level_3">
+        <MappingFragment StoreEntitySet="level_3">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="time_out" ColumnName="time_out" />
+          <ScalarProperty Name="success" ColumnName="success" />
+          <ScalarProperty Name="angle" ColumnName="angle" />
+          <ScalarProperty Name="distance" ColumnName="distance" />
+          <ScalarProperty Name="y" ColumnName="y" />
+          <ScalarProperty Name="x" ColumnName="x" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="level_unity" ColumnName="level_unity" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level_4">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level_4">
+        <MappingFragment StoreEntitySet="level_4">
+          <ScalarProperty Name="num_collision" ColumnName="num_collision" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="y3" ColumnName="y3" />
+          <ScalarProperty Name="x3" ColumnName="x3" />
+          <ScalarProperty Name="y2" ColumnName="y2" />
+          <ScalarProperty Name="x2" ColumnName="x2" />
+          <ScalarProperty Name="y1" ColumnName="y1" />
+          <ScalarProperty Name="x1" ColumnName="x1" />
+          <ScalarProperty Name="level_unity" ColumnName="level_unity" />
+          <ScalarProperty Name="numsuccess" ColumnName="numsuccess" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level_5">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level_5">
+        <MappingFragment StoreEntitySet="level_5">
+          <ScalarProperty Name="num_collision" ColumnName="num_collision" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="y1" ColumnName="y1" />
+          <ScalarProperty Name="x1" ColumnName="x1" />
+          <ScalarProperty Name="level_unity" ColumnName="level_unity" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="level_6">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level_6">
+        <MappingFragment StoreEntitySet="level_6">
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="y2" ColumnName="y2" />
+          <ScalarProperty Name="x2" ColumnName="x2" />
+          <ScalarProperty Name="y1" ColumnName="y1" />
+          <ScalarProperty Name="x1" ColumnName="x1" />
+          <ScalarProperty Name="numsuccess" ColumnName="numsuccess" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="levels">
+      <EntityTypeMapping TypeName="amedilab_dataModel.level">
+        <MappingFragment StoreEntitySet="levels">
+          <ScalarProperty Name="level1" ColumnName="level" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parmaters">
+      <EntityTypeMapping TypeName="amedilab_dataModel.parmater">
+        <MappingFragment StoreEntitySet="parmaters">
+          <ScalarProperty Name="speed" ColumnName="speed" />
+          <ScalarProperty Name="cue_Volume_10" ColumnName="cue_Volume_10" />
+          <ScalarProperty Name="cue_type" ColumnName="cue_type" />
+          <ScalarProperty Name="filter" ColumnName="filter" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pic_paths">
+      <EntityTypeMapping TypeName="amedilab_dataModel.pic_paths">
+        <MappingFragment StoreEntitySet="pic_paths">
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RespTrainShorts">
+      <EntityTypeMapping TypeName="amedilab_dataModel.RespTrainShort">
+        <MappingFragment StoreEntitySet="RespTrainShort">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="desacriptaion" ColumnName="desacriptaion" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shadows">
+      <EntityTypeMapping TypeName="amedilab_dataModel.shadow">
+        <MappingFragment StoreEntitySet="shadow">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="line" ColumnName="line" />
+          <ScalarProperty Name="direction" ColumnName="direction" />
+          <ScalarProperty Name="success" ColumnName="success" />
+          <ScalarProperty Name="freame" ColumnName="freame" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShelonFinishes">
+      <EntityTypeMapping TypeName="amedilab_dataModel.ShelonFinish">
+        <MappingFragment StoreEntitySet="ShelonFinish">
+          <ScalarProperty Name="freeText" ColumnName="freeText" />
+          <ScalarProperty Name="HardColor" ColumnName="HardColor" />
+          <ScalarProperty Name="clearColor" ColumnName="clearColor" />
+          <ScalarProperty Name="closeEyes" ColumnName="closeEyes" />
+          <ScalarProperty Name="descInstead" ColumnName="descInstead" />
+          <ScalarProperty Name="pictureInstead" ColumnName="pictureInstead" />
+          <ScalarProperty Name="easy" ColumnName="easy" />
+          <ScalarProperty Name="hard" ColumnName="hard" />
+          <ScalarProperty Name="camera" ColumnName="camera" />
+          <ScalarProperty Name="faces" ColumnName="faces" />
+          <ScalarProperty Name="letters" ColumnName="letters" />
+          <ScalarProperty Name="fun" ColumnName="fun" />
+          <ScalarProperty Name="complex" ColumnName="complex" />
+          <ScalarProperty Name="numYear" ColumnName="numYear" />
+          <ScalarProperty Name="namePlay" ColumnName="namePlay" />
+          <ScalarProperty Name="playMusic" ColumnName="playMusic" />
+          <ScalarProperty Name="musical" ColumnName="musical" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stages">
+      <EntityTypeMapping TypeName="amedilab_dataModel.stage">
+        <MappingFragment StoreEntitySet="stages">
+          <ScalarProperty Name="stage1" ColumnName="stage" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="step_by_step">
+      <EntityTypeMapping TypeName="amedilab_dataModel.step_by_step">
+        <MappingFragment StoreEntitySet="step_by_step">
+          <ScalarProperty Name="types" ColumnName="types" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="correct" ColumnName="correct" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StepByStepHappies">
+      <EntityTypeMapping TypeName="amedilab_dataModel.StepByStepHappy">
+        <MappingFragment StoreEntitySet="StepByStepHappy">
+          <ScalarProperty Name="know" ColumnName="know" />
+          <ScalarProperty Name="happy" ColumnName="happy" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userIDs">
+      <EntityTypeMapping TypeName="amedilab_dataModel.userID">
+        <MappingFragment StoreEntitySet="userID">
+          <ScalarProperty Name="rule" ColumnName="rule" />
+          <ScalarProperty Name="len" ColumnName="len" />
+          <ScalarProperty Name="filter" ColumnName="filter" />
+          <ScalarProperty Name="cue_type" ColumnName="cue_type" />
+          <ScalarProperty Name="cue_Volume" ColumnName="cue_Volume" />
+          <ScalarProperty Name="speed" ColumnName="speed" />
+          <ScalarProperty Name="previos_expirments_num" ColumnName="previos_expirments_num" />
+          <ScalarProperty Name="fill_somting" ColumnName="fill_somting" />
+          <ScalarProperty Name="precent_blind" ColumnName="precent_blind" />
+          <ScalarProperty Name="yourself" ColumnName="yourself" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="age_of_blind" ColumnName="age_of_blind" />
+          <ScalarProperty Name="gander" ColumnName="gander" />
+          <ScalarProperty Name="birth_year" ColumnName="birth_year" />
+          <ScalarProperty Name="level_blind" ColumnName="level_blind" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="virtualGames">
+      <EntityTypeMapping TypeName="amedilab_dataModel.virtualGame">
+        <MappingFragment StoreEntitySet="virtualGame">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="HTML5" ColumnName="HTML5" />
+          <ScalarProperty Name="hide" ColumnName="hide" />
+          <ScalarProperty Name="num_level" ColumnName="num_level" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stepbystepMins">
+      <EntityTypeMapping TypeName="amedilab_dataModel.stepbystepMin">
+        <MappingFragment StoreEntitySet="stepbystepMin">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="subUser" ColumnName="subUser" />
+          <ScalarProperty Name="minTime" ColumnName="minTime" />
+          <ScalarProperty Name="idSub" ColumnName="idSub" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exam_QUESTION">
+      <EntityTypeMapping TypeName="amedilab_dataModel.exam_QUESTION">
+        <MappingFragment StoreEntitySet="exam_QUESTION">
+          <ScalarProperty Name="num_question" ColumnName="num_question" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="the_true" ColumnName="the_true" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="D" ColumnName="D" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="A" ColumnName="A" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="examWithLevels">
+      <EntityTypeMapping TypeName="amedilab_dataModel.examWithLevel">
+        <MappingFragment StoreEntitySet="examWithLevels">
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="max_num_question" ColumnName="max_num_question" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaxUserStepBySteps">
+      <EntityTypeMapping TypeName="amedilab_dataModel.MaxUserStepByStep">
+        <MappingFragment StoreEntitySet="MaxUserStepByStep">
+          <ScalarProperty Name="right" ColumnName="right" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RespTrainViews">
+      <EntityTypeMapping TypeName="amedilab_dataModel.RespTrainView">
+        <MappingFragment StoreEntitySet="RespTrainView">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="desacriptaion" ColumnName="desacriptaion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resualt_exam">
+      <EntityTypeMapping TypeName="amedilab_dataModel.resualt_exam">
+        <MappingFragment StoreEntitySet="resualt_exam">
+          <ScalarProperty Name="num_correct" ColumnName="num_correct" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resualt_exam_row">
+      <EntityTypeMapping TypeName="amedilab_dataModel.resualt_exam_row">
+        <MappingFragment StoreEntitySet="resualt_exam_row">
+          <ScalarProperty Name="num_correct" ColumnName="num_correct" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+          <ScalarProperty Name="row_num" ColumnName="row_num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="step_view">
+      <EntityTypeMapping TypeName="amedilab_dataModel.step_view">
+        <MappingFragment StoreEntitySet="step_view">
+          <ScalarProperty Name="types" ColumnName="types" />
+          <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="correct" ColumnName="correct" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RespTrains">
+      <EntityTypeMapping TypeName="amedilab_dataModel.RespTrain">
+        <MappingFragment StoreEntitySet="RespTrain">
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="stage" ColumnName="stage" />
+          <ScalarProperty Name="classes" ColumnName="classes" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stepByStep_user">
+      <EntityTypeMapping TypeName="amedilab_dataModel.stepByStep_user">
+        <MappingFragment StoreEntitySet="stepByStep_user">
+          <ScalarProperty Name="TheAnswer" ColumnName="TheAnswer" />
+          <ScalarProperty Name="blindOrSeeOrafter" ColumnName="blindOrSeeOrafter" />
+          <ScalarProperty Name="right" ColumnName="right" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sumShachars">
+      <EntityTypeMapping TypeName="amedilab_dataModel.sumShachar">
+        <MappingFragment StoreEntitySet="sumShachar">
+          <ScalarProperty Name="experiment_name" ColumnName="experiment_name" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="distance" ColumnName="distance" />
+          <ScalarProperty Name="angle" ColumnName="angle" />
+          <ScalarProperty Name="z" ColumnName="z" />
+          <ScalarProperty Name="y" ColumnName="y" />
+          <ScalarProperty Name="x" ColumnName="x" />
+          <ScalarProperty Name="timeout" ColumnName="timeout" />
+          <ScalarProperty Name="success" ColumnName="success" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sumShacharLevel5">
+      <EntityTypeMapping TypeName="amedilab_dataModel.sumShacharLevel5">
+        <MappingFragment StoreEntitySet="sumShacharLevel5">
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="y" ColumnName="y" />
+          <ScalarProperty Name="x" ColumnName="x" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sumShacharOnlySuccesses">
+      <EntityTypeMapping TypeName="amedilab_dataModel.sumShacharOnlySuccess">
+        <MappingFragment StoreEntitySet="sumShacharOnlySuccess">
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="distance" ColumnName="distance" />
+          <ScalarProperty Name="angle" ColumnName="angle" />
+          <ScalarProperty Name="z" ColumnName="z" />
+          <ScalarProperty Name="y" ColumnName="y" />
+          <ScalarProperty Name="x" ColumnName="x" />
+          <ScalarProperty Name="timeout" ColumnName="timeout" />
+          <ScalarProperty Name="success" ColumnName="success" />
+          <ScalarProperty Name="frame" ColumnName="frame" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

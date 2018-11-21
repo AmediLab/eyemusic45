@@ -1,0 +1,109 @@
+﻿@model eyemusic45.Models.ViewModels.userPass
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title id="createtitle">יצירת יוזר חדש</title>
+</head>
+<body>
+
+
+    <h2 id="create">צור יוזר חדש</h2>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Scripts/languages.js"></script>
+    <script type="text/javascript">
+
+        var ReturnUrl = "";
+        var len = "";
+        window.lan = "h";
+
+        /*
+        function DoChange() {
+
+            //console.log("start");
+            window.lan = "h";
+            document.getElementById("create").innerHTML = "כניסה לניסוי";
+            document.getElementById("create2").innerHTML = retstr(59);
+            document.getElementById("createtitle").innerHTML = retstr(59);
+            $("label[for='name']").text(retstr(60));
+            document.getElementById("birth").innerHTML = retstr(63);
+            document.getElementById("gander").innerHTML = retstr(64);
+            document.getElementById("famle").innerHTML = retstr(65);
+            document.getElementById("male").innerHTML = retstr(66);
+            document.getElementById("birth_year").value = 1900;
+        }
+
+        window.onload = DoChange;
+        */
+    </script>
+
+    @using (Html.BeginForm("menustepEnter", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+    <fieldset>
+        <legend id="create2">צור יוזר חדש</legend>
+
+        <div class="editor-label">
+            שם משתמש
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+    </fieldset>
+        <fieldset>
+                <div class="editor-label" id="birth">
+                    שנת לידה בארבע ספרות
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.birth_year)
+                </div>
+
+                <div class="editor-label" id="gander">
+                    מין 
+                </div>
+                <div class="editor-field">
+
+                    <select id="gander" name="gander">
+                        <option value=" "> </option>
+                        <option id="famle" value="f">female</option>
+                        <option id="male" value="m">male</option>
+                    </select>
+
+                </div>
+            </fieldset>
+
+                        <textarea id="textArea" readonly cols=100 rows=24 style="text-align:right;font:300">
+               הסכמה מדעת להשתתפות במחקר
+
+שם המחקר: התמרה חושית של מידע חזותי למידע שמיעתי.
+
+שם החוקר האחראי: פרופסור אמיר עמדי, המחלקה לנוירוביולוגיה רפואית, הפקולטה לרפואה, האוניברסיטה העברית בירושלים.
+
+בניסוי זה אנו בוחנים את היכולת להבין את עולמנו ללא ראייה, כאשר המידע הראייתי מועבר למשתמש דרך חוש השמיעה. בלחיצה על כפתור "אני מסכים" הלוחץ/ת מצהיר/ה בזה כי:
+. קראתי את כל הכתוב במסמך זה.
+אני מסכים/ה להשתתף בניסוי.
+. אני מסכים/ה לפעול על פי הוראות הניסוי.
+. ידוע לי כי תמורת השתתפותי במחקר אקבל סכום כסף בהתאם להצלחתי .
+. ידוע לי כי לא ישמרו כלל פרטים אישיים אודותי.
+. ידוע לי כי אני חופשי/ה לבחור שלא להשתתף בניסוי, וכי אני חופשי/ה להפסיק בכל זמן את השתתפותי בניסוי, ללא השלכות שליליות כלשהן כלפי.
+. ידוע לי כי השתתפותי במחקר הינה על בסיס התנדבותי, וכי איני מחויב/ת בכל דרך כלשהי להשתתף בו
+. ידוע לי כי בכל בעיה הקשורה לניסוי אוכל לפנות לד"ר אמיר עמדי דרך אתר המעבדה  brain.huji.ac.il
+. ידוע לי כי אוכל למצא מידע נוסף על המחקר ומחקרים נוספים המתבצעים במעבדתנו באתר המעבדה.
+. הנני מצהיר/ה בזה כי את הסכמתי הנ"ל נתתי מרצוני החופשי וכי הבנתי את כל האמור. 
+
+                </textarea><br />
+        
+            <p>
+                <input type="submit" value="אני מסכים" id="createsub" />
+            </p>
+    }
+</body>
+</html>

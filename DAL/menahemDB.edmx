@@ -1,0 +1,2943 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="amedilab_dataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="desacriptaions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="desacriptaion" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exam">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="session" Type="int" />
+          <Property Name="num_exam" Type="int" />
+          <Property Name="num_q" Type="int" />
+          <Property Name="level" Type="int" />
+          <Property Name="stage" Type="int" />
+          <Property Name="correct" Type="bit" />
+          <Property Name="answer" Type="int" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exam_q">
+          <Key>
+            <PropertyRef Name="exam_name" />
+            <PropertyRef Name="pic_path" />
+          </Key>
+          <Property Name="exam_name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="pic_path" Type="int" Nullable="false" />
+          <Property Name="num_exam" Type="int" Nullable="false" />
+          <Property Name="num_question" Type="int" Nullable="false" />
+          <Property Name="a" Type="int" Nullable="false" />
+          <Property Name="b" Type="int" Nullable="false" />
+          <Property Name="c" Type="int" Nullable="false" />
+          <Property Name="d" Type="int" Nullable="false" />
+          <Property Name="true" Type="int" />
+        </EntityType>
+        <EntityType Name="exam_q_levels">
+          <Key>
+            <PropertyRef Name="num_exam" />
+            <PropertyRef Name="num_question" />
+            <PropertyRef Name="exam_level" />
+            <PropertyRef Name="exam_stage" />
+          </Key>
+          <Property Name="num_exam" Type="int" Nullable="false" />
+          <Property Name="num_question" Type="int" Nullable="false" />
+          <Property Name="exam_level" Type="int" Nullable="false" />
+          <Property Name="exam_stage" Type="int" Nullable="false" />
+          <Property Name="pic_path" Type="int" Nullable="false" />
+          <Property Name="a" Type="int" Nullable="false" />
+          <Property Name="b" Type="int" Nullable="false" />
+          <Property Name="c" Type="int" Nullable="false" />
+          <Property Name="d" Type="int" Nullable="false" />
+          <Property Name="the_true" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="feedBackWithDetails">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="250" />
+          <Property Name="blind" Type="bit" />
+          <Property Name="mailList" Type="bit" />
+          <Property Name="question" Type="nvarchar" MaxLength="2000" />
+          <Property Name="suggetion" Type="nvarchar" MaxLength="2000" />
+          <Property Name="free_text" Type="nvarchar" MaxLength="2000" />
+          <Property Name="blind_details" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="level_1">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="feame" Type="int" />
+          <Property Name="x" Type="int" />
+          <Property Name="y" Type="int" />
+          <Property Name="Color" Type="char" MaxLength="1" />
+          <Property Name="shape" Type="char" MaxLength="2" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="level_2">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="Frame" Type="int" />
+          <Property Name="X1" Type="int" />
+          <Property Name="Y1" Type="int" />
+          <Property Name="color1" Type="char" MaxLength="1" />
+          <Property Name="shape1" Type="char" MaxLength="3" />
+          <Property Name="X2" Type="int" />
+          <Property Name="Y2" Type="int" />
+          <Property Name="color2" Type="char" MaxLength="1" />
+          <Property Name="shape2" Type="char" MaxLength="3" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="level_3">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="level_unity" Type="int" />
+          <Property Name="frame" Type="int" />
+          <Property Name="x" Type="int" />
+          <Property Name="y" Type="int" />
+          <Property Name="distance" Type="int" />
+          <Property Name="angle" Type="int" />
+          <Property Name="success" Type="int" />
+          <Property Name="time_out" Type="int" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="level_4">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="numsuccess" Type="int" />
+          <Property Name="level_unity" Type="int" />
+          <Property Name="x1" Type="int" />
+          <Property Name="y1" Type="int" />
+          <Property Name="x2" Type="int" />
+          <Property Name="y2" Type="int" />
+          <Property Name="x3" Type="int" />
+          <Property Name="y3" Type="int" />
+          <Property Name="frame" Type="int" />
+          <Property Name="num_collision" Type="int" />
+        </EntityType>
+        <EntityType Name="level_5">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="level_unity" Type="int" />
+          <Property Name="x1" Type="int" />
+          <Property Name="y1" Type="int" />
+          <Property Name="frame" Type="int" />
+          <Property Name="num_collision" Type="int" />
+        </EntityType>
+        <EntityType Name="level_6">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="numsuccess" Type="int" />
+          <Property Name="x1" Type="int" />
+          <Property Name="y1" Type="int" />
+          <Property Name="x2" Type="int" />
+          <Property Name="y2" Type="int" />
+          <Property Name="frame" Type="int" />
+        </EntityType>
+        <EntityType Name="levels">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'amedilab_data.amedilab_menahem.Old_steps' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Old_steps">
+          <Property Name="id" Type="int" />
+          <Property Name="level" Type="varchar" MaxLength="50" />
+          <Property Name="action" Type="varchar" MaxLength="50" />
+          <Property Name="x" Type="int" />
+          <Property Name="y" Type="int" />
+          <Property Name="z" Type="int" />
+          <Property Name="num1" Type="int" />
+          <Property Name="num2" Type="int" />
+          <Property Name="frame" Type="int" />
+          <Property Name="num3" Type="int" />
+          <Property Name="file1" Type="varchar" MaxLength="50" />
+          <Property Name="file2" Type="varchar" MaxLength="50" />
+          <Property Name="num4" Type="int" />
+          <Property Name="num5" Type="int" />
+          <Property Name="experiment_name" Type="varchar" MaxLength="50" />
+          <Property Name="color" Type="varchar" MaxLength="50" />
+          <Property Name="shape" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="parmaters">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="filter" Type="char" MaxLength="1" />
+          <Property Name="cue_type" Type="char" MaxLength="1" />
+          <Property Name="cue_Volume_10" Type="int" />
+          <Property Name="speed" Type="int" />
+        </EntityType>
+        <EntityType Name="pic_paths">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="pic_path" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RespTrain">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="classes" Type="nchar" MaxLength="15" />
+          <Property Name="stage" Type="nchar" MaxLength="15" />
+          <Property Name="number" Type="nchar" MaxLength="15" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RespTrainShort">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="level" Type="int" />
+          <Property Name="stage" Type="int" />
+          <Property Name="desacriptaion" Type="int" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shadow">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="level" Type="int" Nullable="false" />
+          <Property Name="freame" Type="int" />
+          <Property Name="success" Type="int" />
+          <Property Name="direction" Type="char" MaxLength="1" />
+          <Property Name="line" Type="float" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShelonFinish">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="musical" Type="bit" />
+          <Property Name="playMusic" Type="bit" />
+          <Property Name="namePlay" Type="nvarchar" MaxLength="100" />
+          <Property Name="numYear" Type="nvarchar" MaxLength="100" />
+          <Property Name="complex" Type="int" />
+          <Property Name="fun" Type="int" />
+          <Property Name="letters" Type="int" />
+          <Property Name="faces" Type="int" />
+          <Property Name="camera" Type="int" />
+          <Property Name="hard" Type="nvarchar" MaxLength="100" />
+          <Property Name="easy" Type="nvarchar" MaxLength="100" />
+          <Property Name="pictureInstead" Type="bit" />
+          <Property Name="descInstead" Type="bit" />
+          <Property Name="closeEyes" Type="bit" />
+          <Property Name="clearColor" Type="int" Nullable="false" />
+          <Property Name="HardColor" Type="int" Nullable="false" />
+          <Property Name="freeText" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="stages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="stage" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="step_by_step">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="correct" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="pic_path" Type="int" Nullable="false" />
+          <Property Name="types" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stepByStep_user">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="duration" Type="int" Nullable="false" />
+          <Property Name="right" Type="bit" />
+          <Property Name="blindOrSeeOrafter" Type="char" MaxLength="1" />
+          <Property Name="TheAnswer" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="StepByStepHappy">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+          <Property Name="happy" Type="int" />
+          <Property Name="know" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.stepbystepMin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="stepbystepMin">
+          <Key>
+            <PropertyRef Name="idSub" />
+            <PropertyRef Name="subUser" />
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="idSub" Type="int" Nullable="false" />
+          <Property Name="minTime" Type="datetime" />
+          <Property Name="subUser" Type="int" Nullable="false" />
+          <Property Name="userName" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userID">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="level_blind" Type="char" MaxLength="20" />
+          <Property Name="birth_year" Type="int" />
+          <Property Name="gander" Type="char" MaxLength="1" />
+          <Property Name="age_of_blind" Type="int" />
+          <Property Name="place" Type="char" MaxLength="20" />
+          <Property Name="yourself" Type="nchar" MaxLength="1" />
+          <Property Name="precent_blind" Type="int" />
+          <Property Name="fill_somting" Type="bit" Nullable="false" />
+          <Property Name="previos_expirments_num" Type="int" />
+          <Property Name="speed" Type="int" />
+          <Property Name="cue_Volume" Type="int" />
+          <Property Name="cue_type" Type="char" MaxLength="1" />
+          <Property Name="filter" Type="char" MaxLength="1" />
+          <Property Name="len" Type="char" MaxLength="1" />
+          <Property Name="rule" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="virtualGame">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="num_level" Type="int" Nullable="false" />
+          <Property Name="hide" Type="bit" Nullable="false" />
+          <Property Name="HTML5" Type="bit" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'amedilab_data.dbo.steps' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="steps">
+          <Property Name="ID" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="true" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'amedilab_data.dbo.Steps_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Steps_1">
+          <Property Name="id" Type="varchar" MaxLength="50" />
+          <Property Name="level" Type="varchar" MaxLength="50" />
+          <Property Name="action" Type="varchar" MaxLength="50" />
+          <Property Name="x" Type="varchar" MaxLength="50" />
+          <Property Name="y" Type="varchar" MaxLength="50" />
+          <Property Name="z" Type="varchar" MaxLength="50" />
+          <Property Name="angle" Type="varchar" MaxLength="50" />
+          <Property Name="distance" Type="varchar" MaxLength="50" />
+          <Property Name="frame" Type="varchar" MaxLength="50" />
+          <Property Name="num3" Type="varchar" MaxLength="50" />
+          <Property Name="file1" Type="varchar" MaxLength="50" />
+          <Property Name="file2" Type="varchar" MaxLength="50" />
+          <Property Name="success" Type="varchar" MaxLength="50" />
+          <Property Name="timeout" Type="varchar" MaxLength="50" />
+          <Property Name="experiment_name" Type="varchar" MaxLength="50" />
+          <Property Name="color" Type="varchar" MaxLength="50" />
+          <Property Name="shape" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.dbo.sumShachar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sumShachar">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="frame" />
+            <PropertyRef Name="success" />
+            <PropertyRef Name="timeout" />
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+            <PropertyRef Name="z" />
+            <PropertyRef Name="angle" />
+            <PropertyRef Name="distance" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="experiment_name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="frame" Type="int" Nullable="false" />
+          <Property Name="success" Type="int" Nullable="false" />
+          <Property Name="timeout" Type="int" Nullable="false" />
+          <Property Name="x" Type="int" Nullable="false" />
+          <Property Name="y" Type="int" Nullable="false" />
+          <Property Name="z" Type="int" Nullable="false" />
+          <Property Name="angle" Type="int" Nullable="false" />
+          <Property Name="distance" Type="int" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="experiment_name" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.dbo.sumShacharLevel5' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sumShacharLevel5">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="frame" />
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="frame" Type="int" Nullable="false" />
+          <Property Name="x" Type="int" Nullable="false" />
+          <Property Name="y" Type="int" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.dbo.sumShacharOnlySuccess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sumShacharOnlySuccess">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="frame" />
+            <PropertyRef Name="success" />
+            <PropertyRef Name="timeout" />
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+            <PropertyRef Name="z" />
+            <PropertyRef Name="angle" />
+            <PropertyRef Name="distance" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="frame" Type="int" Nullable="false" />
+          <Property Name="success" Type="int" Nullable="false" />
+          <Property Name="timeout" Type="int" Nullable="false" />
+          <Property Name="x" Type="int" Nullable="false" />
+          <Property Name="y" Type="int" Nullable="false" />
+          <Property Name="z" Type="int" Nullable="false" />
+          <Property Name="angle" Type="int" Nullable="false" />
+          <Property Name="distance" Type="int" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.exam_QUESTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="exam_QUESTION">
+          <Key>
+            <PropertyRef Name="A" />
+            <PropertyRef Name="B" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="D" />
+            <PropertyRef Name="pic_path" />
+            <PropertyRef Name="the_true" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="num_exam" />
+            <PropertyRef Name="num_question" />
+          </Key>
+          <Property Name="A" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="B" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="C" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="D" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="pic_path" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="the_true" Type="int" Nullable="false" />
+          <Property Name="stage" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="num_exam" Type="int" Nullable="false" />
+          <Property Name="num_question" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.examWithLevels' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="examWithLevels">
+          <Key>
+            <PropertyRef Name="num_exam" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="num_exam" Type="int" Nullable="false" />
+          <Property Name="max_num_question" Type="int" />
+          <Property Name="level" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="stage" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="user_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.MaxUserStepByStep' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MaxUserStepByStep">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="duration" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="duration" Type="int" Nullable="false" />
+          <Property Name="right" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.RespTrainView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RespTrainView">
+          <Key>
+            <PropertyRef Name="desacriptaion" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="desacriptaion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="stage" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.resualt_exam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="resualt_exam">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="num_exam" Type="int" />
+          <Property Name="stage" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="num_correct" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.resualt_exam_row' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="resualt_exam_row">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="row_num" Type="bigint" />
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="num_exam" Type="int" />
+          <Property Name="stage" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="num_correct" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amedilab_data.amedilab_menahem.step_view' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="step_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="correct" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="pic_path" />
+            <PropertyRef Name="types" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="correct" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="pic_path" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="types" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__exam__level__22EA20B8">
+          <End Role="levels" Type="Self.levels" Multiplicity="0..1" />
+          <End Role="exam" Type="Self.exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="levels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__stage__23DE44F1">
+          <End Role="stages" Type="Self.stages" Multiplicity="0..1" />
+          <End Role="exam" Type="Self.exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="stage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__user_ID__1B48FEF0">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="exam" Type="Self.exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__user_ID__24D2692A">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="exam" Type="Self.exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__user_ID__25C68D63">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="exam" Type="Self.exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__a__70DDC3D8">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q" Type="Self.exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__b__71D1E811">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q" Type="Self.exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="b" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__c__72C60C4A">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q" Type="Self.exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="c" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__d__73BA3083">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q" Type="Self.exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__pic_path__770B9E7A">
+          <End Role="pic_paths" Type="Self.pic_paths" Multiplicity="1" />
+          <End Role="exam_q" Type="Self.exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pic_paths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="pic_path" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_le__exam___1C3D2329">
+          <End Role="levels" Type="Self.levels" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="levels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="exam_level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_le__exam___1D314762">
+          <End Role="stages" Type="Self.stages" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="exam_stage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_le__pic_p__1E256B9B">
+          <End Role="pic_paths" Type="Self.pic_paths" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pic_paths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="pic_path" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__a__1F198FD4">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__b__200DB40D">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="b" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__c__2101D846">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="c" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__d__21F5FC7F">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="1" />
+          <End Role="exam_q_levels" Type="Self.exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__feedBackW__user___322C6448">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="feedBackWithDetails" Type="Self.feedBackWithDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="feedBackWithDetails">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_1__user_ID__5887175A">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="level_1" Type="Self.level_1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_1">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_2__user_ID__597B3B93">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="level_2" Type="Self.level_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_2">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_3__user_ID__5A6F5FCC">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="level_3" Type="Self.level_3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_3">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_4__user_ID__5B638405">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="level_4" Type="Self.level_4" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_4">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_5__user_ID__5C57A83E">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="level_5" Type="Self.level_5" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_5">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_6__user_ID__5D4BCC77">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="level_6" Type="Self.level_6" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_6">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__parmaters__user___5F3414E9">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="parmaters" Type="Self.parmaters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="parmaters">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__desac__66A02C87">
+          <End Role="desacriptaions" Type="Self.desacriptaions" Multiplicity="0..1" />
+          <End Role="RespTrainShort" Type="Self.RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="desacriptaion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__level__63C3BFDC">
+          <End Role="levels" Type="Self.levels" Multiplicity="0..1" />
+          <End Role="RespTrainShort" Type="Self.RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="levels">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__stage__64B7E415">
+          <End Role="stages" Type="Self.stages" Multiplicity="0..1" />
+          <End Role="RespTrainShort" Type="Self.RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="stage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__user___65AC084E">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="RespTrainShort" Type="Self.RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__user___7F36D027">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="RespTrain" Type="Self.RespTrain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="RespTrain">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__shadow__user_ID__68536ACF">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="shadow" Type="Self.shadow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="shadow">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShelonFin__user___544C7222">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="ShelonFinish" Type="Self.ShelonFinish" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="ShelonFinish">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__stepBySte__user___174363E2">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="stepByStep_user" Type="Self.stepByStep_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="stepByStep_user">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StepBySte__user___300F11AC">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="StepByStepHappy" Type="Self.StepByStepHappy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="StepByStepHappy">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__virtualGa__user___2F4FF79D">
+          <End Role="userID" Type="Self.userID" Multiplicity="1" />
+          <End Role="virtualGame" Type="Self.virtualGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="virtualGame">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="amedilab_dataModelStoreContainer">
+          <EntitySet Name="desacriptaions" EntityType="Self.desacriptaions" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="exam" EntityType="Self.exam" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="exam_q" EntityType="Self.exam_q" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="exam_q_levels" EntityType="Self.exam_q_levels" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="feedBackWithDetails" EntityType="Self.feedBackWithDetails" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="level_1" EntityType="Self.level_1" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="level_2" EntityType="Self.level_2" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="level_3" EntityType="Self.level_3" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="level_4" EntityType="Self.level_4" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="level_5" EntityType="Self.level_5" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="level_6" EntityType="Self.level_6" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="levels" EntityType="Self.levels" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="parmaters" EntityType="Self.parmaters" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="pic_paths" EntityType="Self.pic_paths" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="RespTrain" EntityType="Self.RespTrain" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="RespTrainShort" EntityType="Self.RespTrainShort" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="shadow" EntityType="Self.shadow" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="ShelonFinish" EntityType="Self.ShelonFinish" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="stages" EntityType="Self.stages" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="step_by_step" EntityType="Self.step_by_step" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="stepByStep_user" EntityType="Self.stepByStep_user" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="StepByStepHappy" EntityType="Self.StepByStepHappy" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="userID" EntityType="Self.userID" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="virtualGame" EntityType="Self.virtualGame" Schema="amedilab_menahem" store:Type="Tables" />
+          <EntitySet Name="stepbystepMin" EntityType="Self.stepbystepMin" store:Type="Tables" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [stepbystepMin].[idSub] AS [idSub], 
+    [stepbystepMin].[minTime] AS [minTime], 
+    [stepbystepMin].[subUser] AS [subUser], 
+    [stepbystepMin].[userName] AS [userName]
+    FROM [amedilab_menahem].[stepbystepMin] AS [stepbystepMin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sumShachar" EntityType="Self.sumShachar" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sumShachar].[id] AS [id], 
+    [sumShachar].[frame] AS [frame], 
+    [sumShachar].[success] AS [success], 
+    [sumShachar].[timeout] AS [timeout], 
+    [sumShachar].[x] AS [x], 
+    [sumShachar].[y] AS [y], 
+    [sumShachar].[z] AS [z], 
+    [sumShachar].[angle] AS [angle], 
+    [sumShachar].[distance] AS [distance], 
+    [sumShachar].[level] AS [level], 
+    [sumShachar].[experiment_name] AS [experiment_name]
+    FROM [dbo].[sumShachar] AS [sumShachar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sumShacharLevel5" EntityType="Self.sumShacharLevel5" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sumShacharLevel5].[id] AS [id], 
+    [sumShacharLevel5].[frame] AS [frame], 
+    [sumShacharLevel5].[x] AS [x], 
+    [sumShacharLevel5].[y] AS [y], 
+    [sumShacharLevel5].[level] AS [level]
+    FROM [dbo].[sumShacharLevel5] AS [sumShacharLevel5]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sumShacharOnlySuccess" EntityType="Self.sumShacharOnlySuccess" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sumShacharOnlySuccess].[id] AS [id], 
+    [sumShacharOnlySuccess].[frame] AS [frame], 
+    [sumShacharOnlySuccess].[success] AS [success], 
+    [sumShacharOnlySuccess].[timeout] AS [timeout], 
+    [sumShacharOnlySuccess].[x] AS [x], 
+    [sumShacharOnlySuccess].[y] AS [y], 
+    [sumShacharOnlySuccess].[z] AS [z], 
+    [sumShacharOnlySuccess].[angle] AS [angle], 
+    [sumShacharOnlySuccess].[distance] AS [distance], 
+    [sumShacharOnlySuccess].[level] AS [level]
+    FROM [dbo].[sumShacharOnlySuccess] AS [sumShacharOnlySuccess]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="exam_QUESTION" EntityType="Self.exam_QUESTION" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [exam_QUESTION].[A] AS [A], 
+    [exam_QUESTION].[B] AS [B], 
+    [exam_QUESTION].[C] AS [C], 
+    [exam_QUESTION].[D] AS [D], 
+    [exam_QUESTION].[pic_path] AS [pic_path], 
+    [exam_QUESTION].[the_true] AS [the_true], 
+    [exam_QUESTION].[stage] AS [stage], 
+    [exam_QUESTION].[level] AS [level], 
+    [exam_QUESTION].[num_exam] AS [num_exam], 
+    [exam_QUESTION].[num_question] AS [num_question]
+    FROM [amedilab_menahem].[exam_QUESTION] AS [exam_QUESTION]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="examWithLevels" EntityType="Self.examWithLevels" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [examWithLevels].[num_exam] AS [num_exam], 
+    [examWithLevels].[max_num_question] AS [max_num_question], 
+    [examWithLevels].[level] AS [level], 
+    [examWithLevels].[stage] AS [stage], 
+    [examWithLevels].[user_ID] AS [user_ID]
+    FROM [amedilab_menahem].[examWithLevels] AS [examWithLevels]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MaxUserStepByStep" EntityType="Self.MaxUserStepByStep" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [MaxUserStepByStep].[user_ID] AS [user_ID], 
+    [MaxUserStepByStep].[id] AS [id], 
+    [MaxUserStepByStep].[Time] AS [Time], 
+    [MaxUserStepByStep].[duration] AS [duration], 
+    [MaxUserStepByStep].[right] AS [right]
+    FROM [amedilab_menahem].[MaxUserStepByStep] AS [MaxUserStepByStep]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RespTrainView" EntityType="Self.RespTrainView" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [RespTrainView].[desacriptaion] AS [desacriptaion], 
+    [RespTrainView].[stage] AS [stage], 
+    [RespTrainView].[level] AS [level], 
+    [RespTrainView].[ID] AS [ID], 
+    [RespTrainView].[datetime] AS [datetime]
+    FROM [amedilab_menahem].[RespTrainView] AS [RespTrainView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="resualt_exam" EntityType="Self.resualt_exam" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [resualt_exam].[user_ID] AS [user_ID], 
+    [resualt_exam].[num_exam] AS [num_exam], 
+    [resualt_exam].[stage] AS [stage], 
+    [resualt_exam].[level] AS [level], 
+    [resualt_exam].[num_correct] AS [num_correct]
+    FROM [amedilab_menahem].[resualt_exam] AS [resualt_exam]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="resualt_exam_row" EntityType="Self.resualt_exam_row" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [resualt_exam_row].[row_num] AS [row_num], 
+    [resualt_exam_row].[user_ID] AS [user_ID], 
+    [resualt_exam_row].[num_exam] AS [num_exam], 
+    [resualt_exam_row].[stage] AS [stage], 
+    [resualt_exam_row].[level] AS [level], 
+    [resualt_exam_row].[num_correct] AS [num_correct]
+    FROM [amedilab_menahem].[resualt_exam_row] AS [resualt_exam_row]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="step_view" EntityType="Self.step_view" store:Type="Views" store:Schema="amedilab_menahem">
+            <DefiningQuery>SELECT 
+    [step_view].[id] AS [id], 
+    [step_view].[correct] AS [correct], 
+    [step_view].[title] AS [title], 
+    [step_view].[pic_path] AS [pic_path], 
+    [step_view].[types] AS [types]
+    FROM [amedilab_menahem].[step_view] AS [step_view]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__exam__level__22EA20B8" Association="Self.FK__exam__level__22EA20B8">
+            <End Role="levels" EntitySet="levels" />
+            <End Role="exam" EntitySet="exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__stage__23DE44F1" Association="Self.FK__exam__stage__23DE44F1">
+            <End Role="stages" EntitySet="stages" />
+            <End Role="exam" EntitySet="exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__user_ID__1B48FEF0" Association="Self.FK__exam__user_ID__1B48FEF0">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="exam" EntitySet="exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__user_ID__24D2692A" Association="Self.FK__exam__user_ID__24D2692A">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="exam" EntitySet="exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__user_ID__25C68D63" Association="Self.FK__exam__user_ID__25C68D63">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="exam" EntitySet="exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__a__70DDC3D8" Association="Self.FK__exam_q__a__70DDC3D8">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__b__71D1E811" Association="Self.FK__exam_q__b__71D1E811">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__c__72C60C4A" Association="Self.FK__exam_q__c__72C60C4A">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__d__73BA3083" Association="Self.FK__exam_q__d__73BA3083">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__pic_path__770B9E7A" Association="Self.FK__exam_q__pic_path__770B9E7A">
+            <End Role="pic_paths" EntitySet="pic_paths" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_le__exam___1C3D2329" Association="Self.FK__exam_q_le__exam___1C3D2329">
+            <End Role="levels" EntitySet="levels" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_le__exam___1D314762" Association="Self.FK__exam_q_le__exam___1D314762">
+            <End Role="stages" EntitySet="stages" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_le__pic_p__1E256B9B" Association="Self.FK__exam_q_le__pic_p__1E256B9B">
+            <End Role="pic_paths" EntitySet="pic_paths" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__a__1F198FD4" Association="Self.FK__exam_q_levels__a__1F198FD4">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__b__200DB40D" Association="Self.FK__exam_q_levels__b__200DB40D">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__c__2101D846" Association="Self.FK__exam_q_levels__c__2101D846">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__d__21F5FC7F" Association="Self.FK__exam_q_levels__d__21F5FC7F">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__feedBackW__user___322C6448" Association="Self.FK__feedBackW__user___322C6448">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="feedBackWithDetails" EntitySet="feedBackWithDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_1__user_ID__5887175A" Association="Self.FK__level_1__user_ID__5887175A">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="level_1" EntitySet="level_1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_2__user_ID__597B3B93" Association="Self.FK__level_2__user_ID__597B3B93">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="level_2" EntitySet="level_2" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_3__user_ID__5A6F5FCC" Association="Self.FK__level_3__user_ID__5A6F5FCC">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="level_3" EntitySet="level_3" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_4__user_ID__5B638405" Association="Self.FK__level_4__user_ID__5B638405">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="level_4" EntitySet="level_4" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_5__user_ID__5C57A83E" Association="Self.FK__level_5__user_ID__5C57A83E">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="level_5" EntitySet="level_5" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_6__user_ID__5D4BCC77" Association="Self.FK__level_6__user_ID__5D4BCC77">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="level_6" EntitySet="level_6" />
+          </AssociationSet>
+          <AssociationSet Name="FK__parmaters__user___5F3414E9" Association="Self.FK__parmaters__user___5F3414E9">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="parmaters" EntitySet="parmaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__desac__66A02C87" Association="Self.FK__RespTrain__desac__66A02C87">
+            <End Role="desacriptaions" EntitySet="desacriptaions" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShort" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__level__63C3BFDC" Association="Self.FK__RespTrain__level__63C3BFDC">
+            <End Role="levels" EntitySet="levels" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShort" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__stage__64B7E415" Association="Self.FK__RespTrain__stage__64B7E415">
+            <End Role="stages" EntitySet="stages" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShort" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__user___65AC084E" Association="Self.FK__RespTrain__user___65AC084E">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShort" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__user___7F36D027" Association="Self.FK__RespTrain__user___7F36D027">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="RespTrain" EntitySet="RespTrain" />
+          </AssociationSet>
+          <AssociationSet Name="FK__shadow__user_ID__68536ACF" Association="Self.FK__shadow__user_ID__68536ACF">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="shadow" EntitySet="shadow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShelonFin__user___544C7222" Association="Self.FK__ShelonFin__user___544C7222">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="ShelonFinish" EntitySet="ShelonFinish" />
+          </AssociationSet>
+          <AssociationSet Name="FK__stepBySte__user___174363E2" Association="Self.FK__stepBySte__user___174363E2">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="stepByStep_user" EntitySet="stepByStep_user" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StepBySte__user___300F11AC" Association="Self.FK__StepBySte__user___300F11AC">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="StepByStepHappy" EntitySet="StepByStepHappy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__virtualGa__user___2F4FF79D" Association="Self.FK__virtualGa__user___2F4FF79D">
+            <End Role="userID" EntitySet="userID" />
+            <End Role="virtualGame" EntitySet="virtualGame" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="amedilab_dataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="amedilab_dataEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="desacriptaions" EntityType="amedilab_dataModel.desacriptaion" />
+          <EntitySet Name="exams" EntityType="amedilab_dataModel.exam" />
+          <EntitySet Name="exam_q" EntityType="amedilab_dataModel.exam_q" />
+          <EntitySet Name="exam_q_levels" EntityType="amedilab_dataModel.exam_q_levels" />
+          <EntitySet Name="feedBackWithDetails" EntityType="amedilab_dataModel.feedBackWithDetail" />
+          <EntitySet Name="level_1" EntityType="amedilab_dataModel.level_1" />
+          <EntitySet Name="level_2" EntityType="amedilab_dataModel.level_2" />
+          <EntitySet Name="level_3" EntityType="amedilab_dataModel.level_3" />
+          <EntitySet Name="level_4" EntityType="amedilab_dataModel.level_4" />
+          <EntitySet Name="level_5" EntityType="amedilab_dataModel.level_5" />
+          <EntitySet Name="level_6" EntityType="amedilab_dataModel.level_6" />
+          <EntitySet Name="levels" EntityType="amedilab_dataModel.level" />
+          <EntitySet Name="parmaters" EntityType="amedilab_dataModel.parmater" />
+          <EntitySet Name="pic_paths" EntityType="amedilab_dataModel.pic_paths" />
+          <EntitySet Name="RespTrainShorts" EntityType="amedilab_dataModel.RespTrainShort" />
+          <EntitySet Name="shadows" EntityType="amedilab_dataModel.shadow" />
+          <EntitySet Name="ShelonFinishes" EntityType="amedilab_dataModel.ShelonFinish" />
+          <EntitySet Name="stages" EntityType="amedilab_dataModel.stage" />
+          <EntitySet Name="step_by_step" EntityType="amedilab_dataModel.step_by_step" />
+          <EntitySet Name="StepByStepHappies" EntityType="amedilab_dataModel.StepByStepHappy" />
+          <EntitySet Name="userIDs" EntityType="amedilab_dataModel.userID" />
+          <EntitySet Name="virtualGames" EntityType="amedilab_dataModel.virtualGame" />
+          <EntitySet Name="stepbystepMins" EntityType="amedilab_dataModel.stepbystepMin" />
+          <EntitySet Name="exam_QUESTION" EntityType="amedilab_dataModel.exam_QUESTION" />
+          <EntitySet Name="examWithLevels" EntityType="amedilab_dataModel.examWithLevel" />
+          <EntitySet Name="MaxUserStepBySteps" EntityType="amedilab_dataModel.MaxUserStepByStep" />
+          <EntitySet Name="RespTrainViews" EntityType="amedilab_dataModel.RespTrainView" />
+          <EntitySet Name="resualt_exam" EntityType="amedilab_dataModel.resualt_exam" />
+          <EntitySet Name="resualt_exam_row" EntityType="amedilab_dataModel.resualt_exam_row" />
+          <EntitySet Name="step_view" EntityType="amedilab_dataModel.step_view" />
+          <AssociationSet Name="FK__exam_q__a__70DDC3D8" Association="amedilab_dataModel.FK__exam_q__a__70DDC3D8">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__b__71D1E811" Association="amedilab_dataModel.FK__exam_q__b__71D1E811">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__c__72C60C4A" Association="amedilab_dataModel.FK__exam_q__c__72C60C4A">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__d__73BA3083" Association="amedilab_dataModel.FK__exam_q__d__73BA3083">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__a__1F198FD4" Association="amedilab_dataModel.FK__exam_q_levels__a__1F198FD4">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__b__200DB40D" Association="amedilab_dataModel.FK__exam_q_levels__b__200DB40D">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__c__2101D846" Association="amedilab_dataModel.FK__exam_q_levels__c__2101D846">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_levels__d__21F5FC7F" Association="amedilab_dataModel.FK__exam_q_levels__d__21F5FC7F">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__desac__66A02C87" Association="amedilab_dataModel.FK__RespTrain__desac__66A02C87">
+            <End Role="desacriptaion" EntitySet="desacriptaions" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShorts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__level__22EA20B8" Association="amedilab_dataModel.FK__exam__level__22EA20B8">
+            <End Role="level" EntitySet="levels" />
+            <End Role="exam" EntitySet="exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__stage__23DE44F1" Association="amedilab_dataModel.FK__exam__stage__23DE44F1">
+            <End Role="stage" EntitySet="stages" />
+            <End Role="exam" EntitySet="exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__user_ID__1B48FEF0" Association="amedilab_dataModel.FK__exam__user_ID__1B48FEF0">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="exam" EntitySet="exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__user_ID__24D2692A" Association="amedilab_dataModel.FK__exam__user_ID__24D2692A">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="exam" EntitySet="exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam__user_ID__25C68D63" Association="amedilab_dataModel.FK__exam__user_ID__25C68D63">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="exam" EntitySet="exams" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q__pic_path__770B9E7A" Association="amedilab_dataModel.FK__exam_q__pic_path__770B9E7A">
+            <End Role="pic_paths" EntitySet="pic_paths" />
+            <End Role="exam_q" EntitySet="exam_q" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_le__exam___1C3D2329" Association="amedilab_dataModel.FK__exam_q_le__exam___1C3D2329">
+            <End Role="level" EntitySet="levels" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_le__exam___1D314762" Association="amedilab_dataModel.FK__exam_q_le__exam___1D314762">
+            <End Role="stage" EntitySet="stages" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__exam_q_le__pic_p__1E256B9B" Association="amedilab_dataModel.FK__exam_q_le__pic_p__1E256B9B">
+            <End Role="pic_paths" EntitySet="pic_paths" />
+            <End Role="exam_q_levels" EntitySet="exam_q_levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__feedBackW__user___322C6448" Association="amedilab_dataModel.FK__feedBackW__user___322C6448">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="feedBackWithDetail" EntitySet="feedBackWithDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_1__user_ID__5887175A" Association="amedilab_dataModel.FK__level_1__user_ID__5887175A">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="level_1" EntitySet="level_1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_2__user_ID__597B3B93" Association="amedilab_dataModel.FK__level_2__user_ID__597B3B93">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="level_2" EntitySet="level_2" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_3__user_ID__5A6F5FCC" Association="amedilab_dataModel.FK__level_3__user_ID__5A6F5FCC">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="level_3" EntitySet="level_3" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_4__user_ID__5B638405" Association="amedilab_dataModel.FK__level_4__user_ID__5B638405">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="level_4" EntitySet="level_4" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_5__user_ID__5C57A83E" Association="amedilab_dataModel.FK__level_5__user_ID__5C57A83E">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="level_5" EntitySet="level_5" />
+          </AssociationSet>
+          <AssociationSet Name="FK__level_6__user_ID__5D4BCC77" Association="amedilab_dataModel.FK__level_6__user_ID__5D4BCC77">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="level_6" EntitySet="level_6" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__level__63C3BFDC" Association="amedilab_dataModel.FK__RespTrain__level__63C3BFDC">
+            <End Role="level" EntitySet="levels" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShorts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__parmaters__user___5F3414E9" Association="amedilab_dataModel.FK__parmaters__user___5F3414E9">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="parmater" EntitySet="parmaters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__stage__64B7E415" Association="amedilab_dataModel.FK__RespTrain__stage__64B7E415">
+            <End Role="stage" EntitySet="stages" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShorts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RespTrain__user___65AC084E" Association="amedilab_dataModel.FK__RespTrain__user___65AC084E">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="RespTrainShort" EntitySet="RespTrainShorts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__shadow__user_ID__68536ACF" Association="amedilab_dataModel.FK__shadow__user_ID__68536ACF">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="shadow" EntitySet="shadows" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShelonFin__user___544C7222" Association="amedilab_dataModel.FK__ShelonFin__user___544C7222">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="ShelonFinish" EntitySet="ShelonFinishes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StepBySte__user___300F11AC" Association="amedilab_dataModel.FK__StepBySte__user___300F11AC">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="StepByStepHappy" EntitySet="StepByStepHappies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__virtualGa__user___2F4FF79D" Association="amedilab_dataModel.FK__virtualGa__user___2F4FF79D">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="virtualGame" EntitySet="virtualGames" />
+          </AssociationSet>
+          <EntitySet Name="RespTrains" EntityType="amedilab_dataModel.RespTrain" />
+          <AssociationSet Name="FK__RespTrain__user___7F36D027" Association="amedilab_dataModel.FK__RespTrain__user___7F36D027">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="RespTrain" EntitySet="RespTrains" />
+          </AssociationSet>
+          <EntitySet Name="stepByStep_user" EntityType="amedilab_dataModel.stepByStep_user" />
+          <AssociationSet Name="FK__stepBySte__user___174363E2" Association="amedilab_dataModel.FK__stepBySte__user___174363E2">
+            <End Role="userID" EntitySet="userIDs" />
+            <End Role="stepByStep_user" EntitySet="stepByStep_user" />
+          </AssociationSet>
+          <EntitySet Name="sumShachars" EntityType="amedilab_dataModel.sumShachar" />
+          <EntitySet Name="sumShacharLevel5" EntityType="amedilab_dataModel.sumShacharLevel5" />
+          <EntitySet Name="sumShacharOnlySuccesses" EntityType="amedilab_dataModel.sumShacharOnlySuccess" />
+        </EntityContainer>
+        <EntityType Name="desacriptaion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="desacriptaion1" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="exam_q" Relationship="amedilab_dataModel.FK__exam_q__a__70DDC3D8" FromRole="desacriptaion" ToRole="exam_q" />
+          <NavigationProperty Name="exam_q1" Relationship="amedilab_dataModel.FK__exam_q__b__71D1E811" FromRole="desacriptaion" ToRole="exam_q" />
+          <NavigationProperty Name="exam_q2" Relationship="amedilab_dataModel.FK__exam_q__c__72C60C4A" FromRole="desacriptaion" ToRole="exam_q" />
+          <NavigationProperty Name="exam_q3" Relationship="amedilab_dataModel.FK__exam_q__d__73BA3083" FromRole="desacriptaion" ToRole="exam_q" />
+          <NavigationProperty Name="exam_q_levels" Relationship="amedilab_dataModel.FK__exam_q_levels__a__1F198FD4" FromRole="desacriptaion" ToRole="exam_q_levels" />
+          <NavigationProperty Name="exam_q_levels1" Relationship="amedilab_dataModel.FK__exam_q_levels__b__200DB40D" FromRole="desacriptaion" ToRole="exam_q_levels" />
+          <NavigationProperty Name="exam_q_levels2" Relationship="amedilab_dataModel.FK__exam_q_levels__c__2101D846" FromRole="desacriptaion" ToRole="exam_q_levels" />
+          <NavigationProperty Name="exam_q_levels3" Relationship="amedilab_dataModel.FK__exam_q_levels__d__21F5FC7F" FromRole="desacriptaion" ToRole="exam_q_levels" />
+          <NavigationProperty Name="RespTrainShorts" Relationship="amedilab_dataModel.FK__RespTrain__desac__66A02C87" FromRole="desacriptaion" ToRole="RespTrainShort" />
+        </EntityType>
+        <EntityType Name="exam">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="session" Type="Int32" />
+          <Property Name="num_exam" Type="Int32" />
+          <Property Name="num_q" Type="Int32" />
+          <Property Name="level" Type="Int32" />
+          <Property Name="stage" Type="Int32" />
+          <Property Name="correct" Type="Boolean" />
+          <Property Name="answer" Type="Int32" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="level1" Relationship="amedilab_dataModel.FK__exam__level__22EA20B8" FromRole="exam" ToRole="level" />
+          <NavigationProperty Name="stage1" Relationship="amedilab_dataModel.FK__exam__stage__23DE44F1" FromRole="exam" ToRole="stage" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__exam__user_ID__1B48FEF0" FromRole="exam" ToRole="userID" />
+          <NavigationProperty Name="userID1" Relationship="amedilab_dataModel.FK__exam__user_ID__24D2692A" FromRole="exam" ToRole="userID" />
+          <NavigationProperty Name="userID2" Relationship="amedilab_dataModel.FK__exam__user_ID__25C68D63" FromRole="exam" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="exam_q">
+          <Key>
+            <PropertyRef Name="exam_name" />
+            <PropertyRef Name="pic_path" />
+          </Key>
+          <Property Name="exam_name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pic_path" Type="Int32" Nullable="false" />
+          <Property Name="num_exam" Type="Int32" Nullable="false" />
+          <Property Name="num_question" Type="Int32" Nullable="false" />
+          <Property Name="a" Type="Int32" Nullable="false" />
+          <Property Name="b" Type="Int32" Nullable="false" />
+          <Property Name="c" Type="Int32" Nullable="false" />
+          <Property Name="d" Type="Int32" Nullable="false" />
+          <Property Name="true" Type="Int32" />
+          <NavigationProperty Name="desacriptaion" Relationship="amedilab_dataModel.FK__exam_q__a__70DDC3D8" FromRole="exam_q" ToRole="desacriptaion" />
+          <NavigationProperty Name="desacriptaion1" Relationship="amedilab_dataModel.FK__exam_q__b__71D1E811" FromRole="exam_q" ToRole="desacriptaion" />
+          <NavigationProperty Name="desacriptaion2" Relationship="amedilab_dataModel.FK__exam_q__c__72C60C4A" FromRole="exam_q" ToRole="desacriptaion" />
+          <NavigationProperty Name="desacriptaion3" Relationship="amedilab_dataModel.FK__exam_q__d__73BA3083" FromRole="exam_q" ToRole="desacriptaion" />
+          <NavigationProperty Name="pic_paths" Relationship="amedilab_dataModel.FK__exam_q__pic_path__770B9E7A" FromRole="exam_q" ToRole="pic_paths" />
+        </EntityType>
+        <EntityType Name="exam_q_levels">
+          <Key>
+            <PropertyRef Name="num_exam" />
+            <PropertyRef Name="num_question" />
+            <PropertyRef Name="exam_level" />
+            <PropertyRef Name="exam_stage" />
+          </Key>
+          <Property Name="num_exam" Type="Int32" Nullable="false" />
+          <Property Name="num_question" Type="Int32" Nullable="false" />
+          <Property Name="exam_level" Type="Int32" Nullable="false" />
+          <Property Name="exam_stage" Type="Int32" Nullable="false" />
+          <Property Name="pic_path" Type="Int32" Nullable="false" />
+          <Property Name="a" Type="Int32" Nullable="false" />
+          <Property Name="b" Type="Int32" Nullable="false" />
+          <Property Name="c" Type="Int32" Nullable="false" />
+          <Property Name="d" Type="Int32" Nullable="false" />
+          <Property Name="the_true" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="desacriptaion" Relationship="amedilab_dataModel.FK__exam_q_levels__a__1F198FD4" FromRole="exam_q_levels" ToRole="desacriptaion" />
+          <NavigationProperty Name="desacriptaion1" Relationship="amedilab_dataModel.FK__exam_q_levels__b__200DB40D" FromRole="exam_q_levels" ToRole="desacriptaion" />
+          <NavigationProperty Name="desacriptaion2" Relationship="amedilab_dataModel.FK__exam_q_levels__c__2101D846" FromRole="exam_q_levels" ToRole="desacriptaion" />
+          <NavigationProperty Name="desacriptaion3" Relationship="amedilab_dataModel.FK__exam_q_levels__d__21F5FC7F" FromRole="exam_q_levels" ToRole="desacriptaion" />
+          <NavigationProperty Name="level" Relationship="amedilab_dataModel.FK__exam_q_le__exam___1C3D2329" FromRole="exam_q_levels" ToRole="level" />
+          <NavigationProperty Name="stage" Relationship="amedilab_dataModel.FK__exam_q_le__exam___1D314762" FromRole="exam_q_levels" ToRole="stage" />
+          <NavigationProperty Name="pic_paths" Relationship="amedilab_dataModel.FK__exam_q_le__pic_p__1E256B9B" FromRole="exam_q_levels" ToRole="pic_paths" />
+        </EntityType>
+        <EntityType Name="feedBackWithDetail">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="blind" Type="Boolean" />
+          <Property Name="mailList" Type="Boolean" />
+          <Property Name="question" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="suggetion" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="free_text" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="blind_details" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__feedBackW__user___322C6448" FromRole="feedBackWithDetail" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level_1">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="feame" Type="Int32" />
+          <Property Name="x" Type="Int32" />
+          <Property Name="y" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="shape" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__level_1__user_ID__5887175A" FromRole="level_1" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level_2">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="Frame" Type="Int32" />
+          <Property Name="X1" Type="Int32" />
+          <Property Name="Y1" Type="Int32" />
+          <Property Name="color1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="shape1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="X2" Type="Int32" />
+          <Property Name="Y2" Type="Int32" />
+          <Property Name="color2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="shape2" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__level_2__user_ID__597B3B93" FromRole="level_2" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level_3">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="level_unity" Type="Int32" />
+          <Property Name="frame" Type="Int32" />
+          <Property Name="x" Type="Int32" />
+          <Property Name="y" Type="Int32" />
+          <Property Name="distance" Type="Int32" />
+          <Property Name="angle" Type="Int32" />
+          <Property Name="success" Type="Int32" />
+          <Property Name="time_out" Type="Int32" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__level_3__user_ID__5A6F5FCC" FromRole="level_3" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level_4">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="numsuccess" Type="Int32" />
+          <Property Name="level_unity" Type="Int32" />
+          <Property Name="x1" Type="Int32" />
+          <Property Name="y1" Type="Int32" />
+          <Property Name="x2" Type="Int32" />
+          <Property Name="y2" Type="Int32" />
+          <Property Name="x3" Type="Int32" />
+          <Property Name="y3" Type="Int32" />
+          <Property Name="frame" Type="Int32" />
+          <Property Name="num_collision" Type="Int32" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__level_4__user_ID__5B638405" FromRole="level_4" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level_5">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="level_unity" Type="Int32" />
+          <Property Name="x1" Type="Int32" />
+          <Property Name="y1" Type="Int32" />
+          <Property Name="frame" Type="Int32" />
+          <Property Name="num_collision" Type="Int32" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__level_5__user_ID__5C57A83E" FromRole="level_5" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level_6">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="numsuccess" Type="Int32" />
+          <Property Name="x1" Type="Int32" />
+          <Property Name="y1" Type="Int32" />
+          <Property Name="x2" Type="Int32" />
+          <Property Name="y2" Type="Int32" />
+          <Property Name="frame" Type="Int32" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__level_6__user_ID__5D4BCC77" FromRole="level_6" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="level">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="level1" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="exams" Relationship="amedilab_dataModel.FK__exam__level__22EA20B8" FromRole="level" ToRole="exam" />
+          <NavigationProperty Name="exam_q_levels" Relationship="amedilab_dataModel.FK__exam_q_le__exam___1C3D2329" FromRole="level" ToRole="exam_q_levels" />
+          <NavigationProperty Name="RespTrainShorts" Relationship="amedilab_dataModel.FK__RespTrain__level__63C3BFDC" FromRole="level" ToRole="RespTrainShort" />
+        </EntityType>
+        <EntityType Name="parmater">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="filter" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cue_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cue_Volume_10" Type="Int32" />
+          <Property Name="speed" Type="Int32" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__parmaters__user___5F3414E9" FromRole="parmater" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="pic_paths">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="pic_path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="exam_q" Relationship="amedilab_dataModel.FK__exam_q__pic_path__770B9E7A" FromRole="pic_paths" ToRole="exam_q" />
+          <NavigationProperty Name="exam_q_levels" Relationship="amedilab_dataModel.FK__exam_q_le__pic_p__1E256B9B" FromRole="pic_paths" ToRole="exam_q_levels" />
+        </EntityType>
+        <EntityType Name="RespTrainShort">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="Int32" />
+          <Property Name="stage" Type="Int32" />
+          <Property Name="desacriptaion" Type="Int32" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="desacriptaion1" Relationship="amedilab_dataModel.FK__RespTrain__desac__66A02C87" FromRole="RespTrainShort" ToRole="desacriptaion" />
+          <NavigationProperty Name="level1" Relationship="amedilab_dataModel.FK__RespTrain__level__63C3BFDC" FromRole="RespTrainShort" ToRole="level" />
+          <NavigationProperty Name="stage1" Relationship="amedilab_dataModel.FK__RespTrain__stage__64B7E415" FromRole="RespTrainShort" ToRole="stage" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__RespTrain__user___65AC084E" FromRole="RespTrainShort" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="shadow">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="Int32" Nullable="false" />
+          <Property Name="freame" Type="Int32" />
+          <Property Name="success" Type="Int32" />
+          <Property Name="direction" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="line" Type="Double" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__shadow__user_ID__68536ACF" FromRole="shadow" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="ShelonFinish">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="musical" Type="Boolean" />
+          <Property Name="playMusic" Type="Boolean" />
+          <Property Name="namePlay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="numYear" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="complex" Type="Int32" />
+          <Property Name="fun" Type="Int32" />
+          <Property Name="letters" Type="Int32" />
+          <Property Name="faces" Type="Int32" />
+          <Property Name="camera" Type="Int32" />
+          <Property Name="hard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="easy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pictureInstead" Type="Boolean" />
+          <Property Name="descInstead" Type="Boolean" />
+          <Property Name="closeEyes" Type="Boolean" />
+          <Property Name="clearColor" Type="Int32" Nullable="false" />
+          <Property Name="HardColor" Type="Int32" Nullable="false" />
+          <Property Name="freeText" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__ShelonFin__user___544C7222" FromRole="ShelonFinish" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="stage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="stage1" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="exams" Relationship="amedilab_dataModel.FK__exam__stage__23DE44F1" FromRole="stage" ToRole="exam" />
+          <NavigationProperty Name="exam_q_levels" Relationship="amedilab_dataModel.FK__exam_q_le__exam___1D314762" FromRole="stage" ToRole="exam_q_levels" />
+          <NavigationProperty Name="RespTrainShorts" Relationship="amedilab_dataModel.FK__RespTrain__stage__64B7E415" FromRole="stage" ToRole="RespTrainShort" />
+        </EntityType>
+        <EntityType Name="step_by_step">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="correct" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="pic_path" Type="Int32" Nullable="false" />
+          <Property Name="types" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StepByStepHappy">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="happy" Type="Int32" />
+          <Property Name="know" Type="Int32" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__StepBySte__user___300F11AC" FromRole="StepByStepHappy" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="userID">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="level_blind" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="birth_year" Type="Int32" />
+          <Property Name="gander" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="age_of_blind" Type="Int32" />
+          <Property Name="place" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="yourself" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="precent_blind" Type="Int32" />
+          <Property Name="fill_somting" Type="Boolean" Nullable="false" />
+          <Property Name="previos_expirments_num" Type="Int32" />
+          <Property Name="speed" Type="Int32" />
+          <Property Name="cue_Volume" Type="Int32" />
+          <Property Name="cue_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="filter" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="len" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="rule" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="exams" Relationship="amedilab_dataModel.FK__exam__user_ID__1B48FEF0" FromRole="userID" ToRole="exam" />
+          <NavigationProperty Name="exams1" Relationship="amedilab_dataModel.FK__exam__user_ID__24D2692A" FromRole="userID" ToRole="exam" />
+          <NavigationProperty Name="exams2" Relationship="amedilab_dataModel.FK__exam__user_ID__25C68D63" FromRole="userID" ToRole="exam" />
+          <NavigationProperty Name="feedBackWithDetails" Relationship="amedilab_dataModel.FK__feedBackW__user___322C6448" FromRole="userID" ToRole="feedBackWithDetail" />
+          <NavigationProperty Name="level_1" Relationship="amedilab_dataModel.FK__level_1__user_ID__5887175A" FromRole="userID" ToRole="level_1" />
+          <NavigationProperty Name="level_2" Relationship="amedilab_dataModel.FK__level_2__user_ID__597B3B93" FromRole="userID" ToRole="level_2" />
+          <NavigationProperty Name="level_3" Relationship="amedilab_dataModel.FK__level_3__user_ID__5A6F5FCC" FromRole="userID" ToRole="level_3" />
+          <NavigationProperty Name="level_4" Relationship="amedilab_dataModel.FK__level_4__user_ID__5B638405" FromRole="userID" ToRole="level_4" />
+          <NavigationProperty Name="level_5" Relationship="amedilab_dataModel.FK__level_5__user_ID__5C57A83E" FromRole="userID" ToRole="level_5" />
+          <NavigationProperty Name="level_6" Relationship="amedilab_dataModel.FK__level_6__user_ID__5D4BCC77" FromRole="userID" ToRole="level_6" />
+          <NavigationProperty Name="parmaters" Relationship="amedilab_dataModel.FK__parmaters__user___5F3414E9" FromRole="userID" ToRole="parmater" />
+          <NavigationProperty Name="RespTrainShorts" Relationship="amedilab_dataModel.FK__RespTrain__user___65AC084E" FromRole="userID" ToRole="RespTrainShort" />
+          <NavigationProperty Name="shadows" Relationship="amedilab_dataModel.FK__shadow__user_ID__68536ACF" FromRole="userID" ToRole="shadow" />
+          <NavigationProperty Name="ShelonFinish" Relationship="amedilab_dataModel.FK__ShelonFin__user___544C7222" FromRole="userID" ToRole="ShelonFinish" />
+          <NavigationProperty Name="StepByStepHappies" Relationship="amedilab_dataModel.FK__StepBySte__user___300F11AC" FromRole="userID" ToRole="StepByStepHappy" />
+          <NavigationProperty Name="virtualGames" Relationship="amedilab_dataModel.FK__virtualGa__user___2F4FF79D" FromRole="userID" ToRole="virtualGame" />
+          <NavigationProperty Name="RespTrains" Relationship="amedilab_dataModel.FK__RespTrain__user___7F36D027" FromRole="userID" ToRole="RespTrain" />
+          <NavigationProperty Name="stepByStep_user" Relationship="amedilab_dataModel.FK__stepBySte__user___174363E2" FromRole="userID" ToRole="stepByStep_user" />
+        </EntityType>
+        <EntityType Name="virtualGame">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="num_level" Type="Int32" Nullable="false" />
+          <Property Name="hide" Type="Boolean" Nullable="false" />
+          <Property Name="HTML5" Type="Boolean" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__virtualGa__user___2F4FF79D" FromRole="virtualGame" ToRole="userID" />
+        </EntityType>
+        <EntityType Name="stepbystepMin">
+          <Key>
+            <PropertyRef Name="idSub" />
+            <PropertyRef Name="subUser" />
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="idSub" Type="Int32" Nullable="false" />
+          <Property Name="minTime" Type="DateTime" Precision="3" />
+          <Property Name="subUser" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exam_QUESTION">
+          <Key>
+            <PropertyRef Name="A" />
+            <PropertyRef Name="B" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="D" />
+            <PropertyRef Name="pic_path" />
+            <PropertyRef Name="the_true" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="num_exam" />
+            <PropertyRef Name="num_question" />
+          </Key>
+          <Property Name="A" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="B" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="C" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="D" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="pic_path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="the_true" Type="Int32" Nullable="false" />
+          <Property Name="stage" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="num_exam" Type="Int32" Nullable="false" />
+          <Property Name="num_question" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="examWithLevel">
+          <Key>
+            <PropertyRef Name="num_exam" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="num_exam" Type="Int32" Nullable="false" />
+          <Property Name="max_num_question" Type="Int32" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="stage" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaxUserStepByStep">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="duration" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="right" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="RespTrainView">
+          <Key>
+            <PropertyRef Name="desacriptaion" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="desacriptaion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="stage" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="resualt_exam">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="num_exam" Type="Int32" />
+          <Property Name="stage" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="num_correct" Type="Int32" />
+        </EntityType>
+        <EntityType Name="resualt_exam_row">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="stage" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="row_num" Type="Int64" />
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="num_exam" Type="Int32" />
+          <Property Name="stage" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="num_correct" Type="Int32" />
+        </EntityType>
+        <EntityType Name="step_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="correct" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="pic_path" />
+            <PropertyRef Name="types" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="correct" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="pic_path" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="types" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__exam_q__a__70DDC3D8">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q" Role="exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__b__71D1E811">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q" Role="exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="b" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__c__72C60C4A">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q" Role="exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="c" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__d__73BA3083">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q" Role="exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__a__1F198FD4">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="a" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__b__200DB40D">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="b" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__c__2101D846">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="c" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_levels__d__21F5FC7F">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="d" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__desac__66A02C87">
+          <End Type="amedilab_dataModel.desacriptaion" Role="desacriptaion" Multiplicity="0..1" />
+          <End Type="amedilab_dataModel.RespTrainShort" Role="RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="desacriptaion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="desacriptaion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__level__22EA20B8">
+          <End Type="amedilab_dataModel.level" Role="level" Multiplicity="0..1" />
+          <End Type="amedilab_dataModel.exam" Role="exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="level">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__stage__23DE44F1">
+          <End Type="amedilab_dataModel.stage" Role="stage" Multiplicity="0..1" />
+          <End Type="amedilab_dataModel.exam" Role="exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="stage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__user_ID__1B48FEF0">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam" Role="exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__user_ID__24D2692A">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam" Role="exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam__user_ID__25C68D63">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam" Role="exam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="exam">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q__pic_path__770B9E7A">
+          <End Type="amedilab_dataModel.pic_paths" Role="pic_paths" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q" Role="exam_q" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pic_paths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q">
+              <PropertyRef Name="pic_path" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_le__exam___1C3D2329">
+          <End Type="amedilab_dataModel.level" Role="level" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="level">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="exam_level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_le__exam___1D314762">
+          <End Type="amedilab_dataModel.stage" Role="stage" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="exam_stage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__exam_q_le__pic_p__1E256B9B">
+          <End Type="amedilab_dataModel.pic_paths" Role="pic_paths" Multiplicity="1" />
+          <End Type="amedilab_dataModel.exam_q_levels" Role="exam_q_levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pic_paths">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exam_q_levels">
+              <PropertyRef Name="pic_path" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__feedBackW__user___322C6448">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.feedBackWithDetail" Role="feedBackWithDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="feedBackWithDetail">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_1__user_ID__5887175A">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.level_1" Role="level_1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_1">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_2__user_ID__597B3B93">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.level_2" Role="level_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_2">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_3__user_ID__5A6F5FCC">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.level_3" Role="level_3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_3">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_4__user_ID__5B638405">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.level_4" Role="level_4" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_4">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_5__user_ID__5C57A83E">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.level_5" Role="level_5" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_5">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__level_6__user_ID__5D4BCC77">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.level_6" Role="level_6" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="level_6">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__level__63C3BFDC">
+          <End Type="amedilab_dataModel.level" Role="level" Multiplicity="0..1" />
+          <End Type="amedilab_dataModel.RespTrainShort" Role="RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="level">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="level" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__parmaters__user___5F3414E9">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.parmater" Role="parmater" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="parmater">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__stage__64B7E415">
+          <End Type="amedilab_dataModel.stage" Role="stage" Multiplicity="0..1" />
+          <End Type="amedilab_dataModel.RespTrainShort" Role="RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="stage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RespTrain__user___65AC084E">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.RespTrainShort" Role="RespTrainShort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="RespTrainShort">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__shadow__user_ID__68536ACF">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.shadow" Role="shadow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="shadow">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShelonFin__user___544C7222">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.ShelonFinish" Role="ShelonFinish" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="ShelonFinish">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StepBySte__user___300F11AC">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.StepByStepHappy" Role="StepByStepHappy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="StepByStepHappy">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__virtualGa__user___2F4FF79D">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.virtualGame" Role="virtualGame" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="virtualGame">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RespTrain">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="datetime" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="classes" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="stage" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="number" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__RespTrain__user___7F36D027" FromRole="RespTrain" ToRole="userID" />
+        </EntityType>
+        <Association Name="FK__RespTrain__user___7F36D027">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.RespTrain" Role="RespTrain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="RespTrain">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="stepByStep_user">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="right" Type="Boolean" />
+          <Property Name="blindOrSeeOrafter" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TheAnswer" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="userID" Relationship="amedilab_dataModel.FK__stepBySte__user___174363E2" FromRole="stepByStep_user" ToRole="userID" />
+        </EntityType>
+        <Association Name="FK__stepBySte__user___174363E2">
+          <End Type="amedilab_dataModel.userID" Role="userID" Multiplicity="1" />
+          <End Type="amedilab_dataModel.stepByStep_user" Role="stepByStep_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userID">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="stepByStep_user">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sumShachar">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="frame" />
+            <PropertyRef Name="success" />
+            <PropertyRef Name="timeout" />
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+            <PropertyRef Name="z" />
+            <PropertyRef Name="angle" />
+            <PropertyRef Name="distance" />
+            <PropertyRef Name="level" />
+            <PropertyRef Name="experiment_name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="frame" Type="Int32" Nullable="false" />
+          <Property Name="success" Type="Int32" Nullable="false" />
+          <Property Name="timeout" Type="Int32" Nullable="false" />
+          <Property Name="x" Type="Int32" Nullable="false" />
+          <Property Name="y" Type="Int32" Nullable="false" />
+          <Property Name="z" Type="Int32" Nullable="false" />
+          <Property Name="angle" Type="Int32" Nullable="false" />
+          <Property Name="distance" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="experiment_name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sumShacharLevel5">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="frame" />
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="frame" Type="Int32" Nullable="false" />
+          <Property Name="x" Type="Int32" Nullable="false" />
+          <Property Name="y" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sumShacharOnlySuccess">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="frame" />
+            <PropertyRef Name="success" />
+            <PropertyRef Name="timeout" />
+            <PropertyRef Name="x" />
+            <PropertyRef Name="y" />
+            <PropertyRef Name="z" />
+            <PropertyRef Name="angle" />
+            <PropertyRef Name="distance" />
+            <PropertyRef Name="level" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="frame" Type="Int32" Nullable="false" />
+          <Property Name="success" Type="Int32" Nullable="false" />
+          <Property Name="timeout" Type="Int32" Nullable="false" />
+          <Property Name="x" Type="Int32" Nullable="false" />
+          <Property Name="y" Type="Int32" Nullable="false" />
+          <Property Name="z" Type="Int32" Nullable="false" />
+          <Property Name="angle" Type="Int32" Nullable="false" />
+          <Property Name="distance" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="amedilab_dataModelStoreContainer" CdmEntityContainer="amedilab_dataEntities" >
+          <EntitySetMapping Name="desacriptaions">
+            <EntityTypeMapping TypeName="amedilab_dataModel.desacriptaion">
+              <MappingFragment StoreEntitySet="desacriptaions">
+                <ScalarProperty Name="desacriptaion1" ColumnName="desacriptaion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exams">
+            <EntityTypeMapping TypeName="amedilab_dataModel.exam">
+              <MappingFragment StoreEntitySet="exam">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="correct" ColumnName="correct" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="num_q" ColumnName="num_q" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+                <ScalarProperty Name="session" ColumnName="session" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exam_q">
+            <EntityTypeMapping TypeName="amedilab_dataModel.exam_q">
+              <MappingFragment StoreEntitySet="exam_q">
+                <ScalarProperty Name="true" ColumnName="true" />
+                <ScalarProperty Name="d" ColumnName="d" />
+                <ScalarProperty Name="c" ColumnName="c" />
+                <ScalarProperty Name="b" ColumnName="b" />
+                <ScalarProperty Name="a" ColumnName="a" />
+                <ScalarProperty Name="num_question" ColumnName="num_question" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+                <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+                <ScalarProperty Name="exam_name" ColumnName="exam_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exam_q_levels">
+            <EntityTypeMapping TypeName="amedilab_dataModel.exam_q_levels">
+              <MappingFragment StoreEntitySet="exam_q_levels">
+                <ScalarProperty Name="the_true" ColumnName="the_true" />
+                <ScalarProperty Name="d" ColumnName="d" />
+                <ScalarProperty Name="c" ColumnName="c" />
+                <ScalarProperty Name="b" ColumnName="b" />
+                <ScalarProperty Name="a" ColumnName="a" />
+                <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+                <ScalarProperty Name="exam_stage" ColumnName="exam_stage" />
+                <ScalarProperty Name="exam_level" ColumnName="exam_level" />
+                <ScalarProperty Name="num_question" ColumnName="num_question" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedBackWithDetails">
+            <EntityTypeMapping TypeName="amedilab_dataModel.feedBackWithDetail">
+              <MappingFragment StoreEntitySet="feedBackWithDetails">
+                <ScalarProperty Name="blind_details" ColumnName="blind_details" />
+                <ScalarProperty Name="free_text" ColumnName="free_text" />
+                <ScalarProperty Name="suggetion" ColumnName="suggetion" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="mailList" ColumnName="mailList" />
+                <ScalarProperty Name="blind" ColumnName="blind" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="level_1">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level_1">
+              <MappingFragment StoreEntitySet="level_1">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="shape" ColumnName="shape" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="feame" ColumnName="feame" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="level_2">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level_2">
+              <MappingFragment StoreEntitySet="level_2">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="shape2" ColumnName="shape2" />
+                <ScalarProperty Name="color2" ColumnName="color2" />
+                <ScalarProperty Name="Y2" ColumnName="Y2" />
+                <ScalarProperty Name="X2" ColumnName="X2" />
+                <ScalarProperty Name="shape1" ColumnName="shape1" />
+                <ScalarProperty Name="color1" ColumnName="color1" />
+                <ScalarProperty Name="Y1" ColumnName="Y1" />
+                <ScalarProperty Name="X1" ColumnName="X1" />
+                <ScalarProperty Name="Frame" ColumnName="Frame" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="level_3">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level_3">
+              <MappingFragment StoreEntitySet="level_3">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="time_out" ColumnName="time_out" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="angle" ColumnName="angle" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="level_unity" ColumnName="level_unity" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="level_4">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level_4">
+              <MappingFragment StoreEntitySet="level_4">
+                <ScalarProperty Name="num_collision" ColumnName="num_collision" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="y3" ColumnName="y3" />
+                <ScalarProperty Name="x3" ColumnName="x3" />
+                <ScalarProperty Name="y2" ColumnName="y2" />
+                <ScalarProperty Name="x2" ColumnName="x2" />
+                <ScalarProperty Name="y1" ColumnName="y1" />
+                <ScalarProperty Name="x1" ColumnName="x1" />
+                <ScalarProperty Name="level_unity" ColumnName="level_unity" />
+                <ScalarProperty Name="numsuccess" ColumnName="numsuccess" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="level_5">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level_5">
+              <MappingFragment StoreEntitySet="level_5">
+                <ScalarProperty Name="num_collision" ColumnName="num_collision" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="y1" ColumnName="y1" />
+                <ScalarProperty Name="x1" ColumnName="x1" />
+                <ScalarProperty Name="level_unity" ColumnName="level_unity" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="level_6">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level_6">
+              <MappingFragment StoreEntitySet="level_6">
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="y2" ColumnName="y2" />
+                <ScalarProperty Name="x2" ColumnName="x2" />
+                <ScalarProperty Name="y1" ColumnName="y1" />
+                <ScalarProperty Name="x1" ColumnName="x1" />
+                <ScalarProperty Name="numsuccess" ColumnName="numsuccess" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="levels">
+            <EntityTypeMapping TypeName="amedilab_dataModel.level">
+              <MappingFragment StoreEntitySet="levels">
+                <ScalarProperty Name="level1" ColumnName="level" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parmaters">
+            <EntityTypeMapping TypeName="amedilab_dataModel.parmater">
+              <MappingFragment StoreEntitySet="parmaters">
+                <ScalarProperty Name="speed" ColumnName="speed" />
+                <ScalarProperty Name="cue_Volume_10" ColumnName="cue_Volume_10" />
+                <ScalarProperty Name="cue_type" ColumnName="cue_type" />
+                <ScalarProperty Name="filter" ColumnName="filter" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pic_paths">
+            <EntityTypeMapping TypeName="amedilab_dataModel.pic_paths">
+              <MappingFragment StoreEntitySet="pic_paths">
+                <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespTrainShorts">
+            <EntityTypeMapping TypeName="amedilab_dataModel.RespTrainShort">
+              <MappingFragment StoreEntitySet="RespTrainShort">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="desacriptaion" ColumnName="desacriptaion" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shadows">
+            <EntityTypeMapping TypeName="amedilab_dataModel.shadow">
+              <MappingFragment StoreEntitySet="shadow">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="line" ColumnName="line" />
+                <ScalarProperty Name="direction" ColumnName="direction" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="freame" ColumnName="freame" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShelonFinishes">
+            <EntityTypeMapping TypeName="amedilab_dataModel.ShelonFinish">
+              <MappingFragment StoreEntitySet="ShelonFinish">
+                <ScalarProperty Name="freeText" ColumnName="freeText" />
+                <ScalarProperty Name="HardColor" ColumnName="HardColor" />
+                <ScalarProperty Name="clearColor" ColumnName="clearColor" />
+                <ScalarProperty Name="closeEyes" ColumnName="closeEyes" />
+                <ScalarProperty Name="descInstead" ColumnName="descInstead" />
+                <ScalarProperty Name="pictureInstead" ColumnName="pictureInstead" />
+                <ScalarProperty Name="easy" ColumnName="easy" />
+                <ScalarProperty Name="hard" ColumnName="hard" />
+                <ScalarProperty Name="camera" ColumnName="camera" />
+                <ScalarProperty Name="faces" ColumnName="faces" />
+                <ScalarProperty Name="letters" ColumnName="letters" />
+                <ScalarProperty Name="fun" ColumnName="fun" />
+                <ScalarProperty Name="complex" ColumnName="complex" />
+                <ScalarProperty Name="numYear" ColumnName="numYear" />
+                <ScalarProperty Name="namePlay" ColumnName="namePlay" />
+                <ScalarProperty Name="playMusic" ColumnName="playMusic" />
+                <ScalarProperty Name="musical" ColumnName="musical" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stages">
+            <EntityTypeMapping TypeName="amedilab_dataModel.stage">
+              <MappingFragment StoreEntitySet="stages">
+                <ScalarProperty Name="stage1" ColumnName="stage" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="step_by_step">
+            <EntityTypeMapping TypeName="amedilab_dataModel.step_by_step">
+              <MappingFragment StoreEntitySet="step_by_step">
+                <ScalarProperty Name="types" ColumnName="types" />
+                <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="correct" ColumnName="correct" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StepByStepHappies">
+            <EntityTypeMapping TypeName="amedilab_dataModel.StepByStepHappy">
+              <MappingFragment StoreEntitySet="StepByStepHappy">
+                <ScalarProperty Name="know" ColumnName="know" />
+                <ScalarProperty Name="happy" ColumnName="happy" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userIDs">
+            <EntityTypeMapping TypeName="amedilab_dataModel.userID">
+              <MappingFragment StoreEntitySet="userID">
+                <ScalarProperty Name="rule" ColumnName="rule" />
+                <ScalarProperty Name="len" ColumnName="len" />
+                <ScalarProperty Name="filter" ColumnName="filter" />
+                <ScalarProperty Name="cue_type" ColumnName="cue_type" />
+                <ScalarProperty Name="cue_Volume" ColumnName="cue_Volume" />
+                <ScalarProperty Name="speed" ColumnName="speed" />
+                <ScalarProperty Name="previos_expirments_num" ColumnName="previos_expirments_num" />
+                <ScalarProperty Name="fill_somting" ColumnName="fill_somting" />
+                <ScalarProperty Name="precent_blind" ColumnName="precent_blind" />
+                <ScalarProperty Name="yourself" ColumnName="yourself" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="age_of_blind" ColumnName="age_of_blind" />
+                <ScalarProperty Name="gander" ColumnName="gander" />
+                <ScalarProperty Name="birth_year" ColumnName="birth_year" />
+                <ScalarProperty Name="level_blind" ColumnName="level_blind" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="virtualGames">
+            <EntityTypeMapping TypeName="amedilab_dataModel.virtualGame">
+              <MappingFragment StoreEntitySet="virtualGame">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="HTML5" ColumnName="HTML5" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="num_level" ColumnName="num_level" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stepbystepMins">
+            <EntityTypeMapping TypeName="amedilab_dataModel.stepbystepMin">
+              <MappingFragment StoreEntitySet="stepbystepMin">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="subUser" ColumnName="subUser" />
+                <ScalarProperty Name="minTime" ColumnName="minTime" />
+                <ScalarProperty Name="idSub" ColumnName="idSub" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exam_QUESTION">
+            <EntityTypeMapping TypeName="amedilab_dataModel.exam_QUESTION">
+              <MappingFragment StoreEntitySet="exam_QUESTION">
+                <ScalarProperty Name="num_question" ColumnName="num_question" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="the_true" ColumnName="the_true" />
+                <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="A" ColumnName="A" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="examWithLevels">
+            <EntityTypeMapping TypeName="amedilab_dataModel.examWithLevel">
+              <MappingFragment StoreEntitySet="examWithLevels">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="max_num_question" ColumnName="max_num_question" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaxUserStepBySteps">
+            <EntityTypeMapping TypeName="amedilab_dataModel.MaxUserStepByStep">
+              <MappingFragment StoreEntitySet="MaxUserStepByStep">
+                <ScalarProperty Name="right" ColumnName="right" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespTrainViews">
+            <EntityTypeMapping TypeName="amedilab_dataModel.RespTrainView">
+              <MappingFragment StoreEntitySet="RespTrainView">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="desacriptaion" ColumnName="desacriptaion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resualt_exam">
+            <EntityTypeMapping TypeName="amedilab_dataModel.resualt_exam">
+              <MappingFragment StoreEntitySet="resualt_exam">
+                <ScalarProperty Name="num_correct" ColumnName="num_correct" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resualt_exam_row">
+            <EntityTypeMapping TypeName="amedilab_dataModel.resualt_exam_row">
+              <MappingFragment StoreEntitySet="resualt_exam_row">
+                <ScalarProperty Name="num_correct" ColumnName="num_correct" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="num_exam" ColumnName="num_exam" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="row_num" ColumnName="row_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="step_view">
+            <EntityTypeMapping TypeName="amedilab_dataModel.step_view">
+              <MappingFragment StoreEntitySet="step_view">
+                <ScalarProperty Name="types" ColumnName="types" />
+                <ScalarProperty Name="pic_path" ColumnName="pic_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="correct" ColumnName="correct" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespTrains">
+            <EntityTypeMapping TypeName="amedilab_dataModel.RespTrain">
+              <MappingFragment StoreEntitySet="RespTrain">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="stage" ColumnName="stage" />
+                <ScalarProperty Name="classes" ColumnName="classes" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stepByStep_user">
+            <EntityTypeMapping TypeName="amedilab_dataModel.stepByStep_user">
+              <MappingFragment StoreEntitySet="stepByStep_user">
+                <ScalarProperty Name="TheAnswer" ColumnName="TheAnswer" />
+                <ScalarProperty Name="blindOrSeeOrafter" ColumnName="blindOrSeeOrafter" />
+                <ScalarProperty Name="right" ColumnName="right" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sumShachars">
+            <EntityTypeMapping TypeName="amedilab_dataModel.sumShachar">
+              <MappingFragment StoreEntitySet="sumShachar">
+                <ScalarProperty Name="experiment_name" ColumnName="experiment_name" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="angle" ColumnName="angle" />
+                <ScalarProperty Name="z" ColumnName="z" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="timeout" ColumnName="timeout" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sumShacharLevel5">
+            <EntityTypeMapping TypeName="amedilab_dataModel.sumShacharLevel5">
+              <MappingFragment StoreEntitySet="sumShacharLevel5">
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sumShacharOnlySuccesses">
+            <EntityTypeMapping TypeName="amedilab_dataModel.sumShacharOnlySuccess">
+              <MappingFragment StoreEntitySet="sumShacharOnlySuccess">
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+                <ScalarProperty Name="angle" ColumnName="angle" />
+                <ScalarProperty Name="z" ColumnName="z" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="timeout" ColumnName="timeout" />
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="frame" ColumnName="frame" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

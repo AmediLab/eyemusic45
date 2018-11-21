@@ -1,0 +1,63 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>select class, eye music</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+
+<body>
+    <div class="float-right">
+        <h3>
+            hello @Model.userid
+        </h3>
+    </div>
+    <div id="body" class="float-left">
+        <p class="site-title">select class </p>
+
+        @{
+            string[] all_levels = Model.UItrainingStimuliTreeViewNew.Split(';');
+
+            int index1 = 0;
+            foreach (string level in all_levels)
+            {
+                string[] all_stages = level.Split(',');
+
+                if (all_stages[0] == Model.select_level)
+                {
+                    foreach (string stage in all_stages)
+                    {
+                        if (stage != Model.select_level)
+                        {
+                            using (Html.BeginForm("exam", "Home", FormMethod.Post, new { id = "submitForm" }))
+                            {
+                                <input type="hidden" name="selected_stage" value="@stage" />
+                                <input type="hidden" name="selected_level" value="@Model.select_level" />
+                                <input type="submit" value="@index1 @stage" id="mytable @index1">
+                            }
+
+                            index1++;
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+    </div>
+
+</body>
+
+</html>

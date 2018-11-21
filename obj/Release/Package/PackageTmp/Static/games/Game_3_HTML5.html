@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title>EM Game 3</title>
+		<style>
+		@import url("css/gameStyle.css");
+		html, body {
+			overflow:hidden;
+			height: 100%;
+			width:100%;
+			}		
+			body {
+			margin: 0px;
+			padding: 0px;
+			}
+		</style>
+	</head>
+			<!--  <body onresize="resize_canvas()"> Additional way to adjust canvas size to the size of the window -->
+	<body>
+		<canvas id="game"></canvas>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/defaultSetup.js"></script>
+		<script src="js/interface.js"></script>		
+			<!-- <canvas id="myCanvas" width="800" height="400">Your browser doesn't support canvas</canvas> -->
+			<!-- Default width and height of the canvas are set to 800x400 (Common screen size of mobile devices) -->
+			<!--  <script src="shapes-triangle.js"></script> Script file can be embedded in .html file like this. -->
+	<script>
+		voiceOver = false;
+		
+		var shapeSize = 100;
+		var shapeHalfSize = (shapeSize/2);
+		var color = 'white';
+		var shape = 'square';
+		
+		var audio = new Audio('Game_3_HTML5/Introduction.wav');
+		audio.play();
+				
+		function randomizeColor() {
+			//var color = 'white';
+			var randomColor = Math.floor(Math.random() * 5);
+			switch (randomColor) {
+				case 0:
+					color = 'blue';
+					break;
+				case 1:
+					color = 'red';
+					break;				
+				case 2:
+					color = 'green';
+					break;
+				case 3:
+					color = 'yellow';
+					break;
+				case 4:
+					color = 'white';
+					break;					
+				default:
+					break;					
+			}
+			//return color;
+		}
+		
+		var color = 'white';
+		var shape = 'square';
+		randomizeColor();
+		
+		function drawSquare(shapex, shapey){    
+
+			context.beginPath(); 
+			context.rect(shapex, shapey, shapeSize, shapeSize);
+
+			context.fillStyle = color;	
+			//context.fillStyle = 'blue';
+			context.fill();
+  
+		}
+
+		function drawCircle(shapex, shapey){    
+
+			context.beginPath();
+			context.arc(shapex, shapey, shapeHalfSize, 0, Math.PI*2, true);
+
+			<!-- context.fillStyle = getRandomColor();-->			
+			context.fillStyle = 'white';
+			context.fill();
+		}
+
+		function drawTriangle(shapex, shapey){
+
+			context.beginPath();
+ 
+			context.beginPath();
+			context.moveTo(shapex, shapey);
+			context.lineTo(shapex + shapeSize , shapey);
+			context.lineTo(shapex + shapeHalfSize, shapey - (Math.sqrt((shapeSize*shapeSize)-(shapeHalfSize*shapeHalfSize)))); <!-- Height of triangle calculated by a*a + b*b = c * c -->
+			context.lineTo(shapex,shapey);
+
+			<!-- context.fillStyle = getRandomColor();-->		
+			context.fillStyle = 'green';
+			context.fill();
+		}
+
+		var functions = [drawSquare, drawCircle, drawTriangle];
+
+		<!-- functions[Math.floor(Math.random()*functions.length)](); -->
+		var shapex = Math.floor((Math.random()*canvas.width));
+		var shapey = Math.floor((Math.random()*canvas.height));
+		functions[0](shapex,shapey);
+
+		function randomizeXY(){
+
+			shapex = Math.floor((Math.random()*canvas.width)) ;
+			shapey = Math.floor((Math.random()*canvas.height));
+			
+			if (shapex > (canvas.width - shapeSize)) {shapex = (canvas.width - shapeSize);}
+			if (shapey > (canvas.height - shapeSize)) {shapey = (canvas.height - shapeSize);}
+		}
+
+		function insideSquare(x1, y1){
+			if ((x1 > shapex) && (x1 < (shapex + shapeSize)) && (y1 > shapey) && (y1 < (shapey + shapeSize))) {
+				var audio = new Audio('Game_3_HTML5/Success.wav');
+				audio.play();
+				<!-- <audio controls> -->
+  				<!-- 	<source src="Success.mp3" type="audio/mpeg"> -->
+				<!-- 	Your browser does not support the audio element. -->
+				<!-- </audio> -->
+				randomizeXY();
+				randomizeColor();
+				functions[0](shapex,shapey);
+			}
+			else {
+				var audio = new Audio('Game_3_HTML5/TryAgain.wav');
+				audio.play();
+			}
+
+		}
+
+		function writeMessage(canvas, message) {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.font = '18pt Calibri';
+			context.fillStyle = 'red';
+			context.fillText(message, 10, 25);
+		}
+	  
+		function clickFunc(mPosx,mPosy) {
+			clear();
+			insideSquare(mPosx, mPosy);
+			functions[0](shapex,shapey);
+		}
+
+	</script>
+	</body>
+</html>  

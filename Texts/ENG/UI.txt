@@ -1,0 +1,144 @@
+﻿eye music application
+Welcome to EyeMusic (BETA version).
+With the EyeMusic you can see any visual image using sound, or "sonify" it. Throughout this website you can start and stop the EyeMusic\'s special sounds with the CTRL key and change the speed with the key combinations of shift + F1 and shift + F2 buttons
+This movie will explain the basics of Sensory Substitution
+as preparation for the training lessons.
+We recommend you listen to it before starting them
+LINKS
+Learn how to see with music
+More information about the EyeMusic including cool movies, the science behind the  EyeMusic and other assistive devices we have developed
+Upload your image to EyeMusic and sound it
+Contact us, join mailing list, and feedback
+App Store EyeMusic application
+select lesson, eye music
+select lesson
+select level, eye music
+select level
+return to home
+This section contains
+images, you can move between the images with tab and shift + tab buttons, press enter to "sound" the selected image.
+press ctrl to start and stop the audio, press SHIFT + F1 for faster press SHIFT + F2 for slower.
+play and pause
+Always remember the three rules of EyeMusic: 
+1. The picture scanning goes from left to right and every scan starts with a short beep.
+ 2. The height of the object in the picture is represented by the frequency of the sound. 
+3. Different colours are represented by sounds played by different musical instruments
+start exam
+Your browser does not support the audio element.
+Select the correct description for the image that you sound. Press ctrl to start and stop the audio, press SHIFT + F1 for faster press SHIFT + F2 for slower.
+The previous image is
+In this exam you received grade of
+show all grades for all levels
+Please tell us what you think by filling out the online form. We would appreciate it if you gave us your email so we can answer and supply additional information
+please fill all fields
+Do you have any visual impairments?
+If yes, please specify:
+Do you want to join our mailing list?
+Do you have any questions?
+Do you have any suggestions?
+Free text
+upload file from your computer to eye music
+In this page you can upload images (png, bmp, jpeg, jpg) from your computer.
+Drag and drop the image or use in "Upload file" button to upload, 
+you can sound it with eye music and download the audio file to your computer.
+press ctrl to start and stop the audio.
+create zip of wav files
+play and pause
+Uploaded Files:
+download zip
+yes
+no
+submit
+return to lesson
+Android EyeMusic application
+Games with eye music
+In this page you can upload svg files from your computer.
+about eye music application
+please fill all fields
+Join to mail list, questions and suggestions
+These details are important for researching and upgrading this training program. Filling them out will give you full access to the website
+create new user
+user name 
+password
+confirm Password
+birth year in four digits:
+gender:
+female
+male
+country:
+Are you blind or visually impaired ?
+Percentage of remaining vision:
+Please describe in your own words your level of vision:
+Age of vision loss:
+Do you have previous experience with the EyeMusic?
+if so, how many hours:
+Are you training alone or with the assistance of a sighted person?
+yourself
+with help
+complete login and get full access
+play camera
+you need to install the add plugin
+you need to install the add plugin and reinstall browser
+parameters
+login to eye music
+Enter username and password
+Speed
+seconds
+Cue type
+Beep
+Drum
+Click
+no cue
+Cue Volume
+Load
+Medium
+Low
+FILTERS
+Negative
+Black and white
+current parameters
+This section contains 
+ classes.
+This section contains .
+levels.
+Welcome to the online training program of Professor Amir Amadi lab
+In this page display game for training in eye music
+training level 1 
+move one shapes on screen.
+training level 2 
+move two shapes on screen.
+training level 3
+move shape to target
+training level 4
+move shape to target with Obstacles on the way.
+training level 5
+move shape to gate.
+training level 6
+move shape with the mouse.
+learn to use in eye music step by step
+next
+prev
+start test
+stop
+start
+your grade is: 
+exam, choose the correct image description according to audio
+upload file from your computer to eye music
+Press for download the zip file
+Repeat the previous lessons
+class
+level
+test
+login
+create
+Thank you for your feedback
+Your grade is too low, return on class 
+step by step version 1
+step by step version 2
+step by step start from the start
+how difficult this lesson was ?
+how much do you know this lesson ?
+replay
+I understand, show description
+feedback
+exam

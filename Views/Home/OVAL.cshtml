@@ -1,0 +1,344 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@Styles.Render("~/App_Themes/css")
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<style type="text/css">
+    table, tr, td {
+        border: 0;
+    }
+
+        tr.noBorder td {
+            border: 0;
+        }
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <title>OVAL</title>
+</head>
+<body>
+    <script type="text/javascript"> 
+        var thevoice;
+        var index;
+        var finshLoc;
+        var insert_finish = '';
+        var isPlay = false;
+
+        function cleartext()
+        {
+            isPlay = false;
+            myAudio.removeEventListener('ended', playnext, false);
+            document.getElementById("ovalinput").value = "";
+            document.getElementById("spans").innerHTML = "";
+        }
+
+        function foundvoice(input)
+        {
+            switch(input) {
+                case 'א':
+                    return 'alef' + insert_finish;
+                    break;
+                case 'ב':
+                    return 'bet' + insert_finish;
+                    break;
+                case 'ג':
+                    return 'gimel' + insert_finish;
+                    break;
+                case 'ד':
+                    return 'dalet' + insert_finish;
+                    break;
+                case 'ה':
+                    return 'he' + insert_finish;
+                    break;
+                case 'ו':
+                    return 'waw' + insert_finish;
+                    break;
+                case 'ז':
+                    return 'zain' + insert_finish;
+                    break;
+                case 'ח':
+                    return 'heth' + insert_finish;
+                    break;
+                case 'ט':
+                    return 'teth' + insert_finish;
+                    break;
+                case 'י':
+                    return 'yudh' + insert_finish;
+                    break;
+                case 'כ':
+                    return 'kaf' + insert_finish;
+                    break;
+                case 'ל':
+                    return 'lamedh' + insert_finish;
+                    break;
+                case 'מ':
+                    return 'mem' + insert_finish;
+                    break;
+                case 'נ':
+                    return 'nun' + insert_finish;
+                    break;
+                case 'ס':
+                    return 'samech' + insert_finish;
+                    break;
+                case 'ע':
+                    return 'ain' + insert_finish;
+                    break;
+                case 'פ':
+                    return 'peh' + insert_finish;
+                    break;
+                case 'צ':
+                    return 'tsade' + insert_finish;
+                    break;
+                case 'ק':
+                    return 'qoph' + insert_finish;
+                    break;
+                case 'ר':
+                    return 'reish' + insert_finish;
+                    break;
+                case 'ש':
+                    return 'shin' + insert_finish;
+                    break;
+                case 'ת':
+                    return 'tav' + insert_finish;
+                    break;
+                case 'ם':
+                    return 'mem' + insert_finish;
+                    break;
+                case 'ן':
+                    return 'nun' + insert_finish;
+                    break;
+                case 'ץ':
+                    return 'tsade' + insert_finish;
+                    break;
+                case 'ף':
+                    return 'peh' + insert_finish;
+                    break;
+                case 'ך':
+                    return 'kaf' + insert_finish;
+                    break;
+                case ' ':
+                    return 'endWordOval';
+                    break;
+                default:
+
+                break;
+            } 
+        }
+
+        function playnext() {
+            if (index == finshLoc) {
+                document.getElementById('s' + (index - 1)).style.backgroundColor = "white";
+                document.getElementById('s0').style.backgroundColor = "red";
+                index = 0;
+                $("#thePlayaudio").attr("src", "~/../../OVAL/endWordOval.mp3");
+                myAudio.currentTime = 0;
+                myAudio.pause();
+                myAudio.play();
+            }
+            else {
+                if (index > 0)
+                    document.getElementById('s' + (index - 1)).style.backgroundColor = "white";
+
+                document.getElementById('s' + index).style.backgroundColor = "red";
+                $("#thePlayaudio").attr("src", "~/../../OVAL/" + thevoice[index++] + ".mp3");
+                myAudio.currentTime = 0;
+                myAudio.pause();
+                myAudio.play();
+            }
+        }
+
+        function genrate()
+        {
+            document.getElementById("spans").innerHTML = "";
+
+            index = 0;
+            isPlay = true;
+            var theinput = document.getElementById("ovalinput").value.split('');
+            finshLoc = theinput.length;
+            thevoice = new Array(theinput.length);
+
+            //add to show fields
+            spans = document.getElementById("spans");
+            for (var i = 0; i < theinput.length; i++)
+            {
+                thevoice[i] = foundvoice(theinput[i]);
+                $('#spans').append('<span id="s'+i+'">' + theinput[i] + '</span>');
+            }
+            
+            myAudio = document.getElementById("thePlayaudio");
+            $("#thePlayaudio").attr("src", "~/../../OVAL/" + thevoice[index++] + ".mp3");
+            myAudio.currentTime = 0;
+            myAudio.pause();
+            document.getElementById('s0').style.backgroundColor = "red";
+            myAudio.play();
+
+            myAudio.addEventListener('ended', playnext, false);
+        }
+
+        function moreSpeed()
+        {
+            switch (insert_finish) {
+                case '_slow_x8':
+                    insert_finish = '_slow_x7';
+                    break;
+                case '_slow_x7':
+                    insert_finish = '_slow_x6';
+                    break;
+                case '_slow_x6':
+                    insert_finish = '_slow_x5';
+                    break;
+                case '_slow_x5':
+                    insert_finish = '_slow_x4';
+                    break;
+                case '_slow_x4':
+                    insert_finish = '_slow_x3';
+                    break;
+                case '_slow_x3':
+                    insert_finish = '_slow_x2';
+                    break;
+                case '_slow_x2':
+                    insert_finish = '_slow_x1';
+                    break;
+                case '_slow_x1':
+                    insert_finish = '';
+                    break;
+                case '':
+                    insert_finish = '_fast_x1';
+                    break;
+                case '_fast_x1':
+                    insert_finish = '_fast_x2';
+                    break;
+                case '_fast_x2':
+                    insert_finish = '_fast_x3';
+                    break;
+                case '_fast_x3':
+                    insert_finish = '_fast_x4';
+                    break;
+                case '_fast_x4':
+                    insert_finish = '_fast_x5';
+                    break;
+                case '_fast_x5':
+                    insert_finish = '_fast_x6';
+                    break;
+                case '_fast_x6':
+                    insert_finish = '_fast_x7';
+                    break;
+                case '_fast_x7':
+                    insert_finish = '_fast_x8';
+                    break;
+            }
+
+            if (insert_finish == '')
+                document.getElementById("speed").innerText = '0';
+            else
+                document.getElementById("speed").innerText = insert_finish.replace('_',' ');
+        }
+        function lessSpeed()
+        {
+            switch (insert_finish) {
+
+                case '_slow_x7':
+                    insert_finish = '_slow_x8';
+                    break;
+                case '_slow_x6':
+                    insert_finish = '_slow_x7';
+                    break;
+                case '_slow_x5':
+                    insert_finish = '_slow_x6';
+                    break;
+                case '_slow_x4':
+                    insert_finish = '_slow_x5';
+                    break;
+                case '_slow_x3':
+                    insert_finish = '_slow_x4';
+                    break;
+                case '_slow_x2':
+                    insert_finish = '_slow_x3';
+                    break;
+                case '_slow_x1':
+                    insert_finish = '_slow_x2';
+                    break;
+                case '':
+                    insert_finish = '_slow_x1';
+                    break;
+                case '_fast_x1':
+                    insert_finish = '';
+                    break;
+                case '_fast_x2':
+                    insert_finish = '_fast_x1';
+                    break;
+                case '_fast_x3':
+                    insert_finish = '_fast_x2';
+                    break;
+                case '_fast_x4':
+                    insert_finish = '_fast_x3';
+                    break;
+                case '_fast_x5':
+                    insert_finish = '_fast_x4';
+                    break;
+                case '_fast_x6':
+                    insert_finish = '_fast_x5';
+                    break;
+                case '_fast_x7':
+                    insert_finish = '_fast_x6';
+                    break;
+                case '_fast_x8':
+                    insert_finish = '_fast_x7';
+                    break;
+            }
+            
+            if (insert_finish == '')
+                document.getElementById("speed").innerText = '0';
+            else
+                document.getElementById("speed").innerText = insert_finish.replace("_", " ");
+        }
+        
+        function stopall()
+        {
+            if (isPlay) {
+                isPlay = false;
+                myAudio.removeEventListener('ended', playnext, false);
+            }
+            else
+                genrate();
+        }
+
+    </script>
+    
+    <h3> OVAL </h3>
+    <h3> me.kerem@gmail.com  בעברית בלבד בשלב זה, נא שלחו הערותיכם למייל </h3>
+    <div>
+        <table>
+            <tr>
+                <td><button onclick="cleartext()">clear</button></td>
+                <td><input type="text" id="ovalinput" /></td>
+                <td><button onclick="genrate()">genrate</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="spans"></td>
+                <td><button onclick="stopall()">stop and start</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="moreSpeed()">+</button></td>
+                <td><h3 id="speed">0</h3></td>
+                <td><button onclick="lessSpeed()">-</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <audio id="thePlayaudio" controls hidden="hidden">
+        @{
+            <source type="audio/mp3">
+        }
+        Your browser does not support the audio element.
+    </audio>
+
+</body>
+</html>

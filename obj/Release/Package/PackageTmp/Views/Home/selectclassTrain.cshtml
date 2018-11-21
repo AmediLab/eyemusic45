@@ -1,0 +1,147 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>select lesson, eye music</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+
+    <script type="text/javascript">
+
+    function adjust() {
+
+        if ("@Model.len" == "h")
+        {
+            document.getElementById("stage").innerHTML = "בחר שיעור";
+        }
+        else if("@Model.len" == "e")
+            {
+                document.getElementById("stage").innerHTML = "select class";
+            }
+        else if("@Model.len" == "f")
+            {
+            document.getElementById("stage").innerHTML = "Sélectionnez une leçon";
+        }
+        else if ("@Model.len" == "g") {
+            document.getElementById("stage").innerHTML = "Wähle die Lektion";
+        }
+
+        }
+
+        window.onload = adjust;
+    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+@{
+    if (Model.len == "h")
+    { 
+        @:<body onunload="" id="body1" dir="rtl">
+        <h5>
+            בדף זה יש  @Model.UItrainingStimuliTreeViewNew.Split(';').Count() שיעורים.
+        </h5> 
+    }
+    else
+    {
+        @:<body onunload="" id="body1" dir="ltr">
+       if (Model.len == "e") {
+        <h5>
+            This section contains @Model.UItrainingStimuliTreeViewNew.Split(';').Count() classes.
+        </h5>
+        }
+        else if (Model.len == "f") {
+            <h5>
+                Cette section contient @Model.UItrainingStimuliTreeViewNew.Split(';').Count() les classes.
+            </h5>
+        }
+        else if (Model.len == "g") {
+            <h5>
+                Dieser Abschnitt enthält @Model.UItrainingStimuliTreeViewNew.Split(';').Count() Klassen.
+            </h5>
+        }
+    }
+
+}
+            <div class="float-right">
+                @if (ViewBag.anonymous != null && !ViewBag.anonymous)
+        {
+                    <h3>
+                        hello @Model.userid
+                    </h3>
+        }
+            </div>
+            <div id="body">
+                <p class="site-title" id="stage">&nbsp</p>
+
+                @{
+            string[] all_levels = Model.UItrainingStimuliTreeViewNew.Split(';');
+
+            string[] all_levels_heb = all_levels;
+
+            if (Model.len == "h")
+            {
+                all_levels_heb = Model.UItrainingStimuliHebrow.Split(';');
+            }
+            else if (Model.len == "f")
+            {
+                all_levels_heb = Model.UItrainingStimuliFrance.Split(';');
+            }
+            else if (Model.len == "g")
+            {
+                all_levels_heb = Model.UItrainingStimuliGerman.Split(';');
+            }
+        
+
+            int index3 = 0;
+            int index1 = 0;
+            string level_heb;
+
+            foreach (string level in all_levels)
+            {
+                level_heb = all_levels_heb[index3++];
+                string[] all_stage = level.Split(',');
+                string[] all_stage_heb = level_heb.Split(',');
+
+                if (all_stage.Length > 1)
+                {
+                    using (Html.BeginForm("selectlevelTrain", "Home", FormMethod.Post, new { id = "submitForm" }))
+                    {
+                        <input type="hidden" name="selected_level" value="@all_stage[0]" />
+                        <input type="submit" value="@all_stage_heb[0].Replace("_", " ")" id="mytable @index1">
+                    }
+
+                    index1++;
+                }
+
+
+            }
+
+                }
+            </div>
+
+        </body>
+
+
+
+</html>

@@ -1,0 +1,36 @@
+em basics transcript:
+http://www.fromtexttospeech.com/
+
+this is a short tutorial on how to use eye music.
+in a few minutes you will be able to play a game using just the sounds!
+press space to continue
+
+
+the program scans the screen from left to right.
+when everything is empty, nothing is heard.
+now you can hear a shape in the middle of the screen, this is a red circle
+
+now there is a yellow circle.
+can you hear a difference?
+
+notice the different sound made by different colors.
+the left circle is red and the right is yellow
+
+shapes that appear higher on the screen create a higher sound.
+lower shapes make lower sounds.
+listen to these three shapes
+
+listen to what happens when we connect the shapes to a line.
+you may have noticed the color is different. this is white
+
+this is the same line, only it's gradient is in the other way
+
+this is what it sounds like when the line's gradient is higher
+
+this line is completely vertical
+
+and this line is completely horizontal
+
+that's all the basics. are you ready to start playing?
+if so press the space bar now.
+if you want to go over everything again you can restart this tutorial

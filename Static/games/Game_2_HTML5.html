@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<title>EM Game 2</title>
+		<style>
+		@import url("css/gameStyle.css");
+		html, body {
+			overflow:hidden;
+			height: 100%;
+			width:100%;
+			}		
+			body {
+			margin: 0px;
+			padding: 0px;
+			}
+		</style>
+	</head>
+			<!--  <body onresize="resize_canvas()"> Additional way to adjust canvas size to the size of the window -->
+	<body>
+		<canvas id="game"></canvas>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/defaultSetup.js"></script>
+		<script src="js/interface.js"></script>		
+
+	<script>
+	
+		horCells = 3;
+		verCells = 3;
+		if (voiceOver) {
+			createTable(horCells,verCells);
+		}
+
+		var shapeSize = 100;
+		var shapeHalfSize = (shapeSize/2);
+		
+		var audio = new Audio('Game_2_HTML5/Introduction.wav');
+		audio.play();
+		
+		var areaNumber = Math.floor((Math.random()*9) + 1);
+		
+		function pressAreaSpeak(){
+			if (areaNumber == 1) {
+				var audio = new Audio('Game_2_HTML5/PressUpperLeft.wav');
+				audio.play();			
+			}
+			
+			if (areaNumber == 2) {
+				var audio = new Audio('Game_2_HTML5/PressUpperCenter.wav');	
+				audio.play();
+			}
+			
+			if (areaNumber == 3) {
+				var audio = new Audio('Game_2_HTML5/PressUpperRight.wav');	
+				audio.play();
+			}
+			
+			if (areaNumber == 4) {
+				var audio = new Audio('Game_2_HTML5/PressMiddleLeft.wav');	
+				audio.play();
+			}
+
+			if (areaNumber == 5) {
+				var audio = new Audio('Game_2_HTML5/PressCenter.wav');	
+				audio.play();
+			}		
+
+			if (areaNumber == 6) {
+				var audio = new Audio('Game_2_HTML5/PressMiddleRight.wav');	
+				audio.play();
+			}
+			
+			if (areaNumber == 7) {
+				var audio = new Audio('Game_2_HTML5/PressLowerLeft.wav');	
+				audio.play();
+			}	
+
+			if (areaNumber == 8) {
+				var audio = new Audio('Game_2_HTML5/PressLowerCenter.wav');	
+				audio.play();
+			}
+
+			if (areaNumber == 9) {
+				var audio = new Audio('Game_2_HTML5/PressLowerRight.wav');	
+				audio.play();
+			}			
+		}		
+	
+		function randomizePressArea(){
+
+			areaNumber = Math.floor((Math.random()*9) + 1);
+			
+			<!-- var message = 'Area Number is: ' + areaNumber; -->
+			<!-- writeMessage(canvas, message); -->
+			
+		}
+		
+		randomizePressArea();
+		setTimeout(startOver, 8500); <!-- Waiting for introduction to be over. -->		
+		<!-- pressAreaSpeak(); -->
+
+		var color = 'white';
+		var shape = 'square';
+		randomizeColor();
+		
+		function drawSquare(x, y){    
+
+			context.beginPath();    
+			context.rect(x, y, 100, 100);
+			
+			<!-- context.fillStyle = getRandomColor();-->
+			context.fillStyle = 'blue';
+			context.fill();
+  
+		}
+
+		function drawCircle(x,y){    
+
+			context.beginPath();
+			context.arc(x, y, 50, 0, Math.PI*2, true);
+			
+			<!-- context.fillStyle = getRandomColor();-->		
+			context.fillStyle = 'white';
+			context.fill();
+		}
+
+		function drawTriangle(x, y){
+
+			context.beginPath();
+ 
+			context.moveTo(x, y);
+			context.lineTo(x + 100 , y);
+			context.lineTo(x + 50, y - 86.6);
+			context.lineTo(x,y);
+
+			<!-- context.fillStyle = getRandomColor();-->			
+			context.fillStyle = 'green';
+			context.fill();
+
+		}
+
+		var hitFlag = 0;
+		
+		function XY_locationSpeak(x_coor,y_coor){
+
+			var thirdOfX = (canvas.width / 3);
+			var thirdOfY = (canvas.height / 3);
+			
+			if ((x_coor >= 0) && (x_coor < thirdOfX)){
+				if ((y_coor >= 0) && (y_coor <= thirdOfY)){
+					if (areaNumber == 1) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+						
+						var audio = new Audio('Game_2_HTML5/UpperLeft.wav');
+						audio.play();
+						
+						hitFlag = 0;
+					}
+				}
+				if ((y_coor > thirdOfY) && (y_coor <= (thirdOfY * 2))){
+					if (areaNumber == 4) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/MiddleLeft.wav');
+						audio.play();
+						
+						hitFlag = 0;						
+					}
+				}
+				if ((y_coor > (thirdOfY * 2)) && (y_coor <= canvas.height)){
+					if (areaNumber == 7) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {	
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/LowerLeft.wav');
+						audio.play();
+						
+						hitFlag = 0;						
+					}
+				}				
+			}
+			
+			if ((x_coor >= thirdOfX) && (x_coor < (thirdOfX * 2))){
+				if ((y_coor >= 0) && (y_coor <= thirdOfY)){
+					if (areaNumber == 2) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/UpperCenter.wav');
+						audio.play();
+						
+						hitFlag = 0;						
+					}
+				}
+
+				if ((y_coor > thirdOfY) && (y_coor <= (thirdOfY * 2))){
+					if (areaNumber == 5) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/Center.wav');
+						audio.play();
+						
+						hitFlag = 0;							
+					}
+				}
+
+				if ((y_coor > (thirdOfY * 2)) && (y_coor <= canvas.height)){
+					if (areaNumber == 8) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/LowerCenter.wav');
+						audio.play();
+						
+						hitFlag = 0;	
+					}
+				}			
+			}
+
+			if ((x_coor >= (thirdOfX * 2)) && (x_coor <= canvas.width)){
+				if ((y_coor >= 0) && (y_coor <= thirdOfY)){
+					if (areaNumber == 3) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/UpperRight.wav');
+						audio.play();
+							
+						hitFlag = 0;						
+					}
+				}
+				
+				if ((y_coor > thirdOfY) && (y_coor <= (thirdOfY * 2))){
+					if (areaNumber == 6) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						shitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/MiddleRight.wav');
+						audio.play();
+							
+						hitFlag = 0;						
+					}
+				}
+				
+				if ((y_coor > (thirdOfY * 2)) && (y_coor <= canvas.height)){
+					if (areaNumber == 9) {
+						var audio = new Audio('Game_2_HTML5/Success.wav');
+						audio.play();
+						randomizePressArea();
+						hitFlag = 1;						
+					}
+					else {
+						var audio = new Audio('Game_2_HTML5/BreakingGlass.wav');
+						audio.play();
+											
+						var audio = new Audio('Game_2_HTML5/LowerRight.wav');
+						audio.play();
+							
+						hitFlag = 0;							
+					}
+				}
+			}				
+					
+		}		
+		
+
+		function startOver(){
+			clear();
+			
+			pressAreaSpeak();		
+			<!-- var audio = new Audio('Game_2_HTML5/PressAgain.wav'); -->
+			<!-- audio.play(); -->
+		}
+  
+  
+		function clickFunc(x,y) {
+		
+			XY_locationSpeak(x, y);
+			drawCircle(x, y);
+			<!-- setTimeout(pressAreaSpeak, 2500); -->
+			
+			if (hitFlag == 1) {
+				setTimeout(startOver, 1500);
+			}
+			if (hitFlag == 0) {
+				setTimeout(startOver, 6000);
+			}
+		}
+
+	</script>
+	</body>
+</html>  

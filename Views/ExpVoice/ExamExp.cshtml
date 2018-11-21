@@ -1,0 +1,584 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title id="title" hidden="hidden"></title>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="../mespeak/mespeak.js"></script>
+    <script type="text/javascript" src="~/Scripts/languages.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+
+        var numQuestions = @Model.totalNumQuestion - @Model.num_question_step;
+        var before;
+        var after;
+        var arrive = 0;
+        var startTime;
+        var myVar;
+        var finishit = 0;
+
+        //meSpeak.loadConfig("../mespeak/mespeak_config.js");
+        window.ToSpeakYes = "";
+        window.ToSpeakNo = "";
+
+
+        $(document).bind('keydown', 'ctrl', function () {
+            UIplayButton_click();
+        });
+
+        $(document).bind('keydown', 'z', function () {
+            if(myTitle.paused)
+            {
+                myAnswer.pause();
+                myAnswer.currentTime = 0;
+                myTitle.play();
+            }
+            else
+            {
+                myTitle.pause();
+                myTitle.currentTime = 0;
+            }
+        });
+
+        $(document).bind('keydown', 'x', function () {
+            if(myAnswer.paused)
+            {
+                myTitle.pause();
+                myTitle.currentTime = 0;
+                myAnswer.play();
+            }
+            else
+            {
+                myAnswer.pause();
+                myAnswer.currentTime = 0;
+            }
+        });
+
+
+        @if (!Model.withAnswer)
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                @:$(document).bind('keydown', '@i', function() {
+                                        @:    sendajax('@i');
+                                        @:});
+                    }
+
+            @:$(document).bind('keydown', 'h', function() {
+            @:    document.getElementById("helpstart").play();
+            @:});
+
+        }
+        else
+        {
+             @:$(document).bind('keydown', 'y', function() {
+             @:    sendajax('y');
+             @:});
+             @:$(document).bind('keydown', 'n', function() {
+             @:    sendajax('n');
+             @:});
+
+            @:$(document).bind('keydown', 'h', function() {
+            @:    document.getElementById("helpmid").play();
+            @:});
+        }
+
+
+
+        $(document).bind('keydown', 'space', function () {
+            if (document.getElementById("nextbut").style.visibility == "visible")
+                nextSesion();
+        });
+
+        $(document).bind('keydown', 'shift+f1', function () {
+            if (document.getElementById("thePlayaudio").playbackRate < 3.50)
+                document.getElementById("thePlayaudio").playbackRate += 0.1;
+        });
+
+        $(document).bind('keydown', 'shift+f2', function () {
+            if (document.getElementById("thePlayaudio").playbackRate > 0.59)
+                document.getElementById("thePlayaudio").playbackRate -= 0.1;
+        });
+
+    </script>
+    <script type="text/javascript">
+    var recived;
+    var rethome;
+    var showall;
+    var retlessn;
+    var remaind = 100;
+
+    function myTimer() {
+        var d = new Date();
+        remaind = @Model.TimeToExam - ((d.getTime() - startTime.getTime()) / 1000);
+        //document.getElementById("Timer").innerHTML = "נותרו עוד " + Math.floor(remaind + 1) + " שניות לשאלה ";
+
+        if (remaind <= 0)
+        {
+            startTime = new Date();
+            sendajax('k');
+            //window.location.replace("TimeEnded");
+        }
+    }
+
+    function doChange()
+    {
+
+        startTime = new Date();
+
+        @if (!Model.withAnswer)
+        {
+                @:myVar=setInterval(function () {myTimer()}, 1000);
+        }
+    }
+
+    </script>
+
+</head>
+
+@{
+
+        @:<body onunload="" id="body1" dir="rtl">
+            @:<div id="all" class="float-right">
+
+ }
+
+<h6 id="numQuestionShow"></h6>
+
+                  <div id="titles">
+                     
+                  </div>
+
+<div id="container">
+
+    <div id="menu" style="background-color: #FFFFFF; height: 200px; width: 100px;">
+
+        <table style="width:300px">
+            <tr>
+                <td>
+                    <button title="Play" id="UIplayButton" onclick="UIplayButton_click()"></button>
+                </td>
+            </tr>
+        </table>
+
+        <audio id="click" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                string clickstr = "~/../../ExpVoices/click.mp3";
+                <source src="@clickstr" type="audio/mp3" />
+            }
+
+        </audio>
+        <audio id="thePlayaudio" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                string dds3 = "~/../../" + Model.theUri;
+                <source src="@dds3" type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="thefinishaudio" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                string dds4 = "~/../../ExpVoices/examfinish.m4a";
+                <source src="@dds4" type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="examfailaudio" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                string examfailaudio = "~/../../ExpVoices/examFail.m4a";
+                <source src="@examfailaudio" type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>    
+
+        <audio id="titleaudio" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+    int sum = Model.ExpStep.getindex() + 1;
+                string titlea = "~/../../ExpVoices/title/" + sum + ".m4a";
+                <source src="@titlea" type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="answeraudio" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                int answerNumber = Model.ExpStep.getindex();
+
+                if (answerNumber > 380)
+                {
+                    answerNumber -= 380;
+                }
+
+                string answera = "~/../../ExpVoices/answer/" + answerNumber + ".m4a";
+                <source src="@answera" type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="helpmid" style="height:1px;width:1px" controls hidden="hidden">
+            @{ 
+                string ssde3 = "~/../../ExpVoices/helpmid.m4a";
+                <source src=@ssde3 type="audio/mp3">
+             }
+             Your browser does not support the audio element.
+        </audio>
+
+        <audio id="helpstart" style="height:1px;width:1px" controls hidden="hidden">
+            @{ 
+                string ssde4 = "~/../../ExpVoices/helpstart.m4a";
+                <source src=@ssde4 type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="correctAnswer" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                string correctAnswer = "~/../../ExpVoices/correctAnswer.m4a";
+                <source src=@correctAnswer type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>   
+
+        <audio id="wrongAnswer" style="height:1px;width:1px" controls hidden="hidden">
+            @{
+                string wrongAnswer = "~/../../ExpVoices/wrongAnswer.m4a";
+                <source src=@wrongAnswer type="audio/mp3">
+            }
+            Your browser does not support the audio element.
+        </audio>
+        <script type="text/javascript">
+
+            var play = false;
+                var tosend = 0;
+                myAudio = document.getElementById("thePlayaudio");
+                myTitle = document.getElementById("titleaudio");
+                myAnswer = document.getElementById("answeraudio");
+
+                handlerBeep = function () {
+                    this.pause();
+                    this.currentTime = 0;
+                    this.play();
+                }
+
+                function init1() {
+
+                    before = new Date();
+
+                    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+                {
+                        document.getElementById("UIplayButton").innerHTML = retstr(122);
+                    }
+                    /*else
+                    {
+                        UIplayButton_click();
+                    }*/
+
+                    tosend = @Model.ExpStep.getindex();
+
+
+                $("#body1").addClass("right-to-left");
+                    window.lan = "h";
+
+                    @if(!Model.withAnswer)
+                    {
+                    @:document.getElementById("helpstart").play();
+                }
+                else
+                {
+                    @:document.getElementById("helpmid").play();
+                }
+
+                doChange();
+            }
+
+
+            window.onload = init1;
+
+            function UIplayButton_click() {
+
+                if (play == false) {
+                    document.getElementById("UIplayButton").innerText = retstr(121);
+                    myAudio.addEventListener('ended', handlerBeep, false);
+                    myAudio.play();
+                    play = true;
+                }
+                else {
+                    document.getElementById("UIplayButton").innerText = retstr(122);
+                    myAudio.removeEventListener('ended', handlerBeep, false);
+                    play = false;
+                    myAudio.pause();
+                    myAudio.currentTime = 0;
+
+                }
+
+            }
+                </script>
+
+        
+            @if (!Model.withAnswer)
+            {
+                <button style="width:480px;height:30px;margin-top:20px" id="But_A" value="@Model.answers[0] " onclick="sendajax('1')" hidden="hidden">@Model.answers[0]</button>
+                <button style="width:480px;height:30px;margin-top:20px" id="But_B" value="@Model.answers[1]" onclick="sendajax('2')" hidden="hidden">@Model.answers[1]</button>
+                <button style="width:480px;height:30px;margin-top:20px" id="But_C" value="@Model.answers[2]" onclick="sendajax('3')" hidden="hidden">@Model.answers[2]</button>
+                <button style="width:480px;height:30px;margin-top:20px" id="But_D" value="@Model.answers[3]" onclick="sendajax('4')" hidden="hidden">@Model.answers[3]</button>
+            }
+            else
+            {
+                <button style="width:140px;height:30px;margin-top:20px" id="YesBut" value="yes" onclick="sendajax('y')"></button>
+                <button style="width:140px;height:30px;margin-top:20px" id="NoBut" value="no" onclick="sendajax('n')"></button>
+            }
+
+                <button style="visibility:hidden;width:700px;height:30px;margin-top:20px" id="nextbut" onclick="nextSesion(arrive)"></button>
+
+
+                <table>
+                    <tr>
+                        <td id="PreviosImageText"></td>
+                    </tr>
+                    <tr>
+                        <td id="PreviosImage"></td>
+                    </tr>
+                </table>
+
+                <script type="text/javascript">
+    function nextSesion()
+    {
+        @if (Model.onlyExam == true)
+        {
+               @:window.location.replace("../Home/Index");
+                                                }
+        else if (Model.finishExam == true)
+        {
+            @:window.location.replace("feedbackfinish");
+                                                }
+        else
+        {
+
+        @:if (arrive == 1)
+                                                                        @:window.location.replace("EndExam");
+                                                                    @:else
+                                                                        @:window.location.replace("returnClass")
+                                                }
+    }
+
+    var numbertotlal = @Model.totalNumQuestion;
+
+    function sendajax(answerCheck)
+    {
+        document.getElementById("click").play();
+
+        var shownum = numQuestions + 1;
+        //document.getElementById("numQuestionShow").innerHTML = "שאלה  "  +   shownum + " מתוך " + @Model.totalNumQuestion ;
+        after = new Date();
+
+        // Convert both dates to milliseconds
+        var date1_ms = before.getTime();
+        var date2_ms = after.getTime();
+
+        // Calculate the difference in milliseconds
+        var difference_ms = date2_ms - date1_ms;
+
+        play = false;
+        myAudio.pause();
+        myAudio.currentTime = 0;
+
+        if (numQuestions <  numbertotlal)
+        {
+            //console.log(numQuestions);
+            numQuestions++;
+            myAudio.removeEventListener('ended', handlerBeep, false);
+            @if (!Model.withAnswer)
+            {
+                @:document.getElementById("But_A").disabled = false;
+                                                                            @:document.getElementById("But_B").disabled = false;
+                                                                            @:document.getElementById("But_C").disabled = false;
+                                                                            @:document.getElementById("But_D").disabled = false;
+                                                                        }
+            else
+            {
+                @:document.getElementById("YesBut").disabled = false;
+                                                                            @:document.getElementById("NoBut").disabled = false;
+                                                             }
+
+            myAudio.removeEventListener('ended', handlerBeep, false);
+
+
+            $.ajax({
+                url: '@Url.Action("Examnext")',
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    answer: answerCheck,
+                    iInIndex: tosend,
+                    diffrent: difference_ms
+                }),
+                success: function (data) {
+
+
+                    $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+
+                    var titlea = data.sendindex;
+
+                    if (titlea > 380)
+                        answer = titlea - 380;
+                    else
+                        answer = titlea;
+
+                    titlea +=1;
+
+                    $("#titleaudio").attr("src", "~/../../ExpVoices/title/" + titlea + ".m4a");
+                    @if (!Model.withAnswer)
+                    {
+                        @:$("#answeraudio").attr("src", "~/../../ExpVoices/answer/" + answer + ".m4a");
+                    }
+                    //document.getElementById("titleaudio").play();
+                    
+                    startTime = new Date();
+                    tosend = data.sendindex;
+
+                    $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+
+                    var vid = document.getElementById("thePlayaudio");
+
+                    /*vid.oncanplay = function() {
+                        play = false;
+                        UIplayButton_click();
+                        vid.oncanplay = null;
+                    };*/
+
+                    @if (Model.withAnswer == true)
+                    {
+                        @:if (data.correct == 0) {
+                                                                                    @:    sayNo();
+                                                                                    @:}
+                                                                                    @:else {
+                                                                                    @:   sayYes();
+                                                                                                            @:}
+                                         @:document.getElementById("YesBut").disabled = false;
+                                        @:document.getElementById("NoBut").disabled = false;
+                    }
+                   else
+                   {
+                         @:document.getElementById("But_A").disabled = false;
+                                                                @:document.getElementById("But_B").disabled = false;
+                                                                @:document.getElementById("But_C").disabled = false;
+                                                                @:document.getElementById("But_D").disabled = false;
+                                                                @:document.getElementById("But_A").innerHTML = data.A;
+                                                                @:document.getElementById("But_B").innerHTML = data.B;
+                                                                @:document.getElementById("But_C").innerHTML = data.C;
+                                                                @:document.getElementById("But_D").innerHTML = data.D;
+                                                                @:document.getElementById("UIplayButton").innerText = retstr(121);
+                                                                @:myTitle.play();
+                                         }
+
+                    $("#0").focus();
+
+                },async: false
+            });
+
+        }
+        else
+        {
+            window.clearInterval(myVar);
+            finishit = 1;
+
+            $.ajax({
+                url: '@Url.Action("OnlyCheck")',
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({
+                    answer: answerCheck,
+                    iInIndex: tosend,
+                    diffrent: difference_ms
+                }),
+                success: function (data) {
+
+                    @if (Model.withAnswer == true)
+                    {
+                        @:if (data.correct == 1)
+                                                                                                @:{
+                                                                                                @:    sayYes();
+                                                                                                @:}
+                                                                                                @:else {
+                                                                                                @:    sayNo();
+                                                                                                @:}
+
+                        @:document.getElementById("YesBut").style.visibility = "hidden";
+                                                                                    @:document.getElementById("NoBut").style.visibility = "hidden";
+
+                    }
+                    else
+                    {
+                        @:document.getElementById("But_A").style.visibility = "hidden";
+                                                                                    @:document.getElementById("But_B").style.visibility = "hidden";
+                                                                                    @:document.getElementById("But_C").style.visibility = "hidden";
+                                                                                    @:document.getElementById("But_D").style.visibility = "hidden";
+                                                                                    @:document.getElementById("thefinishaudio").play();
+                                                                                    @:arrive = 1;
+                                                            }
+
+                    document.getElementById("nextbut").style.visibility = "visible";
+                    document.getElementById("UIplayButton").style.visibility = "hidden";
+
+                    if (data.numCorrect > 6)
+                    {
+                        arrive = 1;
+                    }
+
+                },async: false
+            });
+        }
+    }
+
+    function afterSayYesOrNo()
+    {
+        if (finishit == 0)
+        {
+            document.getElementById("UIplayButton").innerText = retstr(121);
+            myAudio.addEventListener('ended', handlerBeep, false);
+            myAudio.play();
+            play = true;
+        }
+        else
+            document.getElementById("thefinishaudio").play();
+    }
+
+    var correctAnswer = document.getElementById("correctAnswer");
+    var wrongAnswer = document.getElementById("wrongAnswer");
+    correctAnswer.addEventListener('ended', afterSayYesOrNo, false);
+    wrongAnswer.addEventListener('ended', afterSayYesOrNo, false);
+
+    function sayYes()
+    {
+        correctAnswer.play();
+    }
+    function sayNo()
+    {
+        wrongAnswer.play();
+    }
+   </script>
+</div>
+</div>
+    </div>
+</body>
+</html>
+

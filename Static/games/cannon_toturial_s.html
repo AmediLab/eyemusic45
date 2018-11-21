@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> canon toturial	</title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/targetGame.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/drawShapes.js"></script>
+	<script src="js/joystick.js"></script>	
+	<script src="js/cannon_general.js"></script>
+	
+	<script>
+		screen_compatibility = 1;
+		voiceOver = true;
+		joystick();
+		var BG_COLOR = "black";
+		calcGrid();
+		createGrid();
+		startMessage = startMessages[1];
+		
+		// setup sounds	
+		var welcome = 'cannonGame/tut_welcome.mp3';
+		var inst = 'cannonGame/keysInstructions.mp3';
+		var miss = 'cannonGame/miss.mp3';
+		var s001 = 'cannonGame/seeCannon.mp3';
+		var mobileWelcome  = 'cannonGame/welcome.space.see.mp3';
+
+		var score = 0;
+		var level = 1;
+		getLevel();
+		var cannonAngle = 0;
+		var hitAngle;
+		var dAngle;
+		var distRadius = 50;
+		var msg;
+		var refractory = false;
+		var rePaint = false;
+		
+		// disable firing
+		var peaceTime = false;
+		var is_target = false;
+
+		var MAX_LEVEL = 100;
+		var POINTS_PER_LEVEL = 5;
+		var ARROW_IS_NEXT_ROUND = false;
+		
+		move.value = false;
+		
+		function newGame() {
+			stopEM();
+						
+			newRound();	
+		}			
+		
+		var level_audio;
+		var lev_timeout;
+		function levelSettings() {
+
+			calcSizes();
+			peaceTime = false;
+			
+			// possible to hit
+			is_target = false;
+			AFTER_LEVEL_PLAY_LEVEL = -1;
+			
+			switch (level) {
+				case 1:
+					CANNON_ACCURACY = 30;
+					targetRadius = 0;
+					level_audio  = 'cannonGame/welcome.space.see.mp3';
+					distractor = false;
+					peaceTime = true;
+					break;
+				case 2:
+					level_audio  = 'cannonGame/seeCannon2.mp3' ;
+					CANNON_ACCURACY = 15;
+					targetRadius = 0;
+					distractor = false;
+					peaceTime = true;
+					break;		
+				case 3:
+					level_audio  = 'cannonGame/fireHow.mp3' ;
+					CANNON_ACCURACY = 30;
+					targetRadius = 0;
+					distractor = false;
+					break;							
+				case 4:
+					level_audio  = 'cannonGame/meetTarget.mp3' ;
+					CANNON_COLOR = BG_COLOR;
+					targetRadius = targetDefaultRadius*3/4;
+					distractor = false;
+					peaceTime = true;
+					break;						
+				case 5:
+					level_audio  = 'cannonGame/try.mp3' ;
+					CANNON_ACCURACY = 15;
+					targetRadius = targetDefaultRadius*3/5;
+					cannonHeight = windowHeight/2;
+					distractor = false;
+					peaceTime = false;
+					is_target = true;
+					distRadius = targetRadius;
+					break;	
+					
+				case 6: // blank level
+					level_audio  = 'cannonGame/start_levels.mp3'; 
+					targetRadius = 0;
+					CANNON_COLOR = BG_COLOR;
+					distractor = false;
+					peaceTime = true;
+					is_target = false;
+					AFTER_LEVEL_PLAY_LEVEL = 1;
+					break;
+					
+				case 7:
+					level_audio  = 'cannonGame/seeFace.mp3' ;
+					CANNON_COLOR = BG_COLOR;
+					targetRadius = 0;
+					distractor = true;
+					distRadius = targetDefaultRadius;
+					peaceTime = true;
+					break;		
+
+				case 8:
+					level_audio  = 'cannonGame/seeFace2.mp3' ;
+					CANNON_COLOR = BG_COLOR;
+					targetRadius = 0;
+					distractor = true;
+					distRadius = targetDefaultRadius  / 2;
+					peaceTime = true;
+					AFTER_LEVEL_PLAY_LEVEL = 4;
+					break;		
+
+
+				case 20:
+					stopEm_url("cannon_s.html");
+					break;
+					
+				default:
+					
+					break;					
+			}
+			
+			if (!rePaint) {
+				stopEM();
+				play_func(level_audio, enable_move_EM);	
+			}
+		}
+
+		function newRound() {
+
+			resize_canvas(canvas);
+			if (!rePaint) { move.value = false; }
+			context.translate(0, 0);
+			levelSettings();
+			context.translate(cannonX, windowHeight);
+			 
+			setTimeout(function() {
+					
+					context.clearRect(-cannonX , 0 , cannonX*2, - windowHeight);
+					var screenWidth = windowWidth; 
+					var targetY = -windowHeight + targetHeight;
+					
+					// find a hit angle
+					var maxAngle = Math.atan2(Math.abs(cannonX - centerlize),-targetY) * 180 / Math.PI;
+					maxAngle = maxAngle - maxAngle%CANNON_ACCURACY;
+					var steps = Math.floor(maxAngle / CANNON_ACCURACY) * 2;
+					hitAngle = -Math.floor(maxAngle) + Math.floor(Math.random()*(steps + 1))*CANNON_ACCURACY;
+					
+					
+					// find an x point for the target
+					var targetX = Math.tan(-hitAngle * Math.PI / 180) * targetY;		
+					
+					putTargetSimple(context,targetX,targetY,targetRadius);
+					if (distractor) {
+						var distX = Math.tan(-dAngle * Math.PI / 180) * targetY;	
+						putDistractor(0,targetY,distRadius);
+					}
+					
+					cannonAngle = 0; 
+					restartCannon();
+					hideShame();
+			
+			}, lev_timeout);
+
+			rePaint= false;
+		}
+		
+
+		
+		function fire() {
+
+			if (ARROW_IS_NEXT_ROUND) {
+				level = level+1;
+				newRound();
+			}
+								
+			if (!peaceTime) {
+			
+				hitmark(cannonAngle);
+				
+				if (is_target) {
+					if (Math.abs(cannonAngle - hitAngle) < NEEDED_ACCURACY) {
+						level = level+1;
+
+						setTimeout(function(){
+								play_audio(firehit); 
+								clear();
+								setTimeout(function(){
+									newRound();
+								}, 500);
+							}, 500);	
+					
+
+					} else {
+							play_audio(laser);
+							setTimeout(function(){
+									play_audio(miss); 
+								}, 500);	
+					}
+				}
+				else {
+					play_audio(laser);
+				// spaceBar();
+				}
+			} 
+		}
+
+	
+
+	
+		function clickFunc(x,y) {
+	
+			if (!move.value) { return;	}
+	
+			if (MAX_LEVEL <= level) {
+				stopEm_url("cannon_s.html");
+			}				
+		
+			if (x <= windowWidth/3) {
+				cannonShift(cannonAngle-CANNON_ACCURACY);
+			} else if (x <= windowWidth*2/3) {
+				fire();
+			} else {
+				cannonShift(cannonAngle+CANNON_ACCURACY);
+			}
+			
+	
+		}
+		
+		window.addEventListener('resize', resize , false);
+		function resize() {
+			resize_canvas(canvas);
+			rePaint = true;
+			
+			newRound();
+		}
+
+		
+		function spaceBar() {	
+			
+			if (!move.value || !gameStart) { return;	}
+			
+			if (MAX_LEVEL < level) {
+				stopEm_url("cannon_s.html");
+			}
+		
+			if (AFTER_LEVEL_PLAY_LEVEL != -1) {
+				setTimeout(function(){
+				stopEm_url("cannon_s.html?level="+AFTER_LEVEL_PLAY_LEVEL);
+				},1000);
+			} else { 
+				level = level+1;
+				newRound();
+			}	
+		}				
+  	
+	</script>
+	<script src="js/compatibility.js"></script>
+	<script src="js/mobileCheck.js"></script>	
+	
+	</body></html>

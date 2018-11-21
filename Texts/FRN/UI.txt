@@ -1,0 +1,133 @@
+﻿Application EyeMusic.
+Bienvenue dans l'EyeMusic (version BETA)
+Avec l'EyeMusic, vous pouvez voir des images grâce à leur version sonifiée (I.e des sons). Sur ce site, vous pouer jouer et stopper les sons en appuyant sur "CTRL"; vous pouvez aussi jouer sur la vitesse de présentation des sons avec les boutons: shift + F1 et shift + F2.
+Cette petite vidéo va expliquer les base de la substitution sensorielle.
+
+
+Links
+Apprenez à voir avec de la musique.
+Plus d'informations sur l'EyeMusic, incluant des vidéo sympahiques, la science derrière l'Eyemusic et autre système d'aide que nous avons développer. 
+Uploader vos images dans l'EyeMusic, et jouer le sons qui correspond.
+Nous contacter, joindre la mailing list, feedback/remarques.
+App store et Application eyemusic.
+Sélectionnez une leçon, Eyemusic
+Sélectionnez une leçon
+Sélectionnez un niveau, Eyemusic.
+Sélectionnez un niveau
+Retour à la page d'acceuil.
+Cette section contient
+des images, vous pouvez passez d'image en image en image avec les bouttons tab et shift, appuyer sur etrée pour jouer le sons correpsondant à l'image selectionnée.
+Presez ctrl pour jouer et arrêter les sons.
+Play et pause.
+Rappelez vous toujours des 3 règles de Eyemusic: 
+1. le scanning de l'image va de gauche à droite et chaque scan de l'image commence avec un bref 'bip'.
+ 2. la hauteur de l'iobjet dans l'image est représentée par la fréquence du son.
+ 3. Les différente couleurs sont représentée par different son d'insturment.
+Commencer l'examen.
+Votre browser ne supporte pas l'élément audio.
+Sélectionnez la description correcte pour l'image que vous entendez. Pressez ctrl pour jouer et arrêter le sons. 
+l'image précédente est
+Dans cet examen, vous recevez des notes 
+Montrer tout les notes de tout les niveaux.
+Dites nous s'il vous plait ce que vous pensez en remplissant le formulaire online (en anglais). Nous apprécierons si vous pouviez nous donnez votre E-mail pour vous répondre et vous donnez des informations additionnelles.
+Remplissez SVP tout les champs.
+Souffrez vous de déficits visuel?
+Si oui, spécifiez: 
+Voulez-vous rejoindre notre mailing liste? (en Anglais)
+Avez-vous des questions? (Anglais)
+Avez-vous des suggestions ? (Anglais)
+Texte libre (Anglais).
+Uploader images de votre ordinateur dans l'EyeMusic.
+Dans cette page, vous pouvez unploader des images (png, bmp, jpeg, jpg) de votre ordinateur.
+Drag and drop l'image ou utilisez le boutton "upload file" pour uploader.
+Vous pouvez jouer le sons avec l'EyeMusic et downloader le fichier audio sur votre ordinateur. 
+Pressez ctrl pour jouer et arrêter les sons.
+Créer un zip avec les fichier waw.
+Play et pause.
+Fichier uploader.
+Downloader les zip
+oui
+non
+soumettre
+Retour à la leçon.
+Application EyeMusic pour Androïd.
+Jeux avec l'Eymusic.
+Dans cette page, vous pouvez unploader les fichier svg de votre ordinateur.
+A propos de l'application EyeMusic.
+SVP remplissez tout les champs.
+Joindre la mailing liste, questions et suggestions (en Anglais)
+Ces détails sont important pour le développement et l'amélioration de ce programme d'entraînement. Les remplir en entier vous donne accès à tout le programme d'entraînement. 
+Création d'un nouveau profil d'utilisateur.
+Nom d'utilisateur
+Mot de passse
+Confirmez le mot de passe
+Année de naissance (AAAA)
+genre:
+Femme
+Homme
+Pays:
+Etes-vous aveugle ou malvoyant?
+Pourcentage de vision restant?
+Decrivez SVP votre niveau de vision avec vos propre mots:
+Age auquel vous avec perdu votre vision: 
+Avez-vous déjà eu une expérience avec l'Eyemusic avant?
+Si oui, combien d'heure?
+Entraînez-vous seule ou avec l'aide d'une personne voyante?
+Vous-même
+Avec de l'aide
+Finir le Login et avoir un accès complet
+allumer la caméra
+Vous devez installer ce plugin supplémentaire 
+Vous devez installer ce plugin supplémentaire, et réistaller le browser.
+Paramètres
+Login to eye music.
+Entrer le Nom d'utilisateur et le mot de passe. 
+vitesse
+secondes
+Type d'indice
+beep
+Batterie
+Click
+pas d'indice
+Volume
+charge
+Moyen
+bas
+flitres
+negatif
+noir et blanc
+parametre actuel
+cette section contient 
+les classes
+Cette section contient 
+les niveaux
+Bienvenue dans le programme d'entraînement onlie du laboratoire du professeur Amir Amedi.
+Dans cette page se trouve les jeux pour entraîner l'Eye music.
+Entrainement niveau 1
+déplacez une forme sur l'ecran
+Entrainement niveau 2
+déplacez deux formes sur l'ecran
+Entrainement niveau 3
+déplacez trois formes sur l'ecran
+Entrainement niveau 4
+Déplacez l'objet jusqu'à la cible avec des obstacle sur le chemin.
+Entrainement niveau 5
+Déplacez les forme jusqu'à la porte.
+Entrainement niveau 6
+Déplacez l'objet avec la souris.
+Apprenez à utilisez l'EyeMusic pas à pas. 
+suivant
+Précédent
+commencer le test.
+stop
+Start
+votre note est: 
+Examen, choisissez l'image correspondant au son que vous entendez.
+Uploader des fichier de votre ordinateur dans l'EyeMusic.
+Pressez pour downloader le fichier zip.
+Répétez les leçons précédentes
+classe
+niveau
+test
+Login
+Création

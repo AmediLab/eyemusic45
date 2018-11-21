@@ -1,0 +1,78 @@
+﻿@model eyemusic45.Models.ViewModels.AddLessonsModel
+@{
+    Layout = "";
+}
+
+<html>
+<body>
+
+    <script type="text/javascript">
+        function validateForm() {
+            var x = document.getElementById("DirName").value;
+            var y = document.getElementById("DirHebrew").value;
+            console.log(x);
+            console.log(y);
+            if (x == null || x == "" || y == null || y == "") {
+                alert("please fill two fields");
+                return false;
+            }
+
+            if(! /^[a-zA-Z0-9]+$/.test(x))
+            {
+                alert("The Name must be alphnumric witout spaces");
+                return false;
+            }
+        }
+    </script>
+    <h2 style="color:blue">insert new direcotry</h2>
+    
+        
+            <form action="/Herzel/add" id="addForm" method="post" onsubmit="return validateForm()">
+                <table>
+                    <tr>
+                        <td>
+                            <h3>English Name directory:</h3>
+                        </td>
+                        <td>
+                            <input type="text" id="DirName" name="DirName" value="" />
+                        </td>
+                        <td>
+                            <h3>Hebrew name directory:</h3>
+                        </td>
+                        <td>
+                            <input type="text" id="DirHebrew" name="DirHebrew" value="" />
+                        </td>
+                        <td>
+                            <input type="submit" value="Add directory" id="+">
+                        </td>
+                    </tr>
+                </table>
+                </form>
+    <table>
+        <tr>
+            <td>
+                <h2 style="color:blue">Mangament existdirectory</h2>
+            </td>
+        </tr>
+
+        @foreach (string DirNAme in Model.allDirectory)
+        {
+            <tr>
+                <td>
+                    <form action="/Herzel/enterLesson" id="addForm" method="post">
+                        <input type="submit" value="@DirNAme" />
+                        <input type="hidden" name="DirName" value="@DirNAme" />
+                    </form>
+</td>
+                <td>
+                     
+                        <form action="/Herzel/remove" id="delForm" method="post" onsubmit="return confirm('You realy want to delete the folder?')">
+                            <input type="submit" value="remove" />
+                            <input type="hidden" name="DirName" value="@DirNAme" />
+                        </form>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

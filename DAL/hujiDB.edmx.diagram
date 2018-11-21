@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68218e98167c4af28d8c52b8bb0a91b1" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="amira_virtual_expModel.desacriptaion" Width="1.5" PointX="5.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.exam" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.exam_q" Width="1.5" PointX="8" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.exam_q_levels" Width="1.5" PointX="11" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.feedBackWithDetail" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level_1" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level_2" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level_3" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level_4" Width="1.5" PointX="3" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level_5" Width="1.5" PointX="3" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level_6" Width="1.5" PointX="3" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.level" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.parmater" Width="1.5" PointX="3" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.pic_paths" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.RespTrain" Width="1.5" PointX="3" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.stage" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.userID" Width="1.5" PointX="0.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.exam_QUESTION" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.examWithLevel" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.resualt_exam" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q__a__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q__b__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q__c__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q__d__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_levels__a__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_levels__b__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_levels__c__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_levels__d__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam__level__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam__stage__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam__user_ID__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam__user_ID__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam__user_ID__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q__pic_path__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_le__exam___75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_le__exam___76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__exam_q_le__pic_p__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__feedBackW__user___7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__level_1__user_ID__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__level_2__user_ID__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__level_3__user_ID__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__level_4__user_ID__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__level_5__user_ID__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__level_6__user_ID__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__parmaters__user___03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__RespTrain__user___04E4BC85" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="amira_virtual_expModel.virtualGame" Width="1.5" PointX="3" PointY="45" />
+        <AssociationConnector Association="amira_virtual_expModel.FK__virtualGa__user___05D8E0BE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

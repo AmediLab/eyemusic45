@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> cannon game </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/targetGame.js"></script>
+    <script src="js/points.js"></script>    
+	
+	<script>
+
+			
+		var horCells = 3;
+		var verCells = 4;
+		
+		if (voiceOver) {
+			createTable(horCells,verCells);
+			var rowText = ["left","fire","right"];
+			var divText =[];
+			for (var i=0; i<verCells; i++) { divText = divText.concat(rowText); }
+			fillTableWithText(divText,horCells);
+		}
+		
+		// setup canvas
+		
+		var canvas = document.getElementById("game");
+		canvas.style.background = 'black';
+		canvas.width = windowWidth ;
+		canvas.height = windowHeight;
+		var context = canvas.getContext('2d');
+		
+		
+		// setup target
+		var targetDefaultRadius;
+		var targetRadius;
+		var targetHeight;
+		var centerlize;
+		var distractor = true;
+		
+		// setup hit mark
+		var hitSpotY;
+		var hitSpotSize;
+		var hitSpotColor = "green";
+		var hitX;
+		
+		// setup cannon
+		var cannonX;
+		var cannonHalfWidth;
+		var cannonHeight;		
+		var CANNON_COLOR = 'white';
+		var angleBoundry = 75;
+		var CANNON_ACCURACY;
+		var NEEDED_ACCURACY = 10;		
+		
+		// setup sounds
+		var laser = new Audio('cannonGame/laser.'+SOUND_FORMAT);
+		var hit = new Audio('cannonGame/hit.'+SOUND_FORMAT);
+		var stuck = new Audio('cannonGame/stuck.'+SOUND_FORMAT);
+		var scream = new Audio('cannonGame/scream.'+SOUND_FORMAT);
+	
+		var score = 0;
+		var level = 1;
+		getLevel();
+		var cannonAngle = 0;
+		var hitAngle;
+		var dAngle;
+		var distRadius = 50;
+		var msg;
+		var refractory = false;
+
+		var MAX_LEVEL = 5;
+		var POINTS_PER_LEVEL = 4;
+		function levelSettings() {
+
+			targetDefaultRadius = Math.min(windowWidth/10,windowHeight/10);
+			cannonX = windowWidth / 2;
+			targetHeight = windowHeight / 5			
+			centerlize = windowWidth/7;
+			cannonHalfWidth = Math.min(windowWidth/30,15);
+			cannonHeight = windowHeight/2;					
+			targetRadius = Math.floor(targetRadius);
+			hitSpotSize = targetRadius/2;
+			hitX = windowWidth;		
+			CANNON_ACCURACY = 30;
+			targetRadius = targetDefaultRadius;
+			
+			switch (level) {
+				case 1:
+					CANNON_ACCURACY = 30;
+					targetRadius = targetDefaultRadius;
+					distractor = false;
+					break;
+				case 2:
+					CANNON_ACCURACY = 20;
+					targetRadius = targetDefaultRadius*4/5;
+					distractor = false;
+					break;				
+				case 3:
+					CANNON_ACCURACY = 15;
+					targetRadius = targetDefaultRadius*3/4;
+					distractor = false;
+					break;				
+				case 4:
+					CANNON_ACCURACY = 10;
+					targetRadius = targetDefaultRadius*7/8;
+					cannonHeight = windowHeight/3;
+					distractor = true;
+					distRadius = targetRadius / 2;
+					break;	
+				case 5:
+					CANNON_ACCURACY = 10;
+					targetRadius = targetDefaultRadius*3/5;
+					cannonHeight = windowHeight/3;
+					distractor = true;
+					distRadius = targetRadius;
+					break;						
+				default:
+					break;					
+			}
+
+		}
+		
+		
+
+		
+		function newRound() {
+			
+			levelSettings();
+			
+			context.clearRect(-cannonX , 0 , cannonX*2, - windowHeight);
+			var screenWidth = windowWidth; 
+			var targetY = -windowHeight + targetHeight;
+			
+			// find a hit angle
+			var maxAngle = Math.atan2(Math.abs(cannonX - centerlize),-targetY) * 180 / Math.PI;
+			maxAngle = maxAngle - maxAngle%CANNON_ACCURACY;
+			var steps = Math.floor(maxAngle / CANNON_ACCURACY) * 2;
+			hitAngle = -Math.floor(maxAngle) + Math.floor(Math.random()*(steps + 1))*CANNON_ACCURACY;
+			
+			// find a distractor angle
+			var timeOut = 0;
+			dAngle = hitAngle;
+			while (dAngle == hitAngle) {
+				dAngle = -Math.floor(maxAngle) + Math.floor(Math.random()*(steps + 1))*CANNON_ACCURACY;
+				timeOut ++;
+				if (timeOut > 6) {
+					break;
+				}
+			}
+			
+			// find an x point for the target
+			var targetX = Math.tan(-hitAngle * Math.PI / 180) * targetY;		
+			
+			putTarget(context,targetX,targetY,targetRadius);
+			if (distractor) {
+				var distX = Math.tan(-dAngle * Math.PI / 180) * targetY;	
+				putDistractor(distX,targetY,distRadius);
+			}
+			
+			cannonAngle = 0;
+			restartCannon();
+		}
+		
+		function putDistractor(x,y,r) {
+			putSmiley(x,y,r,Math.floor(Math.random()*3));
+		}
+		
+		function restartCannon() {
+		
+			context.beginPath();
+			context.fillStyle = CANNON_COLOR;
+			context.fillRect(-cannonHalfWidth , -cannonHeight , cannonHalfWidth * 2 , cannonHeight*2);
+			
+			context.beginPath();
+			context.arc(0, 10, cannonHalfWidth * 2, 0, 2 * Math.PI, false);
+			context.fillStyle = CANNON_COLOR;
+			context.fill();
+		}
+		
+		function cannonShift(newAngel) {
+
+			
+			if (Math.abs(newAngel) > angleBoundry) {
+				// play out of bounds sound
+				stuck.play();
+			} else {
+			
+				context.clearRect(-cannonHeight*2 , 0 , cannonHeight*4, -cannonHeight - 10);
+				cannonAngle = newAngel;
+
+				context.rotate(cannonAngle * Math.PI / 180);
+				restartCannon();
+				context.restore();
+				
+				context.rotate(-cannonAngle * Math.PI / 180);
+
+			}
+			
+//			msg = 'angel:' + cannonAngle + ' ~~ ' + hitAngle+' score: '+score+' level: '+level;
+//			writeMessage(canvas, msg);					
+		}
+		
+		function fire() {
+			
+			laser.play();
+
+			if (Math.abs(cannonAngle - hitAngle) < NEEDED_ACCURACY) {
+				score = score+1;
+
+				setTimeout(function(){
+						hit.play(); 
+						refractory = true;
+						checkLevel(); 
+						clear();
+						setTimeout(function(){
+							newRound();
+							refractory = false;
+						}, 500);
+					}, 500);	
+				}
+			else if (distractor && Math.abs(cannonAngle - dAngle) < NEEDED_ACCURACY) {
+				scream.play();
+				score = score - 2;
+				if (score < 0 ) { score = 0; }
+				newRound();
+			} else {
+				hitmark(cannonAngle);
+				if (score > 0) {
+					score = score - 1;
+					}
+				}
+			
+		}
+
+		function hitmark(cannonAngle) { 
+			var hitSpotY = targetHeight;
+
+			// delete previous
+			context.beginPath();
+			context.arc(hitX, -windowHeight + hitSpotY, hitSpotSize*1.5, 0, 2 * Math.PI, false);
+			context.fillStyle = "black";
+			context.fill();	
+			
+			// add new
+			hitX = Math.tan(-cannonAngle * Math.PI / 180) * (-windowHeight + hitSpotY);
+		   context.strokeStyle = hitSpotColor;
+		   context.lineWidth = hitSpotSize / 4;
+			
+		  context.beginPath();
+		  context.moveTo(hitX - hitSpotSize, -windowHeight + hitSpotY - hitSpotSize);
+		  context.lineTo(hitX + hitSpotSize, -windowHeight + hitSpotY + hitSpotSize);
+		  context.stroke();			
+		  
+		  context.beginPath();
+		  context.moveTo(hitX - hitSpotSize, -windowHeight + hitSpotY + hitSpotSize);
+		  context.lineTo(hitX + hitSpotSize, -windowHeight + hitSpotY - hitSpotSize);
+		  context.stroke();				  
+			
+			
+		}
+
+		window.addEventListener('resize', resize , false);
+		window.addEventListener('orientationchange', resize, false);		
+		
+		function clickFunc(x,y) {
+			if (x <= windowWidth/3) {
+				cannonShift(cannonAngle-CANNON_ACCURACY);
+			} else if (x <= windowWidth*2/3) {
+				fire();
+			} else {
+				cannonShift(cannonAngle+CANNON_ACCURACY);
+			}
+		}
+		
+		
+		window.addEventListener('keydown', function(e) { 
+			if (refractory) {
+				return;
+			}
+			switch (e.keyCode) {
+				case 39:
+					cannonShift(cannonAngle+CANNON_ACCURACY);
+					break;
+				case 37:
+					cannonShift(cannonAngle-CANNON_ACCURACY);
+					break;
+				case 38:
+					fire();
+					break;
+				default:
+					break;
+			}
+			
+		} , true);	
+
+		levelSettings();
+		context.translate(cannonX, windowHeight);
+		newRound();
+		
+		function resize() {
+
+			resize_canvas(canvas);
+			levelSettings();
+			context.translate(cannonX, windowHeight);
+			newRound();
+		}
+		
+		function clear() {
+			context.beginPath();
+			context.fillStyle = 'black';
+			context.fillRect(-windowHeight , -windowHeight , 2*windowWidth , 2*windowHeight);
+		}
+  	
+	</script>
+	
+</body></html>

@@ -1,0 +1,10 @@
+LR_White#lrw
+LR_Red#lrr
+LR_Blue#lrb
+LR_Green#lrg
+LR_Yellow#lry
+HR_White#hrw
+HR_Red#hrr
+HR_Blue#hrb
+HR_Green#hrg
+HR_Yellow#hry

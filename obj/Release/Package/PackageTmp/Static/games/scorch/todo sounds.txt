@@ -1,0 +1,11 @@
+continue:
+game over press space bar to start over
+
+pointTalk:
+see points.js
+
+points:
+1, 5-10
+
+intro:
+welcome.. you have 10 cannon balls

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title> Scorched Earth </title>
+	<style>
+		@import url("css/gameStyle.css");
+	</style>
+</head>
+<body>
+
+	<canvas id="game"></canvas>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/defaultSetup.js"></script>
+	<script src="js/interface.js"></script>
+	<script src="js/points.js"></script>
+	<script src="js/joystick.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/targetGame.js"></script>	
+	
+	<script>
+	
+		// GENERAL SETTINGS
+		screen_compatibility = 0;
+		var training = false;
+		var obstacle = true;
+		var level = 1;
+		startMessage = startMessages[1];
+		
+		getLevel();		
+	
+		// BACKSTAGE
+		var horCells = 3;
+		var verCells = 4;
+		joystick_control = true;
+		// touch screen table settings
+		
+		voiceOver = true;
+		joystick();
+
+		var move = {value: false};
+		
+		var BG_COLOR = "black";
+		
+		// CANNON SETUP
+		var GAP = 50;
+		var CANNON_COLOR = "white";
+		var cannon_length;
+		var cannon_angle;
+		var cannon_width;
+		var cannon_height;
+		var cannon_size_change_DEF = 20;
+		var cannon_size_change = 20;
+		var cannon_shift = 10;
+		var CANNON_MIN = 110;
+		var CANNON_MAX = 390;
+		var CANNON_MIN_ANGLE = 20;
+		var CANNON_MAX_ANGLE = 90;
+		var CANNON_WIDTH_ADJUST = 500;
+		
+
+		// BALL SETUP
+		var BALL_STEP = 100;
+		var BALL_SIZE = 20;
+		var BALL_SPEED;
+		var GRAVITY = 1;
+		
+		// TRAIL SETUP
+		var TRAIL_COLOR = "red";
+		var TRAIL_SIZE = 15;
+		
+		// TARGET SETUP
+		var targetSize = 50;
+		var target_min_x = windowWidth / 2;
+		var target_min_y = 0;
+		var accuracy_needed = 50;
+		var targetx;
+		var targety;
+		var HIT_TIMEOUT = 3500;
+		
+		// WALL SETUP
+		var wallx;
+		var wally;
+		var wallHeight = 300;
+		var wallWidth = 30;
+		var WALL_COLOR = "white";
+		
+		// TRAINING
+		var TRAINING_SPACE_X = 50;
+		var TRAINING_SPACE_Y = 100;
+		var trainingx = 0;
+		var trainingy = 0;
+		
+		// TUTORIAL LEVEL
+		var refreshable = false;
+		var dofire = false;
+		var targetH = 0;
+	
+		// SOUNDS
+		var hit = 'mp3/hit.mp3';
+		var stuck = 'cannonGame/stuck.'+SOUND_FORMAT;
+		var hitWall =  'cannonGame/stuck.'+SOUND_FORMAT;
+		var training_done = 'training/donetraining.mp3';
+		var start_training = 'scorch/start_training.mp3';
+		var spacecontinue = 'scorch/spacecontinue.mp3';
+		var inst1 = 'scorch/instructions.mp3';
+
+		var MAX_LEVEL = 10;
+		context.translate(0, windowHeight);
+		var firstSoundFix = false;
+		function newGame() {	
+			stopEM();
+			resetTank();
+			newRound();
+		}
+		
+		function sizeAdjust(value) {
+			// fix sizes of stuff when screen is narrow
+			if (windowWidth < CANNON_WIDTH_ADJUST) {
+				return (value * windowWidth / CANNON_WIDTH_ADJUST);
+			} else return value;
+		}
+		
+		function resetTank() {
+			cannon_length = 210;
+			cannon_angle = 60;
+			cannon_width = Math.min(20,windowWidth/20);;
+			cannon_height = - cannon_width;
+			BALL_SPEED = cannon_length / 10;
+			
+			cannon_length = sizeAdjust(cannon_length);
+			cannon_size_change = sizeAdjust(cannon_size_change_DEF);
+		}
+		
+		function level_settings() {
+
+			move.value = false;
+			var level_audio;
+			var level_audio_play = true;
+			var wait = 1500;
+			var continueTime = 5000;
+			refreshable = false;
+			dofire = false;
+			obstacle = false;
+			puttarget = false;
+			CANNON_COLOR = "white";
+		
+			switch (level) {
+			
+				case 1:
+					level_audio = inst1;
+					cannon_length = 210;
+					refreshable = true;
+					break;
+				case 2:
+					cannon_length = 210;
+					level_audio = 'scorch/seeTrej.mp3';
+					dofire = true;
+					break;
+				case 3:
+					cannon_length = 350;
+					level_audio = 'scorch/longerShot.mp3';
+					dofire = true;
+					break;					
+				case 4:
+					level_audio = 'scorch/largeAngle.mp3';
+					dofire = true;
+					cannon_angle = 70;
+					break;		
+				case 5:
+					level_audio = 'scorch/smallerAngle.mp3';
+					dofire = true;
+					cannon_angle = 25;
+					break;		
+				case 6:
+					level_audio = 'scorch/seeTarget.mp3';
+					dofire = false;
+					puttarget = true;
+					CANNON_COLOR = "black";
+					continueTime = 7000;
+					targetH = 0.3;
+					break;	
+				case 7:
+					level_audio = 'scorch/seeTarget2.mp3';
+					dofire = false;
+					puttarget = true;
+					CANNON_COLOR = "black";
+					targetH = 0.8;
+					break;						
+				case 8:
+					level_audio = 'scorch/seeObs.mp3';
+					dofire = false;
+					obstacle = true;
+					CANNON_COLOR = "black";
+					break;		
+				case 9:
+					level_audio = 'scorch/inst8.mp3';
+					CANNON_COLOR = "black";
+					continueTime = 8000;
+					break;						
+			
+			}
+			
+			if (level_audio_play) {
+				stopEM();
+				play_func(level_audio, startEM);
+			}
+			
+			var thisLevel = level;
+			setTimeout(function() { 
+				if (thisLevel == level && thisLevel > 1) {
+					play_audio(spacecontinue);
+				} },continueTime );
+				
+			assignment_after_duration(move, true, level_audio);
+		
+		}
+		
+		function newRound() {
+		
+			clear();
+			resetTank();
+			level_settings();
+		
+			if (obstacle) {
+				wallx = windowWidth/3;
+				wally = 0;
+				target_min_x = windowWidth*3/4;
+			}
+		
+			targetx = Math.floor(targetH*(windowWidth-target_min_x - targetSize)) + target_min_x;
+			targety = - (Math.floor(targetH*(windowHeight-target_min_y - targetSize*2)) + target_min_y + targetSize);
+			
+			putTank(CANNON_COLOR,cannon_length,cannon_width,cannon_angle,GAP,cannon_height);
+			if (obstacle) {
+				putObstacle(WALL_COLOR,wallHeight,wallWidth,wallx,wally);
+			}
+			
+			if (puttarget) {
+				putTargetSimple(context,targetx,targety,targetSize);
+			}
+
+			
+			if (dofire) {
+				fire();
+			}
+			
+		}
+
+		
+		function play(audio) { play_audio(audio); }
+	
+		function putTank(color,length,width,angle,x,y) {
+		
+			context.save();
+			context.translate(x, y);
+			
+			context.beginPath();
+			context.arc(0, 0, width * 2, 0, 2 * Math.PI, false);
+			context.fillStyle = color;
+			context.fill();		
+
+			context.rotate((-90 -angle) * Math.PI / 180);
+			context.beginPath();
+			context.fillStyle = color;
+			context.fillRect( - width / 2 , 0 , width , length);
+			
+			context.restore();
+			context.translate(0,0);
+		}
+		
+		function putObstacle(color,height,width,x,y) {
+		
+			wallx = x;
+			wally = y;
+			wallHeight = height;
+			wallWidth = width;	
+		
+			context.beginPath();
+			context.fillStyle = color;
+			context.fillRect(x , y , width , -height);
+		}
+		
+		function fire() {
+		
+				var ballx = GAP + Math.cos(cannon_angle * Math.PI / 180) * cannon_length;
+				var bally = - Math.sin(cannon_angle * Math.PI / 180) * cannon_length - cannon_width;
+				
+				trail(ballx,bally,TRAIL_SIZE,TRAIL_COLOR);
+			
+				var horSpeed = Math.cos(cannon_angle * Math.PI / 180) * BALL_SPEED;
+				var verSpeed = Math.sin(cannon_angle * Math.PI / 180) * BALL_SPEED;
+			
+				for (var t=1 ; t <= 150 ; t++) {
+				
+					verSpeed = verSpeed - GRAVITY;
+				
+					ballx = ballx + horSpeed;
+					bally = bally - verSpeed;
+					trail(ballx,bally,TRAIL_SIZE,TRAIL_COLOR);					
+					
+				}
+			
+		}
+		
+		function refresh() {
+			
+			if (refreshable) {
+
+				if (cannon_length > CANNON_MAX) { cannon_length = CANNON_MAX; play_audio(stuck); }
+				if (cannon_length < CANNON_MIN) { cannon_length = CANNON_MIN; play_audio(stuck); }
+				
+				if (cannon_angle > CANNON_MAX_ANGLE) { cannon_angle = CANNON_MAX_ANGLE; play_audio(stuck); }
+				if (cannon_angle < CANNON_MIN_ANGLE) { cannon_angle = CANNON_MIN_ANGLE; play_audio(stuck); }
+				
+				BALL_SPEED = cannon_length / 10;
+			
+				clear();
+				putTank(CANNON_COLOR,cannon_length,cannon_width,cannon_angle,GAP,cannon_height);
+				
+			}
+		}	
+		
+		function trail(x,y,size,color) {
+		
+			context.beginPath();
+			context.arc(x, y, size, 0, 2 * Math.PI, false);
+			context.fillStyle = color;
+			context.fill();		
+			
+		}
+		
+	
+		function clickFunc(x,y) {
+		}
+		
+		window.addEventListener('orientationchange', resize, false);
+		window.addEventListener('resize', resize , false);
+		
+		function resize() {
+			resize_canvas(canvas);
+			context.translate(0, windowHeight);
+			newRound();
+		}
+		
+		function goLeft() {
+			if (!move.value || !gameStart) { return; }
+			cannon_angle = cannon_angle + cannon_shift;
+			refresh();
+		}
+		
+		function goRight() {
+			if (!move.value || !gameStart) { return; }
+			cannon_angle = cannon_angle - cannon_shift;
+			refresh();
+		}
+		
+		function goUp() {
+			if (!move.value || !gameStart) { return; }
+			cannon_length = cannon_length + cannon_size_change;
+			refresh();
+		}
+		
+		function goDown() {
+			if (!move.value || !gameStart) { return; }
+			cannon_length = cannon_length - cannon_size_change;
+			refresh();
+		}		
+		
+		function spaceBar() {
+
+			if (!move.value || !gameStart) { return; }
+			level = level + 1;
+			/*
+			if (level == 2) {
+				inst1.pause();
+			}*/
+	
+			if (level == MAX_LEVEL) {
+				stopEm_url("scorch.html");
+			}							
+			newRound();
+		}	
+		
+		window.addEventListener('keydown', function(e) { 
+					
+			switch (e.keyCode) {
+				case 39:
+					goRight();
+					break;
+				case 40:
+					goDown();
+					break;
+				case 38:
+					goUp();
+					break;
+				case 37:
+					goLeft();
+					break;	
+				case 32:
+					spaceBar();
+					break;						
+			}
+		});
+
+  	
+	</script>
+	<script src="js/mobileCheck.js"></script>	
+	<script src="js/compatibility.js"></script>
+	
+	</body></html>

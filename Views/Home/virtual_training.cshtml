@@ -1,0 +1,143 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@{
+    Layout = "";
+}
+
+
+<script> var logged = 1;var id = 312;var nickname='ev';</script>
+<html>
+    <head>
+        <title>Virtual Cane Experiment</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.json-2.3.min.js"></SCRIPT> 
+        <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.0.custom.js"></script> 
+        <link rel="stylesheet" type="text/css" href="~/App_Themes/jquery-ui-1.9.0.custom.css" />
+        <link rel="stylesheet" type="text/css" href="~/App_Themes/design.css" />
+        <link rel="stylesheet" href="~/App_Themes/jquery.fancybox.css" type="text/css" media="screen" />
+ 
+        <script type="text/javascript" src="~/Scripts/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript">
+    window.urljs = "@Url.Action("sendStart")";
+
+    var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+    if (document.location.protocol == 'https:')
+        unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+    document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+    
+		</script>
+
+        <script type="text/javascript">
+        window.speedjs = "@Model.speed";
+        window.voilumejs = "@Model.volume";
+        window.beep_noise = "@Model.beep_noise";
+        </script>
+
+        <script type="text/javascript" src="~/Scripts/client.js"></script>
+    </head>
+    <body>
+        <div class="float-right">
+            <h3>
+                hello @Model.userid
+            </h3>
+        </div>  
+
+        <div class="userFrame" id="userFrame" >
+            <div class="levelParagraph">
+                
+                        
+                    
+                    <h4>Welcome to the online training program of Professor Amir Amadi lab <a href="http://brain.huji.ac.il/"> </a></h4>
+            </div>
+             <div id="levelsFrame">
+	             <div class="levelParagraph">
+                   <p><br />
+                                 In this page display game for training in eye music</p>
+	             </div>
+                 
+                
+                <div class="levelParagraph">
+                    <h3>training level 1</h3>
+                            move one shapes on screen.
+                    <br/>                    
+                        <a class="fancybox">
+                        <input type="button" id="level1Btn" class="levelButton" value="start" />
+                        <input type="button" id="level1BtnHide" class="levelButton" value="start with hide" />
+                        </a>
+                </div>
+             
+                 
+                <div class="levelParagraph">
+                    <h3>training level 2</h3>
+                            move two shapes on screen.      
+                    <br />                    
+                        <a class="fancybox">
+                        <input type="button" id="level2Btn" class="levelButton" value="start" />
+                            <input type="button" id="level2BtnHide" class="levelButton" value="start hide" />
+                        </a>
+                </div>
+                
+                 <div class="levelParagraph">
+                    <h3>training level 3</h3>
+                             move shape to target
+                    <br />                    
+                        <a class="fancybox">
+                        <input type="button" id="level3Btn" class="levelButton" value="start" />
+                            <input type="button" id="level3BtnHide" class="levelButton" value="start hide" />
+                        </a>
+                </div>
+
+                 <div class="levelParagraph">
+                    <h3>training level 4</h3>
+                            move shape to target with Obstacles on the way.       
+                    <br />                    
+                        <a class="fancybox">
+                        <input type="button" id="level4Btn" class="levelButton" value="start" />
+                            <input type="button" id="level4BtnHide" class="levelButton" value="start hide" />
+                        </a>
+                </div>
+
+                 <div class="levelParagraph">
+                    <h3>training level 5</h3>
+                             move shape to gate.
+                    <br />                    
+                        <a class="fancybox">
+                        <input type="button" id="level5Btn" class="levelButton" value="start" />
+                            <input type="button" id="level5BtnHide" class="levelButton" value="start hide" />
+                        </a>
+                </div>
+
+                 <div class="levelParagraph">
+                    <h3>training level 6</h3>
+                            move shape with the mouse.
+                    <br />                    
+                        <a class="fancybox">
+                        <input type="button" id="level6Btn" class="levelButton" value="start" />
+                            <input type="button" id="level6BtnHide" class="levelButton" value="start hide" />
+                        </a>
+                </div>
+
+            </div>
+            
+
+            
+            <!-- Unity player part-->
+            <div id="unityPlayer" style="display:none">
+            
+            </div>
+
+                <div id="missing" style="display:none;text-align:center;">
+                    בכדי להשתתף בניסוי צריך להתקין את התוסף<br />
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!" target="_blank">
+                        <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+                    </a>
+                </div>
+                <div id="broken" style="display:none;text-align:center;">
+                    בכדי להשתתף בניסוי צריך להתקין את התוסף ולהפעיל מחדש את הדפדפן<br />
+                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install." target="_blank">
+                        <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+                    </a>
+                </div>
+            </div>
+    </body>
+</html>

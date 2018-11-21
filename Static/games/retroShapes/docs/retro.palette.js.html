@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Retro Context for Canvas Source: C:/dev/github/retro-context-canvas/src/retro.palette.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">Retro Context for Canvas</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.html">retro</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.Color.html">Color</a>
+						</li>
+						
+						<li>
+							<a href="retro.Context.html">Context</a>
+						</li>
+						
+						<li>
+							<a href="retro.Palette.html">Palette</a>
+						</li>
+						
+						<li>
+							<a href="retro.Point.html">Point</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="retro.Context.html#event:keyEvent">keyEvent</a>
+						</li>
+						
+						<li>
+							<a href="retro.Context.html#event:mouseEvent">mouseEvent</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="tutorial-Basics.html">Basics</a>
+						</li>
+						
+						<li>
+							<a href="tutorial-Fonts.html">Fonts</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#Retro Context for HTML5 Canvas.">Retro Context for HTML5 Canvas.</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: C:/dev/github/retro-context-canvas/src/retro.palette.js</h1>
+    
+    <section>
+        <article>
+            <pre class="sunlight-highlight-javascript ">/**
+ * Creates a PALETTE object and initializes it with the LUT array
+ * which contains sub-array or [retro.Color]{@link retro.Color}
+ * objects for each RGB color spot in the palette:
+ *
+ * &lt;code>[ [r0, g0, b0], [r1, g1, b1], ..., [rn, gn, bn]]&lt;/code>
+ * &lt;code>[ new retro.Color(r0, g0, b0), ..., new retro.Color(rn, gn, bn)]&lt;/code>
+ *
+ * When using name it will set a pre-defined (built-in) palette
+ * based on retro computers. These are the available built-in palettes:
+ *
+ * &lt;pre>
+ * AMIGA         - 16 colors palette (default for 16 colors mode)
+ * AMSTRADCPC    - 27 colors palette
+ * APPLEII       - 16 colors palette
+ * AQUARIUS      - 16 colors palette
+ * ATARI2600NTSC - 128 colors palette
+ * ATARI2600PAL  - 104 colors palette
+ * BBC           - 8 colors palette
+ * BW            - 2 colors palette (mono b&amp;w monitors)
+ * C16           - 128 colors palette
+ * C64           - 16 colors palette
+ * C64G          - 16 colors palette (gamma corrected)
+ * CBMP4         - 121 colors palette
+ * CGA           - 16 colors palette
+ * EGA           - 64 colors palette
+ * GAMEBOY       - 4 colors palette
+ * GREEN         - 2 colors palette (mono green colored monitors)
+ * INTELLIVISION - 16 colors palette
+ * MSX           - 15 colors palette
+ * MSX2          - 256 colors palette
+ * NES           - 64 colors palette
+ * SEGA          - 64 colors palette
+ * TELETEXT      - 8 colors palette (for TV tele-text)
+ * THOMSONMO5    - 16 colors palette
+ * VIC20         - 16 colors palette
+ * ZXSPECTRUM    - 16 colors palette
+ * &lt;/pre>
+ *
+ * @example
+ * var palette = new retro.Palette(array);
+ * var palette = new retro.Palette('name');
+ *
+ * @class retro.Palette
+ * @param {String|Array} palette - Name of a pre-defined palette or a Look-up-table (Array)
+ * @param {String} [name] - optional parameter for custom palette array
+ * @returns {retro.Palette}
+ * @constructor
+ * @prop {Array} lut - Look-up-table for palette colors
+ * @prop {String} name - name of palette given as optional name argument.
+ * For internal palette its name in upper-case, or defaults to '&lt;code>custom&lt;/code>'
+ * @prop {Number} length - number of indexes in this palette
+ */
+retro.Palette = function(palette, name) {
+
+	var lut, i, e;
+
+	this.name = name || 'custom';
+	this.lut = null;
+
+	this._lutCache = [];	//@private
+
+	if (typeof palette === 'string') {
+
+		palette = palette.toUpperCase();
+
+		if (retro.Palette[palette]) {
+			this.lut = retro.Palette[palette];
+			this.name = palette;
+		}
+		else
+			throw 'Unknown palette name ' + palette;
+	}
+	else if (Array.isArray(palette)) {
+
+		//TODO allow mixed arrays
+
+		if (palette[0] instanceof retro.Color) {
+
+			lut = [];
+
+			// convert retro.Color array into plain array
+			for(i = 0; e = palette[i++];) {
+				if (e instanceof retro.Color) lut.push([e.r, e.g, e.b]);
+			}
+
+			this.lut = lut;
+
+		}
+		else {
+
+			// Verify array content
+			for(i = 0; e = palette[i++];) {
+				if (e.length !== 3)
+					throw 'Invalid palette array. Expected sub-array of 3 entries (RGB) at index ' + i;
+			}
+
+			this.lut = palette;
+		}
+	}
+
+	// Cache integer values of this palette
+	for(i = 0; e = this.lut[i++];)
+		this._lutCache.push((new retro.Color(e[0], e[1], e[2])).toInt());
+
+	this.length = this.lut.length;
+
+	return this;
+};
+
+/**
+ * Returns a color object from the color at index in the LUT.
+ *
+ * @param {Number} index - Color index of the current palette array
+ * @returns {retro.Color}
+ */
+retro.Palette.prototype.getColor = function(index) {
+
+	if (index &lt; 0) index = 0;
+	if (index >= this.lut.length) index = this.lut.length - 1;
+
+	var c = this.lut[index];
+
+	return new retro.Color(c[0], c[1], c[2]);
+};
+
+/**
+ * Get index of color spot in the LUT PALETTE if the RGB values
+ * matches 100% or by tolerance. Returns -1 if no index matched.
+ *
+ * Tolerance is given as percentage [0, 100], default is 0%
+ * or no tolerance.
+ *
+ * @param {Number} r - red
+ * @param {Number} g - green
+ * @param {Number} b - blue
+ * @param {Number} [tolerance] Tolerance in percentage
+ * @returns {number}
+ */
+retro.Palette.prototype.getIndex = function(r, g, b, tolerance) {
+
+	tolerance = ((tolerance || 0) * 2.55 + 0.5)|0;
+
+	var	lut = this.lut,
+		c,
+		i = 0,
+		rmin, rmax, gmin, gmax, bmin, bmax;
+
+	if (tolerance === 0) {
+		for(; c = lut[i]; i++)
+			if (r === c[0] &amp;&amp; g === c[1] &amp;&amp; b === c[2]) return i;
+
+	}
+	else {
+		rmin = r - tolerance;	rmax = r + tolerance;
+		gmin = g - tolerance;	gmax = g + tolerance;
+		bmin = b - tolerance;	bmax = b + tolerance;
+
+		rmin = Math.max(0, Math.min(255, rmin));
+		rmax = Math.max(0, Math.min(255, rmax));
+		gmin = Math.max(0, Math.min(255, gmin));
+		gmax = Math.max(0, Math.min(255, gmax));
+		bmin = Math.max(0, Math.min(255, bmin));
+		bmax = Math.max(0, Math.min(255, bmax));
+
+		for(; c = lut[i]; i++) {
+			r = c[0];
+			g = c[1];
+			b = c[2];
+			if (r >= rmin &amp;&amp; r &lt;= rmax &amp;&amp;
+				g >= gmin &amp;&amp; g &lt;= gmax &amp;&amp;
+				b >= bmin &amp;&amp; b &lt;= bmax)	return i;
+		}
+	}
+
+	return -1;
+};
+
+/**
+ *	Get the index of the nearest color in the LUT based on RGB.
+ *	The function will always return a valid index.
+ *
+ * @param {Number} r - red
+ * @param {Number} g - green
+ * @param {Number} b - blue
+ * @returns {number} The index of the closest color
+ */
+retro.Palette.prototype.getNearestIndex = function(r, g, b) {
+
+	var i = 0,
+		c, d, dr, dg, db,
+		min = 195100,
+		mi = -1,
+		lut = this.lut,
+		l = lut.length;
+
+	for(; i &lt; l; i++) {
+
+		c = lut[i];
+		dr = c[0] - r;
+		dg = c[1] - g;
+		db = c[2] - b;
+		d = dr*dr + dg*dg + db*db;
+
+		if (d &lt; min) {
+			min = d;
+			mi = i;
+		}
+	}
+
+	return mi;
+};
+
+/**
+ * Get a color object of the nearest color in the LUT based on RGB.
+ * The function will always return a valid color object.
+ *
+ * @param {Number} r - red
+ * @param {Number} g - green
+ * @param {Number} b - blue
+ * @returns {retro.Color}
+ */
+retro.Palette.prototype.getNearestColor = function(r, g, b) {
+
+	var mi = this.lut[this.getNearestIndex(r, g, b)];
+
+	return new retro.Color(mi[0], mi[1], mi[2]);
+};
+</pre>
+        </article>
+    </section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		Copyright &copy; 2013-2014 Epistemex.
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a>
+		using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>  Sunlight.highlightAll({lineNumbers:false,  showMenu: true, enableDoclinks :true}); </script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+			    anchorName  : function(i, heading, prefix) {
+					return $(heading).attr("id") || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+
+		} );
+	</script>
+
+	
+
+</body>
+</html>

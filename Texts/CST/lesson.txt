@@ -1,0 +1,25 @@
+﻿Lekce jedna: bílé diagonály
+Lekce dvě: červené diagonály
+Lekce tři: zelené diagonály
+Lekce čtyři: modré diagonály
+Lekce pět:. Žluté diagonály
+Lekce šest: barevné diagonály
+Lekce sedm: horizontály
+Lekce osm: více přímek
+Lekce devět: vertikály
+Lekce deset: přímky všech typů
+Lekce jedenáct: paralelní přímky
+Lekce dvanáct: tvary
+Lekce třináct: čísla
+Lekce čtrnáct: latinská abeceda, velká písmena
+Lekce patnáct: slova psaná velkými písmeny
+Lekce šestnáct: latinská abeceda, malá písmena
+Lekce sedmnáct: slova psaná malými písmeny
+Lekce osmnáct: Hebrejská písmena - přeskakujeme
+Lekce devatenáct: Hebrejská slova - přeskakujeme
+Lekce dvacet: Emotikony (symboly obličejů)
+Lekce dvacet jedna: domy
+Lekce dvacet dva: popis částí těla
+Lekce dvacet tři: Simpsonovi
+Lekce dvacet čtyři: reálné objekty
+Lekce dvacet pět: další objekty

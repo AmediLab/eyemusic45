@@ -1,0 +1,148 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>select level, eye music</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+
+@{
+    int num_all = 0;
+    
+    if (Model.len == "h")
+    {
+        @:<body onunload="" id="body1" dir="rtl">
+    }
+    else
+    {
+        @:<body onunload="" id="body1" dir="ltr">
+    }
+}    
+
+    <h5 id="num_levels"></h5>
+    <div class="float-right">
+
+    @if (ViewBag.anonymous != null && !ViewBag.anonymous)
+    {
+        <h3>
+            hello @Model.userid
+        </h3>
+    }
+</div>
+<div id="body">
+    <p class="site-title" id="level">&nbsp</p>
+
+    @{
+        string[] all_levels = Model.UItrainingStimuliTreeViewNew.Split(';');
+
+        string[] all_levels_heb = all_levels;
+
+        if (Model.len == "h")
+        {
+            all_levels_heb = Model.UItrainingStimuliHebrow.Split(';');
+        }
+        else if (Model.len == "f")
+        {
+            all_levels_heb = Model.UItrainingStimuliFrance.Split(';');
+        }
+        else if (Model.len == "g")
+        {
+            all_levels_heb = Model.UItrainingStimuliGerman.Split(';');
+        }
+        
+        int index1 = 0;
+        int index3 = 0;
+        string level_heb;
+
+        foreach (string level in all_levels)
+        {
+            level_heb = all_levels_heb[index3++];
+            string[] all_stages = level.Split(',');
+            string[] all_stage_heb = level_heb.Split(',');
+
+            if (all_stages[0] == Model.select_level)
+            {
+                num_all = all_stages.Count() - 1;
+                int index4 = 0;
+                foreach (string stage in all_stages)
+                {
+                    if (stage != Model.select_level)
+                    {
+                        using (Html.BeginForm("IselectedTrain", "Home", FormMethod.Post, new { id = "submitForm" }))
+                        {
+                            <input type="hidden" name="selected_stage" value="@stage" />
+                            <input type="hidden" name="selected_level" value="@Model.select_level" />
+                            <input type="submit" value="@all_stage_heb[index4 + 1].Replace('_', ' ')" id="mytable @index1">
+                        }
+
+                        index4++;
+                        index1++;
+                    }
+                }
+            }
+
+
+        }
+
+    }
+</div>
+              <script type="text/javascript">
+
+    function adjust() {
+
+        if ("@Model.len" == "h") {
+            $("#body1").addClass("rtl");
+            document.getElementById("level").innerHTML = "בחר רמה";
+            document.getElementById("num_levels").innerHTML = "בדף זה יש @num_all רמות.";
+        }
+        else {
+            $("#body1").addClass("ltr");
+
+            if ("@Model.len" == "e") {
+                document.getElementById("level").innerHTML = "select level";
+                document.getElementById("num_levels").innerHTML = "This section contains @num_all levels.";
+                }
+                else if ("@Model.len" == "f") {
+                    document.getElementById("level").innerHTML = "Sélectionnez un niveau";
+                    document.getElementById("num_levels").innerHTML = "Cette section contient @num_all les niveaux.";
+                }
+            else if ("@Model.len" == "g") {
+                document.getElementById("level").innerHTML = "Wähle das Niveau";
+                document.getElementById("num_levels").innerHTML = "Dieser Abschnitt enthält @num_all Niveaus.";
+            }
+
+            }
+
+        }
+
+        window.onload = adjust;
+              </script>
+</body>
+
+
+
+</html>

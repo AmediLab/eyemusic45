@@ -1,0 +1,681 @@
+﻿@model eyemusic45.Models.ViewModels.eyeMusicModel
+@Styles.Render("~/App_Themes/css")
+
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>MathMusic</title>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svgdom.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svgdom.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.filedrop.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.svg.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/StackBlur.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/rgbcolor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/canvg.js")" type="text/javascript"></script>
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57936827-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript" src="../Scripts/languages.js"></script>
+    <script type="text/javascript" src="../mespeak/mespeak.js"></script>
+    <script type="text/javascript">
+
+        var startFrom;
+
+        meSpeak.loadConfig("../mespeak/mespeak_config.json");
+        meSpeak.loadVoice("../mespeak/voices/en/en-us.json");
+        var array = new Array();
+        var stream1;
+        var allStream = new Array();
+        var singleVoices = new Array();
+        var numStream = 0;
+        var maxNum = 0;
+        var insert = true;
+
+
+        //parmter for change and check
+        var thespeed = 100;
+        var AppreciateTime = 0;//1300;
+        var len = 'h';
+        var startGap = 300;
+        var coupling = 35;
+
+        var TheLen;
+        var externalData;
+        var svgOut;
+
+        function speechit(data) {
+            var all_numbers = data.split(';');
+
+            for (i = 1; i < all_numbers.length; i++) {
+                var thisNumber = all_numbers[i].split(',');
+
+                thisNumber[2] = thisNumber[2] / 2;
+                array.push({ text: "", voice: TheLen, variant: "m3", rawdata: true, pitch: thisNumber[1], wordgap: thisNumber[2], speed: 300 });
+                array.push({ text: thisNumber[0], voice: TheLen, variant: "m3", rawdata: true, pitch: thisNumber[1], wordgap: 0, speed: 300 });
+                stream1 = meSpeak.speakMultipart(array, { rawdata: true });
+                singleVoices.push(stream1);
+                array = new Array();
+            }
+            
+            allStream.push(singleVoices);
+            maxNum = numStream;
+            singleVoices = new Array();
+        }
+
+
+
+        function adjust() {
+            startFrom = document.getElementById("thePlayImage").offsetLeft - 25;
+            window.addEventListener('resize', resize, false);
+
+            if ("@Model.len" == "h") {
+                window.lan = 'h';
+                meSpeak.loadVoice("../mespeak/voices/pl.json");
+                TheLen = "pl";
+
+                doChange();
+            }
+            else {
+                window.lan = 'e';
+                meSpeak.loadVoice("../mespeak/voices/en/en-us.json");
+                TheLen = "en/en-us";
+                doChange();
+            }
+
+        }
+
+        function resize() {
+            startFrom = document.getElementById("thePlayImage").offsetLeft - 25;
+            foo = document.getElementById('fooObject'); // get the "foo" object
+            foo.style.left = startFrom + 'px'; // set its initial position to 0px
+            clearInterval(dd);
+        }
+
+        function doChange() {
+            document.getElementById("dragTitle").innerHTML = retstr(54);
+            document.getElementById("guide").innerHTML = retstr(41) + retstr(42) + retstr(43);
+            document.getElementById("UIwavButton").innerHTML = retstr(44);
+            document.getElementById("UIplayButton").innerHTML = retstr(45);
+            document.getElementById("Uploaded").innerHTML = retstr(46);
+        }
+
+        window.onload = adjust;
+    </script>
+</head>
+
+@{ if (Model.len == "h")
+ {
+    @:<body onunload="" id="body1" dir="rtl">
+        }
+ else
+ {
+    @:<body onunload="" id="body1" dir="ltr">
+                }
+}
+
+<div id="dropZone" class="fadeMe">
+    @if (ViewBag.anonymous != null && !ViewBag.anonymous)
+    {
+        <div class="float-right">
+            <h3>
+                hello @Model.userid
+            </h3>
+        </div>
+    }
+
+    <canvas id="canvas" style="width:50px;height:30px"></canvas>
+    <canvas id="canvas2" style="width:50px;height:30px"></canvas>
+    <h5 id="dragTitle"></h5>
+    <h5 id="guide"></h5>
+
+    <form id="uploader">
+        <input id="fileInput" type="file" multiple accept="image/*" onchange="submitAll()">
+    </form>
+
+    <button title="wav_files" id="UIwavButton" onclick="UIwavButton_click()"></button>
+
+    <div id="downloadlink">
+
+
+    </div>
+
+
+    <style>
+        div.fadeMe {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        #fooObject {
+            /* simple box */
+            position: absolute;
+            border-left: thick solid #FF0000;
+        }
+    </style>
+
+
+    <div style="background-color: #FFFFFF; height: 200px; width: 100px">
+
+        <div class="float-left" style="width:100px">
+            @{
+                string dds = "~/../../Images/blank.bmp";
+
+                <img id="thePlayImage" src="@dds" />
+            }
+
+
+            <div id="fooObject">
+                &nbsp;
+            </div>
+
+
+            <table style="width: 300px; margin-top: 20px">
+                <tr>
+                    <td>
+                        <button title="Play" id="UIplayButton" onclick="UIplayButton_click()"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button title="Play" id="UIMeSpeakButton" onclick="UImeSpakeButton_click()">הפעל והשתק את ההקראה</button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+
+        <h2 id="Uploaded">
+            Uploaded Files:
+        </h2>
+    </div>
+    <div style="clear:both;margin-top:100px" id="uploadResult1">
+
+    </div>
+
+    <audio id="thePlayaudio" controls hidden="hidden">
+        @{
+            <source type="audio/mp3">
+        }
+        Your browser does not support the audio element.
+    </audio>
+
+    <script type="text/javascript">
+
+
+        $(document).bind('keydown', 'ctrl', function () {
+            if (play == true) {
+                UIplayButton_click();
+            }
+            else {
+                UIplayButton_click();
+            }
+        });
+
+        $(document).bind('keydown', '1', function () {
+            if (document.getElementById("thePlayaudio").playbackRate < 3.50)
+                document.getElementById("thePlayaudio").playbackRate += 0.1;
+        });
+
+        $(document).bind('keydown', '2', function () {
+            if (document.getElementById("thePlayaudio").playbackRate > 0.59)
+                document.getElementById("thePlayaudio").playbackRate -= 0.1;
+        });
+
+
+
+        var play = true;
+        var playMesSpeak = true;
+
+        var numDrag = 0;
+
+        myAudio = document.getElementById("thePlayaudio");
+
+        myImage = document.getElementById("thePlayImage");
+        myImage.style.visibility = 'hidden';
+
+        handlerBeep = function () {
+            setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+
+                myAudio.currentTime = 0;
+                myAudio.pause();
+                myAudio.play();
+
+                if (playMesSpeak) {
+                    meSpeak.stop();
+
+                    for (i = 0; i < allStream[maxNum].length; i++) {
+                        meSpeak.play(allStream[maxNum][i]);
+                    }
+                }
+                init();
+                //  ..  setTimeout()
+            }, 1000)
+        }
+
+
+        myAudio.addEventListener('ended', handlerBeep, false);
+
+        function UIwavButton_click() {
+
+            $.ajax({
+                url: '@Url.Action("forzipfile")',
+                type: 'post',
+                data: JSON.stringify(),
+                contentType: 'application/json',
+                success: function (data) {
+                    $('#downloadlink').html('');
+                    if ("@Model.len" == "h") {
+                        $('#downloadlink').append('<a href="~/../../' + data.image + '"> לחץ כאן להורדת קובץ הזיפ </a>');
+                    }
+                    else {
+                        $('#downloadlink').append('<a href="~/../../' + data.image + '"> Press for download the zip file</a>');
+                    }
+                }
+            });
+        }
+
+        function UImeSpakeButton_click() {
+            if (playMesSpeak == false) {
+
+
+                for (i = 0; i < allStream[maxNum].length; i++) {
+                    meSpeak.play(allStream[maxNum][i]);
+                }
+                playMesSpeak = true;
+            }
+            else {
+                playMesSpeak = false;
+                meSpeak.stop();
+            }
+        }
+
+        function UIplayButton_click() {
+
+            if (play == false) {
+
+                if (foo == null) {
+                    init();
+                }
+                else {
+                    clearInterval(dd);
+                    dd = setInterval(doMove, 17);
+                }
+
+                myAudio.addEventListener('ended', handlerBeep, false);
+                myAudio.play();
+
+                for (i = 0; i < allStream[maxNum].length; i++) {
+                    meSpeak.play(allStream[maxNum][i]);
+                }
+
+                play = true;
+                playMesSpeak = true;
+
+
+                if (parseInt(foo.style.left) > 300 + startFrom) {
+                    init();
+                }
+
+            }
+            else {
+                myAudio.removeEventListener('ended', handlerBeep, false);
+                play = false;
+                playMesSpeak = false;
+
+                myAudio.pause();
+                meSpeak.stop();
+                myAudio.currentTime = 0;
+
+                foo.style.left = startFrom + 'px';
+                clearInterval(dd);
+            }
+
+        }
+
+
+
+        var foo = null; // object
+        var dd;
+
+        function doMove() {
+            foo.style.left = parseInt(foo.style.left) + Math.floor(2 * (50 / thespeed) * document.getElementById("thePlayaudio").playbackRate) + 'px';
+
+            if (parseInt(foo.style.left) > 300 + startFrom) {
+                clearInterval(dd);
+            }
+        }
+
+        function init() {
+            document.getElementById("thePlayaudio").volume = 0.5;
+            foo = document.getElementById('fooObject'); // get the "foo" object
+            foo.style.left = startFrom + 'px'; // set its initial position to 0px
+            clearInterval(dd);
+            dd = setInterval(doMove, 17);
+        }
+
+        function init1() {
+            myImage.style.visibility = 'visible';
+            init();
+        }
+
+        function init2() {
+
+            var vid = document.getElementById("thePlayaudio");
+
+            vid.oncanplay = null;
+
+            myAudio.addEventListener('ended', handlerBeep, false);
+            play = true;
+
+            init();
+        }
+
+    </script>
+
+
+
+
+
+    <script type="text/javascript">
+        function sendajax(tosend, numst) {
+            clearInterval(dd);
+            myAudio.removeEventListener('ended', handlerBeep, false);
+            play = false;
+            myAudio.pause();
+            myAudio.currentTime = 0;
+            foo.style.left = startFrom + 'px';
+
+            $.ajax({
+                url: '@Url.Action("ajaxregSVG")',
+                type: 'post',
+                data: JSON.stringify({ fileName: tosend }),
+                contentType: 'application/json',
+                success: function (data) {
+                    $("#thePlayImage").attr("src", "~/../../" + data.image);
+                    $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+                    var vid = document.getElementById("thePlayaudio");
+                    clearInterval(dd);
+
+                    vid.oncanplay = function () {
+                        init2();
+
+                        for (i = 0; i < allStream[maxNum].length; i++) {
+                            meSpeak.play(allStream[maxNum][i]);
+                        }
+                    }
+
+                    meSpeak.stop();
+                    $("#thePlayaudio")[0].play();
+                    maxNum = numst;
+
+                }
+            });
+        };
+
+    </script>
+
+
+    <script type="text/javascript">
+
+        function addpicture(data) {
+            if (data.image != "") {
+                $("#thePlayImage").attr("src", "~/../../" + data.image);
+                $("#thePlayaudio").attr("src", "~/../../" + data.voice);
+
+                numDrag++;
+                if (numDrag < 200) {
+                    $('#uploadResult1').append(
+                    '<input type="hidden" name="selectedImage" value="' + data.image + '"/>' +
+                    '<button id=' + data.image + ' onclick="sendajax(' + "'" + data.image + "','" + numStream + "'" + ')"> <img src="~/../../' + data.image + '" alt=' + data.image + '" id="pic' + data.image + '" style="width:75px;float:left" /> </button>');
+                }
+                else {
+                    $('#uploadResult1').html('');
+                    numDrag = 1;
+
+                    $('#uploadResult1').append(
+                    '<input type="hidden" name="selectedImage" value="' + data.image + '"/>' +
+                    '<button id=' + data.image + ' onclick="sendajax(' + "'" + data.image + "','" + numStream + "'" + ')"> <img src="~/../../' + data.image + '" alt=' + data.image + '" id="pic' + data.image + '"style="width:75px;float:left" /> </button>');
+                }
+
+                var vid = document.getElementById("thePlayaudio");
+                clearInterval(dd);
+                vid.oncanplay = function () {
+                    init2();
+                    if (insert)
+                        for (i = allStream[numStream - 1].length - 1; i >= 0; i--) {
+                            meSpeak.play(allStream[numStream - 1][i]);
+                        }
+                }
+
+                meSpeak.stop();
+                $("#thePlayaudio")[0].play();
+                playMesSpeak = true;
+                myImage.style.visibility = 'visible';
+
+                if (insert)
+                    numStream++;
+            }
+        }
+
+
+        function TheRecorsive(svg) {
+            for (var i = 0; i < svg.childNodes.length; i++) {
+                if (svg.childNodes[i].nodeName == "text" && svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["style"] != null) {
+
+                    if (svg.childNodes[i].attributes["style"].value.indexOf('fill') > -1) {
+                        svg.childNodes[i].attributes["style"].value =
+                            svg.childNodes[i].attributes["style"].value.replace(/fill:#[abcdef 0-9]*;/, 'fill:#000000;')
+                    }
+                }
+
+                //for geofebra change line width from max of 6.5 to 20
+                if (svg.childNodes[i].nodeName == "g") {
+                    if (svg.childNodes[i].attributes != null)
+                        if (svg.childNodes[i].attributes["stroke-width"] != null) {
+                            //svg.childNodes[i].attributes["stroke-width"].value = svg.childNodes[i].attributes["stroke-width"].value.replace("6.5000", "20");
+                            svg.childNodes[i].attributes["stroke-width"].value = "20";
+                        }
+
+                }
+
+                //wikipedia
+                if (svg.childNodes[i].nodeName == "svg") {
+                    if (svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["viewport-fill"] != null)
+                        {
+                            svg.childNodes[i].attributes["viewport-fill"].value = "black";
+                    }
+                    else if (svg.childNodes[i].attributes != null)
+                    {
+                        svg.childNodes[i].setAttribute("viewport-fill", "black");
+                    }
+
+                }
+
+                if (svg.childNodes[i].nodeName == "g") {
+                    if (svg.childNodes[i].attributes != null && svg.childNodes[i].attributes["style"] != null)
+                        if (svg.childNodes[i].attributes["style"].value.indexOf('stroke-width') > -1) {
+                            //svg.childNodes[i].attributes["stroke-width"].value = svg.childNodes[i].attributes["stroke-width"].value.replace("6.5000", "20");
+                            svg.childNodes[i].attributes["style"].value = 
+                            svg.childNodes[i].attributes["style"].value.replace(/stroke-width:[. 0-9]*;/, 'stroke-width:20;')
+                        }
+
+                }
+                
+
+                TheRecorsive(svg.childNodes[i]);
+            }
+
+            return svg;
+        }
+
+        var parseXml;
+
+        if (typeof window.DOMParser != "undefined") {
+            parseXml = function (xmlStr) {
+                return (new window.DOMParser()).parseFromString(xmlStr, "text/xml");
+            };
+        } else if (typeof window.ActiveXObject != "undefined" &&
+               new window.ActiveXObject("Microsoft.XMLDOM")) {
+            parseXml = function (xmlStr) {
+                var xmlDoc = new window.ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async = "false";
+                xmlDoc.loadXML(xmlStr);
+                return xmlDoc;
+            };
+        } else {
+            throw new Error("No XML parser found");
+        }
+
+        function canvasProceess(data, text) {
+
+            var xmlText = parseXml(text);
+            var xmlText2 = TheRecorsive(xmlText);
+            //var xmlText2 = xmlText;
+            var finishstring = new XMLSerializer().serializeToString(xmlText2);
+            //console.log(finishstring);
+
+            data = '../' + data;
+            var canvas2 = document.getElementById("canvas2");
+            canvg(canvas2, finishstring);
+            var image = canvas2.toDataURL("image/png").replace('data:image/png;base64,', '');
+            canvas2.style.display = "none";
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("canvasUpload")',
+                data: '{ "imageData" : "' + image + '" }',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+
+                    addpicture(data)
+
+                }
+            });
+
+             canvas.style.display = "none";
+
+        }
+
+
+        function submitAll() {
+            var formdata = new FormData(); //FormData object
+            var fileInput = document.getElementById('fileInput');
+
+
+            //Iterating through each files selected in fileInput
+            for (i = 0; i < fileInput.files.length; i++) {
+                //Appending each file to FormData object
+                formdata.append(fileInput.files[i].name, fileInput.files[i]);
+
+            }
+            //Creating an XMLHttpRequest and sending
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '@Url.Action("UploadBlinedSVG")');
+            xhr.send(formdata);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var espsplit = xhr.responseText.replace('"', '').split("?");
+                    var data = { image: espsplit[0].replace('"', '') }.image.replace('"}', "");
+                    var number = { image: espsplit[2].replace('"', '') }.image.replace('"}', "");
+                    var textSvg = { image: espsplit[1].replace('"', '') }.image.replace('"}', "");
+
+
+                    insert = false
+
+                    if (number != null && number != "") {
+                        speechit(number);
+                        insert = true
+                    }
+
+                    canvasProceess(data, textSvg);
+                }
+            }
+            return false;
+        }
+
+        function ajaxapload(file) {
+            $.ajax({
+                url: '@Url.Action("UploadFilesSVG")',
+                type: 'post',
+                data: JSON.stringify({
+                    speed: thespeed,
+                    Time: AppreciateTime,
+                    len: window.lan,
+                    couple: coupling
+                }),
+                contentType: 'application/json',
+                success: function (data) {
+
+                    insert = false;
+
+                    if (data.numbers != null && data.numbers != "") {
+                        speechit(data.numbers);
+                        insert = true;
+                    }
+
+                    canvasProceess(data.image,data.text);
+
+                }
+            });
+        };
+
+        $(function () {
+            $('#dropZone').filedrop({
+                url: '@Url.Action("saveSvgfile")',
+                paramname: 'files',
+                maxFiles: 5,
+                dragOver: function () {
+                    $('#dropZone').css('background', 'blue');
+                },
+                dragLeave: function () {
+                    $('#dropZone').css('background', 'white');
+                },
+                drop: function () {
+                    $('#dropZone').css('background', 'white');
+                },
+                afterAll: function () {
+                    $('#dropZone').css('background', 'white');
+                },
+                uploadFinished: function (file) {
+                    ajaxapload(file);
+                }
+            });
+        });
+    </script>
+
+
+</div>
+</body>
+
+</html>

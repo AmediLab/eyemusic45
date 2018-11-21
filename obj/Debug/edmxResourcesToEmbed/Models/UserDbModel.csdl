@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="userDbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="userDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="userDbModel.User" />
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Roles" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>
