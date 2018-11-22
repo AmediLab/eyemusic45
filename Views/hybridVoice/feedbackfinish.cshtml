@@ -1,0 +1,242 @@
+﻿@model eyemusic45.DAL.ShelonFinish
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>שאלון סוף</title>
+</head>
+<body>
+@using (Html.BeginForm("feedbackfinish", "ExpVoice", FormMethod.Post))
+    {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend id="theTitle">שאלון סוף</legend>
+
+        <fieldset>
+            <div class="editor-label" id="musical">
+                ? האם יש לך שמיעה מוזיקלית
+            </div>
+            <div>
+                <select id="musical" name="musical" onchange="blindYes()">
+                    <option value=" "> </option>
+                    <option id="yes" value="true">כן</option>
+                    <option id="no" value="false">לא</option>
+                </select>
+            </div>
+
+
+            <div class="editor-label" id="musical">
+                ? האם אתה מנגן בכלי כלשהוא
+            </div>
+            <div>
+                <select id="playMusic" name="playMusic" onchange="blindYes()">
+                    <option value=" "> </option>
+                    <option id="yes" value="true">כן</option>
+                    <option id="no" value="false">לא</option>
+                </select>
+            </div>
+
+            <div class="editor-label" id="namePlay">
+                ? אם כן באיזה כלי
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.namePlay)
+                @Html.ValidationMessageFor(model => model.namePlay)
+            </div>
+
+            <div class="editor-label" id="year">
+                ? אם כן מאיזה שנה
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.numYear)
+                @Html.ValidationMessageFor(model => model.numYear)
+            </div>
+        </fieldset>
+            <fieldset>
+                <div class="editor-label" id="birth">
+                    ? עד כמה השיעורים היו מסובכים
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <h6>1</h6>
+                                <input type="radio" name="hard" value="1" style="width:20px">
+                            </td>
+                            <td>
+                                <h6>2</h6>
+                                <input type="radio" name="hard" value="2" style="width:20px">
+                            </td>
+                            <td>
+                                <h6>3</h6>
+                                <input type="radio" name="hard" value="3" style="width:20px">
+                            </td>
+                            <td>
+                                <h6>4</h6>
+                                <input type="radio" name="hard" value="4" style="width:20px">
+                            </td>
+                            <td>
+                                <h6>5</h6>
+                                <input type="radio" name="hard" value="5" style="width:20px">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </fieldset>
+                    <fieldset>
+                        <div class="editor-label" id="birth">
+                            ? עד כמה אתה יודע את החומר
+                        </div>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h6>1</h6>
+                                        <input type="radio" name="fun" value="1" style="width:20px" >
+                                    </td>
+                                    <td>
+                                        <h6>2</h6>
+                                        <input type="radio" name="fun" value="2" style="width:20px" >
+                                    </td>
+                                    <td>
+                                        <h6>3</h6>
+                                        <input type="radio" name="fun" value="3" style="width:20px" >
+                                    </td>
+                                    <td>
+                                        <h6>4</h6>
+                                        <input type="radio" name="fun" value="4" style="width:20px" >
+                                    </td>
+                                    <td>
+                                        <h6>5</h6>
+                                        <input type="radio" name="fun" value="5" style="width:20px" >
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        </fieldset>
+                            <fieldset>
+                                <div class="editor-label" id="birth">
+                                    ? כמה תצליח במשימה של זיהוי פרצופים
+                                </div>
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <h6>1</h6>
+                                                <input type="radio" name="faces" value="1" style="width:20px" >
+                                            </td>
+                                            <td>
+                                                <h6>2</h6>
+                                                <input type="radio" name="faces" value="2" style="width:20px" >
+                                            </td>
+                                            <td>
+                                                <h6>3</h6>
+                                                <input type="radio" name="faces" value="3" style="width:20px" >
+                                            </td>
+                                            <td>
+                                                <h6>4</h6>
+                                                <input type="radio" name="faces" value="4" style="width:20px" >
+                                            </td>
+                                            <td>
+                                                <h6>5</h6>
+                                                <input type="radio" name="faces" value="5" style="width:20px" >
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                </fieldset>
+        <fieldset>
+            <div class="editor-label" id="mostHard">
+                ? איזה שיעור היה לך הכי קשה
+            </div>
+            <div class="editor-field">
+                <select id="EasyLesson" name="EasyLesson">
+                    <option value=" "> </option>
+                    <option id="1" value="1">שיעור 1: קווים אלכסוניים לבנים</option>
+                    <option id="2" value="2">שיעור 2: קווים אלכסוניים אדומים</option>
+                    <option id="4" value="4">שיעור 3: קווים אלכסוניים כחולים</option>
+                    <option id="6" value="6">שיעור 4: קווים אלכסוניים צבעוניים</option>
+                    <option id="7" value="7">שיעור 5: קווים אופקיים</option>
+                    <option id="8" value="8">שיעור 6: הרבה קווים באותה התמונה</option>
+                    <option id="9" value="9">שיעור 7: קווים אנכיים</option>
+                    <option id="10" value="10">שיעור 8: כל סוגי הקווים</option>
+                    <option id="11" value="11">שיעור 9: קווים מקבילים</option>
+                    <option id="12" value="12">שיעור 10: צורות</option>
+
+                </select>            </div>
+
+            <div class="editor-label" id="mostHard">
+                ? איזה שיעור היה לך הכי קל
+            </div>
+            <div class="editor-field">
+                <select id="HardLesson" name="HardLesson">
+                    <option value=" "> </option>
+                    <option id="1" value="1">שיעור 1: קווים אלכסוניים לבנים</option>
+                    <option id="2" value="2">שיעור 2: קווים אלכסוניים אדומים</option>
+                    <option id="4" value="4">שיעור 3: קווים אלכסוניים כחולים</option>
+                    <option id="6" value="6">שיעור 4: קווים אלכסוניים צבעוניים</option>
+                    <option id="7" value="7">שיעור 5: קווים אופקיים</option>
+                    <option id="8" value="8">שיעור 6: הרבה קווים באותה התמונה</option>
+                    <option id="9" value="9">שיעור 7: קווים אנכיים</option>
+                    <option id="10" value="10">שיעור 8: כל סוגי הקווים</option>
+                    <option id="11" value="11">שיעור 9: קווים מקבילים</option>
+                    <option id="12" value="12">שיעור 10: צורות</option>
+                </select>
+            </div>
+
+
+            <div class="editor-label" id="mosteasy">
+                ? איזה צבע הכי קל לך לזהות
+            </div>
+            <div class="editor-field">
+
+                <select id="ColorEasy" name="ColorEasy" onchange="blindYes()">
+                    <option value=" "> </option>
+                    <option id="white" value="1">לבן</option>
+                    <option id="red" value="2">אדום</option>
+                    <option id="blue" value="3">כחול</option>
+                </select>
+            </div>
+
+            <div class="editor-label" id="mostHard">
+                ? איזה צבע הכי קשה לך לזהות
+            </div>
+            <div class="editor-field">
+
+                <select id="ColorHard" name="ColorHard" onchange="blindYes()">
+                    <option value=" "> </option>
+                    <option id="white" value="1">לבן</option>
+                    <option id="red" value="2">אדום</option>
+                    <option id="blue" value="3">כחול</option>
+                </select>
+            </div>
+
+
+            <div class="editor-label" id="mostHard">
+                ? האם עצמת עיניים בשביל להתרכז בצליל
+            </div>
+            <div class="editor-field">
+                <select id="eyes" name="eyes" onchange="blindYes()">
+                    <option value=" "> </option>
+                    <option id="yes" value="true">כן</option>
+                    <option id="no" value="false">לא</option>
+                </select>
+            </div>
+
+        </fieldset>
+
+        <h3 id="thanks"> תודה רבה </h3>
+
+            <p>
+                <input type="submit" value="שלח" id="createsub" />
+            </p>
+        </fieldset>
+}
+</body>
+</html>
