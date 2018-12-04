@@ -124,8 +124,11 @@
             @:titleaudio.addEventListener('ended', titleaudiohandler, false);
         }
 
-        titleaudio.play();
-    }
+        @if (Model.ExpStep.getindex() != 0)
+        {
+            @:titleaudio.play();
+        }
+}
 
 
     window.onload = init;
@@ -211,31 +214,39 @@
         }
     }
 
+@if (Model.ExpStep.getindex() == 0)
+{
+        foreach (string title in (Model.ExpStep.TitlesCurrent() as string).Split(';'))
+        {
+            <h3>@title</h3>
+        }
+}
+
     <div id="menu" style="background-color: #FFFFFF; height: 200px;">
 
         <div id="div2">
 
-            <table style="width:300px;margin-top:20px" hidden="hidden">
+            <table style="width:300px;margin-top:20px">
                 <tr>
                     <td>
                         @if (Model.ExpStep.typesNext() == "2")
                         {
-                            using (Html.BeginForm("LearnExp", "ExpVoice", FormMethod.Post, new { id = "submitForm" }))
+                            using (Html.BeginForm("LearnExp", "hybridVoice", FormMethod.Post, new { id = "submitForm" }))
                             {
                                 <input type="hidden" name="nextOrPrev" value="next" />
                                 <input type="hidden" name="current" value="@Model.ExpStep.getindex()" />
-                                <input type="submit" value="next" id="to_exam">
+                                <input type="submit" value="next" id="to_exam" hidden="hidden">
                             }
                         }
                         else
                         {
 
-                            using (Html.BeginForm("ExamExp", "ExpVoice", FormMethod.Post, new { id = "submitForm" }))
+                            using (Html.BeginForm("ExamExp", "hybridVoice", FormMethod.Post, new { id = "submitForm" }))
                             {
 
                                 if (Model.ExpStep.getindex() != 0)
                                 { 
-                                <div style="width:600px">
+                                <div style="width:600px" hidden="hidden">
                                     <h3 id="difficult"></h3>
                                     <table>
                                         <tr>
