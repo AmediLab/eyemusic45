@@ -441,7 +441,11 @@
                                              @:document.getElementById("NoBut").style.visibility = "hidden";
                                         }
 
-                    document.getElementById("nextbut").style.visibility = "visible";
+                    @if (Model.showNextButton)
+                    { 
+                        @:document.getElementById("nextbut").style.visibility = "visible";
+                    }
+
                     document.getElementById("UIplayButton").style.visibility = "hidden";
                     var myVar=setInterval(function () {myTimer2()}, 60000);
 

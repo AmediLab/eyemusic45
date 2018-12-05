@@ -110,9 +110,12 @@
 </style>
 
 @{
-    foreach (string title in (Model.ExpStep.TitlesCurrent() as string).Split(';'))
+    if (Model.showNextButton || Model.ExpStep.getindex() == 0)
     {
-        <h3>@title</h3>
+        foreach (string title in (Model.ExpStep.TitlesCurrent() as string).Split(';'))
+        {
+           <h3>@title</h3>
+         }
     }
 }
 <div id="container">
@@ -139,7 +142,7 @@
                             using (Html.BeginForm("ExamExp", "ExpStep", FormMethod.Post, new { id = "submitForm" }))
                             {
 
-                                if (Model.ExpStep.getindex() != 0)
+                                if (Model.ExpStep.getindex() != 0 && Model.showNextButton)
                                 { 
                                 <div style="width:600px">
                                     <h3 id="difficult"></h3>

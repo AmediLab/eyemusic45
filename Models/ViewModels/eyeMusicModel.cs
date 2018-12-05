@@ -169,5 +169,6 @@ namespace eyemusic45.Models.ViewModels
         public bool negative;
         public bool black_and_white;
         public string filter;
+        public bool showNextButton = true;
     }
 }

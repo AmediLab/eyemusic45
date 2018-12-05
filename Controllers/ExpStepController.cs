@@ -200,6 +200,71 @@ namespace eyemusic45.Controllers
                 return View("../Home/firstAny", _eyeMusicModel);
         }
 
+        public ActionResult hideNextButton()
+        {
+            sessionOrNot();
+
+            //_eyeMusicModel.ExpStep.setindex(315);
+
+            if (!_eyeMusicModel.complete_register)
+            {
+                ViewBag.len = _eyeMusicModel.len;
+                System.Web.HttpContext.Current.Session["eyeMusic"] = null;
+                ViewBag.ReturnUrl = "/ExpStep/see";
+                return View("../Home/Login");
+            }
+            else
+            {
+                //goToCurrent();
+                _eyeMusicModel.blind = false;
+                _eyeMusicModel.SoundAfterPicture = false;
+                _eyeMusicModel.showNextButton = false;
+
+                if (_eyeMusicModel.TimeEnd == double.MaxValue)
+                {
+                    DateTime baseDate = new DateTime(1970, 1, 1);
+                    TimeSpan diff = DateTime.UtcNow - baseDate;
+                    _eyeMusicModel.TimeEnd = diff.TotalMilliseconds + _eyeMusicModel.TimeTotalExp;
+                }
+
+
+                if (_eyeMusicModel.ExpStep.returnType() == 1)
+                    return View("enterExp", _eyeMusicModel);
+                else if (_eyeMusicModel.ExpStep.returnType() == 2)
+                {
+                    showImage();
+                    _eyeMusicModel.totalNumImageInLesson = _eyeMusicModel.ExpStep.returnNumImage();
+                    _eyeMusicModel.imagePass = _eyeMusicModel.ExpStep.retPassImg();
+                    return View("learnExp", _eyeMusicModel);
+                }
+                else //if (_eyeMusicModel.ExpStep.returnType() == 3)
+                {
+                    string path = Server.MapPath("~");
+                    string fileNameSeesion = _eyeMusicModel.ScanSpeed + _eyeMusicModel.filter + _eyeMusicModel.ExpStep.imagesCurrent().Replace("\\", "").Replace(".bmp", "") + ".bmp";
+
+                    _eyeMusicModel.realpath = path + "\\EM\\Images\\" + fileNameSeesion;
+                    _eyeMusicModel.currImagePath = "/EM/Images/" + fileNameSeesion;
+
+                    _eyeMusicModel.currImagePathupload = _eyeMusicModel.currImagePath;
+
+                    vh.createMp3(fileNameSeesion.Replace(".bmp", ""), _eyeMusicModel.path + "\\" + _eyeMusicModel.ExpStep.imagesCurrent());
+
+                    _eyeMusicModel.theUri = "/EM/Out/" + fileNameSeesion.Replace(".bmp", "") + ".mp3";
+                    _eyeMusicModel.ExpStep.resetNumCorrect();
+                    _eyeMusicModel.num_question_step = _eyeMusicModel.ExpStep.foundNumber();
+
+                    if (_eyeMusicModel.ExpStep.returnType() == 4)
+                    {
+                        _eyeMusicModel.TimeToExam = TIME_EXAM;
+                        _eyeMusicModel.withAnswer = false;
+                    }
+                    return View("ExamExp", _eyeMusicModel);
+                }
+                //else
+                //    return View("../Home/firstAny", _eyeMusicModel);
+            }
+        }
+
         //[Authorize]
         public ActionResult feedbackfinish()
         {
