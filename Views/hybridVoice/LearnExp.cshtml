@@ -59,6 +59,7 @@
     var after;
     var beforeImage = true;
     var InImage = false;
+    var NumHandle = 0;
     var voice2;
     var image2;
     var tempAudio = new Audio();
@@ -351,12 +352,19 @@ else
                 }
                 else if (InImage)
                 {
-                    InImage = false;
-                    document.getElementById("next_but").hidden = false;
-                    UIplayButton_click();
-                    nextaudio.pause();
-                    nextaudio.currentTime = 0;
-                    nextaudio.play();
+                    if (NumHandle == 0)
+                        NumHandle = 1;
+                    else if (NumHandle == 1)
+                        NumHandle = 2;
+                    else{
+                        NumHandle = 0;
+                        InImage = false;
+                        document.getElementById("next_but").hidden = false;
+                        UIplayButton_click();
+                        nextaudio.pause();
+                        nextaudio.currentTime = 0;
+                        nextaudio.play();
+                    }
                 }
             }
 
@@ -554,8 +562,14 @@ else
         }
         document.getElementById('fooObject').hidden = true;
 
-        if (play == false)
-            UIplayButton_click();
+        nextaudio.pause();
+        nextaudio.currentTime = 0;
+        beforeImage = true;
+        play = false;
+        myAudio.pause();
+        myAudio.currentTime = 0;
+        document.getElementById("understand").hidden = false;
+        UIplayButton_click();
     }
 
     /*
