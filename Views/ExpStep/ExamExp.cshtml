@@ -66,6 +66,31 @@
     var retlessn;
     var remaind = 100;
 
+    var keepSessionAliveUrl = null;
+
+    SetupSessionUpdater('/ExpStep/KeepSessionAlive');
+
+    function SetupSessionUpdater(actionUrl) {
+        keepSessionAliveUrl = actionUrl;
+        var container = $("#body");
+        CheckToKeepSessionAlive();
+    }
+
+    function CheckToKeepSessionAlive() {
+        setTimeout("KeepSessionAlive()", 300000);
+    }
+
+    function KeepSessionAlive() {
+        if (keepSessionAliveUrl != null) {
+            $.ajax({
+                type: "POST",
+                url: keepSessionAliveUrl,
+                success: function () { var keepSessionAlive = false; }
+            });
+        }
+        CheckToKeepSessionAlive();
+    }
+
     function myTimer() {
         var d = new Date();
         remaind = @Model.TimeToExam - ((d.getTime() - startTime.getTime()) / 1000);

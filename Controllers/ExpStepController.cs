@@ -25,6 +25,13 @@ namespace eyemusic45.Controllers
         int FINEL_EXAM_ENTER = 380;
         static int numsaveimage = 0;
 
+        [HttpPost]
+        public JsonResult KeepSessionAlive()
+        {
+            sessionOrNot();
+            return new JsonResult { Data = "Success" };
+        }
+
         //When the user get grade <70% return on last lesson 
         public ActionResult returnClass()
         {
