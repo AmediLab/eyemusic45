@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\ExpStepController.cs" />
+    <Compile Include="Controllers\hybridImageController.cs" />
     <Compile Include="Controllers\hybridVoiceController.cs" />
     <Compile Include="Controllers\ExpVoiceController.cs" />
     <Compile Include="Controllers\HerzelController.cs" />
@@ -8556,6 +8557,11 @@
     <Content Include="Views\hybridVoice\feedbackfinish.cshtml" />
     <Content Include="Views\hybridVoice\LearnExp.cshtml" />
     <Content Include="Views\hybridVoice\menuStepExp.cshtml" />
+    <Content Include="Views\hybridImage\EnterExp.cshtml" />
+    <Content Include="Views\hybridImage\ExamExp.cshtml" />
+    <Content Include="Views\hybridImage\feedbackfinish.cshtml" />
+    <Content Include="Views\hybridImage\LearnExp.cshtml" />
+    <Content Include="Views\hybridImage\menuStepExp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
